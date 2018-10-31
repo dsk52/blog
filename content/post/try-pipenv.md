@@ -58,7 +58,7 @@ python_version = "3.6"
 
 ## Django のプロジェクトを作成する
 ここはいつも通り。
-``pip shell`` で仮想環境を有効化した状態で、以下のコマンドを使ってプロジェクトを作成する。
+``pipenv shell`` で仮想環境を有効化した状態で、以下のコマンドを使ってプロジェクトを作成する。
 
 ```
 $ (hoge-env) django-admin startproject hogeproject
@@ -77,7 +77,7 @@ start = "python hogeproject/manage.py runserver"
 これで ``pipenv run start`` で右側に書いた script が実行できるようになる。
 
 ## 使ってみて
-パッケージの管理と合わせてPythonのバージョンも管理できるのは、色々考えないでとりあえずPipfile渡してinstallのコマンド叩けばいいって発想にできるしいいよなーって思う。ただ、パッケージのインストールに結構時間がかかっちゃうのが気になる点かなぁ。
+パッケージの管理と合わせてPythonのバージョンも管理できるのは、色々考えないでとりあえずPipfile渡してinstallのコマンド叩けばいいって発想にできるしいいよなーって思う。 ~~ただ、パッケージのインストールに結構時間がかかっちゃうのが気になる点かなぁ。~~
 
 ## 参考
 [2018年のPythonプロジェクトのはじめかた](https://qiita.com/sl2/items/1e503952b9506a0539ea)
