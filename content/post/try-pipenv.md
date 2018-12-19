@@ -2,7 +2,7 @@
 title = "pipenvでDjangoの環境を作る"
 description = "pipenvでDjangoの開発環境を作ってみたのでその所感"
 date = 2018-06-19T01:17:17+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django"]
 +++

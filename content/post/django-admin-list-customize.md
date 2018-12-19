@@ -2,7 +2,7 @@
 title = "Djangoの管理画面にあるデータ一覧の表示をカスタマイズする"
 description = "Djangoで作っているアプリで、管理画面を作っているのですが、管理画面で管理するデータの表示をカスタマイズしたいなと思い調べたので備忘録"
 date = 2018-04-13T02:07:33+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Django", "admin"]
 draft = false

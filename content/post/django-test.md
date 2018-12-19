@@ -2,7 +2,7 @@
 title = "DjangoでTestCaseを使ってテストを書いた"
 description = "最近テストを書くようになってきて、この間DjangoのTestCaseを使ってテストを書いてみたので覚書"
 date = 2018-07-19T00:18:37+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Django", "Python"]
 +++

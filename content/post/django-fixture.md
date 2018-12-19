@@ -2,7 +2,7 @@
 title = "Djangoでfixtureを使って初期データを投入する"
 description = "Djangoでfixtureを使ってテスト環境用のデータを投入する"
 date = 2018-07-29T15:47:47+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django"]
 +++

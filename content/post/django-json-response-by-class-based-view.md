@@ -2,7 +2,7 @@
 title = "Djangoで、JSONのレスポンスを返す部分を関数ベースからクラスベースビューに書き換えてみた"
 description = "Djangoで、これまで関数ベースビューでJSONを返していたのですが、返す内容を加工する際に関数ベースにしていると見にくくなってしまうため、クラスベースに置き換えました"
 date = 2018-11-11T22:38:03+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Django"]
 +++

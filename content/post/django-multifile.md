@@ -5,7 +5,7 @@ description = ""
 title = "Djangoで処理を別のファイルに分けてimportさせる"
 author = "Daisuke Konishi"
 date = "2017-07-19T09:41:58+09:00"
-
+image = "images/common/django.png"
 +++
 
 ## はじめに

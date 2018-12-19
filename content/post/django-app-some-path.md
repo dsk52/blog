@@ -3,6 +3,7 @@ title = "DjangoのAppをプロジェクトルート以外に配置する"
 description = "Djangoでコマンドを使って生成するAppを別のディレクトリにまとめることができたのでそのやり方について"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django"]
+image = "images/common/django.png"
 date = 2017-11-27T23:15:26+09:00
 author = "Daisuke Konishi"
 +++

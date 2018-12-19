@@ -5,7 +5,7 @@ categories = ["クリエイティブ"]
 description = "Pythonを使って認証通してTwitterのAPIにリクエストを送るときの覚書"
 title = "Pythonでrequestsとrequests_oauthlibを使ってTwitterのAPIを叩く"
 author = "Daisuke Konishi"
-
+image = "images/common/django.png"
 +++
 
 これまで何度かPHPでAPI叩いてたんだけど、Pythonやりだしたのでそっちでやる方法調べてた。  

@@ -2,7 +2,7 @@
 title = "Djangoで作ったシステムを1系から2系にバージョンアップした"
 description = "1個Djangoで作ったアプリがあって、"
 date = 2018-09-16T12:42:07+09:00
-image = ""
+image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Django"]
 +++
