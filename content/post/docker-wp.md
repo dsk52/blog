@@ -3,6 +3,7 @@ title = "DockerでWordPressの環境を立ち上げる(簡易)"
 description = "Dockerを使ってWordPressの環境を作ってみようと思ったので、実際にトライしてみた"
 categories = ["クリエイティブ"]
 tags = ["Docker", "WordPress"]
+image = "images/common/docker.png"
 date = 2017-09-28T13:31:41+09:00
 author = "Daisuke Konishi"
 +++

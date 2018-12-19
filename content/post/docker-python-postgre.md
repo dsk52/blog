@@ -3,6 +3,7 @@ title = "DockerでPython3(Django)の環境を作る(PostgreSQLの接続もする
 description = "DockerでPythonとPostgreSQLの環境を作って開発をすすめる方法について"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django", "Docker", "PostgreSQL"]
+image = "images/common/docker.png"
 date = 2017-12-04T19:48:13+09:00
 author = "Daisuke Konishi"
 +++
