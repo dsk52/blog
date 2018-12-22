@@ -2,7 +2,7 @@
 title = "Reactのコンポーネント内でスクロール位置を取得する"
 description = "Reactでスクロール位置が取得できず困っていたんだけど、ようやくやり方が分かったので備忘録"
 date = 2018-08-03T09:30:25+09:00
-image = ""
+image = "images/common/react.png"
 tags = ["JavaScript", "React"]
 categories = ["クリエイティブ"]
 +++

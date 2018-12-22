@@ -3,6 +3,7 @@ title = "ReactでEventEmitterを使って子コンポーネント同士の通信
 description = "Reactで実装をしているときに、子コンポーネント同士で通信する必要があったんだけど、子コンポーネント間が遠くてちょっとしんどいなーと思っていたとき、EventEmitterを見つけたので使い方のメモ"
 categories = ["クリエイティブ"]
 tags = ["React"]
+image = "images/common/react.png"
 date = 2018-03-05T01:37:48+09:00
 author = "Daisuke Konishi"
 +++

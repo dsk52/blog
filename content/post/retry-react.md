@@ -5,7 +5,7 @@ author = "Daisuke Konishi"
 date = "2017-08-17T02:02:30+09:00"
 tags = ["JavaScript","React"]
 categories = ["クリエイティブ"]
-
+image = "images/common/react.png"
 +++
 
 周りでやってる人も増えてきたのと、ちょっとWordPressのWP REST APIと絡めてReactのリハビリをしようと思って最近また少しずつ触ってる。

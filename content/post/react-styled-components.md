@@ -5,6 +5,7 @@ categories = ["クリエイティブ"]
 tags = ["React", "CSS"]
 date = 2017-12-25T22:28:04+09:00
 author = "Daisuke Konishi"
+image = "images/common/react.png"
 +++
 
 この間ReactでCSSを扱う際に、styled-componentsを使ってみたのでどう使ったかとか。

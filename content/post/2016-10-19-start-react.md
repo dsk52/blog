@@ -12,6 +12,8 @@ categories:
   - クリエイティブ
 tags:
   - React
+image:
+  - "/images/common/react.png"
 
 ---
 少し前に<a href="http://amzn.to/2dl2c4K" target="_blank">オライリーの入門React</a>を買って、読んでは止め読んでは止めの繰り返しだったのですがようやく取り掛かりました。
