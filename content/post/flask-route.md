@@ -12,9 +12,18 @@ author = "Daisuke Konishi"
 
 [Flask](http://flask.pocoo.org/docs/0.12/)というPythonの軽量フレームワークを使って、ルーティング周りの実装はどうするのかを勉強した。というか今も継続中。
 
+作ったものはココに置いてます  
+[d-kusk/routepy - github](https://github.com/d-kusk/routepy)
+
 ## バージョンなど
-* Flask 0.12
-* Jinja2 2.9.5
+* <del>Flask 0.12</del>
+* <del>Jinja2 2.9.5</del>
+
+
+* Flask 1.0.2
+* Jinja2 2.10
+
+<ins datetime="2019-01-24 00:12:00">2019.1.24 に最終更新 全体的にパッケージのバージョンを上げました。</ins>
 
 これまでルーティングといえばWordPressがなんやかんやいい感じにやってくれる世界で生きていたのでそこまで意識しなかったのですが、いざやってみてなんとなく仕組み(というか流れ)が分かって楽しい。
 
