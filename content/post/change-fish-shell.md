@@ -97,6 +97,21 @@ aliasなんかのファイルを分けておいて、config.fishにPATHを書く
 . ~/.config/fish/Keybinds.fish
 ```
 
+下記追記内の質問でも触れられているため、ぜひ参考にしてください。
+
+## 追記: bash の記法をfishで使えるようにする
+Twitterで、「teratail で質問されてませんかー」なメッセージを頂いたので、念の為追記です。
+
+<blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="ja" dir="ltr"><a href="https://twitter.com/skd_nw?ref_src=twsrc%5Etfw">@skd_nw</a> こんにちは。teratailで「bashの記法をfishでつかえるようにしたい」という質問（ <a href="https://t.co/JVnvij9bB3">https://t.co/JVnvij9bB3</a> ）を偶然発見したのですが、これは skd_nw さんが投稿されたものでしょうか？　bassというfishプラグインがありまして、これを使用すれば解決できる可能性があります。</p>&mdash; 君継 葭月 (@JiaYue) <a href="https://twitter.com/JiaYue/status/1088049755102404608?ref_src=twsrc%5Etfw">January 23, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+質問はこちら。
+[bashの記法をfishでつかえるようにしたい。 - teratail](https://teratail.com/questions/161596)
+
+折角教えていただいたのですが、残念ながら質問したのは僕ではなかったので、サービスの方で対応方法の回答を書き込んでいただきました。気になる方は一度上記質問を覗いてみてください。
+
+[Bass  Make Bash utilities usable in Fish shell - github](https://github.com/edc/bass)
+
 ## まとめ
 
 - zshよりも簡単にいい環境を作ることができる
