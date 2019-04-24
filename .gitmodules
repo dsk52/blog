@@ -1,0 +1,3 @@
+[submodule "themes/minimage"]
+	path = themes/minimage
+	url = https://github.com/d-kusk/minimage
