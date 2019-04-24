@@ -8,6 +8,7 @@ googleAnalytics = "UA-53106421-1"
 enableRobotsTXT = true
 
 theme = "minimage"
+pygmentsCodeFences = true
 
 [params]
   description = "勉強した事や行った場所の感想を書くブログ"
