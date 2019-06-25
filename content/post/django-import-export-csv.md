@@ -95,7 +95,6 @@ class FoodResource(resources.ModelResource):
         model = Food
         skip_unchanged = True
         report_skipped = False
-        exclude = ('id',)
         import_id_fields = ('name', )
 ```
 
@@ -105,6 +104,13 @@ class FoodResource(resources.ModelResource):
 このプロパティにCSV内のデータにあるものの中からインポート対象の列を指定する。
 
 また、id 部分は ``exclude()`` にidを指定して除外しておく。( import_id_fields があるからもしかしたら要らないかも。)
+
+<ins>
+2019年6月25日追記
+import_id_fields を使っている場合、 ``exclude()`` で id を指定する必要はなかった。
+追加していたことで、importされるデータのid列の番号が飛んで1から始まらない状態になってしまう。
+</ins>
+
 
 さらに、CSVインポートで運用していくと二回目以降に重複したデータを入れることになりかねないんだけど、 ``skip_unchanged = True`` を入れておくことで、**重複箇所で変更の無いものはスキップしつつインポートをかけてくれる**ようになる。
 
