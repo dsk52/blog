@@ -18,6 +18,12 @@ author = "Daisuke Konishi"
 - Python v3.6.3
 - PostgreSQL v10
 
+## 追記(2019.07.28)
+プロジェクトを追加して docker-compose up したらいいところまでもっていったものを作ってgithubに公開しました。
+pythonのバージョンなど記事のモノより少しアップデートしています。  
+https://github.com/d-kusk/docker-python-postgresql
+
+
 ## 環境を作っていく
 実はこの方法は、[Djangoのドキュメント](https://docs.docker.com/compose/django/)に書いてあった。
 
