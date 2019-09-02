@@ -1,6 +1,6 @@
 +++
-title = "django-storagesでGoogle Cloud Strageから静的ファイルの配信をできるようにする"
-description = "django-storages を使って Google Cloud Strage から静的ファイルの配信をできるようにしたのでそのときにやったことを備忘録として残します"
+title = "django-storagesでGoogle Cloud Storageから静的ファイルの配信をできるようにする"
+description = "django-storages を使って Google Cloud Storage から静的ファイルの配信をできるようにしたのでそのときにやったことを備忘録として残します"
 date = 2019-06-15T14:23:44+09:00
 image = "images/common/django.png"
 categories = ["クリエイティブ"]
@@ -15,7 +15,7 @@ Whitenoise を使うとローカルにある静的ファイルの配信ができ
 
 ※例えば heroku でホスティングしている場合、デプロイを行うごとに別のインスタンスに切り替わるらしく、ユーザーからアップされた画像は置いてけぼりになるようです。そのため永続化のために外部のストレージを使う必要が出てくる。
 
-そのため今回は django-storages を用いて Google Cloud Strage から静的ファイルを配信するようにして、CSS, JSファイルの読み込み、画像の表示を確認するところまでやります。
+そのため今回は django-storages を用いて Google Cloud Storage から静的ファイルを配信するようにして、CSS, JSファイルの読み込み、画像の表示を確認するところまでやります。
 
 
 ## 環境
@@ -43,7 +43,7 @@ $ pip install django-storages[google]
 
 1. サービスアカウントを作成 (IAMと管理 > サービスアカウント > サービス アカウントの作成)  
 作成を進めると認証用の鍵がダウンロードされる ( your-project-XXXXX.json )
-2. Cloud Strageでバケットを作成
+2. Google Cloud Storageでバケットを作成
 3. 作ったサービスアカウントからバケットにアクセスできるようにしておく
 
 ### 設定: Django側
@@ -68,7 +68,7 @@ STATIC_URL = 'https://storage.googleapis.com/バケット名/'
 ```
 
 #### 設定: テンプレート側
-``STATIC_URL`` で Strage の URL を設定できているので ``{% static %}`` でいけました。
+``STATIC_URL`` で Storage の URL を設定できているので ``{% static %}`` でいけました。
 
 ```
 <head>
@@ -84,10 +84,10 @@ STATIC_URL = 'https://storage.googleapis.com/バケット名/'
 <img src="{% static '画像のファイルパス.url' %}">
 ```
 
-ブラウザの開発者ツールなんかから確認して、ファイルパスが Google Cloud Strage のものになっていればOKです。
+ブラウザの開発者ツールなんかから確認して、ファイルパスが Google Cloud Storage のものになっていればOKです。
 
-## 静的ファイルの収集と Google Cloud Strage へのアップ
-以下のコマンドを叩くと、 ``app/static/`` から静的ファイルが収集されて、 Google Cloud Strage へのアップが行われます。
+## 静的ファイルの収集と Google Cloud Storage へのアップ
+以下のコマンドを叩くと、 ``app/static/`` から静的ファイルが収集されて、 Google Cloud Storage へのアップが行われます。
 
 ```
 $ python manage.py collectstatic
@@ -96,5 +96,3 @@ $ python manage.py collectstatic
 
 ## やってみて
 結構めんどくさいんだろうなーと思ったけど、ライブラリのおかげでだいぶサクッとできて結構驚いた。AWSのS3とか他のストレージサービスにも対応してるらしいのでまた機会あったら使ってみようかな。
-
-あと、GCPの方は strage で、ライブラリの方は storages なのがちょっとややこしい。
