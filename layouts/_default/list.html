@@ -1,5 +1,6 @@
 {{ define "main" }}
-  {{ $pag := .Paginate (where .Data.Pages "Type" "post") 5 }}
+  {{ $pages := .Pages }}
+  {{ $paginator := .Paginate $pages }}
 
   <div class="p-archive">
     <div class="c-container">
