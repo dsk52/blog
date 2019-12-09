@@ -17,6 +17,7 @@ Whitenoise を使うとローカルにある静的ファイルの配信ができ
 
 そのため今回は django-storages を用いて Google Cloud Storage から静的ファイルを配信するようにして、CSS, JSファイルの読み込み、画像の表示を確認するところまでやります。
 
+[django-rest-frameworkのレスポンスにS3上のファイルパスを含める方法](https://blog.daisukekonishi.com/post/django-drf-storages/)を別記事で書きました
 
 ## 環境
 
