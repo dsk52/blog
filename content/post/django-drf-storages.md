@@ -1,7 +1,7 @@
 +++
 title = "django-rest-frameworkでS3上のファイルのURLを返す"
 description = "Djangoを使ってCloudStorage上のファイルのパスを返す方法は試しましたが、Django REST Frameworkを使ってファイルのパスを返すことを試してみました"
-date = 2019-12-12T00:39:43+09:00
+date = 2019-12-11T00:39:43+09:00
 image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django", "S3"]
@@ -9,14 +9,15 @@ draft=true
 +++
 
 
-
-HTMLを返す形式で、[Cloud Storage上のファイルのURLを載せて返す方法](https://blog.daisukekonishi.com/post/django-storages/)は既に書きました。
-その上で、今回はAWSのS3からdjango-rest-framework(以下DRF)使用時にJSONレスポンスに含める方法を試しました。
-
 ※この記事は **[Django Advent Calendar 2019](https://qiita.com/advent-calendar/2019/django) 12日目の記事** です。
 
+HTMLのレスポンス形式で、[Cloud Storage上のファイルのURLを載せて返す方法](https://blog.daisukekonishi.com/post/django-storages/)は既に書きました。  
+django-storages の設定をした後、DetailViewなどでデータを返しurlフィルタなんかでPATHを表示させればうまく表示できるって感じでした。
+
+django-rest-framework(以下DRF)だとどうなるのかというのが気になったので、AWSのS3のPATHをJSONレスポンスに含める方法を試しました。
+
 やってみたソースコードは以下にあります。  
-[d-kusk/drf-storage](https://github.com/d-kusk/drf-storage)
+[d-kusk/drf-storage - github](https://github.com/d-kusk/drf-storage)
 
 ## 環境
 - Python 3.7.2
@@ -30,7 +31,7 @@ HTMLを返す形式で、[Cloud Storage上のファイルのURLを載せて返�
 
 ```
 .
-├── config  // Project Dir
+├── config  // Project dir
 ├── entry
 ├── manage.py
 ├── requirements.txt
@@ -39,11 +40,13 @@ HTMLを返す形式で、[Cloud Storage上のファイルのURLを載せて返�
 ```
 
 ## Djangoの準備
-DjangoでプロジェクトとDRFのインストールや初期設定は終えているていで進めます。
+DjangoでプロジェクトとDRFのインストールや初期設定は終えている前提で進めます。
 
 S3とのやり取りを行うために以下のパッケージをインストール。
 
 ```
+$ source venv/bin/activate.fish  // 適宜変えてください
+
 $ pip install boto3 django-storages Pillow
 ```
 
@@ -130,7 +133,7 @@ INSTALLED_APPS = [
 ```
 
 
-こんな感じでモデルを作成し、 thumbnail に画像の情報を持つ想定。
+以下のようにモデルを作成し、 thumbnail に画像の情報を持つ想定。
 
 entry/models.py
 
