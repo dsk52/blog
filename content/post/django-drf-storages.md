@@ -5,7 +5,6 @@ date = 2019-12-11T00:39:43+09:00
 image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django", "S3"]
-draft=true
 +++
 
 
