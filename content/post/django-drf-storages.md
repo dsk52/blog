@@ -1,7 +1,7 @@
 +++
 title = "django-rest-frameworkでS3上のファイルのURLを返す"
 description = "Djangoを使ってCloudStorage上のファイルのパスを返す方法は試しましたが、Django REST Frameworkを使ってファイルのパスを返すことを試してみました"
-date = 2019-12-11T00:39:43+09:00
+date = 2019-12-12T00:39:43+09:00
 image = "images/common/django.png"
 categories = ["クリエイティブ"]
 tags = ["Python", "Django", "S3"]
