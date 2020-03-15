@@ -36,7 +36,7 @@ Whitenoise を使うとローカルにある静的ファイルの配信ができ
 [Google Cloud Storage — django-storages 1.7.1 documentation](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html)
 
 
-```
+```shell
 $ pip install django-storages[google]
 ```
 
@@ -54,7 +54,7 @@ $ pip install django-storages[google]
 
 参考サイト見ながらこんな感じにした
 
-```
+```python
 from google.oauth2 import service_account
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
@@ -71,7 +71,7 @@ STATIC_URL = 'https://storage.googleapis.com/バケット名/'
 #### 設定: テンプレート側
 ``STATIC_URL`` で Storage の URL を設定できているので ``{% static %}`` でいけました。
 
-```
+```html
 <head>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -81,7 +81,7 @@ STATIC_URL = 'https://storage.googleapis.com/バケット名/'
 
 画像に関しては、 Pillow の ImageField で保存していた場合、DB に画像のファイルパスが保存されるんですが、テンプレートで使う際は以下のように書いたらいけました。.url がポイント。
 
-```
+```html
 <img src="{% static '画像のファイルパス.url' %}">
 ```
 
@@ -90,7 +90,7 @@ STATIC_URL = 'https://storage.googleapis.com/バケット名/'
 ## 静的ファイルの収集と Google Cloud Storage へのアップ
 以下のコマンドを叩くと、 ``app/static/`` から静的ファイルが収集されて、 Google Cloud Storage へのアップが行われます。
 
-```
+```shell
 $ python manage.py collectstatic
 ```
 

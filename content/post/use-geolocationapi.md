@@ -15,17 +15,17 @@ Google MapにもGeolocation APIがあるんだけど、今回使ったのは、W
 
 瞬間的に位置情報を取得するには、 navigator.geolocation オブジェクトの ``getCurrentPosition`` メソッドで取得出来て、以下のコードで緯度経度を取得できた。
 
-```
+```js
 navigator.geolocation.getCurrentPosition(function(position) {
   console.log(position.coords.latitude, position.coords.longitude);
 });
 ```
 
-getCurrentPosition メソッドの第1引数は取得成功時、第2引数は取得失敗時。
+``getCurrentPosition()`` メソッドの第1引数は取得成功時、第2引数は取得失敗時。
 
 多くのブラウザで対応してるらしいけど、たまに対応してないものも有るらしいので以下のように geolocation オブジェクトが存在してるかをチェックしてから実行するようにしておくといいらしい。
 
-```
+```js
 if ("geolocation" in navigator) {
   /* geolocation is available */
 } else {
@@ -43,7 +43,7 @@ if ("geolocation" in navigator) {
 **現在地の取得完了まで少し時間がかかる**ので、そこのハンドリングが出来てないと位置情報取得前に処理が走って値が足りないみたいな事が起こる。
 なので、Promiseとかで同期処理をする必要があって、その辺も一緒に確認してたんだけど以下のサンプルが出てきた。
 
-```
+```js
 var getPosition = function (options) {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);

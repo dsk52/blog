@@ -32,7 +32,7 @@ $ touch test.js
 ## 実際にコードを書いてみる
 とりあえず、実際にブラウザを立ち上げて閉じる。
 
-```
+```js
 const puppeteer = require('puppeteer');
 
 (async () => {
@@ -65,19 +65,19 @@ const puppeteer = require('puppeteer');
 ### 指定ページへ移動
 実際にスクリーンショットを撮るページへ遷移
 
-```
+```js
 await page.goto(`${BASE_URL}/login`);
 ```
 
 とか、URLはテキトウだけどこんな感じでリンクをクリックして遷移することもできる。
 
-```
+```js
 await page.click('a[href^="about.html"]');
 ```
 
 ### スクリーンショットを撮る
 
-```
+```js
 await page.screenshot({ path: `${BASE_DIST}/IMAGE_NAME.png`, fullPage: true });
 ```
 
@@ -87,7 +87,7 @@ viewport の中だけでいいなら fullPage を調整。
 ## 感じたポイント
 ``page.goto()`` や ``page.waitForNavigation()`` では引数で色々設定ができる。指定ms待ちを作ったり、どこかしらのタイミングまで待ったり。
 
-```
+```js
 await page.waitForNavigation({ timeout: 70000, waitUntil: "networkidle2" });
 ```
 

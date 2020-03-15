@@ -17,7 +17,7 @@ draft = false
 ## 管理画面へのモデルの追加
 管理画面でデータを扱うために、扱うデータ用のモデルを追加します。
 
-```
+```python
 from django.contrib import admin
 from .models import HogeModel
 
@@ -30,7 +30,7 @@ admin.site.register(HogeModel)
 ``admin.ModelAdmin`` を使った class を作成し、 list_display に表示するモデルのプロパティを追加することでカスタマイズする事ができました。
 また、設定したclassとモデルを紐付けるために、**第1引数にモデル、第2引数にaddminモデルを指定**します。
 
-```
+```python
 from django.contrib import admin
 from .models import HogeModel
 

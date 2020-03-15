@@ -43,7 +43,7 @@ DjangoでプロジェクトとDRFのインストールや初期設定は終え�
 
 S3とのやり取りを行うために以下のパッケージをインストール。
 
-```
+```shell
 $ source venv/bin/activate.fish  // 適宜変えてください
 
 $ pip install boto3 django-storages Pillow
@@ -51,7 +51,7 @@ $ pip install boto3 django-storages Pillow
 
 config/setting.py には以下を設定。ドキュメントに載っていた必須項目をベースに+アルファみたいな感じ。
 
-```
+```python
 # django-storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -79,7 +79,7 @@ IAMユーザーを作ってバケットに紐づけておく。(ここは割愛)
 
 プライバシーポリシーはドキュメントに有った以下を使用。
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -105,7 +105,7 @@ IAMユーザーを作ってバケットに紐づけておく。(ここは割愛)
 
 これを行った上で、一旦S3にあがるか確認。
 
-```
+```shell
 $ ./manage.py collectstatic
 ```
 
@@ -115,13 +115,13 @@ $ ./manage.py collectstatic
 
 カスタムユーザーモデルでプロフィール画像を設定しようと思ったんですが、ちょっと面倒だなってなってしまったのでサクッと試しやすいEntryアプリを作りました。雑なブログみたいなイメージ。
 
-```
+```shell
 $ ./manage.py startapp entry
 ```
 
 config/settings.py
 
-```
+```python
 :
 INSTALLED_APPS = [
     :
@@ -136,7 +136,7 @@ INSTALLED_APPS = [
 
 entry/models.py
 
-```
+```python
 from django.db import models
 
 class Entry(models.Model):
@@ -156,7 +156,8 @@ class Entry(models.Model):
 あとはこれに ViewSet と Serializer を作成。
 
 entry/ViewSet.py
-```
+
+```python
 from rest_framework import viewsets
 from .Serializer import EntrySerializer
 from .models import Entry
@@ -167,7 +168,8 @@ class EntryViewSet(viewsets.ModelViewSet):
 ```
 
 entry/Serializer.py
-```
+
+```python
 from rest_framework import serializers
 from .models import Entry
 
@@ -182,7 +184,7 @@ class EntrySerializer(serializers.HyperlinkedModelSerializer):
 
 entry/admin.py
 
-```
+```python
 from django.contrib import admin
 from .models import Entry
 
@@ -197,7 +199,7 @@ APIとしてアクセスできるように urls.py で設定をしておく。
 
 config/urls.py
 
-```
+```python
 :
 from rest_framework import routers
 

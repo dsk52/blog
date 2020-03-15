@@ -35,7 +35,7 @@ draft = false
 
 views.py
 
-```
+```python
 from django.views.generic import DetailView
 from .models import Board
 
@@ -48,7 +48,7 @@ class Detail(DetailView):
 
 models.py
 
-```
+```python
 from django.db import models
 
 class Board(models.Model):
@@ -61,7 +61,7 @@ class Board(models.Model):
 
 detail.html
 
-```
+```html
 {% extends 'base.html' %}
 
 {% block title %}{{board.title}} 詳細{%endblock%}
@@ -90,7 +90,7 @@ ViewからTemplateに渡すときに、 ``object`` の中に格納されるの�
 
 結論からいえば、処理結果を返すメソッドを作り ``@property`` っていうデコレータをつける事で、Viewではその**関数名で処理結果を出力出来るようになる**。
 
-```
+```python
 class User(AbstractUser):
   :
   birth_date = models.DateField('誕生日')
@@ -124,7 +124,7 @@ class User(AbstractUser):
 
 models.py
 
-```
+```python
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -145,7 +145,7 @@ class User(AbstractUser):
 
 detail.html
 
-```
+```html
   <dl>
     :
     <dt>血液型</dt>

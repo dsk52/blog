@@ -43,7 +43,7 @@ ProjectやAppの作成、登録は終わっている状態。
 ### Modelの作成
 Modelは仮でこんな感じで ``app/models.py`` に記述。
 
-```
+```python
 from django.db import models
 
 
@@ -58,7 +58,7 @@ class Person(models.Model):
 ``App/fixtures/fixture.json`` を作成。  
 上で作成したModelに対してfixtureを作っていくのでこんな感じ。
 
-```
+```json
 [
   {
     "model": "App.Person",
@@ -84,7 +84,7 @@ class Person(models.Model):
 暫定的にもう1つの以下の方法でとりあえず入れています。
 migrate での入れ方が分かったら追記しようかな。
 
-```
+```shell
 $ ./manage.py loaddata App/fixtures/fixture.json
 ```
 

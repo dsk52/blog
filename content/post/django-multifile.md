@@ -51,7 +51,7 @@ Djangoでは、機能ごとにアプリを作ってその中で開発を進め�
 
 ``app/models/__init__.py`` に以下
 
-```
+```python
 from app.models.ClassFile import ClassName
 
 def func():

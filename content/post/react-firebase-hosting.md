@@ -47,7 +47,7 @@ $ firebase init
 
 この状態で、以下のコマンドでビルドしたものをデプロイできるので、一度確認してみても良いかもしれません。
 
-```
+```shell
 $ yarn run build
 $ firebase deploy
 ```
@@ -55,7 +55,7 @@ $ firebase deploy
 ## Travis CIで自動デプロイするようにする
 ``.travis.yml`` はこんな感じで作りました。
 
-```
+```yaml
 language: node_js
 
 node_js:
@@ -93,7 +93,7 @@ Travisのドキュメントにdeployについては書いてあったのでそ�
 ### $FIREBASE_TOKENの取得
 CIからFirebaseを操作するために、トークンを取得しておきます。
 
-```
+```shell
 $ firebase login:ci
 ```
 

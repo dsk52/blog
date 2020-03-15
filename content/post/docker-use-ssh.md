@@ -42,7 +42,7 @@ tags = ["Docker"]
 
 Dockerfile内
 
-```
+```Dockerfile
 RUN apk install openssh
 ```
 
@@ -51,7 +51,7 @@ RUN apk install openssh
 
 最近は docker-compose を使っているので、volumes のところでホストマシンの .ssh ごとマウントしてしまう。(configのこともあるので)
 
-```
+```yaml
 version 3.1
 
 services:

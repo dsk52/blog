@@ -19,13 +19,13 @@ Noto Sansの中国語版を使う時に、フォント事態は[Google Web Fonts
 ## 方法
 ``_fonts.scss`` なんかで以下を記述。
 
-```
+```scss
 @import url(//fonts.googleapis.com/earlyaccess/notosanssc.css);
 ```
 
 あとはフォントの指定を行えばOK
 
-```
+```scss
 $font-cn: "Noto Sans SC", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
 
 .u-ff-cn {
@@ -47,7 +47,7 @@ $font-cn: "Noto Sans SC", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro",
 ## おまけ
 実際によく使うのは NotoSans Japaneseの方なのでこっちもメモ
 
-```
+```scss
 /* ======================================================
   日本語フォント（ゴシック） : Noto Sans Japanese
   https://fonts.google.com/earlyaccess#Noto+Sans+Japanese

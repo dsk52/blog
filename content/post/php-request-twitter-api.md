@@ -46,7 +46,7 @@ $content = $connection->get("account/verify_credentials");
 
 getメソッドの第1引数で叩くAPIを変えれて、第2引数に連想配列を与えるとクエリにしてくれてリクエストしてくれるみたいな作り。すごいお手軽。
 
-```
+```php
 $statuses = $connection->get("search/tweets", ["q" => "twitterapi"]);
 ```
 

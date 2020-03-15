@@ -40,7 +40,7 @@ Pythonの環境はDockerfileで作成する。というのも、イメージを�
 Dockerfileの書き方もそのままにしている。細かいバージョンの指定をした方がいいと思うけど、とりあえず保留。  
 このファイルでは、PythonイメージのPullとディレクトリの作成とルートディレクトリ化、pipによるパッケージのインストールを行っている。
 
-```
+```Dockerfile
 FROM python:3
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
@@ -53,14 +53,14 @@ ADD . /code/
 ### 2. PostgreSQLのイメージを落とす
 PostgreSQLのDockerイメージはDocker Hubにある[Officialイメージ](https://hub.docker.com/_/postgres/)を使っている。
 
-```
+```shell
 $ docker pull postgres
 ```
 
 ### 3. docker-composeでまとめて起動できるようにする
 docker-compose の設定ファイルはほとんど Docker Hub のリポジトリで掲載されているものと同じだけど、追加で PostgreSQL のデータを永続化する設定を入れている(多分これで出来てるんじゃないかなぁ)
 
-```
+```yaml
 version: '3.1'
 
 services:
@@ -98,7 +98,7 @@ Docker無しでやっていた頃は、ターミナルでローカルサーバ�
 
 単純だった。Dockerコンテナ内ではログが出ているので、以下のコマンドを使うことでログを見ることができた。
 
-```
+```shell
 $ docker logs -t コンテナ名
 ```
 
@@ -107,7 +107,7 @@ $ docker logs -t コンテナ名
 ### python manage.py migrate とかってどうやるのか
 別のターミナルを開くなりして、以下のコマンドでコンテナに入り、任意のコマンドを打つことでmigrateなどのコマンドも使えた。
 
-```
+```shell
 $ docker exec -it コンテナ名(ID) bash
 ```
 

@@ -12,7 +12,7 @@ TypeScriptとVue.jsの環境で作業をしていて、Element導入時に言語
 
 ドキュメント的には以下のように書いてある。
 
-```
+```javascript
 import Datepicker from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -34,7 +34,7 @@ Could not find a declaration file for module 'element-ui/lib/locale/lang/ja'. �
 デフォルトは中国語が指定されてるけど、webpackの NormalModuleReplacementPlugin で指定すると他の言語でもいけるよっていう内容。
 
 webpack.config.js に以下を書くだけ。
-```
+```javascript
 {
   plugins: [
     new webpack.NormalModuleReplacementPlugin(/element-ui[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]zh-CN/, 'element-ui/lib/locale/lang/ja')
@@ -46,7 +46,7 @@ Path変わったら死ぬけどそのときはそのとき。
 
 これで実際コンパイルは通った。デフォルトの使用言語を変えてるからか、ドキュメントにあるようなプラグイン使用の記述なんかと合わせて local を渡してあげる記述は要らなかった。
 
-```
+```javascript
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 

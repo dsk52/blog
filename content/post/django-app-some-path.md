@@ -36,7 +36,7 @@ DjangoでWebアプリを作るときは、[Djangoチュートリアル](https://
 
 App の配置ディレクトリを変更(追加)するため、 ``YOUR_PROJECT_DIR/settings.py`` に以下の記述を追加する。
 
-``` YOUR_PROJECT_DIR/setting.py
+```python
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 ```
 

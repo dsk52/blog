@@ -19,7 +19,7 @@ JS書いてた頃はESLint+Prettierだったんですが、Pythonを書くとき
 
 ## 導入
 
-```
+```shell
 $ pip install black
 ```
 
@@ -40,7 +40,7 @@ VSCodeで保存時に自動でフォーマットをかけてくれるように�
 
 設定ファイルに落とし込むとこんな感じ。
 
-```
+```json
 {
   "python.pythonPath": "venv/bin/python3",
   "python.formatting.provider": "black",

@@ -54,7 +54,7 @@ orbs:
 
 また、 jobs にデプロイ用のjobを追加する。
 
-```
+```yaml
 jobs:
   build:
   :
@@ -75,7 +75,7 @@ CircleCIのダッシュボードで、JOBS > プロジェクトの「設定(歯�
 ### workflowsでjobの実行順序を制御する
 workflows では job の実行を制御できるみたい。以下を追加してみる。
 
-```
+```yaml
 version: 2.1
 orbs:
 :

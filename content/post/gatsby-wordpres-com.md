@@ -29,18 +29,18 @@ tags = ["React", "GatsbyJS"]
 ## 環境の準備
 CLIを入れて、サイトを立ち上げるまで
 
-```
+```shell
 $ npm install --global gatsby-cli
 
 $ gatsby -v
 2.4.5
 ```
 
-```
+```shell
 $ gatsby new SITE_NAME
 ```
 
-```
+```shell
 $ cd SITE_NAME
 $ yarn start
 ```
@@ -60,7 +60,7 @@ WordPressのデータをなめてページを生成するプラグイン。
 .comのWordPressサイトしか無いのでありがたかった。  
 使ってないので別に良いんだけど、ACFにも対応してるのはびっくりした。
 
-```
+```shell
 $ yarn add gatsby-source-wordpress
 ```
 
@@ -68,7 +68,7 @@ $ yarn add gatsby-source-wordpress
 
 ### gatsby-config.jsに設定を追加
 
-```
+```js
 plugins: [
   {
     resolve: `gatsby-source-wordpress`,

@@ -19,7 +19,7 @@ tags = ["Django"]
 
 hogeapp/view.py
 
-```
+```python
 from django.http import JsonResponse
 
 def hogeView(request):
@@ -36,7 +36,7 @@ JSONを返す部分については、[JsonResponse](https://docs.djangoproject.c
 
 hogeapp/urls.py
 
-```
+```python
 urlpatterns = [
     path('hoge/', views.hogeView)
 ]
@@ -50,7 +50,7 @@ Djangoでは、Templateを返したり指定したModelを元に登録や更新�
 
 hogeapp/view.py
 
-```
+```python
 from django.http import JsonResponse
 from django.views import View
 
@@ -69,7 +69,7 @@ class HogeView(View):
 
 hogeapp/urls.py
 
-```
+```python
 from django.urls import path
 from .views import HogeView
 

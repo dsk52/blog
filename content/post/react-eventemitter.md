@@ -22,7 +22,7 @@ EventEmitterを使う上で、最初はこの[EventEmitter](https://www.npmjs.co
 
 こんな感じで書いたら使えました。
 
-```
+```js
 // Parent.js
 import {EventEmitter} from 'fbemitter'
 
@@ -40,7 +40,7 @@ render () {
 }
 ```
 
-```
+```js
 // ChildA.js
 constructor (props) {
   super(props)
@@ -53,7 +53,7 @@ constructor (props) {
 }
 ```
 
-```
+```js
 // ChildB.js
 constructor (props) {
   super(props)

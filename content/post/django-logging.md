@@ -27,7 +27,7 @@ Djangoの設定と標準ライブラリのloggingを使ってログを出力し�
 
 こんな感じ。
 
-```
+```python
 import os
 import logging
 
@@ -83,7 +83,7 @@ Laravelの設定では有ったんだけど、日付ごとにファイルを作�
 
 各appの出力したいファイルがある箇所で、以下のように書いておくと出力されるようになった。
 
-```
+```python
 logger = logging.getLogger("file")
 
 

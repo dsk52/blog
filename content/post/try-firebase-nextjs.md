@@ -51,7 +51,7 @@ Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
 Firebase側でのデータを触れる権限を入れる必要があるらしく、このあたりの設定は今回のプロジェクト用に作ったアプリに入った後、Databese > ルールから設定できました。  
 とりあえず以下にするとデータへの読み書きが可能になります。
 
-```
+```json
 {
   "rules": {
     ".read": true,

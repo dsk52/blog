@@ -39,7 +39,7 @@ Djangoで後ほど下で書くtestの実行コマンドを実行した時、 ``t
 フレームワークのコードのテストになってしまって意味がないんだけど、例の1つとして。
 取得したデータの個数を確認してちゃんとデータが引き出せているかの確認。
 
-```
+```python
 class HogeModelTest extends TestCase
   def setUp(self): # テスト実行前の処理: データの設定とか
     ModelName.objects.create(name="hoge")  # 例えばココで1件つくる
@@ -52,7 +52,7 @@ class HogeModelTest extends TestCase
 ### テストを実行する
 テストを走らせる時はこんな感じのコマンドを実行します。
 
-```
+```shell 
 $ python manage.py test
 ```
 

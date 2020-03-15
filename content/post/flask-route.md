@@ -34,13 +34,13 @@ author = "Daisuke Konishi"
 とりあえずpipでflaskを入れて、本体をimport。  
 ここから**デコレータでパスを指定し、そこにアクセスが来たときに行う処理を関数で定義する**という形らしい。
 
-```
+```shell
 $ pip install Flask
 ```
 
 とりあえずindexにアクセスがあったときにHello Worldを返すやつ。
 
-```
+```python
 # -*- coding: utf-8 -*-
 from flask import Flask
 app = Flask(__name__)
@@ -55,7 +55,7 @@ def index():
 
 デコレータって関数1個につき1個しか付けられないと思っていたのですが、サンプルの中で、indexと/にアクセスが来た時の処理を同じものにするために2つ続けて書いていたのが驚き。
 
-```
+```python
 @app.route('/')
 @app.route('/index/')
 def index():
@@ -64,7 +64,7 @@ def index():
 
 また、パスの指定と合わせてmethodの指定も出来るため、特定のメソッドでの絞り込みのような事もできるみたい。API作るときとかにはいいのかも。
 
-```
+```python
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -78,7 +78,7 @@ def login():
 ## URLの値を拾う
 以下のようにURLの後にカッコ有りの記述を入れることで、URLと一緒についてきたものを拾えるみたい。
 
-```
+```python
 @app.route('/archive/<cat>')
 def archive(cat):
 ```
@@ -91,7 +91,7 @@ def archive(cat):
 
 Pythonがインデントで書くのでテンプレート側も同じような書き方のpugみたいなインデントで表現する物を想像していたけど、実際はEJSみたいなHTML内に値や処理を埋めるようなものだったので意外だった。
 
-```
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -107,7 +107,7 @@ Pythonがインデントで書くのでテンプレート側も同じような�
 
 Flask側では、``render_template()``の第1引数で template/ 内のテンプレート名(拡張子まで)を指定し、第二引数以降でテンプレートに渡す値を設定するという処理を書く。
 
-```
+```python
 def index(title='hello, world'):
     return render_template('index.html', title=title)
 ```
@@ -117,7 +117,7 @@ def index(title='hello, world'):
 ## リダイレクトと404
 ``redirect()``と``url_for()``を用いて以下のような記述にすることで、指定したパスにアクセスがあったときにリダイレクトをかけることができる。
 
-```
+```python
 @app.route('/works')
 def work():
     return redirect(url_for('index'))
@@ -125,7 +125,7 @@ def work():
 
 404 のハンドリングはこんな感じで組むっぽい
 
-```
+```python
 @app.route('/404')
 def abort404():
     abort(404)

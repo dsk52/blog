@@ -29,14 +29,14 @@ Twitter APIへのリクエスト処理は、 requests というライブラリ�
 
 どっちも pip でインストールできる。
 
-```
+```shell
 $ pip install requests requests-oauthlib
 ```
 
 ### 実際に使う
 結構シンプルに書ける。
 
-```
+```python
 from requests_oauthlib import OAuth1Session, OAuth1
 import requests
 
@@ -69,7 +69,7 @@ requestsの ``.get()`` の後ろに ``.json()`` を付ければレスポンス�
 ## おまけ: クエリストリングを作りたい場合
 辞書と urllib ライブラリの ``parse.urlencode()`` を使うと、PHPでいうところの ``http_build_query()`` みたいなのができた。
 
-```
+```python
 import urllib
 
 querys = {

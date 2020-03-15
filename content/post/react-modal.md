@@ -29,7 +29,7 @@ $ npm install react-modal
 また、 ``Modal.setAppElement()`` でAppを指定しておきます。(忘れがちなので注意)
 これはモーダル自体が記述した箇所ではなく、下の方に生成されるため、どこのコンポーネント内に配置するのかにも使われる気がします。
 
-```
+```js
 import React from "react";
 import Modal from "react-modal";
 

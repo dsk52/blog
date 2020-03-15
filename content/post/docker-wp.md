@@ -20,7 +20,7 @@ WordPress環境を作りたかっただけなので、Wockerの方が便利だ�
 以下のコマンドでダウンロードできます。  
 最新版がダウンロードされるので、必要に応じて適宜バージョン指定してください。
 
-```
+```shell
 $ docker pull wordpress
 $ docker pull mysql
 ```
@@ -30,13 +30,13 @@ WordPressのコンテナ起動時にMySQLに接続するので、先にMySQLを�
 
 ### MySQL
 
-```
+```shell
 $ docker run -it --link some-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
 ### WordPress
 
-```
+```shell
 $ docker run --name some-wordpress --link some-mysql:mysql -d wordpress
 ```
 
@@ -47,7 +47,7 @@ $ docker run --name some-wordpress --link some-mysql:mysql -d wordpress
 ## docker composeでまとめて起動できるようにする
 一個一個コマンドを入れるのも面倒なので、設定ファイルを書いておいて、同時に起動できるようにします。
 
-```
+```yaml
 version: '3'
 services:
   mysite_db:

@@ -16,7 +16,7 @@ Reactでスクロール位置が取得できず困っていたんだけど、よ
 
 ## サンプルコード
 
-```
+```js
 import React, { Component } from 'react'
 
 class Scroller extends Component {
@@ -74,7 +74,7 @@ export default Scroller
 
 色んな記事で、下記のような書き方をされていたんだけど、**イベントが発火しなかった**。
 
-```
+```js
 window.addEventListener('scroll', someListenScrollFunction())
 ```
 
