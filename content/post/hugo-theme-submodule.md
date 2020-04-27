@@ -59,7 +59,7 @@ Hugoの特性上 themes/ 内のファイルはpullで上書きして、変更が
 ```
 $ git rm -r hugo-gentoo-theme // 一旦git管理から外す
 
-$ git submodule add --fource https://github.com/d-kusk/hugo-gentoo-theme hugo-gentoo-theme
+$ git submodule add -f https://github.com/d-kusk/hugo-gentoo-theme hugo-gentoo-theme
 ```
 
 既にgit管理されてしまっているからだと思いますが、submodule addでは通らなかったので、helpで出てきた--fourceオプションを追加することでsubmoduleとして追加できました。
