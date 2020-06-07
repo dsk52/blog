@@ -1,7 +1,7 @@
 baseurl = "https://blog.daisukekonishi.com/"
 languageCode = "ja"
 title = "PengNote"
-copyright = "(c) 2018 PengNote"
+copyright = "(c) 2020 PengNote"
 paginate = 3
 
 googleAnalytics = "UA-53106421-1"
