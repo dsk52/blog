@@ -4,7 +4,7 @@ description = "Goで開発できるようにgoenvを使ってfishで設定を行
 date = 2020-07-09T07:25:57+09:00
 image = ""
 categories = ["クリエイティブ"]
-tags = ["go", "fish"]
+tags = ["Go", "fish"]
 +++
 
 

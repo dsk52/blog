@@ -4,7 +4,7 @@ description = "最近は echo と gorm を触っているんだけど、Goでの
 date = 2020-09-10T00:55:28+09:00
 image = ""
 categories = ["クリエイティブ"]
-tags = ["go"]
+tags = ["Go"]
 +++
 
 
