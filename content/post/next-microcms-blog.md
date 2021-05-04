@@ -4,7 +4,7 @@ description = "Next.jsとheadlessCMSであるmicroCMSを使って簡易的なブ
 date = 2021-03-08T00:07:50+09:00
 image = ""
 categories = ["クリエイティブ"]
-tags = ["Next.js", "headressCMS"]
+tags = ["Next.js", "headlessCMS"]
 +++
 
 
