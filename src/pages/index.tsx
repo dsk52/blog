@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
+import Default from '../components/layouts/Default/Default';
 
-const Home: NextPage = () => {
-  return <div>Hello</div>;
+const Index: NextPage = () => {
+  return <Default>
+    Index
+  </Default>;
 };
 
-export default Home;
+export default Index;
