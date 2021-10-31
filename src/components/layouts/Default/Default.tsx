@@ -1,8 +1,8 @@
-import { FC } from "react";
-
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import style from "./Default.module.css"
+
+import type { FC } from "react";
 
 const Default: FC = (props) => (
   <>

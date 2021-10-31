@@ -1,6 +1,8 @@
+import { MainTitle } from '../ui/Title/Title';
+
 const About = () => (
   <>
-    <h1>About</h1>
+    <MainTitle>About</MainTitle>
 
     <section>
       <h2>サイトについて</h2>
