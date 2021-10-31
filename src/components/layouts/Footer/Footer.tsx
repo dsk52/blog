@@ -1,5 +1,4 @@
 import { siteName } from "../../../constants/site"
-
 import style from "./Footer.module.css"
 
 const Footer = () => (

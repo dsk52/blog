@@ -1,9 +1,8 @@
-import React from "react"
+import Link from 'next/link';
+
 import { description, siteName } from "../../../constants/site"
 import { GlobalNav } from "../../ui/GlobalNav/GlobalNav"
-
 import style from './Header.module.css'
-import Link from 'next/link';
 
 const Header = () => (
   <header className={style.header}>

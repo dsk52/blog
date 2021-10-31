@@ -1,7 +1,8 @@
 import Link from "next/link"
-import React from "react"
 
-const GlobalNav = () => (
+import type { VFC } from 'react';
+
+const GlobalNav: VFC = () => (
   <nav>
     <Link href="/about">About</Link>
   </nav>
