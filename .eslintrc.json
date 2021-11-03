@@ -48,22 +48,22 @@
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "pathGroups": [
           {
-            "pattern": "./libs/**",
+            "pattern": "./src/libs/**",
             "group": "internal",
             "position": "before"
           },
           {
-            "pattern": "./components/layouts/**",
+            "pattern": "./src/components/layouts/**",
             "group": "internal",
             "position": "before"
           },
           {
-            "pattern": "./components/templates/**",
+            "pattern": "./src/components/templates/**",
             "group": "internal",
             "position": "before"
           },
           {
-            "pattern": "./components/ui/**",
+            "pattern": "./src/components/ui/**",
             "group": "internal",
             "position": "before"
           }
