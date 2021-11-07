@@ -4,12 +4,10 @@ import MyHead from "../../components/Head/Head";
 import { List } from '../../components/layouts/List/List';
 import { ListPage } from '../../components/templates/ListPage';
 import { PostList } from '../../components/ui/PostList/PostList';
-import { microcms } from '../../libs/microcms';
+import { getAllPost } from '../../libs/microcms';
 import { PostMapper } from '../../mapper/PostMapper';
 
-import type { ApiPost } from '../../types/api/Post';
 import type { IPost } from '../../types/domain/Post';
-import type { listResponse } from "../../types/Microcms";
 import type { NextPage } from "next"
 
 type Prop = {
@@ -35,12 +33,7 @@ const Post: NextPage<Prop> = ({ posts }) => (
 )
 
 export const getStaticProps = async () => {
-  const response: listResponse<ApiPost> = await microcms.get({
-    endpoint: 'post',
-    queries: {
-      orders: '-publishedAt'
-    }
-  })
+  const response = await getAllPost()
   const posts = await PostMapper.list(response.contents);
 
   return {
