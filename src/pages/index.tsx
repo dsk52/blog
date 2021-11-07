@@ -1,5 +1,5 @@
 import MyHead from "../components/Head/Head";
-import Default from '../components/layouts/Default/Default';
+import Default from '../components/layouts/Page/Page';
 
 import type { NextPage } from "next";
 

@@ -1,6 +1,6 @@
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import style from "./Default.module.css"
+import style from "./Page.module.css"
 
 import type { FC, ReactNode } from "react";
 
@@ -9,7 +9,7 @@ type Props = {
   head: JSX.Element
 }
 
-const Default: FC<Props> = (props): JSX.Element => (
+const Page: FC<Props> = (props): JSX.Element => (
   <>
     {props.head}
     <Header />
@@ -20,4 +20,4 @@ const Default: FC<Props> = (props): JSX.Element => (
   </>
 )
 
-export default Default
+export default Page

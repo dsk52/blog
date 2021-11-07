@@ -1,11 +1,13 @@
+import React from "react";
+
 import MyHead from "../components/Head/Head";
-import Default from '../components/layouts/Default/Default';
+import Page from "../components/layouts/Page/Page";
 import AboutPage from '../components/templates/AboutPage';
 
 import type { NextPage } from "next";
 
 const About: NextPage = () => (
-  <Default head={
+  <Page head={
     <MyHead
       title="About"
       description=""
@@ -15,7 +17,7 @@ const About: NextPage = () => (
     <>
       <AboutPage />
     </>
-  </Default>
+  </Page>
 );
 
 
