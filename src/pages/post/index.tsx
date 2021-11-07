@@ -1,3 +1,9 @@
+import React from "react";
+
+import MyHead from "../../components/Head/Head";
+import { List } from '../../components/layouts/List/List';
+import { ListPage } from '../../components/templates/ListPage';
+import { PostList } from '../../components/ui/PostList/PostList';
 import { microcms } from '../../libs/microcms';
 import { PostMapper } from '../../mapper/PostMapper';
 
@@ -12,17 +18,28 @@ type Prop = {
 
 const Post: NextPage<Prop> = ({ posts }) => (
   <>
-    {posts.map((post: IPost) => (
-      <div key={post.id}>
-        {post.title}
-      </div>
-    ))}
+
+    <List head={
+      <MyHead
+        title="一覧"
+        description="一覧"
+        url="/post"
+      />
+    }>
+
+      <ListPage>
+        <PostList posts={posts}></PostList>
+      </ListPage>
+    </List>
   </>
 )
 
 export const getStaticProps = async () => {
   const response: listResponse<ApiPost> = await microcms.get({
-    endpoint: 'articles'
+    endpoint: 'post',
+    queries: {
+      orders: '-publishedAt'
+    }
   })
   const posts = await PostMapper.list(response.contents);
 
