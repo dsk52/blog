@@ -15,7 +15,7 @@ export const PostItem: VFC<Props> = ({ post }) => {
   return (
     <>
       <div className={s.title}>
-        {post.title}
+        {post.title} {post.id}
       </div>
       <div className={s.meta}>
         <div className={s.category}>{post.category.name}</div>

@@ -1,19 +1,37 @@
-import type { ApiCategory, ApiPost } from "../types/api/Post";
+import type { ApiPost, ApiTag } from "../types/api/Post";
 import type { ICategory, IPost, ITag } from "../types/domain/Post";
 
 export class PostMapper {
-  public static post(post: ApiPost): IPost {
-    const category: ICategory = {
-      name: post.category.name,
-      slug: post.category.slug,
-    };
-
-    const tags: ITag[] = post.tags.map((cate: ApiCategory) => {
+  public static category(category: any): ICategory {
+    if (!category) {
       return {
-        name: cate.name,
-        slug: cate.slug,
+        name: "",
+        slug: "",
+      };
+    }
+
+    return {
+      name: category.name || "",
+      slug: category.slug || "",
+    };
+  }
+
+  public static tags(tags: ApiTag[]): ITag[] {
+    if (!tags) {
+      return [];
+    }
+
+    return tags.map((tag: ApiTag) => {
+      return {
+        name: tag.name || "",
+        slug: tag.slug || "",
       };
     });
+  }
+
+  public static detail(post: ApiPost): IPost {
+    const category = this.category(post?.category);
+    const tags = this.tags(post?.tags);
 
     return {
       id: post.id,
@@ -28,6 +46,6 @@ export class PostMapper {
   }
 
   public static list(posts: ApiPost[]): IPost[] {
-    return posts.map((post: ApiPost) => this.post(post));
+    return posts.map((post: ApiPost) => this.detail(post));
   }
 }

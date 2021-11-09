@@ -6,7 +6,7 @@ export interface ICommonSchema {
   revisedAt: string;
 }
 
-export type listResponse<T> = {
+export type microCmsResponse<T> = {
   contents: T[];
   totalCount: number;
   offset: number;

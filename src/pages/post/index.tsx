@@ -1,5 +1,3 @@
-import React from "react";
-
 import MyHead from "../../components/Head/Head";
 import { List } from '../../components/layouts/List/List';
 import { ListPage } from '../../components/templates/ListPage';
@@ -16,7 +14,6 @@ type Prop = {
 
 const Post: NextPage<Prop> = ({ posts }) => (
   <>
-
     <List head={
       <MyHead
         title="一覧"
@@ -36,11 +33,7 @@ export const getStaticProps = async () => {
   const response = await getAllPost()
   const posts = await PostMapper.list(response.contents);
 
-  return {
-    props: {
-      posts
-    }
-  }
+  return { props: { posts } }
 }
 
 export default Post

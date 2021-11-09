@@ -3,12 +3,11 @@ import { ICommonSchema } from "../Microcms";
 export interface ApiPost extends ICommonSchema {
   id: string;
   title: string;
-  body: string;
   slug: string;
+  body: string;
   category: ApiCategory;
   tags: ApiTag[];
   publishedAt: string;
-  updatedAt: string;
 }
 
 export interface ApiCategory extends ICommonSchema {
