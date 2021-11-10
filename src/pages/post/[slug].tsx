@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'node:querystring'
-import React from "react";
+import { createMarkdown } from "safe-marked";
 
 import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
@@ -14,6 +14,7 @@ import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 
+
 type PostPops = {
   post: IPost
 }
@@ -22,39 +23,35 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-const Detail: NextPage<PostPops> = ({ post }) => {
-  const pubDate = datetimeToDate(post.publishedAt)
+const Detail: NextPage<PostPops> = ({ post }) => (
+  <Page head={
+    <MyHead
+      title={post.title}
+      description=""
+      url="/post/"
+    />
+  }>
+    <Article>
+      <ArticleHeader>
+        <h1>{post.title}</h1>
+        <div className={detailStyle.meta}>
+          <div className={detailStyle.category}>{post.category.name}</div>
+          <time className={detailStyle.date}>{post.publishedAt}</time>
+        </div>
+      </ArticleHeader>
 
-  return (
-    <Page head={
-      <MyHead
-        title={post.title}
-        description=""
-        url="/post/"
-      />
-    }>
-      <Article>
-        <ArticleHeader>
-          <h1>{post.title}</h1>
-          <div className={detailStyle.meta}>
-            <div className={detailStyle.category}>{post.category.name}</div>
-            <time className={detailStyle.date}>{pubDate}</time>
-          </div>
-        </ArticleHeader>
+      <ArticleBody>
+        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+      </ArticleBody>
 
-        <ArticleBody>
-          {post.body}
-        </ArticleBody>
-
-        <ArticleFooter>
-          <ButtonLink link='/post'>
-            トップに戻る
-          </ButtonLink>
-        </ArticleFooter>
-      </Article>
-    </Page>
-  )
-}
+      <ArticleFooter>
+        <ButtonLink link='/post'>
+          トップに戻る
+        </ButtonLink>
+      </ArticleFooter>
+    </Article>
+  </Page>
+)
 
 const isPorduction = process.env.NODE_ENV === 'production'
 
@@ -88,7 +85,13 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
 
   const post = await PostMapper.detail(res.contents[0])
 
+  const markdown = createMarkdown()
+  post.body = markdown(post.body)
+
+  post.publishedAt = datetimeToDate(post.publishedAt)
+
   return { props: { post } }
 }
 
 export default Detail
+
