@@ -1,5 +1,5 @@
+import MarkdownIt from "markdown-it";
 import { ParsedUrlQuery } from 'node:querystring'
-import { createMarkdown } from "safe-marked";
 
 import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
@@ -12,7 +12,6 @@ import { datetimeToDate } from "../../utilities/Date";
 
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-
 
 
 type PostPops = {
@@ -85,8 +84,12 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
 
   const post = await PostMapper.detail(res.contents[0])
 
-  const markdown = createMarkdown()
-  post.body = markdown(post.body)
+  const md = new MarkdownIt({
+    html: true,
+    breaks: true,
+    typographer: true
+  })
+  post.body = md.render(post.body)
 
   post.publishedAt = datetimeToDate(post.publishedAt)
 
