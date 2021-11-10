@@ -1,3 +1,4 @@
+import hljs from 'highlight.js';
 import MarkdownIt from "markdown-it";
 import { ParsedUrlQuery } from 'node:querystring'
 
@@ -13,6 +14,7 @@ import { datetimeToDate } from "../../utilities/Date";
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
+import 'highlight.js/styles/github.css';
 
 type PostPops = {
   post: IPost
@@ -84,10 +86,21 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
 
   const post = await PostMapper.detail(res.contents[0])
 
-  const md = new MarkdownIt({
+  const md: MarkdownIt = new MarkdownIt({
     html: true,
     breaks: true,
-    typographer: true
+    typographer: true,
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+            '</code></pre>';
+        } catch (__) { }
+      }
+
+      return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+    }
   })
   post.body = md.render(post.body)
 
