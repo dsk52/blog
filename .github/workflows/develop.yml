@@ -7,8 +7,8 @@ on:
     branches: [develop]
 
 env:
-  MICROCMS_API_KEY: ${{MICROCMS_API_KEY}}
-  MICROCMS_SERVICE_DOMAIN: ${{MICROCMS_SERVICE_DOMAIN}}
+  MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+  MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
 
 jobs:
   build:
