@@ -1,0 +1,25 @@
+.header {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.headerInner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.siteTitle {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.description {
+  margin: 0.2em 0 0;
+}
+
+.headerContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
