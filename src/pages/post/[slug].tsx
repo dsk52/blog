@@ -1,13 +1,20 @@
-import { ParsedUrlQuery } from 'node:querystring'
+import hljs from 'highlight.js'; // eslint-disable-line import/order
+import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
+import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
+import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
+import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
 import Page from "../../components/layouts/Page/Page";
+import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
 import { getAllPost, getBySlug } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
+import { datetimeToDate } from "../../utilities/Date";
 
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
+import 'highlight.js/styles/github.css';
 
 type PostPops = {
   post: IPost
@@ -17,22 +24,35 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-const Detail: NextPage<PostPops> = ({ post }) => {
-  return (
-    <Page head={
-      <MyHead
-        title=""
-        description=""
-        url="/post/"
-      />
-    }>
-      <>
-        {!post ? '' : (<div>{post.title}</div>)}
-        詳細
-      </>
-    </Page>
-  )
-}
+const Detail: NextPage<PostPops> = ({ post }) => (
+  <Page head={
+    <MyHead
+      title={post.title}
+      description=""
+      url="/post/"
+    />
+  }>
+    <Article>
+      <ArticleHeader>
+        <h1>{post.title}</h1>
+        <div className={detailStyle.meta}>
+          <div className={detailStyle.category}>{post.category.name}</div>
+          <time className={detailStyle.date}>{post.publishedAt}</time>
+        </div>
+      </ArticleHeader>
+
+      <ArticleBody>
+        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+      </ArticleBody>
+
+      <ArticleFooter>
+        <ButtonLink link='/post'>
+          トップに戻る
+        </ButtonLink>
+      </ArticleFooter>
+    </Article>
+  </Page>
+)
 
 const isPorduction = process.env.NODE_ENV === 'production'
 
@@ -58,7 +78,7 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
   }
 
   const res = await getBySlug(slug)
-  if (!res.contents) {
+  if (!res.contents || !res.contents.length) {
     return {
       notFound: true
     }
@@ -66,7 +86,28 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
 
   const post = await PostMapper.detail(res.contents[0])
 
+  const md: MarkdownIt = new MarkdownIt({
+    html: true,
+    breaks: true,
+    typographer: true,
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+            '</code></pre>';
+        } catch (__) { }
+      }
+
+      return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+    }
+  })
+  post.body = md.render(post.body)
+
+  post.publishedAt = datetimeToDate(post.publishedAt)
+
   return { props: { post } }
 }
 
 export default Detail
+
