@@ -1,18 +1,37 @@
 import MyHead from "../components/Head/Head";
-import Default from '../components/layouts/Page/Page';
+import { List } from '../components/layouts/List/List';
+import { ListPage } from "../components/templates/ListPage";
+import { PostList } from "../components/ui/PostList/PostList";
+import { getAllPost } from "../libs/microcms";
+import { PostMapper } from "../mapper/PostMapper";
 
+import type { IPost } from "../types/domain/Post";
 import type { NextPage } from "next";
 
-const Index: NextPage = () => {
-  return <Default head={
+
+type Prop = {
+  posts: IPost[]
+}
+
+const Index: NextPage<Prop> = ({ posts }) => (
+  <List head={
     <MyHead
-      title="aaa"
-      description="bbb"
-      url="/about"
+      title="記事一覧"
+      description="今までに書いた記事の一覧ページです"
+      url="/"
     />
   }>
-    Index
-  </Default>;
-};
+    <ListPage>
+      <PostList posts={posts}></PostList>
+    </ListPage>
+  </List>
+);
+
+export const getStaticProps = async () => {
+  const response = await getAllPost()
+  const posts = await PostMapper.list(response.contents);
+
+  return { props: { posts } }
+}
 
 export default Index;
