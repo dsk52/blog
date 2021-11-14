@@ -1,6 +1,6 @@
-import hljs from 'highlight.js';
-import MarkdownIt from "markdown-it";
-import { ParsedUrlQuery } from 'node:querystring'
+import hljs from 'highlight.js'; // eslint-disable-line import/order
+import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
+import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
 import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
