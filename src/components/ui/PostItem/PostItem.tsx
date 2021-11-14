@@ -22,8 +22,13 @@ export const PostItem: VFC<Props> = ({ post }) => {
         </Link>
       </div>
       <div className={s.meta}>
+        <time
+          className={s.date}
+          dateTime={post.publishedAt}
+        >
+          {pubDate}
+        </time>
         <div className={s.category}>{post.category.name}</div>
-        <time className={s.date}>{pubDate}</time>
       </div>
     </>
   )

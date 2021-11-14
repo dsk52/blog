@@ -24,35 +24,44 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-const Detail: NextPage<PostPops> = ({ post }) => (
-  <Page head={
-    <MyHead
-      title={post.title}
-      description=""
-      url="/post/"
-    />
-  }>
-    <Article>
-      <ArticleHeader>
-        <h1>{post.title}</h1>
-        <div className={detailStyle.meta}>
-          <div className={detailStyle.category}>{post.category.name}</div>
-          <time className={detailStyle.date}>{post.publishedAt}</time>
-        </div>
-      </ArticleHeader>
+const Detail: NextPage<PostPops> = ({ post }) => {
+  const pubDate = datetimeToDate(post.publishedAt)
 
-      <ArticleBody>
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
-      </ArticleBody>
+  return (
+    <Page head={
+      <MyHead
+        title={post.title}
+        description=""
+        url="/post/"
+      />
+    }>
+      <Article>
+        <ArticleHeader>
+          <h1>{post.title}</h1>
+          <div className={detailStyle.meta}>
+            <time
+              className={detailStyle.date}
+              dateTime={post.publishedAt}
+            >
+              {pubDate}
+            </time>
+            <div className={detailStyle.category}>{post.category.name}</div>
+          </div>
+        </ArticleHeader>
 
-      <ArticleFooter>
-        <ButtonLink link='/post'>
-          トップに戻る
-        </ButtonLink>
-      </ArticleFooter>
-    </Article>
-  </Page>
-)
+        <ArticleBody>
+          <div dangerouslySetInnerHTML={{ __html: post.body }} />
+        </ArticleBody>
+
+        <ArticleFooter>
+          <ButtonLink link='/post'>
+            トップに戻る
+          </ButtonLink>
+        </ArticleFooter>
+      </Article>
+    </Page>
+  )
+}
 
 const isPorduction = process.env.NODE_ENV === 'production'
 
@@ -103,8 +112,6 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
     }
   })
   post.body = md.render(post.body)
-
-  post.publishedAt = datetimeToDate(post.publishedAt)
 
   return { props: { post } }
 }

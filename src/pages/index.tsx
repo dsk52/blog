@@ -21,12 +21,9 @@ const Index: NextPage<Prop> = ({ posts }) => (
       url="/"
     />
   }>
-    <>
-      Index
-      <ListPage>
-        <PostList posts={posts}></PostList>
-      </ListPage>
-    </>
+    <ListPage>
+      <PostList posts={posts}></PostList>
+    </ListPage>
   </List>
 );
 
