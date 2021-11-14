@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { datetimeToDate } from '../../../utilities/Date';
 import s from './PostItem.module.css'
 
@@ -15,11 +17,18 @@ export const PostItem: VFC<Props> = ({ post }) => {
   return (
     <>
       <div className={s.title}>
-        {post.title} {post.id}
+        <Link href={`/post/${encodeURIComponent(post.slug)}`}>
+          {post.title}
+        </Link>
       </div>
       <div className={s.meta}>
+        <time
+          className={s.date}
+          dateTime={post.publishedAt}
+        >
+          {pubDate}
+        </time>
         <div className={s.category}>{post.category.name}</div>
-        <time className={s.date}>{pubDate}</time>
       </div>
     </>
   )

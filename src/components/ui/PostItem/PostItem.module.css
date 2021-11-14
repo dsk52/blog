@@ -1,7 +1,11 @@
-.title {
+.title a {
   line-height: 1.6;
   font-weight: 600;
   font-size: 1.6em;
+}
+
+.title a:hover {
+  text-decoration: underline;
 }
 
 .meta {
@@ -21,6 +25,6 @@
   color: #ededed;
 }
 
-.date {
+.date + * {
   margin-left: 0.6em;
 }

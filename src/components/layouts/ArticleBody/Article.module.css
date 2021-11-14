@@ -1,0 +1,12 @@
+.article,
+.articleBody,
+.articleFooter {
+  margin-top: 4em;
+}
+
+.articleHeader {
+}
+
+.articleFooter {
+  text-align: center;
+}
