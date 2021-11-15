@@ -5,12 +5,12 @@ import { PostList } from "../components/ui/PostList/PostList";
 import { getAllPost } from "../libs/microcms";
 import { PostMapper } from "../mapper/PostMapper";
 
-import type { IPost } from "../types/domain/Post";
+import type { IPostItem } from "../types/domain/Post";
 import type { NextPage } from "next";
 
 
 type Prop = {
-  posts: IPost[]
+  posts: IPostItem[]
 }
 
 const Index: NextPage<Prop> = ({ posts }) => (
@@ -19,6 +19,7 @@ const Index: NextPage<Prop> = ({ posts }) => (
       title="記事一覧"
       description="今までに書いた記事の一覧ページです"
       url="/"
+      pageType={"website"}
     />
   }>
     <ListPage>

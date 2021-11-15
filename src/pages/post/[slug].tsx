@@ -12,7 +12,7 @@ import { getAllPost, getBySlug } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
 import { datetimeToDate } from "../../utilities/Date";
 
-import type { IPost } from '../../types/domain/Post';
+import type { IPost, IPostItem } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import 'highlight.js/styles/github.css';
@@ -75,7 +75,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // TODO 数100件ずつ取得し、joinする形に変更
   const posts = await PostMapper.list(response.contents)
 
-  const paths = posts.map((post: IPost) => ({ params: { slug: post.slug } }))
+  const paths = posts.map((post: IPostItem) => ({ params: { slug: post.slug } }))
 
   return {
     paths,

@@ -9,6 +9,13 @@ export interface IPost {
   updatedAt: string;
 }
 
+export interface IPostItem {
+  slug: string;
+  title: string;
+  category: ICategory;
+  publishedAt: string;
+}
+
 export interface ICategory {
   name: string;
   slug: string;
