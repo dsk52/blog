@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { description, siteName } from "../../../constants/site"
+import { sideDescription, siteName } from "../../../constants/site"
 import { GlobalNav } from "../../ui/GlobalNav/GlobalNav"
 import style from './Header.module.css'
 
@@ -14,7 +14,7 @@ const Header = () => (
               {siteName}
             </Link>
           </h1>
-          <p className={style.description}>{description}</p>
+          <p className={style.description}>{sideDescription}</p>
         </div>
 
         <GlobalNav />
