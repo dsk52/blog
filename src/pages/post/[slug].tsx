@@ -7,6 +7,7 @@ import MyHead from "../../components/Head/Head";
 import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
 import Page from "../../components/layouts/Page/Page";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
+import { TagList } from "../../components/ui/TagList/TagList";
 import { getAllPost, getBySlug } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
 import { datetimeToDate } from "../../utilities/Date";
@@ -33,6 +34,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         title={post.title}
         description=""
         url="/post/"
+        pageType="article"
       />
     }>
       <Article>
@@ -54,6 +56,9 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         </ArticleBody>
 
         <ArticleFooter>
+          <aside>
+            <TagList tags={post.tags} />
+          </aside>
           <ButtonLink link='/post'>
             トップに戻る
           </ButtonLink>
