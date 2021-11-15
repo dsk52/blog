@@ -23,8 +23,8 @@ export async function getAllPost(
       fields: "title,slug,category,publishedAt",
       orders: "-publishedAt",
       limit: 10,
+      offset: offset,
     },
-    offset: offset,
   };
   if (limit != 0) {
     params.queries["limit"] = limit;
