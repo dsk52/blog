@@ -19,7 +19,7 @@ const Index: NextPage<Prop> = ({ posts }) => (
       title="記事一覧"
       description="今までに書いた記事の一覧ページです"
       url="/"
-    />
+      pageType={"website"} />
   }>
     <ListPage>
       <PostList posts={posts}></PostList>
