@@ -3,7 +3,6 @@ import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/
 import MyHead from "../../../components/Head/Head";
 import { List } from "../../../components/layouts/List/List";
 import { ListPage } from "../../../components/templates/ListPage";
-import { PostList } from "../../../components/ui/PostList/PostList";
 import { getAllPost } from "../../../libs/microcms";
 import { PostMapper } from "../../../mapper/PostMapper";
 import { IPostItem } from "../../../types/domain/Post";
@@ -11,15 +10,18 @@ import { IPostItem } from "../../../types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 
-type Prop = {
-  posts: IPostItem[]
+
+export type ListPageProp = {
+  posts: IPostItem[],
+  maxPage: number,
+  pageNum: number
 }
 
 interface Params extends ParsedUrlQuery {
   offset: string
 }
 
-const Index: NextPage<Prop> = ({ posts }) => (
+const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
   <List head={
     <MyHead
       title="記事一覧"
@@ -28,11 +30,13 @@ const Index: NextPage<Prop> = ({ posts }) => (
       pageType={"website"}
     />
   }>
-    <ListPage>
-      <PostList posts={posts}></PostList>
-    </ListPage>
+    <ListPage
+      posts={posts}
+      maxPage={maxPage}
+      pageNum={pageNum}
+    />
   </List>
-);
+)
 
 const postPerPage = 12;
 
@@ -65,18 +69,28 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Prop, Params> = async (context) => {
+export const getStaticProps: GetStaticProps<ListPageProp, Params> = async (context) => {
   const offset = await context.params?.offset
   if (!offset) {
     return {
       notFound: true
     }
   }
+  const pageNum = parseInt(offset);
 
-  const response = await getAllPost(postPerPage, parseInt(offset))
+  const response = await getAllPost(postPerPage, pageNum)
   const posts = await PostMapper.list(response.contents);
 
-  return { props: { posts }, revalidate: 50 }
+  const maxPage = Math.ceil(response.totalCount / postPerPage)
+
+  return {
+    props: {
+      posts,
+      maxPage,
+      pageNum
+    },
+    revalidate: 50
+  }
 }
 
 export default Index;
