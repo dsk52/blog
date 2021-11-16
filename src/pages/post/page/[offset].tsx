@@ -39,9 +39,9 @@ const postPerPage = 12;
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const paths = []
   try {
-    let index = 0;
+    const offset = 0;
     const limit = 1;// 1件でも取ればtotalCountが返ってくるので1件だけ取得する
-    const res = await getAllPost(limit, index)
+    const res = await getAllPost(limit, offset)
 
     const maxPage = Math.ceil(res.totalCount / postPerPage)
 
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps<Prop, Params> = async (context) => {
   const response = await getAllPost(postPerPage, parseInt(offset))
   const posts = await PostMapper.list(response.contents);
 
-  return { props: { posts } }
+  return { props: { posts }, revalidate: 50 }
 }
 
 export default Index;
