@@ -2,10 +2,10 @@ import hljs from 'highlight.js'; // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
-import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
 import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
 import Page from "../../components/layouts/Page/Page";
+import { ButtonLink } from "../../components/ui/Button/Button";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
 import { TagList } from "../../components/ui/TagList/TagList";
 import { getAllPost, getBySlug } from "../../libs/microcms";
@@ -59,9 +59,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
           <aside>
             <TagList tags={post.tags} />
           </aside>
-          <ButtonLink link='/post'>
-            トップに戻る
-          </ButtonLink>
+          <ButtonLink link='/post' label="トップに戻る" />
         </ArticleFooter>
       </Article>
     </Page>
