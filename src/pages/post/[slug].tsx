@@ -77,7 +77,6 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   let pageNum = 0
   const paths: any[] = []
   const res = await getPostSlugs(pageNum, postPerPage)
-  console.log('res', res);
 
   let maxPage = 0
   if (res.totalCount) {
@@ -108,8 +107,6 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
       // TODO sleep入れたほうがいいかも
     }
   }
-  console.log('paths', paths);
-
 
   return {
     paths,
