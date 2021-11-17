@@ -1,19 +1,32 @@
-import Link from 'next/link';
-import { VFC } from "react"
 
-type Prop = {
-  label: string
-  url: string
+import { ButtonLink } from "../Button/Button"
+import s from './Pager.module.css'
+
+import type { VFC } from "react"
+
+export type PageBaseProp = {
+  maxPage: number,
+  pageNum: number
 }
 
-export const Pager: VFC<Prop> = (prop) => {
-  return (
-    <>
-      <Link
-        href={prop.url}
-      >
-        {prop.label}
-      </Link>
-    </>
-  )
-}
+type PagerProps = {
+  basePath: string
+} & PageBaseProp
+
+export const Pager: VFC<PagerProps> = (props) => (
+  <nav className={s.pagerWrapper}>
+    {props.pageNum !== 1 ? (
+      <ButtonLink
+        label="前のページへ"
+        link={`${props.basePath}/${props.pageNum - 1}`}
+      />
+    ) : <div></div>}
+
+    {props.pageNum !== props.maxPage ? (
+      <ButtonLink
+        label="次のページへ"
+        link={`${props.basePath}/${props.pageNum + 1}`}
+      />
+    ) : <div></div>}
+  </nav>
+)

@@ -1,36 +1,24 @@
 import React, { VFC } from "react";
 
-import { Pager } from "../Pager/Pager";
+import { PageBaseProp, Pager } from "../ui/Pager/Pager";
 import { PostList } from "../ui/PostList/PostList";
 
 import type { IPostItem } from "../../types/domain/Post";
 
 type Props = {
-  posts: IPostItem[],
-  maxPage: number,
-  pageNum: number
-}
+  posts: IPostItem[]
+} & PageBaseProp
 
-export const ListPage: VFC<Props> = (props) => (
+export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum }) => (
   <>
-    <PostList posts={props.posts}></PostList>
+    <PostList posts={posts} />
 
     <footer>
-      <div className="pager-wrapper">
-        {props.pageNum !== 1 ? (
-          <Pager
-            label="前のページへ"
-            url={`/post/page/${props.pageNum - 1}`}
-          />
-        ) : null}
-
-        {props.pageNum !== props.maxPage ? (
-          <Pager
-            label="次のページへ"
-            url={`/post/page/${props.pageNum + 1}`}
-          />
-        ) : null}
-      </div>
+      <Pager
+        basePath={"/post/page"}
+        maxPage={maxPage}
+        pageNum={pageNum}
+      />
     </footer>
   </>
 )
