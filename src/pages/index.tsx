@@ -42,8 +42,7 @@ export const getStaticProps: GetStaticProps<ListPageProp, Params> = async () => 
       posts,
       maxPage,
       pageNum
-    },
-    revalidate: 50
+    }
   }
 }
 

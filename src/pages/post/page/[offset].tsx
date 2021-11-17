@@ -59,13 +59,13 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     console.error(error);
     return {
       paths: [{ params: { offset: '1' } }],
-      fallback: 'blocking'
+      fallback: false
     }
   }
 
   return {
     paths: paths,
-    fallback: 'blocking'
+    fallback: false
   }
 }
 
@@ -88,8 +88,7 @@ export const getStaticProps: GetStaticProps<ListPageProp, Params> = async (conte
       posts,
       maxPage,
       pageNum
-    },
-    revalidate: 50
+    }
   }
 }
 
