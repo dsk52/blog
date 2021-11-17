@@ -8,11 +8,11 @@ import Page from "../../components/layouts/Page/Page";
 import { ButtonLink } from "../../components/ui/Button/Button";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
 import { TagList } from "../../components/ui/TagList/TagList";
-import { getAllPost, getBySlug } from "../../libs/microcms";
+import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
 import { datetimeToDate } from "../../utilities/Date";
 
-import type { IPost, IPostItem } from '../../types/domain/Post';
+import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import 'highlight.js/styles/github.css';
@@ -66,18 +66,54 @@ const Detail: NextPage<PostPops> = ({ post }) => {
   )
 }
 
-const isPorduction = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const response = isPorduction ? await getAllPost(2) : await getAllPost(10)
-  // TODO 数100件ずつ取得し、joinする形に変更
-  const posts = await PostMapper.list(response.contents)
+  let postPerPage = 10
+  if (isProduction) {
+    postPerPage = 100
+  }
 
-  const paths = posts.map((post: IPostItem) => ({ params: { slug: post.slug } }))
+  let pageNum = 0
+  const paths: any[] = []
+  const res = await getPostSlugs(pageNum, postPerPage)
+  console.log('res', res);
+
+  let maxPage = 0
+  if (res.totalCount) {
+    maxPage = Math.ceil(res.totalCount / postPerPage)
+  }
+  if (!res.contents.length) {
+    return {
+      paths: [{ params: { slug: '' } }],
+      fallback: isProduction ? false : 'blocking'
+    }
+  }
+
+  res.contents.forEach(({ slug }) => {
+    paths.push({ params: { slug: slug } })
+  })
+  ++pageNum
+
+  // 全ページ分取得して結合する
+  if (!isProduction) {
+    while (pageNum < maxPage) {
+      const res = await getPostSlugs(1, postPerPage)
+      res.contents.forEach(({ slug }) => {
+        paths.push({ params: { slug: slug } })
+      })
+
+      ++pageNum
+
+      // TODO sleep入れたほうがいいかも
+    }
+  }
+  console.log('paths', paths);
+
 
   return {
     paths,
-    fallback: isPorduction ? false : 'blocking'
+    fallback: isProduction ? false : 'blocking'
   }
 }
 

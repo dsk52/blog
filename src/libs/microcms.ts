@@ -33,6 +33,26 @@ export async function getAllPost(
   return await microcms.get(params);
 }
 
+export async function getPostSlugs(
+  limit = 10,
+  offset = 10
+): Promise<microCmsResponse<{ slug: string }>> {
+  let params = {
+    endpoint: ENDPOINTS.POST,
+    queries: {
+      fields: "slug",
+      orders: "-publishedAt",
+      limit: 10,
+      offset: offset,
+    },
+  };
+  if (limit != 0) {
+    params.queries["limit"] = limit;
+  }
+
+  return await microcms.get(params);
+}
+
 export async function getBySlug(
   slug: string
 ): Promise<microCmsResponse<ApiPost>> {
