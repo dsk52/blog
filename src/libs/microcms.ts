@@ -14,13 +14,16 @@ const ENDPOINTS = {
 type ENDPOINTS = typeof ENDPOINTS[keyof typeof ENDPOINTS];
 
 export async function getAllPost(
-  limit = 0
+  limit = 0,
+  offset = 0
 ): Promise<microCmsResponse<ApiPost>> {
   let params = {
     endpoint: ENDPOINTS.POST,
     queries: {
+      fields: "title,slug,category,publishedAt",
       orders: "-publishedAt",
       limit: 10,
+      offset: offset,
     },
   };
   if (limit != 0) {

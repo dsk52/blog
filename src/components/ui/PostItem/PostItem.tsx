@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { datetimeToDate } from '../../../utilities/Date';
 import s from './PostItem.module.css'
 
-import type { IPost } from '../../../types/domain/Post';
+import type { IPostItem } from '../../../types/domain/Post';
 import type { VFC } from "react";
 
 
 type Props = {
-  post: IPost
+  post: IPostItem
 }
 
 export const PostItem: VFC<Props> = ({ post }) => {

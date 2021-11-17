@@ -2,17 +2,17 @@ import hljs from 'highlight.js'; // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
-import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
 import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
 import Page from "../../components/layouts/Page/Page";
+import { ButtonLink } from "../../components/ui/Button/Button";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
 import { TagList } from "../../components/ui/TagList/TagList";
 import { getAllPost, getBySlug } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
 import { datetimeToDate } from "../../utilities/Date";
 
-import type { IPost } from '../../types/domain/Post';
+import type { IPost, IPostItem } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import 'highlight.js/styles/github.css';
@@ -59,9 +59,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
           <aside>
             <TagList tags={post.tags} />
           </aside>
-          <ButtonLink link='/post'>
-            トップに戻る
-          </ButtonLink>
+          <ButtonLink link='/post' label="トップに戻る" />
         </ArticleFooter>
       </Article>
     </Page>
@@ -75,7 +73,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // TODO 数100件ずつ取得し、joinする形に変更
   const posts = await PostMapper.list(response.contents)
 
-  const paths = posts.map((post: IPost) => ({ params: { slug: post.slug } }))
+  const paths = posts.map((post: IPostItem) => ({ params: { slug: post.slug } }))
 
   return {
     paths,
@@ -106,11 +104,9 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
     typographer: true,
     highlight: function (str, lang) {
       if (lang && hljs.getLanguage(lang)) {
-        try {
-          return '<pre class="hljs"><code>' +
-            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-            '</code></pre>';
-        } catch (__) { }
+        return '<pre class="hljs"><code>' +
+          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+          '</code></pre>';
       }
 
       return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';

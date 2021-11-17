@@ -16,13 +16,18 @@
 }
 
 .category {
+  display: inline-block;
   background-color: #252525;
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 2px 3px;
+  padding: 4px 6px;
   line-height: 1;
   font-size: 0.8em;
   color: #ededed;
+}
+
+.date {
+  line-height: 1;
 }
 
 .date + * {

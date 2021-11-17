@@ -1,5 +1,5 @@
 import type { ApiPost, ApiTag } from "../types/api/Post";
-import type { ICategory, IPost, ITag } from "../types/domain/Post";
+import type { ICategory, IPost, IPostItem, ITag } from "../types/domain/Post";
 
 export class PostMapper {
   public static category(category: any): ICategory {
@@ -45,7 +45,16 @@ export class PostMapper {
     };
   }
 
-  public static list(posts: ApiPost[]): IPost[] {
-    return posts.map((post: ApiPost) => this.detail(post));
+  public static list(posts: ApiPost[]): IPostItem[] {
+    return posts.map((post: ApiPost) => {
+      const category = this.category(post?.category);
+
+      return {
+        title: post.title,
+        slug: post.slug,
+        category: category,
+        publishedAt: post.publishedAt,
+      };
+    });
   }
 }
