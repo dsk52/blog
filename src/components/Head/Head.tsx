@@ -1,13 +1,30 @@
 import Head from "next/head"
 
-import { siteName } from '../../constants/site';
+import { siteName, sideDescription, siteURL } from '../../constants/site';
+
+import type { VFC } from "react";
 
 
-const MyHead = ({ title = '', description = '', url = '', image = '' }): JSX.Element => {
+
+type Props = {
+  title: string
+  description: string
+  url: string
+  image?: string
+  pageType: 'website' | 'article'
+}
+
+const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website' }): JSX.Element => {
+  if (!description) {
+    description = sideDescription;
+  }
+
   let propTitle = `${siteName} | ${description}`
   if (title.length) {
     propTitle = `${title} | ${siteName}`
   }
+
+  const metaUrl = `${siteURL}/${url}`;
 
   return (
     <Head>
@@ -18,8 +35,8 @@ const MyHead = ({ title = '', description = '', url = '', image = '' }): JSX.Ele
       <title key="title">{propTitle}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={propTitle} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />b
+      <meta property="og:type" content={pageType} />
+      <meta property="og:url" content={metaUrl} />b
       {image == null ? "" : (
         <meta property="og:image" content={image} />
       )}
@@ -30,13 +47,13 @@ const MyHead = ({ title = '', description = '', url = '', image = '' }): JSX.Ele
       <meta property="og:description" content={description} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@skd_nw" />
-      <meta name="twitter:url" content={url} />
+      <meta name="twitter:url" content={metaUrl} />
       <meta name="twitter:title" content={propTitle} />
       <meta name="twitter:description" content={description} />
       {image == null ? "" : (
         <meta name="twitter:image" content={image} />
       )}
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={metaUrl} />
     </Head>
   )
 }

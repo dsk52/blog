@@ -1,7 +1,24 @@
-import type { FC } from "react";
+import React, { VFC } from "react";
 
-export const ListPage: FC = (props) => (
+import { PageBaseProp, Pager } from "../ui/Pager/Pager";
+import { PostList } from "../ui/PostList/PostList";
+
+import type { IPostItem } from "../../types/domain/Post";
+
+type Props = {
+  posts: IPostItem[]
+} & PageBaseProp
+
+export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum }) => (
   <>
-    {props.children}
+    <PostList posts={posts} />
+
+    <footer>
+      <Pager
+        basePath={"/post/page"}
+        maxPage={maxPage}
+        pageNum={pageNum}
+      />
+    </footer>
   </>
 )

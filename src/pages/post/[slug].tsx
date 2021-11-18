@@ -2,12 +2,13 @@ import hljs from 'highlight.js'; // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
-import { ButtonLink } from "../../components/Button/Button";
 import MyHead from "../../components/Head/Head";
 import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
 import Page from "../../components/layouts/Page/Page";
+import { ButtonLink } from "../../components/ui/Button/Button";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
-import { getAllPost, getBySlug } from "../../libs/microcms";
+import { TagList } from "../../components/ui/TagList/TagList";
+import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
 import { datetimeToDate } from "../../utilities/Date";
 
@@ -33,6 +34,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         title={post.title}
         description=""
         url="/post/"
+        pageType="article"
       />
     }>
       <Article>
@@ -54,27 +56,61 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         </ArticleBody>
 
         <ArticleFooter>
-          <ButtonLink link='/post'>
-            トップに戻る
-          </ButtonLink>
+          <aside>
+            <TagList tags={post.tags} />
+          </aside>
+          <ButtonLink link='/post' label="トップに戻る" />
         </ArticleFooter>
       </Article>
     </Page>
   )
 }
 
-const isPorduction = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const response = isPorduction ? await getAllPost(2) : await getAllPost(10)
-  // TODO 数100件ずつ取得し、joinする形に変更
-  const posts = await PostMapper.list(response.contents)
+  let postPerPage = 10
+  if (isProduction) {
+    postPerPage = 100
+  }
 
-  const paths = posts.map((post: IPost) => ({ params: { slug: post.slug } }))
+  let pageNum = 0
+  const paths: any[] = []
+  const res = await getPostSlugs(pageNum, postPerPage)
+
+  let maxPage = 0
+  if (res.totalCount) {
+    maxPage = Math.ceil(res.totalCount / postPerPage)
+  }
+  if (!res.contents.length) {
+    return {
+      paths: [{ params: { slug: '' } }],
+      fallback: isProduction ? false : 'blocking'
+    }
+  }
+
+  res.contents.forEach(({ slug }) => {
+    paths.push({ params: { slug: slug } })
+  })
+  ++pageNum
+
+  // 全ページ分取得して結合する
+  if (!isProduction) {
+    while (pageNum < maxPage) {
+      const res = await getPostSlugs(1, postPerPage)
+      res.contents.forEach(({ slug }) => {
+        paths.push({ params: { slug: slug } })
+      })
+
+      ++pageNum
+
+      // TODO sleep入れたほうがいいかも
+    }
+  }
 
   return {
     paths,
-    fallback: isPorduction ? false : 'blocking'
+    fallback: isProduction ? false : 'blocking'
   }
 }
 
@@ -101,11 +137,9 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
     typographer: true,
     highlight: function (str, lang) {
       if (lang && hljs.getLanguage(lang)) {
-        try {
-          return '<pre class="hljs"><code>' +
-            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-            '</code></pre>';
-        } catch (__) { }
+        return '<pre class="hljs"><code>' +
+          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+          '</code></pre>';
       }
 
       return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
