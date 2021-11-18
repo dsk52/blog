@@ -76,12 +76,13 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   let pageNum = 0
   const paths: any[] = []
-  const res = await getPostSlugs(pageNum, postPerPage)
+  const res = await getPostSlugs(postPerPage, pageNum)
 
   let maxPage = 0
   if (res.totalCount) {
     maxPage = Math.ceil(res.totalCount / postPerPage)
   }
+
   if (!res.contents.length) {
     return {
       paths: [{ params: { slug: '' } }],
@@ -95,15 +96,14 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   ++pageNum
 
   // 全ページ分取得して結合する
-  if (!isProduction) {
-    while (pageNum < maxPage) {
-      const res = await getPostSlugs(1, postPerPage)
+  if (isProduction) {
+    while (pageNum <= maxPage) {
+      const res = await getPostSlugs(postPerPage, paths.length + 1)
       res.contents.forEach(({ slug }) => {
         paths.push({ params: { slug: slug } })
       })
 
       ++pageNum
-
       // TODO sleep入れたほうがいいかも
     }
   }
