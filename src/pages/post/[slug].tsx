@@ -59,7 +59,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
           <aside>
             <TagList tags={post.tags} />
           </aside>
-          <ButtonLink link='/post' label="トップに戻る" />
+          <ButtonLink link='/' label="トップに戻る" />
         </ArticleFooter>
       </Article>
     </Page>
