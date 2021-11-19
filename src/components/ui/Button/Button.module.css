@@ -6,7 +6,7 @@
   transition: 0.4s ease-out 0s;
 }
 
-.buttonLink:hover {
+.buttonLink:hover a {
   background-color: #252525;
 }
 
