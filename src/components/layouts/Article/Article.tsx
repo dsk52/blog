@@ -15,6 +15,7 @@ export const ArticleHeader: FC = (props) => (
   </header>
 )
 
+
 export const ArticleBody: FC = (props) => (
   <div className={s.articleBody}>
     {props.children}

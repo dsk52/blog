@@ -14,7 +14,6 @@
     "node": "14.x"
   },
   "dependencies": {
-    "highlight.js": "^11.3.1",
     "markdown-it": "^12.2.0",
     "next": "11.1.2",
     "react": "17.0.2",
