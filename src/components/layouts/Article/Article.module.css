@@ -39,7 +39,8 @@
   text-decoration: underline;
 }
 
-.articleBody ul ul {
+.articleBody ul ul,
+.articleBody ol ol {
   margin-top: 0.4em;
 }
 
