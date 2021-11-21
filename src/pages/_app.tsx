@@ -3,7 +3,7 @@ import "../styles/globals.css";
 
 import React from "react";
 
-import { GoogleAnalytics } from "../components/Head/GoogleAnalytivs";
+import { GoogleAnalytics } from "../components/GoogleAnalytics/GoogleAnalytivs";
 import usePageview from '../hooks/usePageView';
 
 import type { AppProps } from "next/app";
