@@ -1,6 +1,7 @@
 import Head from "next/head"
 
 import { siteName, sideDescription, siteURL } from '../../constants/site';
+import { NEXT_PUBLIC_ADSENSE_CLIENT } from "../Adsense/Adsense";
 
 import type { VFC } from "react";
 
@@ -71,6 +72,11 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
         <meta name="twitter:image" content={image} />
       )}
       <link rel="canonical" href={metaUrl} />
+      <script
+        data-ad-client={NEXT_PUBLIC_ADSENSE_CLIENT}
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
     </Head>
   )
 }
