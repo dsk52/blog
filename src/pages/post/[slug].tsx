@@ -1,22 +1,19 @@
 // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
+import React from "react";
+
 import MyHead from "../../components/Head/Head";
-import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/Article/Article";
 import Page from "../../components/layouts/Page/Page";
-import { ButtonLink } from "../../components/ui/Button/Button";
-import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
-import { Share } from "../../components/ui/Share/Share";
-import { TagList } from "../../components/ui/TagList/TagList";
+import { DetailPage } from '../../components/templates/DetailPage';
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
-import { datetimeToDate } from "../../utilities/Date";
 
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 
-type PostPops = {
+export type PostProps = {
   post: IPost
 }
 
@@ -24,10 +21,8 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-const Detail: NextPage<PostPops> = ({ post }) => {
-  const pubDate = datetimeToDate(post.publishedAt)
+const Detail: NextPage<PostProps> = ({ post }) => {
   const pagePath = `/post/${post.slug}`
-
   return (
     <Page head={
       <MyHead
@@ -38,38 +33,8 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         index='index'
       />
     }>
-      <Article>
-        <ArticleHeader>
-          <h1>{post.title}</h1>
-          <div className={detailStyle.meta}>
-            <time
-              className={detailStyle.date}
-              dateTime={post.publishedAt}
-            >
-              {pubDate}
-            </time>
-            <div className={detailStyle.category}>{post.category.name}</div>
-          </div>
-        </ArticleHeader>
-
-        <ArticleBody>
-          <div dangerouslySetInnerHTML={{ __html: post.body }} />
-        </ArticleBody>
-
-        <ArticleFooter>
-          <aside>
-            <TagList tags={post.tags} />
-          </aside>
-
-          <section>
-            <h2>Share</h2>
-            <Share title={post.title} path={pagePath} />
-          </section>
-
-          <ButtonLink link='/' label="トップに戻る" />
-        </ArticleFooter>
-      </Article>
-    </Page>
+      <DetailPage post={post} path={pagePath} />
+    </Page >
   )
 }
 
@@ -121,7 +86,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) => {
+export const getStaticProps: GetStaticProps<PostProps, Params> = async (context) => {
   const slug = await context.params?.slug
   if (!slug) {
     return {
