@@ -17,7 +17,8 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
       title="記事一覧"
       description="今までに書いた記事の一覧ページです"
       url="/"
-      pageType={"website"}
+      pageType="website"
+      index='index'
     />
   }>
     <ListPage

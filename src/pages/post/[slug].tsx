@@ -35,6 +35,7 @@ const Detail: NextPage<PostPops> = ({ post }) => {
         description=""
         url={pagePath}
         pageType="article"
+        index='index'
       />
     }>
       <Article>

@@ -4,7 +4,7 @@ import { siteName, sideDescription, siteURL } from '../../constants/site';
 
 import type { VFC } from "react";
 
-
+type Index = 'index' | 'followOnly' | ''
 
 type Props = {
   title: string
@@ -12,9 +12,23 @@ type Props = {
   url: string
   image?: string
   pageType: 'website' | 'article'
+  index: Index
 }
 
-const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website' }): JSX.Element => {
+const Index = (index: Index): string => {
+  switch (index) {
+    case 'index':
+      return 'index, follow'
+
+    case 'followOnly':
+      return 'noindex, follow'
+
+    default:
+      return 'noindex';
+  }
+}
+
+const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }): JSX.Element => {
   if (!description) {
     description = sideDescription;
   }
@@ -26,12 +40,15 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
 
   const metaUrl = `${siteURL}/${url}`;
 
+  const indexStr = Index(index)
+
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="#404344" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="robots" content="noindex,follow" />
+      <meta name="robots" content={indexStr} />
+      <meta name="google-site-verification" content="ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A" />
       <title key="title">{propTitle}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={propTitle} />
