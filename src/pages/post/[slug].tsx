@@ -8,6 +8,7 @@ import Page from "../../components/layouts/Page/Page";
 import { DetailPage } from '../../components/templates/DetailPage';
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
+import { isProduction } from "../../utilities/env";
 
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -37,8 +38,6 @@ const Detail: NextPage<PostProps> = ({ post }) => {
     </Page >
   )
 }
-
-const isProduction = process.env.NODE_ENV === 'production'
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   let postPerPage = 10
