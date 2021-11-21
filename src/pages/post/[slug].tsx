@@ -1,12 +1,12 @@
-import hljs from 'highlight.js'; // eslint-disable-line import/order
+// eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
-
 import MyHead from "../../components/Head/Head";
-import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/ArticleBody/Article";
+import { Article, ArticleBody, ArticleFooter, ArticleHeader } from "../../components/layouts/Article/Article";
 import Page from "../../components/layouts/Page/Page";
 import { ButtonLink } from "../../components/ui/Button/Button";
 import detailStyle from '../../components/ui/PostItem/PostItem.module.css'
+import { Share } from "../../components/ui/Share/Share";
 import { TagList } from "../../components/ui/TagList/TagList";
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../mapper/PostMapper";
@@ -15,7 +15,6 @@ import { datetimeToDate } from "../../utilities/Date";
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import 'highlight.js/styles/github.css';
 
 type PostPops = {
   post: IPost
@@ -27,14 +26,16 @@ interface Params extends ParsedUrlQuery {
 
 const Detail: NextPage<PostPops> = ({ post }) => {
   const pubDate = datetimeToDate(post.publishedAt)
+  const pagePath = `/post/${post.slug}`
 
   return (
     <Page head={
       <MyHead
         title={post.title}
         description=""
-        url="/post/"
+        url={pagePath}
         pageType="article"
+        index='index'
       />
     }>
       <Article>
@@ -59,7 +60,13 @@ const Detail: NextPage<PostPops> = ({ post }) => {
           <aside>
             <TagList tags={post.tags} />
           </aside>
-          <ButtonLink link='/post' label="トップに戻る" />
+
+          <section>
+            <h2>Share</h2>
+            <Share title={post.title} path={pagePath} />
+          </section>
+
+          <ButtonLink link='/' label="トップに戻る" />
         </ArticleFooter>
       </Article>
     </Page>
@@ -134,16 +141,7 @@ export const getStaticProps: GetStaticProps<PostPops, Params> = async (context) 
   const md: MarkdownIt = new MarkdownIt({
     html: true,
     breaks: true,
-    typographer: true,
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        return '<pre class="hljs"><code>' +
-          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-          '</code></pre>';
-      }
-
-      return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-    }
+    typographer: true
   })
   post.body = md.render(post.body)
 

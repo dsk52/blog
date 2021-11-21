@@ -12,7 +12,9 @@ const About: NextPage = () => (
       title="About"
       description=""
       url="/about"
-      pageType={"article"} />
+      pageType='website'
+      index='index'
+    />
   }>
     <>
       <AboutPage />
