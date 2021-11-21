@@ -26,7 +26,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
     <MyHead
       title="記事一覧"
       description="今までに書いた記事の一覧ページです"
-      url="/"
+      url={`/post/page/${pageNum}`}
       pageType='website'
       index='followOnly'
     />
@@ -71,15 +71,20 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 }
 
 export const getStaticProps: GetStaticProps<ListPageProp, Params> = async (context) => {
-  const offset = await context.params?.offset
-  if (!offset) {
+  const offsetParam = await context.params?.offset
+  if (!offsetParam) {
     return {
       notFound: true
     }
   }
-  const pageNum = parseInt(offset);
+  const pageNum = parseInt(offsetParam);
 
-  const response = await getAllPost(postPerPage, pageNum)
+  let offset = 0;
+  if (pageNum > 1) {
+    offset = postPerPage * pageNum + 1
+  }
+
+  const response = await getAllPost(postPerPage, offset)
   const posts = await PostMapper.list(response.contents);
 
   const maxPage = Math.ceil(response.totalCount / postPerPage)

@@ -14,7 +14,7 @@ import type { GetStaticProps, NextPage } from "next";
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
   <List head={
     <MyHead
-      title="記事一覧"
+      title="トップ"
       description="今までに書いた記事の一覧ページです"
       url="/"
       pageType="website"
