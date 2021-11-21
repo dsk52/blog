@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build && next export",
+    "export": "npm run build && next export && npm run postbuild",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "./node_modules/.bin/eslint ./src/**/*.{ts,tsx} && prettier --write ./src/**/*.{ts,tsx}"
@@ -31,6 +32,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-unused-imports": "^1.1.5",
     "microcms-js-sdk": "^2.0.0",
+    "next-sitemap": "^1.6.203",
     "prettier": "^2.4.1",
     "typescript": "4.4.4"
   }
