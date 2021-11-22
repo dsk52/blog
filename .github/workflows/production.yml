@@ -49,7 +49,7 @@ jobs:
 
       - name: build
         env:
-          NODE_ENV: "production"
+          APP_ENV: "production"
         run: npm run export
 
   deploy:
