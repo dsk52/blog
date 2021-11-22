@@ -50,7 +50,7 @@ jobs:
       - name: build
         env:
           APP_ENV: "production"
-        run: npm run export
+        run: npm run build
 
   deploy:
     needs: [build]
