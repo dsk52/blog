@@ -7,7 +7,7 @@ import MyHead from "../../components/Head/Head";
 import Page from "../../components/layouts/Page/Page";
 import { DetailPage } from '../../components/templates/DetailPage';
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
-import { PostMapper } from "../../mapper/PostMapper";
+import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
 
 import type { IPost } from '../../types/domain/Post';

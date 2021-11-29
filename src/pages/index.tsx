@@ -4,7 +4,7 @@ import MyHead from "../components/Head/Head";
 import { List } from '../components/layouts/List/List';
 import { ListPage } from "../components/templates/ListPage";
 import { getAllPost } from "../libs/microcms";
-import { PostMapper } from "../mapper/PostMapper";
+import { PostMapper } from "../models/mapper/PostMapper";
 
 import type { ListPageProp } from "./post/page/[offset]";
 import type { GetStaticProps, NextPage } from "next";

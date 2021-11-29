@@ -1,5 +1,10 @@
-import type { ApiPost, ApiTag } from "../types/api/Post";
-import type { ICategory, IPost, IPostItem, ITag } from "../types/domain/Post";
+import type { ApiPost, ApiTag } from "../../types/api/Post";
+import type {
+  ICategory,
+  IPost,
+  IPostItem,
+  ITag,
+} from "../../types/domain/Post";
 
 export class PostMapper {
   public static category(category: any): ICategory {
