@@ -52,12 +52,12 @@ export class PostMapper {
 
   public static list(posts: ApiPost[]): IPostItem[] {
     return posts.map((post: ApiPost) => {
-      const category = this.category(post?.category);
+      const tags = this.tags(post?.tags);
 
       return {
         title: post.title,
         slug: post.slug,
-        category: category,
+        tags: tags,
         publishedAt: post.publishedAt,
       };
     });

@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.tagItem {
+  line-height: 1;
+}
+
 .tagItem + .tagItem {
   margin-left: 0.5em;
 }
