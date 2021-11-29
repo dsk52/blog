@@ -20,7 +20,7 @@ export async function getAllPost(
   let params = {
     endpoint: ENDPOINTS.POST,
     queries: {
-      fields: "title,slug,category,publishedAt",
+      fields: "title,slug,tags,publishedAt",
       orders: "-publishedAt",
       limit: 10,
       offset: offset,

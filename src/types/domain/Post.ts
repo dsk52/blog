@@ -12,7 +12,7 @@ export interface IPost {
 export interface IPostItem {
   slug: string;
   title: string;
-  category: ICategory;
+  tags: ITag[];
   publishedAt: string;
 }
 

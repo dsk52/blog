@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { datetimeToDate } from '../../../utilities/Date';
+import { TagList } from '../TagList/TagList';
 import s from './PostItem.module.css'
 
 import type { IPostItem } from '../../../types/domain/Post';
@@ -28,7 +29,7 @@ export const PostItem: VFC<Props> = ({ post }) => {
         >
           {pubDate}
         </time>
-        <div className={s.category}>{post.category.name}</div>
+        <TagList tags={post.tags} />
       </div>
     </>
   )

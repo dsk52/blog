@@ -7,7 +7,8 @@ import MyHead from "../../components/Head/Head";
 import Page from "../../components/layouts/Page/Page";
 import { DetailPage } from '../../components/templates/DetailPage';
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
-import { PostMapper } from "../../mapper/PostMapper";
+import { PostMapper } from "../../models/mapper/PostMapper";
+import { isProduction } from "../../utilities/env";
 
 import type { IPost } from '../../types/domain/Post';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -38,8 +39,6 @@ const Detail: NextPage<PostProps> = ({ post }) => {
   )
 }
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   let postPerPage = 10
   if (isProduction) {
@@ -58,7 +57,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (!res.contents.length) {
     return {
       paths: [{ params: { slug: '' } }],
-      fallback: isProduction ? false : 'blocking'
+      fallback: false
     }
   }
 
@@ -82,7 +81,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   return {
     paths,
-    fallback: isProduction ? false : 'blocking'
+    fallback: false
   }
 }
 

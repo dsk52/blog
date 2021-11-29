@@ -4,7 +4,7 @@ import MyHead from "../../../components/Head/Head";
 import { List } from "../../../components/layouts/List/List";
 import { ListPage } from "../../../components/templates/ListPage";
 import { getAllPost } from "../../../libs/microcms";
-import { PostMapper } from "../../../mapper/PostMapper";
+import { PostMapper } from "../../../models/mapper/PostMapper";
 import { IPostItem } from "../../../types/domain/Post";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
