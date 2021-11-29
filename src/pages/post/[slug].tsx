@@ -57,7 +57,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (!res.contents.length) {
     return {
       paths: [{ params: { slug: '' } }],
-      fallback: isProduction ? false : 'blocking'
+      fallback: false
     }
   }
 
@@ -81,7 +81,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   return {
     paths,
-    fallback: isProduction ? false : 'blocking'
+    fallback: false
   }
 }
 
