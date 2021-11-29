@@ -24,11 +24,13 @@ interface Params extends ParsedUrlQuery {
 
 const Detail: NextPage<PostProps> = ({ post }) => {
   const pagePath = `/post/${post.slug}`
+  const excerpt = post.body.replace(/\r?\n/g, "").replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '').slice(0, 99)
+
   return (
     <Page head={
       <MyHead
         title={post.title}
-        description=""
+        description={excerpt}
         url={pagePath}
         pageType="article"
         index='index'
