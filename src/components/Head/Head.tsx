@@ -1,6 +1,6 @@
 import Head from "next/head"
 
-import { siteName, sideDescription, siteURL } from '../../constants/site';
+import { siteName, siteDescription, siteURL } from '../../constants/site';
 import { NEXT_PUBLIC_ADSENSE_CLIENT } from "../Adsense/Adsense";
 
 import type { VFC } from "react";
@@ -31,7 +31,7 @@ const Index = (index: Index): string => {
 
 const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }): JSX.Element => {
   if (!description) {
-    description = sideDescription;
+    description = siteDescription;
   }
 
   let propTitle = `${siteName} | ${description}`
@@ -60,7 +60,7 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
       )}
       <meta
         property="og:site_name"
-        content={`${siteName} | ${description}`}
+        content={`${siteName} | ${siteDescription}`}
       />
       <meta property="og:description" content={description} />
       <meta name="twitter:card" content="summary" />
