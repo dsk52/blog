@@ -35,7 +35,6 @@ export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
             >
               {pubDate}
             </time>
-            <div className={ds.category}>{post.category.name}</div>
           </div>
         </ArticleHeader>
 
