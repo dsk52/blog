@@ -17,6 +17,27 @@
   },
   "packageRules": [
     {
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "groupName": "linters",
+      "extends": [
+        "packages:linters"
+      ],
+      "packageNames": [
+        "prettier"
+      ],
+      "packagePatterns": [
+        "^@typescript-eslint/"
+      ]
+    },
+    {
       "depTypeList": [
         "devDependencies"
       ],
