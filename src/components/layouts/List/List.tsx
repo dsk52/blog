@@ -4,12 +4,8 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import s from './List.module.css'
 
-import type { FC, ReactNode } from 'react';
-
-type Props = {
-  children: ReactNode
-  head: JSX.Element
-}
+import type { Props } from './type'
+import type { FC } from 'react';
 
 export const List: FC<Props> = (props): JSX.Element => (
   <>

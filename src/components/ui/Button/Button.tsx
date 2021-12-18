@@ -2,12 +2,8 @@ import Link from "next/link"
 
 import s from './Button.module.css'
 
+import type { LinkProps } from "./type"
 import type { VFC } from "react"
-
-type LinkProps = {
-  label: string,
-  link: string
-}
 
 export const ButtonLink: VFC<LinkProps> = (props) => (
   <div className={s.buttonLink}>
