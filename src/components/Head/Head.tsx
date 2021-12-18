@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 import { envVar } from "../../constants/environment";
-import { siteName, siteDescription, siteURL } from '../../constants/site';
+import { SITE } from '../../constants/site';
 
 import type { IndexType, Props } from "./type";
 import type { VFC } from "react";
@@ -22,15 +22,15 @@ const Index = (index: IndexType): string => {
 
 const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }): JSX.Element => {
   if (!description) {
-    description = siteDescription;
+    description = SITE.description;
   }
 
-  let propTitle = `${siteName} | ${description}`
+  let propTitle = `${SITE.name} | ${description}`
   if (title.length) {
-    propTitle = `${title} | ${siteName}`
+    propTitle = `${title} | ${SITE.name} `
   }
 
-  const metaUrl = `${siteURL}/${url}`;
+  const metaUrl = `${SITE.url}/${url}`;
 
   const indexStr = Index(index)
 
@@ -46,12 +46,12 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
       <meta property="og:title" content={propTitle} />
       <meta property="og:type" content={pageType} />
       <meta property="og:url" content={metaUrl} />b
-      {image == null ? "" : (
+      {image === null ? "" : (
         <meta property="og:image" content={image} />
       )}
       <meta
         property="og:site_name"
-        content={`${siteName} | ${siteDescription}`}
+        content={`${SITE.name} | ${SITE.description}`}
       />
       <meta property="og:description" content={description} />
       <meta name="twitter:card" content="summary" />
