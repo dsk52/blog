@@ -1,5 +1,8 @@
+type appEnvs = "develop" | "production";
+
 type ENV = {
-  APP_ENV?: string;
+  APP_ENV: appEnvs;
+
   MICROCMS_API_KEY?: string;
   MICROCMS_SERVICE_DOMAIN?: string;
 
@@ -17,16 +20,24 @@ type ENV = {
 
 type Config = Required<ENV>;
 
+const appEnvCheck = (): appEnvs => {
+  if (process.env.APP_ENV === "production") {
+    return "production";
+  }
+
+  return "develop";
+};
+
 const getConfig = (): ENV => {
   return {
-    APP_ENV: process.env.APP_ENV,
+    APP_ENV: appEnvCheck(),
 
     MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
     MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
 
-    VERCEL_TOKEN: process.env.VERCEL_TOKEN,
-    PROJECT_ID: process.env.PROJECT_ID,
-    ORG_ID: process.env.ORG_ID,
+    VERCEL_TOKEN: process.env.VERCEL_TOKEN ?? "",
+    PROJECT_ID: process.env.PROJECT_ID ?? "",
+    ORG_ID: process.env.ORG_ID ?? "",
 
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
     NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT,
