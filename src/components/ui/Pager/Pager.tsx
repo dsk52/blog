@@ -1,17 +1,8 @@
-
 import { ButtonLink } from "../Button/Button"
 import s from './Pager.module.css'
 
+import type { PagerProps } from "./type"
 import type { VFC } from "react"
-
-export type PageBaseProp = {
-  maxPage: number,
-  pageNum: number
-}
-
-type PagerProps = {
-  basePath: string
-} & PageBaseProp
 
 export const Pager: VFC<PagerProps> = (props) => (
   <nav className={s.pagerWrapper}>

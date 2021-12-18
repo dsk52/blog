@@ -3,20 +3,11 @@ import Head from "next/head"
 import { siteName, siteDescription, siteURL } from '../../constants/site';
 import { NEXT_PUBLIC_ADSENSE_CLIENT } from "../Adsense/Adsense";
 
+import type { IndexType, Props } from "./type";
 import type { VFC } from "react";
 
-type Index = 'index' | 'followOnly' | ''
 
-type Props = {
-  title: string
-  description: string
-  url: string
-  image?: string
-  pageType: 'website' | 'article'
-  index: Index
-}
-
-const Index = (index: Index): string => {
+const Index = (index: IndexType): string => {
   switch (index) {
     case 'index':
       return 'index, follow'

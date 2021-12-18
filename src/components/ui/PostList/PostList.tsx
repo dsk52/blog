@@ -1,13 +1,9 @@
+import { IPostItem } from "../../../types/domain/Post";
 import { PostItem } from '../PostItem/PostItem';
 import s from './PostList.module.css'
 
-import type { IPostItem } from '../../../types/domain/Post';
+import type { Props } from "./type";
 import type { VFC } from "react";
-
-
-type Props = {
-  posts: IPostItem[]
-}
 
 export const PostList: VFC<Props> = ({ posts }) => (
   <ul className={s.postList} >
