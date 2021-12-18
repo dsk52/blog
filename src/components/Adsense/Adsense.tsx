@@ -1,13 +1,8 @@
 import { useRouter } from "next/router";
-import React, { useEffect, VFC } from "react";
+import { useEffect } from "react";
 
 import type { GoogleAdsenseProps } from "./type";
-
-export const NEXT_PUBLIC_ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || ''
-
-export const NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT = process.env.NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT || ''
-export const NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT = process.env.NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT || ''
-export const NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT = process.env.NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT || ''
+import type { VFC } from 'react'
 
 export const Adsense: VFC<GoogleAdsenseProps> = ({
   className = '',

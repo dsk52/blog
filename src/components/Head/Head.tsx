@@ -1,7 +1,7 @@
 import Head from "next/head"
 
+import { envVar } from "../../constants/environment";
 import { siteName, siteDescription, siteURL } from '../../constants/site';
-import { NEXT_PUBLIC_ADSENSE_CLIENT } from "../Adsense/Adsense";
 
 import type { IndexType, Props } from "./type";
 import type { VFC } from "react";
@@ -64,7 +64,7 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
       )}
       <link rel="canonical" href={metaUrl} />
       <script
-        data-ad-client={NEXT_PUBLIC_ADSENSE_CLIENT}
+        data-ad-client={envVar.NEXT_PUBLIC_ADSENSE_CLIENT}
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ></script>

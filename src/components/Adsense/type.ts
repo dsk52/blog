@@ -4,7 +4,7 @@ export type GoogleAdsenseProps = {
   className?: string;
   style?: CSSProperties;
   client: string;
-  slot: string;
+  slot: number;
   layout?: string;
   layoutKey?: string;
   format?: string;
