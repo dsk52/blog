@@ -1,13 +1,13 @@
 import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon } from "react-share";
 
-import { siteURL } from '../../../constants/site';
+import { SITE } from '../../../constants/site';
 import s from './Share.module.css'
 
 import type { Props } from "./type";
 import type { VFC } from "react";
 
 export const Share: VFC<Props> = ({ title, path }) => {
-  const url = `${siteURL}${path}`
+  const url = `${SITE.url}${path}`
 
   return (
     <ul className={s.ShareList}>
