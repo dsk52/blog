@@ -1,3 +1,3 @@
-const APP_ENV = process.env.APP_ENV || "";
+import { envVar } from "../constants/environment";
 
-export const isProduction: boolean = APP_ENV === "production";
+export const isProduction: boolean = envVar.APP_ENV === "production";

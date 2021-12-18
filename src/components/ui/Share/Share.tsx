@@ -3,12 +3,8 @@ import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon } fr
 import { siteURL } from '../../../constants/site';
 import s from './Share.module.css'
 
+import type { Props } from "./type";
 import type { VFC } from "react";
-
-type Props = {
-  title: string
-  path: string
-}
 
 export const Share: VFC<Props> = ({ title, path }) => {
   const url = `${siteURL}${path}`

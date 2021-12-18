@@ -1,12 +1,8 @@
 import s from './TagList.module.css'
 
 import type { ITag } from '../../../types/domain/Post';
+import type { Props } from "./type";
 import type { VFC } from "react";
-
-
-type Props = {
-  tags: ITag[]
-}
 
 export const TagList: VFC<Props> = ({ tags }) => (
   <ul className={s.tagList}>
