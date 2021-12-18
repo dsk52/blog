@@ -39,19 +39,19 @@ const getConfig = (): ENV => {
     PROJECT_ID: process.env.PROJECT_ID ?? "",
     ORG_ID: process.env.ORG_ID ?? "",
 
-    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
-    NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT,
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID ?? "",
+    NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "",
     NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT: process.env
       .NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT
       ? Number(process.env.NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT)
-      : undefined,
+      : 0,
     NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT: process.env.NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT
       ? Number(process.env.NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT)
-      : undefined,
+      : 0,
     NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT: process.env
       .NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
       ? Number(process.env.NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT)
-      : undefined,
+      : 0,
   };
 };
 
