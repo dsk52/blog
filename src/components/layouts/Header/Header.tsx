@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { siteName } from "../../../constants/site"
+import { SITE } from "../../../constants/site"
 import { GlobalNav } from "../../ui/GlobalNav/GlobalNav"
 import style from './Header.module.css'
 
@@ -11,7 +11,7 @@ const Header = () => (
         <div>
           <h1 className={style.siteTitle}>
             <Link href="/">
-              {siteName}
+              {SITE.name}
             </Link>
           </h1>
         </div>

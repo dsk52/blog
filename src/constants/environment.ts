@@ -6,10 +6,6 @@ type ENV = {
   MICROCMS_API_KEY?: string;
   MICROCMS_SERVICE_DOMAIN?: string;
 
-  VERCEL_TOKEN?: string;
-  PROJECT_ID?: string;
-  ORG_ID?: string;
-
   NEXT_PUBLIC_GA_ID?: string;
 
   NEXT_PUBLIC_ADSENSE_CLIENT?: string;
@@ -35,10 +31,6 @@ const getConfig = (): ENV => {
     MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
     MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
 
-    VERCEL_TOKEN: process.env.VERCEL_TOKEN ?? "",
-    PROJECT_ID: process.env.PROJECT_ID ?? "",
-    ORG_ID: process.env.ORG_ID ?? "",
-
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID ?? "",
     NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "",
     NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT: process.env
@@ -57,9 +49,9 @@ const getConfig = (): ENV => {
 
 const getEnv = (config: ENV): Config => {
   for (const [key, value] of Object.entries(config)) {
-    if (value === undefined) {
-      throw new Error(`undefined environment key: ${key}`);
-    }
+    // if (value === undefined) {
+    // throw new Error(`undefined environment key: ${key}`);
+    // }
   }
   return config as Config;
 };

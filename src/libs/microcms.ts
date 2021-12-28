@@ -1,7 +1,7 @@
 import { createClient } from "microcms-js-sdk";
 
+import { microCmsResponse } from "../types/api/Microcms";
 import { ApiPost } from "../types/api/Post";
-import { microCmsResponse } from "../types/Microcms";
 
 const microcms = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
