@@ -1,11 +1,13 @@
+import getConfig from "next/config";
 import Head from "next/head"
 
-import { envVar } from "../../constants/environment";
 import { SITE } from '../../constants/site';
 
 import type { IndexType, Props } from "./type";
 import type { VFC } from "react";
 
+const { publicRuntimeConfig } = getConfig()
+const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig
 
 const Index = (index: IndexType): string => {
   switch (index) {
@@ -64,7 +66,7 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
       )}
       <link rel="canonical" href={metaUrl} />
       <script
-        data-ad-client={envVar.NEXT_PUBLIC_ADSENSE_CLIENT}
+        data-ad-client={NEXT_PUBLIC_ADSENSE_CLIENT}
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ></script>

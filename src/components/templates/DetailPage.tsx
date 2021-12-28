@@ -1,6 +1,6 @@
+import getConfig from "next/config";
 import React, { VFC } from "react";
 
-import { envVar } from "../../constants/environment";
 import { datetimeToDate } from "../../utilities/Date";
 import { Adsense } from "../Adsense/Adsense";
 import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../layouts/Article/Article";
@@ -16,14 +16,23 @@ type DetailProps = {
   path: string
 } & PostProps
 
+const { publicRuntimeConfig } = getConfig()
+
+const {
+  NEXT_PUBLIC_ADSENSE_CLIENT,
+  NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT,
+  NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT,
+  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
+} = publicRuntimeConfig
+
 export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
   const pubDate = datetimeToDate(post.publishedAt)
 
   return (
     <>
       <Adsense
-        client={envVar.NEXT_PUBLIC_ADSENSE_CLIENT}
-        slot={envVar.NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT}
+        client={NEXT_PUBLIC_ADSENSE_CLIENT}
+        slot={NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT}
       />
 
       <Article>
@@ -41,8 +50,8 @@ export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
 
         <ArticleBody>
           <Adsense
-            client={envVar.NEXT_PUBLIC_ADSENSE_CLIENT}
-            slot={envVar.NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT}
+            client={NEXT_PUBLIC_ADSENSE_CLIENT}
+            slot={NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT}
           />
           <div dangerouslySetInnerHTML={{ __html: post.body }} />
         </ArticleBody>
@@ -62,8 +71,8 @@ export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
       </Article>
 
       <Adsense
-        client={envVar.NEXT_PUBLIC_ADSENSE_CLIENT}
-        slot={envVar.NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT}
+        client={NEXT_PUBLIC_ADSENSE_CLIENT}
+        slot={NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT}
       />
     </>
   )
