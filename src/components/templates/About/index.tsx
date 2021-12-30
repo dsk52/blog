@@ -1,6 +1,6 @@
-import { MainTitle } from '../ui/Title/Title';
+import { MainTitle } from "../../ui/Title/Title"
 
-const About = () => (
+const AboutPage = () => (
   <>
     <MainTitle>About</MainTitle>
 
@@ -37,4 +37,4 @@ const About = () => (
   </>
 )
 
-export default About
+export default AboutPage

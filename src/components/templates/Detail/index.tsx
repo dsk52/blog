@@ -1,16 +1,15 @@
 import getConfig from "next/config";
-import React, { VFC } from "react";
+import React, { type VFC } from "react";
 
-import { datetimeToDate } from "../../utilities/Date";
-import { Adsense } from "../Adsense/Adsense";
-import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../layouts/Article/Article";
-import { ButtonLink } from "../ui/Button/Button";
+import { PostProps } from "../../../pages/post/[slug]";
+import { datetimeToDate } from "../../../utilities/Date";
+import { Adsense } from "../../Adsense/Adsense";
+import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../../layouts/Article/Article";
+import { ButtonLink } from "../../ui/Button/Button";
+import { Share } from "../../ui/Share/Share";
+import { TagList } from "../../ui/TagList/TagList";
 import ds from '../ui/PostItem/PostItem.module.css'
-import { Share } from "../ui/Share/Share";
-import { TagList } from "../ui/TagList/TagList";
 
-
-import type { PostProps } from "../../pages/post/[slug]";
 
 type DetailProps = {
   path: string

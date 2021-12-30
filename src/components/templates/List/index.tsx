@@ -1,12 +1,12 @@
 import getConfig from 'next/config';
-import React, { VFC } from "react";
+import React, { type VFC } from "react";
 
-import { Adsense } from "../Adsense/Adsense";
-import { Pager } from "../ui/Pager/Pager";
-import { PostList } from "../ui/PostList/PostList";
+import { Adsense } from "../../Adsense/Adsense";
+import { Pager } from "../../ui/Pager/Pager";
+import { PostList } from "../../ui/PostList/PostList";
 
-import type { IPostItem } from "../../types/domain/Post";
-import type { PageBaseProp } from "../ui/Pager/type";
+import type { IPostItem } from "../../../types/domain/Post";
+import type { PageBaseProp } from "../../ui/Pager/type";
 
 
 type Props = {

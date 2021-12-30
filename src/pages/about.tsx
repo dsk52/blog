@@ -1,13 +1,13 @@
 import React from "react";
 
 import MyHead from "../components/Head/Head";
-import Page from "../components/layouts/Page/Page";
-import AboutPage from '../components/templates/AboutPage';
+import { Base } from "../components/layouts/Base";
+import AboutPage from "../components/templates/About";
 
 import type { NextPage } from "next";
 
 const About: NextPage = () => (
-  <Page head={
+  <Base head={
     <MyHead
       title="About"
       description=""
@@ -16,11 +16,8 @@ const About: NextPage = () => (
       index='index'
     />
   }>
-    <>
-      <AboutPage />
-    </>
-  </Page>
+    <AboutPage />
+  </Base>
 );
-
 
 export default About;
