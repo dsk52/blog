@@ -2,6 +2,7 @@ import getConfig from 'next/config';
 import React, { type VFC } from "react";
 
 import { Adsense } from "../../Adsense/Adsense";
+import { Container } from '../../Container/index';
 import { Pager } from "../../ui/Pager/Pager";
 import { PostList } from "../../ui/PostList/PostList";
 
@@ -23,24 +24,30 @@ const {
 
 export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum }) => (
   <>
-    <Adsense
-      client={NEXT_PUBLIC_ADSENSE_CLIENT}
-      slot={NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT}
-    />
-
-    <PostList posts={posts} />
-
-    <footer>
-      <Pager
-        basePath={"/post/page"}
-        maxPage={maxPage}
-        pageNum={pageNum}
-      />
-
+    <Container>
       <Adsense
         client={NEXT_PUBLIC_ADSENSE_CLIENT}
-        slot={NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT}
+        slot={NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT}
       />
+    </Container>
+
+    <Container>
+      <PostList posts={posts} />
+    </Container>
+
+    <footer>
+      <Container>
+        <Pager
+          basePath={"/post/page"}
+          maxPage={maxPage}
+          pageNum={pageNum}
+        />
+
+        <Adsense
+          client={NEXT_PUBLIC_ADSENSE_CLIENT}
+          slot={NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT}
+        />
+      </Container>
     </footer>
   </>
 )

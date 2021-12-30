@@ -8,6 +8,14 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 768px) {
+  .headerInner {
+    max-width: 768px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .siteTitle {
   margin: 0;
   font-size: 2rem;
