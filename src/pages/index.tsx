@@ -1,8 +1,8 @@
 import { Params } from "next/dist/server/router";
 
 import MyHead from "../components/Head/Head";
-import { List } from '../components/layouts/List/List';
-import { ListPage } from "../components/templates/ListPage";
+import { Base } from "../components/layouts/Base";
+import { ListPage } from "../components/templates/List";
 import { getAllPost } from "../libs/microcms";
 import { PostMapper } from "../models/mapper/PostMapper";
 
@@ -10,9 +10,8 @@ import type { ListPageProp } from "./post/page/[offset]";
 import type { GetStaticProps, NextPage } from "next";
 
 
-
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
-  <List head={
+  <Base head={
     <MyHead
       title=""
       description=""
@@ -26,7 +25,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
       maxPage={maxPage}
       pageNum={pageNum}
     />
-  </List>
+  </Base>
 );
 
 export const getStaticProps: GetStaticProps<ListPageProp, Params> = async () => {

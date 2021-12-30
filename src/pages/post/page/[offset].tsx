@@ -1,12 +1,12 @@
 import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
 
 import MyHead from "../../../components/Head/Head";
-import { List } from "../../../components/layouts/List/List";
-import { ListPage } from "../../../components/templates/ListPage";
+import { Base } from '../../../components/layouts/Base/index';
+import { ListPage } from '../../../components/templates/List/index';
 import { getAllPost } from "../../../libs/microcms";
 import { PostMapper } from "../../../models/mapper/PostMapper";
-import { IPostItem } from "../../../types/domain/Post";
 
+import type { IPostItem } from "../../../types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 
@@ -22,7 +22,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
-  <List head={
+  <Base head={
     <MyHead
       title="記事一覧"
       description="今までに書いた記事の一覧ページです"
@@ -36,7 +36,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
       maxPage={maxPage}
       pageNum={pageNum}
     />
-  </List>
+  </Base>
 )
 
 const postPerPage = 12;
