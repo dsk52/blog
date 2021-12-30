@@ -4,8 +4,8 @@ import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/
 import React from "react";
 
 import MyHead from "../../components/Head/Head";
-import Page from "../../components/layouts/Page/Page";
-import { DetailPage } from '../../components/templates/DetailPage';
+import { Base } from '../../components/layouts/Base/index';
+import { DetailPage } from "../../components/templates/Detail";
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
@@ -27,7 +27,7 @@ const Detail: NextPage<PostProps> = ({ post }) => {
   const excerpt = post.body.replace(/\r?\n/g, "").replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '').slice(0, 99)
 
   return (
-    <Page head={
+    <Base head={
       <MyHead
         title={post.title}
         description={excerpt}
@@ -37,7 +37,7 @@ const Detail: NextPage<PostProps> = ({ post }) => {
       />
     }>
       <DetailPage post={post} path={pagePath} />
-    </Page >
+    </Base >
   )
 }
 
