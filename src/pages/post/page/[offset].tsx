@@ -28,7 +28,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
       description="今までに書いた記事の一覧ページです"
       url={`/post/page/${pageNum}`}
       pageType='website'
-      index='followOnly'
+      index='index'
     />
   }>
     <ListPage
