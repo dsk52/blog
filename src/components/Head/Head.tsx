@@ -14,9 +14,7 @@ const Index = (index: IndexType): string => {
     case 'index':
       return 'index, follow'
 
-    case 'followOnly':
-      return 'noindex, follow'
-
+    case 'noindex':
     default:
       return 'noindex';
   }

@@ -1,4 +1,4 @@
-export type IndexType = "index" | "followOnly" | "";
+export type IndexType = "index" | "noindex" | "";
 
 export type Props = {
   title: string;
