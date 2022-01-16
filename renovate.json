@@ -21,8 +21,8 @@
         "^@types/"
       ],
       "automerge": true,
-      "major": {
-        "automerge": false
+      "patch": {
+        "automerge": true
       }
     },
     {
@@ -35,13 +35,18 @@
       ],
       "packagePatterns": [
         "^@typescript-eslint/"
-      ]
+      ],
+      "patch": {
+        "automerge": true
+      }
     },
     {
       "depTypeList": [
         "devDependencies"
       ],
-      "automerge": true
+      "patch": {
+        "automerge": true
+      }
     }
   ]
 }
