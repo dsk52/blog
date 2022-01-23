@@ -1,6 +1,7 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    "group:allNonMajor"
   ],
   "timezone": "Asia/Tokyo",
   "schedule": [
@@ -17,10 +18,10 @@
   },
   "packageRules": [
     {
-      "packagePatterns": [
-        "^@types/"
+      "groupName": "definitelyTyped",
+      "matchPackagePrefixes": [
+        "@types/"
       ],
-      "automerge": true,
       "patch": {
         "automerge": true
       }
@@ -41,9 +42,13 @@
       }
     },
     {
-      "depTypeList": [
-        "devDependencies"
+      "matchPackageNames": [
+        "react",
+        "@types/react",
+        "react-dom",
+        "@types/react-dom"
       ],
+      "groupName": "react",
       "patch": {
         "automerge": true
       }
