@@ -1,6 +1,6 @@
 // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
-import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
+import { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
 import React from "react";
 
 import MyHead from "../../components/Head/Head";

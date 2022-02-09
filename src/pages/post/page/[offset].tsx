@@ -1,4 +1,4 @@
-import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
+import { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
 
 import MyHead from "../../../components/Head/Head";
 import { Base } from '../../../components/layouts/Base/index';
