@@ -1,7 +1,8 @@
 {
   "extends": [
     "config:base",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    ":followTag(typescript, next)"
   ],
   "timezone": "Asia/Tokyo",
   "schedule": [
@@ -13,17 +14,26 @@
   "labels": [
     "renovate"
   ],
-  "patch": {
-    "automerge": true
-  },
   "packageRules": [
+    {
+      "packageRules": [
+        {
+          "matchUpdateTypes": [
+            "patch",
+            "pin"
+          ],
+          "automerge": true
+        }
+      ]
+    },
     {
       "groupName": "definitelyTyped",
       "matchPackagePrefixes": [
         "@types/"
       ],
-      "patch": {
-        "automerge": true
+      "automerge": true,
+      "major": {
+        "automerge": false
       }
     },
     {
