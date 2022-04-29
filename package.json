@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/gtag.js": "0.0.10",
     "@types/markdown-it": "12.2.3",
-    "@types/node": "14.18.13",
+    "@types/node": "14.18.16",
     "@types/react": "17.0.44",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
