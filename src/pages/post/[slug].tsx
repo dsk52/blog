@@ -22,9 +22,25 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
+/**
+ * 指定文字列から改行・HTMLタグを除いた上で指定文字列抜粋する
+ *
+ * @param body 指定文字列
+ * @param excerptNuNum 抜き出す文字数
+ * @returns
+ */
+const createExcerptFromBody = (body: string, excerptNuNum: number): string => {
+  return body
+    .replace(/\r?\n/g, "")
+    .replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '')
+    .slice(0, excerptNuNum - 1)
+}
+
 const Detail: NextPage<PostProps> = ({ post }) => {
   const pagePath = `/post/${post.slug}`
-  const excerpt = post.body.replace(/\r?\n/g, "").replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '').slice(0, 99)
+
+  // description周りで使うため、本文から指定文字抜き出す
+  const excerpt = createExcerptFromBody(post.body, 100)
 
   return (
     <Base head={
@@ -42,10 +58,7 @@ const Detail: NextPage<PostProps> = ({ post }) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  let postPerPage = 10
-  if (isProduction) {
-    postPerPage = 100
-  }
+  const postPerPage = isProduction ? 100 : 10
 
   let pageNum = 0
   const paths: any[] = []
@@ -59,12 +72,12 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (!res.contents.length) {
     return {
       paths: [{ params: { slug: '' } }],
-      fallback: false
+      fallback: 'blocking'
     }
   }
 
   res.contents.forEach(({ slug }) => {
-    paths.push({ params: { slug: slug } })
+    paths.push({ params: { slug } })
   })
   ++pageNum
 
@@ -73,7 +86,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     while (pageNum <= maxPage) {
       const res = await getPostSlugs(postPerPage, paths.length + 1)
       res.contents.forEach(({ slug }) => {
-        paths.push({ params: { slug: slug } })
+        paths.push({ params: { slug } })
       })
 
       ++pageNum
@@ -83,7 +96,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   }
 }
 
@@ -111,7 +124,7 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async (context)
   })
   post.body = md.render(post.body)
 
-  return { props: { post } }
+  return { props: { post }, revalidate: isProduction ? 60 : 10 }
 }
 
 export default Detail
