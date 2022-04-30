@@ -1,5 +1,3 @@
-import { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
-
 import MyHead from "../../../components/Head/Head";
 import { Base } from '../../../components/layouts/Base/index';
 import { ListPage } from '../../../components/templates/List/index';
@@ -15,10 +13,6 @@ export type ListPageProp = {
   posts: IPostItem[],
   maxPage: number,
   pageNum: number
-}
-
-interface Params extends ParsedUrlQuery {
-  offset: string
 }
 
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
