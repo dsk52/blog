@@ -1,5 +1,3 @@
-import { Params } from "next/dist/server/router";
-
 import MyHead from "../components/Head/Head";
 import { Base } from "../components/layouts/Base";
 import { ListPage } from "../components/templates/List";
@@ -7,7 +5,7 @@ import { getAllPost } from "../libs/microcms";
 import { PostMapper } from "../models/mapper/PostMapper";
 
 import type { ListPageProp } from "./post/page/[offset]";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 
 
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
@@ -28,11 +26,11 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
   </Base>
 );
 
-export const getStaticProps: GetStaticProps<ListPageProp, Params> = async () => {
+export const getServerSideProps: GetServerSideProps = async (_) => {
   const response = await getAllPost()
-  const posts = await PostMapper.list(response.contents);
+  const posts = PostMapper.list(response.contents);
 
-  const postPerPage = 12;
+  const postPerPage = 10;
 
   const pageNum = 1;  // トップなので、1ページ目を確定
   const maxPage = Math.ceil(response.totalCount / postPerPage)

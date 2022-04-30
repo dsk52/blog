@@ -7,7 +7,7 @@ import { getAllPost } from "../../../libs/microcms";
 import { PostMapper } from "../../../models/mapper/PostMapper";
 
 import type { IPostItem } from "../../../types/domain/Post";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 
 
 
@@ -41,51 +41,19 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
 
 const postPerPage = 12;
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const paths = []
-  try {
-    const offset = 0;
-    const limit = 1;// 1件でも取ればtotalCountが返ってくるので1件だけ取得する
-    const res = await getAllPost(limit, offset)
-
-    const maxPage = Math.ceil(res.totalCount / postPerPage)
-
-    let pageNum = 1;
-    do {
-      paths.push({ params: { offset: pageNum.toString() } })
-      ++pageNum
-    } while (pageNum < maxPage);
-
-  } catch (error) {
-    console.error(error);
-    return {
-      paths: [{ params: { offset: '1' } }],
-      fallback: false
-    }
-  }
-
-  return {
-    paths: paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps: GetStaticProps<ListPageProp, Params> = async (context) => {
-  const offsetParam = await context.params?.offset
-  if (!offsetParam) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const offsetParams = context.params?.offset
+  if (!offsetParams) {
     return {
       notFound: true
     }
   }
-  const pageNum = parseInt(offsetParam);
+  const pageNum = parseInt(offsetParams[0]);
 
-  let offset = 0;
-  if (pageNum > 1) {
-    offset = postPerPage * pageNum + 1
-  }
+  const offset = pageNum > 1 ? postPerPage * pageNum + 1 : 0;
 
   const response = await getAllPost(postPerPage, offset)
-  const posts = await PostMapper.list(response.contents);
+  const posts = PostMapper.list(response.contents);
 
   const maxPage = Math.ceil(response.totalCount / postPerPage)
 
