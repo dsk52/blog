@@ -24,20 +24,5 @@ module.exports = {
     NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT,
     NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT,
     NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/post',
-        destination: '/post/page/1',
-        permanent: true, // 永続的なリダイレクト
-      },
-      {
-        source: '/post/page',
-        destination: '/post/page/1',
-        permanent: true, // 永続的なリダイレクト
-      },
-    ]
-  },
+  }
 }
