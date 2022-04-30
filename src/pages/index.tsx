@@ -20,6 +20,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
   }>
     <ListPage
       posts={posts}
+      basePath='/post/page/'
       maxPage={maxPage}
       pageNum={pageNum}
     />

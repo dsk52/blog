@@ -12,6 +12,7 @@ import type { PageBaseProp } from "../../ui/Pager/type";
 
 type Props = {
   posts: IPostItem[]
+  basePath: string
 } & PageBaseProp
 
 const { publicRuntimeConfig } = getConfig()
@@ -22,7 +23,7 @@ const {
   NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
 } = publicRuntimeConfig
 
-export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum }) => (
+export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum, basePath }) => (
   <>
     <Container>
       <Adsense
@@ -38,7 +39,7 @@ export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum }) => (
     <footer>
       <Container>
         <Pager
-          basePath={"/post/page"}
+          basePath={basePath}
           maxPage={maxPage}
           pageNum={pageNum}
         />
