@@ -8,6 +8,8 @@
     "export": "npm run build && next export && npm run postbuild",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "next lint",
     "lint:fix": "./node_modules/.bin/eslint ./src/**/*.{ts,tsx} && prettier --write ./src/**/*.{ts,tsx}"
   },
@@ -23,6 +25,8 @@
     "sanitize.css": "13.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
     "@types/gtag.js": "0.0.10",
     "@types/markdown-it": "12.2.3",
     "@types/node": "14.18.16",
@@ -32,6 +36,8 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-unused-imports": "2.0.0",
+    "jest": "^28.0.3",
+    "jest-environment-jsdom": "^28.0.2",
     "microcms-js-sdk": "2.0.0",
     "next-sitemap": "2.5.20",
     "prettier": "2.6.2",
