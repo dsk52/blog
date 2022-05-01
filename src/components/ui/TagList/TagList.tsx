@@ -9,10 +9,15 @@ export const TagList: VFC<Props> = ({ tags }) => (
     {tags.map((tag: ITag) => (
       <li
         key={tag.slug}
-        className={s.tagItem}
       >
-        #{tag.name}
+        <Tag {...tag} />
       </li>
     ))}
   </ul>
+)
+
+export const Tag: VFC<ITag> = (props) => (
+  <div className={s.tagItem}>
+    #{props.name}
+  </div>
 )
