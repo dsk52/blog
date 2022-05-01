@@ -1,9 +1,9 @@
 import MyHead from "../../../components/Head/Head";
 import { Base } from '../../../components/layouts/Base/index';
 import { ListPage } from '../../../components/templates/List/index';
+import { calcOffset, calcMaxPage } from "../../../components/ui/Pager/Pager";
 import { getAllPost, postPerPage } from "../../../libs/microcms";
 import { PostMapper } from "../../../models/mapper/PostMapper";
-import { calcMaxPage, calcOffset } from "../../../utilities/page";
 
 import type { IPostItem } from "../../../types/domain/Post";
 import type { GetServerSideProps, NextPage } from "next";

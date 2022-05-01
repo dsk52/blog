@@ -3,9 +3,9 @@ import React from "react";
 import MyHead from "../../../../components/Head/Head";
 import { Base } from "../../../../components/layouts/Base";
 import { ListPage } from "../../../../components/templates/List";
+import { calcOffset, calcMaxPage } from "../../../../components/ui/Pager/Pager";
 import { getByTagId, getTagBySlug, postPerPage } from "../../../../libs/microcms";
 import { PostMapper } from "../../../../models/mapper/PostMapper";
-import { calcMaxPage, calcOffset } from "../../../../utilities/page";
 
 import type { ApiTag } from '../../../../types/api/Post';
 import type { IPostItem } from "../../../../types/domain/Post";
