@@ -12,12 +12,12 @@ describe('Offsetのテスト', () => {
 
   it('1ページ目がPER_PAGEになる', () => {
     const offset = calcOffset(1, POST_PER_PAGE)
-    expect(offset).toBe(POST_PER_PAGE)
+    expect(offset).toBe(0)
   })
 
   it('2ページ目がPER_PAGEの倍数になる', () => {
     const offset = calcOffset(2, POST_PER_PAGE)
-    expect(offset).toBe(POST_PER_PAGE * 2)
+    expect(offset).toBe(POST_PER_PAGE)
   })
 })
 

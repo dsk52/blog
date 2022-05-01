@@ -26,7 +26,7 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
       <ul style={{ display: 'flex', flexWrap: 'wrap', listStyleType: 'none', gap: '1.6em' }}>
         {tags && tags.map(tag => (
           <li key={tag.id} className="">
-            <Link href={`/post/tags/${tag.slug}/0`}>
+            <Link href={`/post/tags/${tag.slug}/1`}>
               <a>
                 <Tag {...tag} />
               </a>

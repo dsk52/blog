@@ -8,9 +8,14 @@ export const Pager: VFC<PagerProps> = ({ basePath, pageNum, maxPage }) => {
   const prevPageNum = pageNum - 1
   const nextPageNum = pageNum + 1
 
+  /**
+   * microCMSのoffsetとしては0スタートだけど、
+   * ブログのアプリケーションとしてページ番号0は気持ち悪いので避ける
+   */
+
   return (
     <nav className={s.pagerWrapper}>
-      {prevPageNum >= 0 ? (
+      {prevPageNum > 0 ? (
         <ButtonLink
           label="前のページへ"
           link={`${basePath}/${prevPageNum}`}
@@ -36,11 +41,11 @@ export const Pager: VFC<PagerProps> = ({ basePath, pageNum, maxPage }) => {
  * @returns
  */
 export function calcOffset(currnetPageNum: number, postPerPage: number): number {
-  if (currnetPageNum <= 0) {
+  if (currnetPageNum <= 1) {
     return 0
   }
 
-  return postPerPage * currnetPageNum;
+  return postPerPage * (currnetPageNum - 1);
 }
 
 /**

@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       tag: Tag,
       posts,
-      maxPage: maxPage - 1,
+      maxPage,
       pageNum
     }
   }
