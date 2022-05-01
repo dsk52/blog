@@ -33,6 +33,9 @@ jobs:
       - name: lint
         run: npm run lint
 
+      - name: test
+        run: npm run test
+
       - name: build
         env:
           APP_ENV: "development"
