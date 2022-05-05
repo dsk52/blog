@@ -53,7 +53,7 @@ export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
 
           <ArticleFooter>
             <aside>
-              <TagList tags={post.tags} />
+              <TagList tags={post.tags} doLink />
             </aside>
 
             <section>
