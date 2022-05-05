@@ -28,7 +28,7 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
           <li key={tag.id} className="">
             <Link href={`/post/tags/${tag.slug}/1`}>
               <a>
-                <Tag {...tag} />
+                <Tag {...tag} doLink />
               </a>
             </Link>
           </li>

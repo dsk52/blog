@@ -60,7 +60,7 @@ const Detail: NextPage<PostProps> = ({ post }) => {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const postPerPage = isProduction ? 100 : 10
 
-  let pageNum = 0
+  let pageNum = 1
   const paths: any[] = []
   const res = await getPostSlugs(postPerPage, pageNum)
 
@@ -79,7 +79,6 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   res.contents.forEach(({ slug }) => {
     paths.push({ params: { slug } })
   })
-  ++pageNum
 
   // 全ページ分取得して結合する
   if (isProduction) {
