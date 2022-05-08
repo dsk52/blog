@@ -4,9 +4,8 @@ import { SITE } from '../../../constants/site';
 import s from './Share.module.css'
 
 import type { Props } from "./type";
-import type { VFC } from "react";
 
-export const Share: VFC<Props> = ({ title, path }) => {
+export const Share = ({ title, path }: Props) => {
   const url = `${SITE.url}${path}`
 
   return (

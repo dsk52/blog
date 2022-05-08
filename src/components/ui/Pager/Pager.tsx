@@ -2,9 +2,8 @@ import { ButtonLink } from "../Button/Button"
 import s from './Pager.module.css'
 
 import type { PagerProps } from "./type"
-import type { VFC } from "react"
 
-export const Pager: VFC<PagerProps> = ({ basePath, pageNum, maxPage }) => {
+export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
   const prevPageNum = pageNum - 1
   const nextPageNum = pageNum + 1
 

@@ -1,5 +1,5 @@
 import getConfig from 'next/config';
-import React, { type VFC } from "react";
+import React from "react";
 
 import { Adsense } from "../../Adsense/Adsense";
 import { Container } from '../../Container/index';
@@ -23,7 +23,7 @@ const {
   NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
 } = publicRuntimeConfig
 
-export const ListPage: VFC<Props> = ({ posts, maxPage, pageNum, basePath }) => (
+export const ListPage = ({ posts, maxPage, pageNum, basePath }: Props) => (
   <>
     <Container>
       <Adsense

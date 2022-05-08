@@ -5,14 +5,13 @@ import Header from "../Header/Header";
 import s from './index.module.css'
 
 import type { Props } from "./type";
-import type { FC } from 'react';
 
-export const Base: FC<Props> = (props): JSX.Element => (
+export const Base = ({ head, children }: Props): JSX.Element => (
   <>
-    {props.head}
+    {head}
     <Header />
     <main className={s.main}>
-      {props.children}
+      {children}
     </main>
     <Footer />
   </>

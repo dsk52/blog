@@ -1,7 +1,12 @@
-import { FC } from "react";
-
 import s from './style.module.css'
 
-export const Container: FC = props => (
-  <div className={s.container}>{props.children}</div>
+import type { ReactNode } from "react"
+
+
+type Props = {
+  children: ReactNode
+}
+
+export const Container = ({ children }: Props) => (
+  <div className={s.container}>{children}</div>
 )

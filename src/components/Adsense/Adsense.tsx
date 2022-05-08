@@ -2,9 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 import type { GoogleAdsenseProps } from "./type";
-import type { VFC } from 'react'
 
-export const Adsense: VFC<GoogleAdsenseProps> = ({
+export const Adsense = ({
   className = '',
   style = { display: 'block' },
   client,
@@ -13,7 +12,7 @@ export const Adsense: VFC<GoogleAdsenseProps> = ({
   layout = '',
   layoutKey = '',
   responsive = 'false',
-}) => {
+}: GoogleAdsenseProps) => {
   const { asPath } = useRouter();
 
   useEffect(() => {
