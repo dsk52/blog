@@ -1,29 +1,34 @@
 import s from './Article.module.css'
 
-import type { FC } from 'react'
+import type { ReactNode } from 'react';
 
 
-export const Article: FC = (props) => (
+
+type Props = {
+  children: ReactNode
+}
+
+export const Article = ({ children }: Props) => (
   <article className={s.article}>
-    {props.children}
+    {children}
   </article>
 )
 
-export const ArticleHeader: FC = (props) => (
+export const ArticleHeader = ({ children }: Props) => (
   <header className={s.articleHeader}>
-    {props.children}
+    {children}
   </header>
 )
 
 
-export const ArticleBody: FC = (props) => (
+export const ArticleBody = ({ children }: Props) => (
   <div className={s.articleBody}>
-    {props.children}
+    {children}
   </div>
 )
 
-export const ArticleFooter: FC = (props) => (
+export const ArticleFooter = ({ children }: Props) => (
   <div className={s.articleFooter}>
-    {props.children}
+    {children}
   </div>
 )

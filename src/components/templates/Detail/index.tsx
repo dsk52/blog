@@ -1,5 +1,5 @@
 import getConfig from "next/config";
-import React, { type VFC } from "react";
+import React from "react";
 
 import { PostProps } from "../../../pages/post/[slug]";
 import { datetimeToDate } from "../../../utilities/Date";
@@ -24,7 +24,7 @@ const {
   NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
 } = publicRuntimeConfig
 
-export const DetailPage: VFC<DetailProps> = ({ post, path }) => {
+export const DetailPage = ({ post, path }: DetailProps) => {
   const pubDate = datetimeToDate(post.publishedAt)
 
   return (
