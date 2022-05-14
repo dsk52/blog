@@ -1,7 +1,7 @@
 import { createClient } from "microcms-js-sdk";
 
-import { ApiPost } from "../types/api/Post";
-import { microCmsResponse } from "../types/Microcms";
+import { microCmsResponse } from "../types/api/Microcms";
+import { ApiPost, ApiTag } from "../types/api/Post";
 
 const microcms = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
@@ -10,8 +10,11 @@ const microcms = createClient({
 
 const ENDPOINTS = {
   POST: "post",
+  TAG: "tags",
 };
 type ENDPOINTS = typeof ENDPOINTS[keyof typeof ENDPOINTS];
+
+export const postPerPage = 12;
 
 export async function getAllPost(
   limit = 0,
@@ -22,7 +25,7 @@ export async function getAllPost(
     queries: {
       fields: "title,slug,tags,publishedAt",
       orders: "-publishedAt",
-      limit: 10,
+      limit: postPerPage,
       offset: offset,
     },
   };
@@ -34,16 +37,16 @@ export async function getAllPost(
 }
 
 export async function getPostSlugs(
-  limit = 10,
-  offset = 10
+  limit = postPerPage,
+  offset = 0
 ): Promise<microCmsResponse<{ slug: string }>> {
   let params = {
     endpoint: ENDPOINTS.POST,
     queries: {
       fields: "slug",
       orders: "-publishedAt",
-      limit: 10,
-      offset: offset,
+      limit,
+      offset,
     },
   };
   if (limit != 0) {
@@ -58,6 +61,48 @@ export async function getBySlug(
 ): Promise<microCmsResponse<ApiPost>> {
   return await microcms.get({
     endpoint: ENDPOINTS.POST,
+    queries: { filters: `slug[equals]${slug}` },
+  });
+}
+
+export async function getByTagId(
+  tagId: string,
+  limit = postPerPage,
+  offset = 0
+): Promise<microCmsResponse<ApiPost>> {
+  return await microcms.get({
+    endpoint: ENDPOINTS.POST,
+    queries: {
+      filters: `tags[contains]${tagId}`,
+      orders: "-publishedAt",
+      limit,
+      offset,
+    },
+  });
+}
+
+export type TagListItem = Pick<ApiTag, "id" | "slug" | "name">;
+
+export async function getTags(
+  limit = 100,
+  offset = 0
+): Promise<microCmsResponse<TagListItem>> {
+  return await microcms.get({
+    endpoint: ENDPOINTS.TAG,
+    queries: {
+      fields: "id,slug,name",
+      orders: "-slug",
+      limit,
+      offset,
+    },
+  });
+}
+
+export async function getTagBySlug(
+  slug: string
+): Promise<microCmsResponse<ApiTag>> {
+  return await microcms.get({
+    endpoint: ENDPOINTS.TAG,
     queries: { filters: `slug[equals]${slug}` },
   });
 }

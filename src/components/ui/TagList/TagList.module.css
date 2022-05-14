@@ -6,10 +6,20 @@
   margin: 0;
 }
 
-.tagItem {
-  line-height: 1;
+.tagListItem + .tagListItem {
+  margin-left: 0.8em;
 }
 
-.tagItem + .tagItem {
-  margin-left: 0.5em;
+.tag {
+  line-height: 1;
+  cursor: default;
+}
+
+.tagLink {
+  line-height: 1;
+  text-decoration: underline;
+}
+
+.tagLink:hover {
+  text-decoration: none;
 }

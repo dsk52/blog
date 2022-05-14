@@ -1,22 +1,31 @@
+import Link from "next/link";
+
 import s from './TagList.module.css'
 
 import type { ITag } from '../../../types/domain/Post';
-import type { VFC } from "react";
+import type { Props, TagItem } from "./type";
 
-
-type Props = {
-  tags: ITag[]
-}
-
-export const TagList: VFC<Props> = ({ tags }) => (
+export const TagList = ({ tags, doLink = false }: Props) => (
   <ul className={s.tagList}>
     {tags.map((tag: ITag) => (
       <li
         key={tag.slug}
-        className={s.tagItem}
+        className={s.tagListItem}
       >
-        #{tag.name}
+        <Tag {...tag} doLink={doLink} />
       </li>
     ))}
   </ul>
 )
+
+export const Tag = ({ name, slug, doLink = false }: TagItem) => {
+  const link = doLink ? `/post/tags/${slug}/1` : '#'
+
+  return (
+    <Link href={link}>
+      <a className={doLink ? s.tagLink : s.tag}>
+        #{name}
+      </a>
+    </Link>
+  )
+}

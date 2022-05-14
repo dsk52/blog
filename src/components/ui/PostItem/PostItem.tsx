@@ -4,15 +4,9 @@ import { datetimeToDate } from '../../../utilities/Date';
 import { TagList } from '../TagList/TagList';
 import s from './PostItem.module.css'
 
-import type { IPostItem } from '../../../types/domain/Post';
-import type { VFC } from "react";
+import type { Props } from "./type";
 
-
-type Props = {
-  post: IPostItem
-}
-
-export const PostItem: VFC<Props> = ({ post }) => {
+export const PostItem = ({ post }: Props) => {
   const pubDate = datetimeToDate(post.publishedAt)
 
   return (

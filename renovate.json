@@ -1,6 +1,8 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    "group:allNonMajor",
+    ":followTag(typescript, next)"
   ],
   "timezone": "Asia/Tokyo",
   "schedule": [
@@ -12,15 +14,53 @@
   "labels": [
     "renovate"
   ],
-  "patch": {
-    "automerge": true
-  },
   "packageRules": [
     {
-      "depTypeList": [
-        "devDependencies"
+      "packageRules": [
+        {
+          "matchUpdateTypes": [
+            "patch"
+          ],
+          "automerge": true
+        }
+      ]
+    },
+    {
+      "groupName": "definitelyTyped",
+      "matchPackagePrefixes": [
+        "@types/"
       ],
-      "automerge": true
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "groupName": "linters",
+      "extends": [
+        "packages:linters"
+      ],
+      "packageNames": [
+        "prettier"
+      ],
+      "packagePatterns": [
+        "^@typescript-eslint/"
+      ],
+      "patch": {
+        "automerge": true
+      }
+    },
+    {
+      "matchPackageNames": [
+        "react",
+        "@types/react",
+        "react-dom",
+        "@types/react-dom"
+      ],
+      "groupName": "react",
+      "patch": {
+        "automerge": true
+      }
     }
   ]
 }

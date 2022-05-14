@@ -1,11 +1,11 @@
 // eslint-disable-line import/order
 import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
-import { ParsedUrlQuery } from 'node:querystring' // eslint-disable-line import/order
+import { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
 import React from "react";
 
 import MyHead from "../../components/Head/Head";
-import Page from "../../components/layouts/Page/Page";
-import { DetailPage } from '../../components/templates/DetailPage';
+import { Base } from '../../components/layouts/Base/index';
+import { DetailPage } from "../../components/templates/Detail";
 import { getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
@@ -22,12 +22,28 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
+/**
+ * 指定文字列から改行・HTMLタグを除いた上で指定文字列抜粋する
+ *
+ * @param body 指定文字列
+ * @param excerptNuNum 抜き出す文字数
+ * @returns
+ */
+const createExcerptFromBody = (body: string, excerptNuNum: number): string => {
+  return body
+    .replace(/\r?\n/g, "")
+    .replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '')
+    .slice(0, excerptNuNum - 1)
+}
+
 const Detail: NextPage<PostProps> = ({ post }) => {
   const pagePath = `/post/${post.slug}`
-  const excerpt = post.body.replace(/\r?\n/g, "").replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, '').slice(0, 99)
+
+  // description周りで使うため、本文から指定文字抜き出す
+  const excerpt = createExcerptFromBody(post.body, 100)
 
   return (
-    <Page head={
+    <Base head={
       <MyHead
         title={post.title}
         description={excerpt}
@@ -37,17 +53,14 @@ const Detail: NextPage<PostProps> = ({ post }) => {
       />
     }>
       <DetailPage post={post} path={pagePath} />
-    </Page >
+    </Base >
   )
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  let postPerPage = 10
-  if (isProduction) {
-    postPerPage = 100
-  }
+  const postPerPage = isProduction ? 100 : 10
 
-  let pageNum = 0
+  let pageNum = 1
   const paths: any[] = []
   const res = await getPostSlugs(postPerPage, pageNum)
 
@@ -59,21 +72,20 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (!res.contents.length) {
     return {
       paths: [{ params: { slug: '' } }],
-      fallback: false
+      fallback: 'blocking'
     }
   }
 
   res.contents.forEach(({ slug }) => {
-    paths.push({ params: { slug: slug } })
+    paths.push({ params: { slug } })
   })
-  ++pageNum
 
   // 全ページ分取得して結合する
   if (isProduction) {
     while (pageNum <= maxPage) {
       const res = await getPostSlugs(postPerPage, paths.length + 1)
       res.contents.forEach(({ slug }) => {
-        paths.push({ params: { slug: slug } })
+        paths.push({ params: { slug } })
       })
 
       ++pageNum
@@ -83,7 +95,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   }
 }
 
@@ -111,7 +123,7 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async (context)
   })
   post.body = md.render(post.body)
 
-  return { props: { post } }
+  return { props: { post }, revalidate: isProduction ? 60 : 10 }
 }
 
 export default Detail

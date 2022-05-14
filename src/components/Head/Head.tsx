@@ -1,45 +1,35 @@
+import getConfig from "next/config";
 import Head from "next/head"
 
-import { siteName, siteDescription, siteURL } from '../../constants/site';
-import { NEXT_PUBLIC_ADSENSE_CLIENT } from "../Adsense/Adsense";
+import { SITE } from '../../constants/site';
 
-import type { VFC } from "react";
+import type { IndexType, Props } from "./type";
 
-type Index = 'index' | 'followOnly' | ''
+const { publicRuntimeConfig } = getConfig()
+const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig
 
-type Props = {
-  title: string
-  description: string
-  url: string
-  image?: string
-  pageType: 'website' | 'article'
-  index: Index
-}
-
-const Index = (index: Index): string => {
+const Index = (index: IndexType): string => {
   switch (index) {
     case 'index':
       return 'index, follow'
 
-    case 'followOnly':
-      return 'noindex, follow'
-
+    case 'noindex':
     default:
       return 'noindex';
   }
 }
 
-const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }): JSX.Element => {
+const MyHead = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }: Props): JSX.Element => {
   if (!description) {
-    description = siteDescription;
+    description = SITE.description;
   }
 
-  let propTitle = `${siteName} | ${description}`
+  let propTitle = `${SITE.name} | ${description}`
   if (title.length) {
-    propTitle = `${title} | ${siteName}`
+    propTitle = `${title} | ${SITE.name} `
   }
 
-  const metaUrl = `${siteURL}/${url}`;
+  const metaUrl = `${SITE.url}/${url}`;
 
   const indexStr = Index(index)
 
@@ -55,12 +45,12 @@ const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = ''
       <meta property="og:title" content={propTitle} />
       <meta property="og:type" content={pageType} />
       <meta property="og:url" content={metaUrl} />b
-      {image == null ? "" : (
+      {image === null ? "" : (
         <meta property="og:image" content={image} />
       )}
       <meta
         property="og:site_name"
-        content={`${siteName} | ${siteDescription}`}
+        content={`${SITE.name} | ${SITE.description}`}
       />
       <meta property="og:description" content={description} />
       <meta name="twitter:card" content="summary" />
