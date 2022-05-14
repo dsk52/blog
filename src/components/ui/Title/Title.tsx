@@ -1,8 +1,12 @@
 import style from './Title.module.css'
 
-import type { FC } from "react";
+import type { ReactNode } from "react";
 
 
-export const MainTitle: FC = (props) => (
-  <h1 className={style.mainTitle}>{props.children}</h1>
+type Props = {
+  children: ReactNode
+}
+
+export const MainTitle = ({ children }: Props) => (
+  <h1 className={style.mainTitle}>{children}</h1>
 )

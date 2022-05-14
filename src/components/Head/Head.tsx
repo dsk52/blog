@@ -4,7 +4,6 @@ import Head from "next/head"
 import { SITE } from '../../constants/site';
 
 import type { IndexType, Props } from "./type";
-import type { VFC } from "react";
 
 const { publicRuntimeConfig } = getConfig()
 const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig
@@ -20,7 +19,7 @@ const Index = (index: IndexType): string => {
   }
 }
 
-const MyHead: VFC<Props> = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }): JSX.Element => {
+const MyHead = ({ title = '', description = '', url = '', image = '', pageType = 'website', index = '' }: Props): JSX.Element => {
   if (!description) {
     description = SITE.description;
   }

@@ -4,9 +4,8 @@ import s from './TagList.module.css'
 
 import type { ITag } from '../../../types/domain/Post';
 import type { Props, TagItem } from "./type";
-import type { VFC } from "react";
 
-export const TagList: VFC<Props> = ({ tags, doLink = false }) => (
+export const TagList = ({ tags, doLink = false }: Props) => (
   <ul className={s.tagList}>
     {tags.map((tag: ITag) => (
       <li
@@ -19,7 +18,7 @@ export const TagList: VFC<Props> = ({ tags, doLink = false }) => (
   </ul>
 )
 
-export const Tag: VFC<TagItem> = ({ name, slug, doLink = false }) => {
+export const Tag = ({ name, slug, doLink = false }: TagItem) => {
   const link = doLink ? `/post/tags/${slug}/1` : '#'
 
   return (
