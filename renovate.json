@@ -1,10 +1,10 @@
 {
   "extends": [
     "config:base",
-    "group:allNonMajor",
-    ":followTag(typescript, next)"
+    ":timezone(Asia/Tokyo)",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":automergePatch"
   ],
-  "timezone": "Asia/Tokyo",
   "schedule": [
     "every weekend"
   ],
@@ -14,17 +14,10 @@
   "labels": [
     "renovate"
   ],
+  "npm": {
+    "enabled": true
+  },
   "packageRules": [
-    {
-      "packageRules": [
-        {
-          "matchUpdateTypes": [
-            "patch"
-          ],
-          "automerge": true
-        }
-      ]
-    },
     {
       "groupName": "definitelyTyped",
       "matchPackagePrefixes": [
@@ -49,6 +42,19 @@
       "patch": {
         "automerge": true
       }
+    },
+    {
+      "packageRules": [
+        {
+          "matchSourceUrlPrefixes": [
+            "https://github.com/kulshekhar/ts-jest"
+          ],
+          "matchUpdateTypes": [
+            "major"
+          ],
+          "groupName": "jest monorepo"
+        }
+      ]
     },
     {
       "matchPackageNames": [
