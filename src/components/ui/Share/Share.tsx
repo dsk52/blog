@@ -1,6 +1,5 @@
-// import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon } from "react-share";
-
 import { SITE } from "../../../constants/site";
+import { TwitterIcon } from "../../icons/Twitter/Twitter";
 import { TwitterShare } from "../../share/TwitterShare/TwitterShare";
 import s from './Share.module.css'
 
@@ -16,17 +15,8 @@ export const Share = ({ title, path }: Props) => {
           title={title}
           url={url}
         >
-          {/* <TwitterIcon size={48} round={true} /> */}
-          Twitter
+          <TwitterIcon size='48px' />
         </TwitterShare>
-      </li>
-
-      <li className={s.ShareListItem}>
-        {/* <FacebookShareButton
-          url={url}
-        >
-          <FacebookIcon size={48} round={true} />
-        </FacebookShareButton> */}
       </li>
     </ul>
   )
