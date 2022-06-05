@@ -1,4 +1,5 @@
 import getConfig from "next/config";
+import Link from "next/link";
 import React from "react";
 
 import { PostProps } from "../../../pages/post/[slug]";
@@ -24,11 +25,20 @@ const {
   NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
 } = publicRuntimeConfig
 
-export const DetailPage = ({ post, path }: DetailProps) => {
+export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
   const pubDate = datetimeToDate(post.publishedAt)
 
   return (
     <>
+      {draftKey && (
+        <div>
+          現在プレビューモードで閲覧中です。
+          <Link href={`/api/exitPreview`}>
+            <a>プレビューを解除</a>
+          </Link>
+        </div>
+      )}
+
       <Article>
         <Container>
           <ArticleHeader>
