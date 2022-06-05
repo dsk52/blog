@@ -6,7 +6,7 @@ import React from "react";
 import MyHead from "../../components/Head/Head";
 import { Base } from '../../components/layouts/Base/index';
 import { DetailPage } from "../../components/templates/Detail";
-import { getBySlug, getPostSlugs } from "../../libs/microcms";
+import { getByContentId, getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
 
@@ -15,7 +15,8 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 
 export type PostProps = {
-  post: IPost
+  post: IPost,
+  draftKey?: string
 }
 
 interface Params extends ParsedUrlQuery {
@@ -36,7 +37,7 @@ const createExcerptFromBody = (body: string, excerptNuNum: number): string => {
     .slice(0, excerptNuNum - 1)
 }
 
-const Detail: NextPage<PostProps> = ({ post }) => {
+const Detail: NextPage<PostProps> = ({ post, draftKey }) => {
   const pagePath = `/post/${post.slug}`
 
   // description周りで使うため、本文から指定文字抜き出す
@@ -52,7 +53,7 @@ const Detail: NextPage<PostProps> = ({ post }) => {
         index='index'
       />
     }>
-      <DetailPage post={post} path={pagePath} />
+      <DetailPage post={post} path={pagePath} draftKey={draftKey} />
     </Base >
   )
 }
@@ -99,15 +100,25 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<PostProps, Params> = async (context) => {
-  const slug = await context.params?.slug
+export const getStaticProps: GetStaticProps<PostProps, Params> = async ({ params, previewData }) => {
+  const slug = await params?.slug
   if (!slug) {
     return {
       notFound: true
     }
   }
 
-  const res = await getBySlug(slug)
+  const isDraft = (item: any): item is { draftKey: string } =>
+    !!(item?.draftKey && typeof item.draftKey === "string");
+  const draftKey = isDraft(previewData) ? { draftKey: previewData.draftKey } : {};
+
+  let res
+  if (draftKey && draftKey.draftKey) {
+    res = await getByContentId(slug, draftKey.draftKey)
+  } else {
+    res = await getBySlug(slug)
+  }
+
   if (!res.contents || !res.contents.length) {
     return {
       notFound: true
@@ -123,6 +134,9 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async (context)
   })
   post.body = md.render(post.body)
 
+  if (draftKey.draftKey) {
+    return { props: { post, ...draftKey } } // 下書きデータはキャッシュさせない
+  }
   return { props: { post }, revalidate: isProduction ? 60 : 10 }
 }
 
