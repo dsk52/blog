@@ -1,4 +1,4 @@
-import { createClient } from "microcms-js-sdk";
+import { createClient, MicroCMSQueries } from "microcms-js-sdk";
 
 import { microCmsResponse } from "../types/api/Microcms";
 import { ApiPost, ApiTag } from "../types/api/Post";
@@ -13,6 +13,18 @@ const ENDPOINTS = {
   TAG: "tags",
 };
 type ENDPOINTS = typeof ENDPOINTS[keyof typeof ENDPOINTS];
+
+export type Draft = {
+  draftKey: string;
+};
+
+export const isDraft = (arg: any): arg is Draft => {
+  if (!arg?.draftKey) {
+    return false;
+  }
+
+  return typeof arg.draftKey === "string";
+};
 
 export const postPerPage = 12;
 
@@ -56,12 +68,33 @@ export async function getPostSlugs(
   return await microcms.get(params);
 }
 
-export async function getBySlug(
-  slug: string
+export async function getByContentId(
+  contentId: string,
+  draftKey: string
 ): Promise<microCmsResponse<ApiPost>> {
   return await microcms.get({
     endpoint: ENDPOINTS.POST,
-    queries: { filters: `slug[equals]${slug}` },
+    contentId,
+    queries: {
+      draftKey,
+    },
+  });
+}
+
+export async function getBySlug(
+  slug: string,
+  draftKey?: string
+): Promise<microCmsResponse<ApiPost>> {
+  const queries: MicroCMSQueries = {
+    filters: `slug[equals]${slug}`,
+  };
+  if (draftKey && draftKey.length) {
+    queries.draftKey = draftKey;
+  }
+
+  return await microcms.get({
+    endpoint: ENDPOINTS.POST,
+    queries,
   });
 }
 
