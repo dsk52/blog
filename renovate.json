@@ -39,8 +39,9 @@
       "packagePatterns": [
         "^@typescript-eslint/"
       ],
-      "patch": {
-        "automerge": true
+      "automerge": true,
+      "major": {
+        "automerge": false
       }
     },
     {
