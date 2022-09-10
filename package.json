@@ -31,7 +31,7 @@
     "@types/gtag.js": "0.0.11",
     "@types/markdown-it": "12.2.3",
     "@types/node": "16.11.58",
-    "@types/react": "18.0.18",
+    "@types/react": "18.0.19",
     "eslint": "8.23.0",
     "eslint-config-next": "12.3.0",
     "eslint-config-prettier": "8.5.0",
