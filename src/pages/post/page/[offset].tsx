@@ -25,6 +25,7 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => {
         title="記事一覧"
         description="今までに書いた記事の一覧ページです"
         url={`${basePath}${pageNum}`}
+        canonicalUrl={`${basePath}/1`}
         pageType='website'
         index='index'
       />

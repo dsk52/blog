@@ -28,6 +28,7 @@ const TagSlugPage: NextPage<TagListPageProp> = ({ tag, posts, maxPage, pageNum }
         title={`${tag.name}タグの記事一覧`}
         description={`${tag.name}タグに関連する記事の一覧です`}
         url={`/post/tags/${tag.slug}/${pageNum}`}
+        canonicalUrl={`/post/tags/${tag.slug}/1`}
         pageType='website'
         index='index'
       />
