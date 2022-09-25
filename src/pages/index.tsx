@@ -2,6 +2,7 @@ import MyHead from "../components/Head/Head";
 import { Base } from "../components/layouts/Base";
 import { ListPage } from "../components/templates/List";
 import { calcMaxPage } from '../components/ui/Pager/Pager';
+import { ROUTE } from '../constants/route';
 import { getAllPost, postPerPage } from "../libs/microcms";
 import { PostMapper } from "../models/mapper/PostMapper";
 
@@ -14,14 +15,14 @@ const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => (
     <MyHead
       title=""
       description=""
-      url="/"
+      url={ROUTE.top}
       pageType="website"
       index='index'
     />
   }>
     <ListPage
       posts={posts}
-      basePath='/post/page/'
+      basePath={ROUTE.postListBase}
       maxPage={maxPage}
       pageNum={pageNum}
     />

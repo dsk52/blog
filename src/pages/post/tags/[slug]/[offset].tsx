@@ -4,6 +4,7 @@ import MyHead from "../../../../components/Head/Head";
 import { Base } from "../../../../components/layouts/Base";
 import { ListPage } from "../../../../components/templates/List";
 import { calcOffset, calcMaxPage } from "../../../../components/ui/Pager/Pager";
+import { ROUTE } from '../../../../constants/route';
 import { getByTagId, getTagBySlug, postPerPage } from "../../../../libs/microcms";
 import { PostMapper } from "../../../../models/mapper/PostMapper";
 
@@ -20,15 +21,15 @@ export type TagListPageProp = {
 
 
 const TagSlugPage: NextPage<TagListPageProp> = ({ tag, posts, maxPage, pageNum }) => {
-  const basePath = `/post/tags/${tag.slug}`
+  const basePath = ROUTE.postTagListBy(tag.slug)
 
   return (
     <Base head={
       <MyHead
         title={`${tag.name}タグの記事一覧`}
         description={`${tag.name}タグに関連する記事の一覧です`}
-        url={`/post/tags/${tag.slug}/${pageNum}`}
-        canonicalUrl={`/post/tags/${tag.slug}/1`}
+        url={ROUTE.postTagList(tag.slug, pageNum)}
+        canonicalUrl={ROUTE.postTagList(tag.slug, 1)}
         pageType='website'
         index='index'
       />

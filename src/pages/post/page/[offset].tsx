@@ -2,6 +2,7 @@ import MyHead from "../../../components/Head/Head";
 import { Base } from '../../../components/layouts/Base/index';
 import { ListPage } from '../../../components/templates/List/index';
 import { calcOffset, calcMaxPage } from "../../../components/ui/Pager/Pager";
+import { ROUTE } from '../../../constants/route';
 import { getAllPost, postPerPage } from "../../../libs/microcms";
 import { PostMapper } from "../../../models/mapper/PostMapper";
 
@@ -17,22 +18,20 @@ export type ListPageProp = {
 }
 
 const Index: NextPage<ListPageProp> = ({ posts, maxPage, pageNum }) => {
-  const basePath = "/post/page"
-
   return (
     <Base head={
       <MyHead
         title="記事一覧"
         description="今までに書いた記事の一覧ページです"
-        url={`${basePath}${pageNum}`}
-        canonicalUrl={`${basePath}/1`}
+        url={ROUTE.postList(pageNum)}
+        canonicalUrl={ROUTE.postList(1)}
         pageType='website'
         index='index'
       />
     }>
       <ListPage
         posts={posts}
-        basePath={basePath}
+        basePath={ROUTE.postListBase}
         maxPage={maxPage}
         pageNum={pageNum}
       />

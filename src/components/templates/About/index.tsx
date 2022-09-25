@@ -1,3 +1,4 @@
+import { EXTERNAL_PAGE } from "../../../constants/route";
 import { Container } from '../../Container/index';
 import { Article, ArticleBody, ArticleHeader } from "../../layouts/Article/Article"
 import { MainTitle } from "../../ui/Title/Title"
@@ -23,7 +24,7 @@ const AboutPage = () => (
           <p>Webフロントエンドとサーバーサイド、マーケティングとか好きです。</p>
           <p>好きなものは酒とカレーとラーメン。</p>
 
-          <p>詳しくは<a href="https://daisukekonishi.com">こちら</a></p>
+          <p>詳しくは<a href={EXTERNAL_PAGE.PROFILE}>こちら</a></p>
         </section>
 
         <section>
@@ -37,7 +38,7 @@ const AboutPage = () => (
 
         <section>
           <h2>お問い合わせ</h2>
-          <p>お問い合わせはTwitter <a href="https://twitter.com/skd_nw">@skd_nw</a>までよろしくお願い致します。<br />
+          <p>お問い合わせはTwitter <a href={EXTERNAL_PAGE.TWITTER}>@skd_nw</a>までよろしくお願い致します。<br />
             <small>※名前がコロコロ変わりますが、アイコンは青いペンギンです。</small></p>
         </section>
       </ArticleBody>
