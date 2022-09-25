@@ -2,20 +2,16 @@ import getConfig from "next/config";
 import Link from "next/link";
 import React from "react";
 
-import { PostProps } from "../../../pages/post/[slug]";
+import { ROUTE } from '../../../constants/route';
 import { datetimeToDate } from "../../../utilities/Date";
 import { Adsense } from "../../Adsense/Adsense";
-import { Container } from "../../Container";
+import { Container } from "../../Container/Container";
 import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../../layouts/Article/Article";
 import { ButtonLink } from "../../ui/Button/Button";
 import ds from '../../ui/PostItem/PostItem.module.css'
 import { Share } from "../../ui/Share/Share";
 import { TagList } from "../../ui/TagList/TagList";
-
-
-type DetailProps = {
-  path: string
-} & PostProps
+import { DetailProps } from "./type";
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -71,7 +67,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
               <Share title={post.title} path={path} />
             </section>
 
-            <ButtonLink link='/' label="トップに戻る" />
+            <ButtonLink link={ROUTE.top} label="トップに戻る" />
 
             <Adsense
               client={NEXT_PUBLIC_ADSENSE_CLIENT}

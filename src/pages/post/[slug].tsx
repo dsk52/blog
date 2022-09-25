@@ -10,14 +10,9 @@ import { getByContentId, getBySlug, getPostSlugs } from "../../libs/microcms";
 import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
 
-import type { IPost } from '../../types/domain/Post';
+import type { PostProps } from "../../components/templates/Detail/type";
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-
-export type PostProps = {
-  post: IPost,
-  draftKey?: string
-}
 
 interface Params extends ParsedUrlQuery {
   slug: string

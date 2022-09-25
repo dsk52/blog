@@ -1,6 +1,4 @@
-type IconProps = {
-  size: string
-}
+import type { IconProps } from "./type"
 
 export const TwitterIcon = ({ size }: IconProps): JSX.Element => {
   return (

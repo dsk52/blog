@@ -4,6 +4,7 @@ export type Props = {
   title: string;
   description: string;
   url: string;
+  canonicalUrl?: string;
   image?: string;
   pageType: "website" | "article";
   index: IndexType;
