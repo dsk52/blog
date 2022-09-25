@@ -1,5 +1,5 @@
 import { EXTERNAL_PAGE } from "../../../constants/route";
-import { Container } from '../../Container/index';
+import { Container } from '../../Container/Container';
 import { Article, ArticleBody, ArticleHeader } from "../../layouts/Article/Article"
 import { MainTitle } from "../../ui/Title/Title"
 

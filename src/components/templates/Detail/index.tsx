@@ -3,20 +3,15 @@ import Link from "next/link";
 import React from "react";
 
 import { ROUTE } from '../../../constants/route';
-import { PostProps } from "../../../pages/post/[slug]";
 import { datetimeToDate } from "../../../utilities/Date";
 import { Adsense } from "../../Adsense/Adsense";
-import { Container } from "../../Container";
+import { Container } from "../../Container/Container";
 import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../../layouts/Article/Article";
 import { ButtonLink } from "../../ui/Button/Button";
 import ds from '../../ui/PostItem/PostItem.module.css'
 import { Share } from "../../ui/Share/Share";
 import { TagList } from "../../ui/TagList/TagList";
-
-
-type DetailProps = {
-  path: string
-} & PostProps
+import { DetailProps } from "./type";
 
 const { publicRuntimeConfig } = getConfig()
 
