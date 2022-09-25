@@ -2,6 +2,7 @@ import getConfig from "next/config";
 import Link from "next/link";
 import React from "react";
 
+import { ROUTE } from '../../../constants/route';
 import { PostProps } from "../../../pages/post/[slug]";
 import { datetimeToDate } from "../../../utilities/Date";
 import { Adsense } from "../../Adsense/Adsense";
@@ -71,7 +72,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
               <Share title={post.title} path={path} />
             </section>
 
-            <ButtonLink link='/' label="トップに戻る" />
+            <ButtonLink link={ROUTE.top} label="トップに戻る" />
 
             <Adsense
               client={NEXT_PUBLIC_ADSENSE_CLIENT}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { ROUTE } from '../../../constants/route';
 import { SITE } from "../../../constants/site"
 import { GlobalNav } from "../../ui/GlobalNav/GlobalNav"
 import style from './Header.module.css'
@@ -10,7 +11,7 @@ const Header = () => (
       <div className={style.headerContent}>
         <div>
           <h1 className={style.siteTitle}>
-            <Link href="/">
+            <Link href={ROUTE.top}>
               {SITE.name}
             </Link>
           </h1>

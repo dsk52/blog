@@ -3,6 +3,7 @@ import React from "react";
 import MyHead from "../components/Head/Head";
 import { Base } from "../components/layouts/Base";
 import AboutPage from "../components/templates/About";
+import { ROUTE } from '../constants/route';
 
 import type { NextPage } from "next";
 
@@ -11,7 +12,7 @@ const About: NextPage = () => (
     <MyHead
       title="About"
       description=""
-      url="/about"
+      url={ROUTE.about}
       pageType='website'
       index='index'
     />
