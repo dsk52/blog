@@ -1,9 +1,8 @@
 
-import Link from "next/link";
 
 import MyHead from "../../../components/Head/Head";
 import { Base } from "../../../components/layouts/Base";
-import { Tag } from "../../../components/ui/TagList/TagList";
+import { TagList } from "../../../components/ui/TagList/TagList";
 import { getTags, type TagListItem } from "../../../libs/microcms";
 
 import type { GetServerSideProps, NextPage } from "next";
@@ -23,19 +22,9 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
     />
   }>
     <>
-      <ul style={{ display: 'flex', flexWrap: 'wrap', listStyleType: 'none', gap: '1.6em' }}>
-        {tags && tags.map(tag => (
-          <li key={tag.id} className="">
-            <Link href={`/post/tags/${tag.slug}/1`}>
-              <a>
-                <Tag {...tag} doLink />
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <TagList tags={tags} doLink />
     </>
-  </Base>
+  </Base >
 )
 
 export default TagIndexPage

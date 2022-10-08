@@ -1,4 +1,4 @@
-import type { ApiPost, ApiTag } from "../../types/api/Post";
+import type { ApiCategory, ApiPost, ApiTag } from "../../types/api/Post";
 import type {
   ICategory,
   IPost,
@@ -7,7 +7,7 @@ import type {
 } from "../../types/domain/Post";
 
 export class PostMapper {
-  public static category(category: any): ICategory {
+  public static category(category?: ApiCategory): ICategory {
     if (!category) {
       return {
         name: "",
@@ -46,7 +46,7 @@ export class PostMapper {
       category: category,
       tags: tags,
       updatedAt: post.updatedAt,
-      publishedAt: post.publishedAt,
+      publishedAt: post.publishedAt || "",
     };
   }
 
@@ -58,7 +58,7 @@ export class PostMapper {
         title: post.title,
         slug: post.slug,
         tags: tags,
-        publishedAt: post.publishedAt,
+        publishedAt: post.publishedAt || "",
       };
     });
   }

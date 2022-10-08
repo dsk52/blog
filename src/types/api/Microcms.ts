@@ -1,14 +1,11 @@
-export interface ICommonSchema {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
+import type {
+  MicroCMSContentId,
+  MicroCMSDate,
+  MicroCMSListResponse,
+} from "microcms-js-sdk";
+
+export interface ICommonSchema extends MicroCMSDate {
+  id: MicroCMSContentId["id"];
 }
 
-export type microCmsResponse<T> = {
-  contents: T[];
-  totalCount: number;
-  offset: number;
-  limit: number;
-};
+export interface microCmsResponse<T> extends MicroCMSListResponse<T> {}
