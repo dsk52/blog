@@ -26,10 +26,6 @@
   color: #ededed;
 }
 
-.date {
-  line-height: 1;
-}
-
 .date + * {
-  margin-left: 0.6em;
+  margin-left: 0.8em;
 }

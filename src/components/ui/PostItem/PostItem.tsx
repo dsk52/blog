@@ -10,7 +10,7 @@ export const PostItem = ({ post }: Props) => {
   const pubDate = datetimeToDate(post.publishedAt)
 
   return (
-    <>
+    <article>
       <div className={s.title}>
         <Link href={`/post/${encodeURIComponent(post.slug)}`}>
           {post.title}
@@ -25,6 +25,6 @@ export const PostItem = ({ post }: Props) => {
         </time>
         <TagList tags={post.tags} />
       </div>
-    </>
+    </article>
   )
 }
