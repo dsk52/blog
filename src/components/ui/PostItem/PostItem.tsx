@@ -23,7 +23,7 @@ export const PostItem = ({ post }: Props) => {
         >
           {pubDate}
         </time>
-        <TagList tags={post.tags} />
+        <TagList tags={post.tags} className={s.tagList} />
       </div>
     </article>
   )

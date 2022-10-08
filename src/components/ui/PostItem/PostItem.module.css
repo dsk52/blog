@@ -29,3 +29,8 @@
 .date + * {
   margin-left: 0.8em;
 }
+
+.tagList {
+  margin-left: 0.8em;
+  gap: 0.6em;
+}
