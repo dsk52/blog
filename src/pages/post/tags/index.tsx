@@ -23,9 +23,9 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
     />
   }>
     <>
-      <ul style={{ display: 'flex', flexWrap: 'wrap', listStyleType: 'none', gap: '1.6em' }}>
+      <ul style={{ display: 'flex', flexWrap: 'wrap', listStyleType: 'none', gap: '1.4em', marginLeft: '0.6em', marginRight: '0.6em', padding: 0 }}>
         {tags && tags.map(tag => (
-          <li key={tag.id} className="">
+          <li key={tag.id}>
             <Link href={`/post/tags/${tag.slug}/1`}>
               <a>
                 <Tag {...tag} doLink />
@@ -35,7 +35,7 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
         ))}
       </ul>
     </>
-  </Base>
+  </Base >
 )
 
 export default TagIndexPage
