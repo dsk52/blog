@@ -5,8 +5,8 @@ import s from './TagList.module.css'
 import type { ITag } from '../../../types/domain/Post';
 import type { Props, TagItem } from "./type";
 
-export const TagList = ({ tags, doLink = false }: Props) => (
-  <ul className={s.tagList}>
+export const TagList = ({ tags, className, doLink = false }: Props) => (
+  <ul className={`${s.tagList} ${className && className}`}>
     {tags.map((tag: ITag) => (
       <li
         key={tag.slug}

@@ -4,10 +4,7 @@
   list-style-type: none;
   padding-left: 0;
   margin: 0;
-}
-
-.tagListItem + .tagListItem {
-  margin-left: 0.8em;
+  gap: 1.4em;
 }
 
 .tag {

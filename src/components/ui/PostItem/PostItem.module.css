@@ -26,10 +26,11 @@
   color: #ededed;
 }
 
-.date {
-  line-height: 1;
+.date + * {
+  margin-left: 0.8em;
 }
 
-.date + * {
-  margin-left: 0.6em;
+.tagList {
+  margin-left: 0.8em;
+  gap: 0.6em;
 }
