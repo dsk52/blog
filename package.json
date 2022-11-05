@@ -13,9 +13,6 @@
     "lint": "next lint",
     "lint:fix": "./node_modules/.bin/eslint ./src/**/*.{ts,tsx} && prettier --write ./src/**/*.{ts,tsx}"
   },
-  "engines": {
-    "node": "16.x"
-  },
   "dependencies": {
     "markdown-it": "13.0.1",
     "microcms-js-sdk": "2.3.0",
@@ -41,5 +38,9 @@
     "jest-environment-jsdom": "29.2.2",
     "prettier": "2.7.1",
     "typescript": "4.7.4"
+  },
+  "volta": {
+    "node": "16.18.1",
+    "npm": "8.19.2"
   }
 }
