@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "markdown-it": "13.0.1",
-    "microcms-js-sdk": "2.3.1",
+    "microcms-js-sdk": "2.3.2",
     "next": "12.3.3",
     "next-sitemap": "3.1.31",
     "react": "18.2.0",
