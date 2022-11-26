@@ -1,9 +1,9 @@
 {
   "extends": [
-    "config:base",
-    ":timezone(Asia/Tokyo)",
-    ":enableVulnerabilityAlertsWithLabel(security)",
-    ":automergePatch"
+    "github>dsk52/renovate-config",
+    "github>dsk52/renovate-config:groupLinters",
+    "github>dsk52/renovate-config:groupType",
+    "github>dsk52/renovate-config:groupReact"
   ],
   "schedule": [
     "every weekend"
@@ -11,39 +11,10 @@
   "baseBranches": [
     "develop"
   ],
-  "labels": [
-    "renovate"
-  ],
   "npm": {
     "enabled": true
   },
   "packageRules": [
-    {
-      "groupName": "definitelyTyped",
-      "matchPackagePrefixes": [
-        "@types/"
-      ],
-      "automerge": true,
-      "major": {
-        "automerge": false
-      }
-    },
-    {
-      "groupName": "linters",
-      "extends": [
-        "packages:linters"
-      ],
-      "packageNames": [
-        "prettier"
-      ],
-      "packagePatterns": [
-        "^@typescript-eslint/"
-      ],
-      "automerge": true,
-      "major": {
-        "automerge": false
-      }
-    },
     {
       "packageRules": [
         {
@@ -56,18 +27,6 @@
           "groupName": "jest monorepo"
         }
       ]
-    },
-    {
-      "matchPackageNames": [
-        "react",
-        "@types/react",
-        "react-dom",
-        "@types/react-dom"
-      ],
-      "groupName": "react",
-      "patch": {
-        "automerge": true
-      }
     }
   ]
 }
