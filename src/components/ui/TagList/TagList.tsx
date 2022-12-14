@@ -19,9 +19,7 @@ export const TagList = ({ tags, className, doLink = false }: Props) => (
 )
 
 export const Tag = ({ name, slug, doLink = false }: TagItem) => {
-
-
-  if (doLink) {
+  if (!doLink) {
     return <span className={s.tag}>#{name}</span>
   }
 
