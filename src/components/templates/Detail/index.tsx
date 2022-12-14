@@ -30,7 +30,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
         <div>
           現在プレビューモードで閲覧中です。
           <Link href={`/api/exitPreview`}>
-            <a>プレビューを解除</a>
+            プレビューを解除
           </Link>
         </div>
       )}
