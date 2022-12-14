@@ -19,13 +19,17 @@ export const TagList = ({ tags, className, doLink = false }: Props) => (
 )
 
 export const Tag = ({ name, slug, doLink = false }: TagItem) => {
-  const link = doLink ? `/post/tags/${slug}/1` : '#'
+
+
+  if (doLink) {
+    return <span className={s.tag}>#{name}</span>
+  }
 
   return (
-    <Link href={link}>
-      <a className={doLink ? s.tagLink : s.tag}>
+    <Link href={`/post/tags/${slug}/1`} className={s.tagLink}>
+      <>
         #{name}
-      </a>
+      </>
     </Link>
   )
 }

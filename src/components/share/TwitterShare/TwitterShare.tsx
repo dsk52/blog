@@ -19,10 +19,8 @@ export const TwitterShare = ({ url, title, children }: TwitterShareProps): JSX.E
     , [])
 
   return (
-    <Link href={buildShareURL(url, title)}>
-      <a rel="canonical" target='_blank'>
-        {children}
-      </a>
+    <Link href={buildShareURL(url, title)} rel="canonical" target='_blank'>
+      {children}
     </Link>
   )
 }
