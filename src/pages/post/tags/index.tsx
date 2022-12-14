@@ -5,7 +5,7 @@ import { Base } from "../../../components/layouts/Base";
 import { TagList } from "../../../components/ui/TagList/TagList";
 import { getTags, type TagListItem } from "../../../libs/microcms";
 
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 type TagsPageProp = {
   tags: TagListItem[]
@@ -29,7 +29,7 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
 
 export default TagIndexPage
 
-export const getServerSideProps: GetServerSideProps = async (_) => {
+export const getStaticProps: GetStaticProps = async (_) => {
   let tags: TagListItem[] = []
   const tagResponse = await getTags()
   tags = [...tags, ...tagResponse.contents]
