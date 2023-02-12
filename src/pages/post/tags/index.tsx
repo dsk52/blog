@@ -30,9 +30,8 @@ const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
 export default TagIndexPage
 
 export const getStaticProps: GetStaticProps = async (_) => {
-  let tags: TagListItem[] = []
   const tagResponse = await getTags()
-  tags = [...tags, ...tagResponse.contents]
+  const tags: TagListItem[] = [...tagResponse.contents]
 
   return {
     props: {
