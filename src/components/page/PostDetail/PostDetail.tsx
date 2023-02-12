@@ -1,29 +1,17 @@
-import MyHead from "@/components/Head/Head";
 import { Base } from "@/components/layouts/Base";
 import { DetailPage } from "@/components/templates/Detail";
+import { ROUTE } from "@/constants/route";
 
-import { createExcerptFromBody } from "./util";
+import { Seo } from "./Seo/Seo";
 
 import type { PostProps } from "@/components/templates/Detail/type";
 
 export const PostDetailPage = ({ post, draftKey }: PostProps) => {
-  const pagePath = `/post/${post.slug}`;
-
-  // description周りで使うため、本文から指定文字抜き出す
-  const excerpt = createExcerptFromBody(post.body, 100);
+  const pagePath = ROUTE.postDetail(post.slug);
 
   return (
-    <Base
-      head={
-        <MyHead
-          title={post.title}
-          description={excerpt}
-          url={pagePath}
-          pageType="article"
-          index="index"
-        />
-      }
-    >
+    <Base>
+      <Seo title={post.title} slug={post.slug} publishedAt={post.publishedAt} />
       <DetailPage post={post} path={pagePath} draftKey={draftKey} />
     </Base>
   );

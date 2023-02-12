@@ -1,5 +1,4 @@
 import { Container } from "@/components/Container/Container";
-import MyHead from "@/components/Head/Head";
 import {
   Article,
   ArticleHeader,
@@ -7,22 +6,15 @@ import {
 } from "@/components/layouts/Article/Article";
 import { Base } from "@/components/layouts/Base";
 import { MainTitle } from "@/components/ui/Title/Title";
-import { EXTERNAL_PAGE, ROUTE } from "@/constants/route";
+import { EXTERNAL_PAGE } from "@/constants/route";
+
+import { Seo } from "./Seo/Seo";
 
 import type { NextPage } from "next";
 
 export const AboutPage: NextPage = () => (
-  <Base
-    head={
-      <MyHead
-        title="About"
-        description=""
-        url={ROUTE.about}
-        pageType="website"
-        index="index"
-      />
-    }
-  >
+  <Base>
+    <Seo />
     <Article>
       <Container>
         <ArticleHeader>

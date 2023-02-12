@@ -1,23 +1,60 @@
 import "sanitize.css";
 import "../styles/globals.css";
 
+import getConfig from "next/config";
+import Head from "next/head";
+import { DefaultSeo } from "next-seo";
 import React from "react";
 
 import { GoogleAnalytics } from "@/components/GoogleAnalytics/GoogleAnalytivs";
-import usePageview from '@/hooks/usePageView';
+import { SITE } from "@/constants/site";
+import usePageview from "@/hooks/usePageView";
 
 import type { AppProps } from "next/app";
 
+const { publicRuntimeConfig } = getConfig();
+const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  usePageview()
+  const title = `${SITE.name} | ${SITE.description}`;
+  usePageview();
 
   return (
     <>
       <GoogleAnalytics />
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#404344" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="google-site-verification"
+          content="ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A"
+        />
+        <script
+          data-ad-client={NEXT_PUBLIC_ADSENSE_CLIENT}
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        />
+      </Head>
+
+      <DefaultSeo
+        title={title}
+        openGraph={{
+          title,
+          locale: "ja-JP",
+          type: "website",
+          url: SITE.url,
+          siteName: SITE.name,
+        }}
+        twitter={{
+          site: "@skd_nw",
+          handle: SITE.name,
+          cardType: "summary",
+        }}
+      />
 
       <Component {...pageProps} />
     </>
-  )
+  );
 }
 export default MyApp;
