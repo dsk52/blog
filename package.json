@@ -7,6 +7,7 @@
     "build": "next build --no-lint",
     "export": "npm run build && next export && npm run postbuild",
     "postbuild": "next-sitemap",
+    "type-check": "tsc --noEmit",
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
