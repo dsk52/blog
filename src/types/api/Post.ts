@@ -1,4 +1,4 @@
-import { ICommonSchema } from "./Microcms";
+import type { ICommonSchema } from "./Microcms";
 
 export interface ApiPost extends ICommonSchema {
   title: string;

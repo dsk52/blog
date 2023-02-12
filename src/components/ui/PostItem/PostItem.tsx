@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { datetimeToDate } from '../../../utilities/Date';
-import { TagList } from '../TagList/TagList';
+import { TagList } from "@/components/ui/TagList/TagList";
+import { datetimeToDate } from "@/utilities/Date";
+
 import s from './PostItem.module.css'
 
 import type { Props } from "./type";

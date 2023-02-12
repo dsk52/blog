@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
-import { ROUTE } from '../../../constants/route';
-import { SITE } from "../../../constants/site"
-import { GlobalNav } from "../../ui/GlobalNav/GlobalNav"
+import { GlobalNav } from "@/components/ui/GlobalNav/GlobalNav";
+import { ROUTE } from '@/constants/route';
+import { SITE } from "@/constants/site";
+
 import style from './Header.module.css'
 
 const Header = () => (

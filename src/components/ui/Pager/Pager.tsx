@@ -1,4 +1,5 @@
-import { ButtonLink } from "../Button/Button"
+import { ButtonLink } from "@/components/ui/Button/Button"
+
 import s from './Pager.module.css'
 
 import type { PagerProps } from "./type"

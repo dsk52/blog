@@ -1,4 +1,4 @@
-import { IPostItem } from "../../../types/domain/Post";
+import type { IPostItem } from "@/types/domain/Post";
 
 export type Props = {
   post: IPostItem;

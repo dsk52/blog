@@ -1,5 +1,6 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import Footer from "@/components/layouts/Footer/Footer";
+import Header from "@/components/layouts/Header/Header";
+
 import style from "./Page.module.css"
 
 import type { Props } from "./type";

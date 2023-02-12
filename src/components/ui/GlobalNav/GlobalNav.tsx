@@ -1,6 +1,7 @@
 import Link from "next/link"
 
-import { ROUTE } from '../../../constants/route';
+import { ROUTE } from '@/constants/route';
+
 import s from './style.module.css'
 
 

@@ -1,17 +1,18 @@
 import getConfig from "next/config";
 import Link from "next/link";
-import React from "react";
 
-import { ROUTE } from '../../../constants/route';
-import { datetimeToDate } from "../../../utilities/Date";
-import { Adsense } from "../../Adsense/Adsense";
-import { Container } from "../../Container/Container";
-import { Article, ArticleHeader, ArticleBody, ArticleFooter } from "../../layouts/Article/Article";
-import { ButtonLink } from "../../ui/Button/Button";
+import { Adsense } from "@/components/Adsense/Adsense";
+import { Container } from "@/components/Container/Container";
+import { ArticleHeader, ArticleBody, ArticleFooter, Article } from "@/components/layouts/Article/Article";
+import { ButtonLink } from "@/components/ui/Button/Button";
+import { Share } from "@/components/ui/Share/Share";
+import { TagList } from "@/components/ui/TagList/TagList";
+import { ROUTE } from "@/constants/route";
+import { datetimeToDate } from "@/utilities/Date";
+
 import ds from '../../ui/PostItem/PostItem.module.css'
-import { Share } from "../../ui/Share/Share";
-import { TagList } from "../../ui/TagList/TagList";
-import { DetailProps } from "./type";
+
+import type { DetailProps } from "./type";
 
 const { publicRuntimeConfig } = getConfig()
 

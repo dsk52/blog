@@ -1,4 +1,5 @@
-import { SITE } from "../../../constants/site"
+import { SITE } from "@/constants/site"
+
 import style from "./Footer.module.css"
 
 const Footer = () => (

@@ -1,42 +1,20 @@
+import { TagIndexPage } from "@/components/page/TagIndex/TagIndex";
+import { type TagListItem, getTags } from "@/libs/microcms";
 
-
-import MyHead from "../../../components/Head/Head";
-import { Base } from "../../../components/layouts/Base";
-import { TagList } from "../../../components/ui/TagList/TagList";
-import { getTags, type TagListItem } from "../../../libs/microcms";
-
+import type { TagsPageProp } from "@/components/page/TagIndex/type";
 import type { GetStaticProps, NextPage } from "next";
 
-type TagsPageProp = {
-  tags: TagListItem[]
-}
+const Page: NextPage<TagsPageProp> = (props) => TagIndexPage(props);
 
-const TagIndexPage: NextPage<TagsPageProp> = ({ tags }) => (
-  <Base head={
-    <MyHead
-      title="タグ一覧"
-      description="記事に関連するタグの一覧ページです"
-      url='/post/tags'
-      pageType='website'
-      index='index'
-    />
-  }>
-    <>
-      <TagList tags={tags} doLink />
-    </>
-  </Base >
-)
-
-export default TagIndexPage
+export default Page;
 
 export const getStaticProps: GetStaticProps = async (_) => {
-  let tags: TagListItem[] = []
-  const tagResponse = await getTags()
-  tags = [...tags, ...tagResponse.contents]
+  const tagResponse = await getTags();
+  const tags: TagListItem[] = [...tagResponse.contents];
 
   return {
     props: {
-      tags
-    }
-  }
-}
+      tags,
+    },
+  };
+};

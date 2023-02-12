@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import s from './TagList.module.css'
 
-import type { ITag } from '../../../types/domain/Post';
 import type { Props, TagItem } from "./type";
+import type { ITag } from "@/types/domain/Post";
 
 export const TagList = ({ tags, className, doLink = false }: Props) => (
   <ul className={`${s.tagList} ${className && className}`}>

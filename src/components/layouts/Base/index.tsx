@@ -1,7 +1,6 @@
-import React from "react";
+import Footer from "@/components/layouts/Footer/Footer";
+import Header from "@/components/layouts/Header/Header";
 
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import s from './index.module.css'
 
 import type { Props } from "./type";

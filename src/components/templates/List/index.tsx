@@ -1,13 +1,11 @@
 import getConfig from 'next/config';
-import React from "react";
 
-import { Adsense } from "../../Adsense/Adsense";
-import { Container } from '../../Container/Container';
-import { Pager } from "../../ui/Pager/Pager";
-import { PostList } from "../../ui/PostList/PostList";
+import { Adsense } from "@/components/Adsense/Adsense";
+import { Container } from "@/components/Container/Container";
+import { Pager } from "@/components/ui/Pager/Pager";
+import { PostList } from "@/components/ui/PostList/PostList";
 
 import type { ListPageProps } from "./type";
-
 
 const { publicRuntimeConfig } = getConfig()
 
