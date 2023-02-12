@@ -1,9 +1,7 @@
-
-
-import MyHead from "../../../components/Head/Head";
-import { Base } from "../../../components/layouts/Base";
-import { TagList } from "../../../components/ui/TagList/TagList";
-import { getTags, type TagListItem } from "../../../libs/microcms";
+import MyHead from "@/components/Head/Head";
+import { Base } from "@/components/layouts/Base";
+import { TagList } from "@/components/ui/TagList/TagList";
+import { type TagListItem, getTags } from "@/libs/microcms";
 
 import type { GetStaticProps, NextPage } from "next";
 

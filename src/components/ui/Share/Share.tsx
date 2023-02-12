@@ -1,7 +1,8 @@
+import { TwitterIcon } from "@/components/icons/Twitter/Twitter";
+import { TwitterShare } from "@/components/share/TwitterShare/TwitterShare";
+import { SITE } from "@/constants/site";
+
 import s from './Share.module.css'
-import { SITE } from "../../../constants/site";
-import { TwitterIcon } from "../../icons/Twitter/Twitter";
-import { TwitterShare } from "../../share/TwitterShare/TwitterShare";
 
 import type { Props } from "./type";
 

@@ -1,7 +1,7 @@
 import { createClient, MicroCMSQueries } from "microcms-js-sdk";
 
-import { microCmsResponse } from "../types/api/Microcms";
-import { ApiPost, ApiTag } from "../types/api/Post";
+import type { microCmsResponse } from "@/types/api/Microcms";
+import type { ApiPost, ApiTag } from "@/types/api/Post";
 
 const microcms = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
@@ -12,7 +12,7 @@ const ENDPOINTS = {
   POST: "post",
   TAG: "tags",
 };
-type ENDPOINTS = typeof ENDPOINTS[keyof typeof ENDPOINTS];
+type ENDPOINTS = (typeof ENDPOINTS)[keyof typeof ENDPOINTS];
 
 export type Draft = {
   draftKey: string;

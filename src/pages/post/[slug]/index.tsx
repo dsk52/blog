@@ -1,18 +1,16 @@
-// eslint-disable-line import/order
-import MarkdownIt from "markdown-it"; // eslint-disable-line import/order
-import { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
-import React from "react";
+import MarkdownIt from "markdown-it";
 
-import MyHead from "../../../components/Head/Head";
-import { Base } from '../../../components/layouts/Base/index';
-import { DetailPage } from "../../../components/templates/Detail";
-import { getByContentId, getBySlug, getPostSlugs } from "../../../libs/microcms";
-import { PostMapper } from "../../../models/mapper/PostMapper";
-import { isProduction } from "../../../utilities/env";
+import type { ParsedUrlQuery } from 'querystring' // eslint-disable-line import/order
 
-import type { PostProps } from "../../../components/templates/Detail/type";
+import MyHead from "@/components/Head/Head";
+import { Base } from "@/components/layouts/Base";
+import { DetailPage } from "@/components/templates/Detail";
+import { getPostSlugs, getByContentId, getBySlug } from "@/libs/microcms";
+import { PostMapper } from "@/models/mapper/PostMapper";
+import { isProduction } from "@/utilities/env";
+
+import type { PostProps } from "@/components/templates/Detail/type";
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-
 
 interface Params extends ParsedUrlQuery {
   slug: string

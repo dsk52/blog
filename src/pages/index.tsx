@@ -1,11 +1,11 @@
-import MyHead from "../components/Head/Head";
-import { Base } from "../components/layouts/Base";
-import { ListPage } from "../components/templates/List";
-import { calcMaxPage } from '../components/ui/Pager/Pager';
-import { ROUTE } from '../constants/route';
-import { SITE } from '../constants/site';
-import { getAllPost, postPerPage } from "../libs/microcms";
-import { PostMapper } from "../models/mapper/PostMapper";
+import MyHead from "@/components/Head/Head";
+import { Base } from "@/components/layouts/Base";
+import { ListPage } from "@/components/templates/List";
+import { calcMaxPage } from "@/components/ui/Pager/Pager";
+import { ROUTE } from '@/constants/route';
+import { SITE } from '@/constants/site';
+import { getAllPost, postPerPage } from "@/libs/microcms";
+import { PostMapper } from "@/models/mapper/PostMapper";
 
 import type { ListPageProp } from "./post/page/[offset]";
 import type { GetServerSideProps, NextPage } from "next";

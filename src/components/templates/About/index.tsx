@@ -1,7 +1,8 @@
-import { EXTERNAL_PAGE } from "../../../constants/route";
-import { Container } from '../../Container/Container';
-import { Article, ArticleBody, ArticleHeader } from "../../layouts/Article/Article"
-import { MainTitle } from "../../ui/Title/Title"
+import { Container } from "@/components/Container/Container"
+import { ArticleHeader, ArticleBody, Article } from "@/components/layouts/Article/Article"
+import { MainTitle } from "@/components/ui/Title/Title"
+import { EXTERNAL_PAGE } from "@/constants/route"
+
 
 const AboutPage = () => (
   <Article>

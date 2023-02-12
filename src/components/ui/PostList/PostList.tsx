@@ -1,8 +1,9 @@
+import { PostItem } from "@/components/ui/PostItem/PostItem";
+
 import s from './PostList.module.css'
-import { IPostItem } from "../../../types/domain/Post";
-import { PostItem } from '../PostItem/PostItem';
 
 import type { Props } from "./type";
+import type { IPostItem } from "@/types/domain/Post";
 
 export const PostList = ({ posts }: Props) => (
   <ul className={s.postList} >
