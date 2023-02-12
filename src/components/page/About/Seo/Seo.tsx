@@ -6,14 +6,16 @@ import { SITE } from "@/constants/site";
 export const Seo = () => {
   const title = `About | ${SITE.description}`;
   const description = "PengNoteのAboutページです";
+  const url = `${SITE.url}${ROUTE.about}`;
+
   return (
     <NextSeo
       title={title}
       description={description}
-      canonical={ROUTE.about}
+      canonical={url}
       openGraph={{
         title,
-        url: ROUTE.about,
+        url,
         type: "website",
       }}
     />

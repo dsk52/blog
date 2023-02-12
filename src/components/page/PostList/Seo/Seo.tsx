@@ -13,10 +13,10 @@ export const Seo = ({ pageNum }: SeoProps) => {
     <NextSeo
       title={title}
       description={description}
-      canonical={ROUTE.postList(1)}
+      canonical={`${SITE.url}${ROUTE.postList(1)}`}
       openGraph={{
         title,
-        url: ROUTE.postList(pageNum),
+        url: `${SITE.url}${ROUTE.postList(pageNum)}`,
         type: "website",
       }}
     />
