@@ -1,5 +1,5 @@
-import { ButtonLink } from "../Button/Button"
 import s from './Pager.module.css'
+import { ButtonLink } from "../Button/Button"
 
 import type { PagerProps } from "./type"
 

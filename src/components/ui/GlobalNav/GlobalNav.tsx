@@ -1,7 +1,7 @@
 import Link from "next/link"
 
-import { ROUTE } from '../../../constants/route';
 import s from './style.module.css'
+import { ROUTE } from '../../../constants/route';
 
 
 export const GlobalNav = () => (

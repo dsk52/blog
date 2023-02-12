@@ -1,6 +1,6 @@
+import s from './PostList.module.css'
 import { IPostItem } from "../../../types/domain/Post";
 import { PostItem } from '../PostItem/PostItem';
-import s from './PostList.module.css'
 
 import type { Props } from "./type";
 

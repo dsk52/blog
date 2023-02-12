@@ -11,7 +11,8 @@ import { ButtonLink } from "../../ui/Button/Button";
 import ds from '../../ui/PostItem/PostItem.module.css'
 import { Share } from "../../ui/Share/Share";
 import { TagList } from "../../ui/TagList/TagList";
-import { DetailProps } from "./type";
+
+import type { DetailProps } from "./type";
 
 const { publicRuntimeConfig } = getConfig()
 
