@@ -1,7 +1,7 @@
 import Script from 'next/script'
 import React from "react";
 
-import { existsGaId, GA_TRACKING_ID } from "../../libs/gtag";
+import { existsGaId, GA_TRACKING_ID } from "@/libs/gtag";
 
 export const GoogleAnalytics = () => (
   <>

@@ -1,5 +1,6 @@
+import { SITE } from "@/constants/site"
+
 import style from "./Footer.module.css"
-import { SITE } from "../../../constants/site"
 
 const Footer = () => (
   <footer className={style.footer}>

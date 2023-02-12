@@ -1,4 +1,4 @@
-import { IndexType } from "./type";
+import type { IndexType } from "./type";
 
 export const generateIndexAttriubtes = (index: IndexType): string => {
   switch (index) {

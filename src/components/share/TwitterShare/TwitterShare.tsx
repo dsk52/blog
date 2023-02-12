@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useCallback } from "react"
 
-import { TwitterShareProps, TwitterQueryParams } from "./type";
+import type { TwitterShareProps, TwitterQueryParams } from "./type";
 
 const BASE_SHARE_URL = 'https://twitter.com/intent/tweet';
 
