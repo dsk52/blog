@@ -2,8 +2,8 @@ import getConfig from "next/config";
 import Head from "next/head"
 import { useMemo } from "react";
 
-import { SITE } from '../../constants/site';
 import { generateIndexAttriubtes } from "./util";
+import { SITE } from '../../constants/site';
 
 import type { Props } from "./type";
 

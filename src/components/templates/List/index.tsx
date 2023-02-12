@@ -8,7 +8,6 @@ import { PostList } from "../../ui/PostList/PostList";
 
 import type { ListPageProps } from "./type";
 
-
 const { publicRuntimeConfig } = getConfig()
 
 const {
