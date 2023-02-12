@@ -6,7 +6,7 @@ import React from "react";
 import MyHead from "../../components/Head/Head";
 import { Base } from '../../components/layouts/Base/index';
 import { DetailPage } from "../../components/templates/Detail";
-import { getByContentId, getBySlug, getPostSlugs } from "../../libs/microcms";
+import { getByContentId, getBySlug } from "../../libs/microcms";
 import { PostMapper } from "../../models/mapper/PostMapper";
 import { isProduction } from "../../utilities/env";
 
@@ -54,43 +54,8 @@ const Detail: NextPage<PostProps> = ({ post, draftKey }) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const postPerPage = isProduction ? 100 : 10
-
-  let pageNum = 1
-  const paths: any[] = []
-  const res = await getPostSlugs(postPerPage, pageNum)
-
-  let maxPage = 0
-  if (res.totalCount) {
-    maxPage = Math.ceil(res.totalCount / postPerPage)
-  }
-
-  if (!res.contents.length) {
-    return {
-      paths: [{ params: { slug: '' } }],
-      fallback: 'blocking'
-    }
-  }
-
-  res.contents.forEach(({ slug }) => {
-    paths.push({ params: { slug } })
-  })
-
-  // 全ページ分取得して結合する
-  if (isProduction) {
-    while (pageNum <= maxPage) {
-      const res = await getPostSlugs(postPerPage, paths.length + 1)
-      res.contents.forEach(({ slug }) => {
-        paths.push({ params: { slug } })
-      })
-
-      ++pageNum
-      // TODO sleep入れたほうがいいかも
-    }
-  }
-
   return {
-    paths,
+    paths: [],
     fallback: 'blocking'
   }
 }
