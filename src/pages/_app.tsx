@@ -17,6 +17,12 @@ const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const title = `${SITE.name} | ${SITE.description}`;
+  const image = {
+    url: `${SITE.url}${SITE.ogp.imageUrl}`,
+    width: 450,
+    height: 279,
+  };
+
   usePageview();
 
   return (
@@ -45,6 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           type: "website",
           url: SITE.url,
           siteName: SITE.name,
+          images: [image],
         }}
         twitter={{
           site: "@skd_nw",
