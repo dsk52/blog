@@ -6,15 +6,16 @@ import { SITE } from "@/constants/site";
 export const Seo = () => {
   const title = `タグ一覧 | ${SITE.name}`;
   const description = "記事に関連するタグの一覧ページです";
+  const url = `${SITE.url}${ROUTE.top}`;
 
   return (
     <NextSeo
       title={title}
       description={description}
-      canonical={ROUTE.tagList}
+      canonical={url}
       openGraph={{
         title,
-        url: ROUTE.tagList,
+        url,
         type: "website",
       }}
     />
