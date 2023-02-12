@@ -1,15 +1,15 @@
 import React from "react";
 
-import MyHead from "../../../../components/Head/Head";
-import { Base } from "../../../../components/layouts/Base";
-import { ListPage } from "../../../../components/templates/List";
-import { calcOffset, calcMaxPage } from "../../../../components/ui/Pager/Pager";
-import { ROUTE } from '../../../../constants/route';
-import { getByTagId, getTagBySlug, postPerPage } from "../../../../libs/microcms";
-import { PostMapper } from "../../../../models/mapper/PostMapper";
+import MyHead from "../../../../../components/Head/Head";
+import { Base } from "../../../../../components/layouts/Base";
+import { ListPage } from "../../../../../components/templates/List";
+import { calcOffset, calcMaxPage } from "../../../../../components/ui/Pager/Pager";
+import { ROUTE } from '../../../../../constants/route';
+import { getByTagId, getTagBySlug, postPerPage } from "../../../../../libs/microcms";
+import { PostMapper } from "../../../../../models/mapper/PostMapper";
 
-import type { ApiTag } from '../../../../types/api/Post';
-import type { IPostItem } from "../../../../types/domain/Post";
+import type { ApiTag } from '../../../../../types/api/Post';
+import type { IPostItem } from "../../../../../types/domain/Post";
 import type { GetServerSideProps, NextPage } from 'next';
 
 export type TagListPageProp = {

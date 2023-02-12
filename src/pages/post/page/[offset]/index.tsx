@@ -1,12 +1,12 @@
-import MyHead from "../../../components/Head/Head";
-import { Base } from '../../../components/layouts/Base/index';
-import { ListPage } from '../../../components/templates/List/index';
-import { calcOffset, calcMaxPage } from "../../../components/ui/Pager/Pager";
-import { ROUTE } from '../../../constants/route';
-import { getAllPost, postPerPage } from "../../../libs/microcms";
-import { PostMapper } from "../../../models/mapper/PostMapper";
+import MyHead from "../../../../components/Head/Head";
+import { Base } from '../../../../components/layouts/Base/index';
+import { ListPage } from '../../../../components/templates/List/index';
+import { calcOffset, calcMaxPage } from "../../../../components/ui/Pager/Pager";
+import { ROUTE } from '../../../../constants/route';
+import { getAllPost, postPerPage } from "../../../../libs/microcms";
+import { PostMapper } from "../../../../models/mapper/PostMapper";
 
-import type { IPostItem } from "../../../types/domain/Post";
+import type { IPostItem } from "../../../../types/domain/Post";
 import type { GetServerSideProps, NextPage } from "next";
 
 
