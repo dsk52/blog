@@ -1,19 +1,14 @@
 import "sanitize.css";
 import "../styles/globals.css";
 
-import getConfig from "next/config";
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";
-import React from "react";
 
 import { SITE } from "@/constants/site";
 import { useInitTagManager } from "@/hooks/useInitTagManager";
 import { GTM_ID } from "@/libs/gtm";
 
 import type { AppProps } from "next/app";
-
-const { publicRuntimeConfig } = getConfig();
-const { NEXT_PUBLIC_ADSENSE_CLIENT } = publicRuntimeConfig;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const title = `${SITE.name} | ${SITE.description}`;
@@ -34,11 +29,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta
           name="google-site-verification"
           content="ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A"
-        />
-        <script
-          data-ad-client={NEXT_PUBLIC_ADSENSE_CLIENT}
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
         />
       </Head>
 
