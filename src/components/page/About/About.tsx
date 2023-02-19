@@ -1,10 +1,10 @@
-import { Container } from "@/components/Container/Container";
 import {
   Article,
   ArticleHeader,
   ArticleBody,
 } from "@/components/layouts/Article/Article";
 import { Base } from "@/components/layouts/Base";
+import { Container } from "@/components/ui/Container/Container";
 import { MainTitle } from "@/components/ui/Title/Title";
 import { EXTERNAL_PAGE } from "@/constants/route";
 

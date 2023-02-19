@@ -1,4 +1,4 @@
-import type { ShareLink } from "../type";
+import type { ShareLink } from "@/components/features/social/type";
 
 export type TwitterQueryParams = {
   text?: string;

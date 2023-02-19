@@ -1,8 +1,8 @@
 import getConfig from "next/config";
 import Link from "next/link";
 
-import { Adsense } from "@/components/Adsense/Adsense";
-import { Container } from "@/components/Container/Container";
+import { Adsense } from "@/components/apps/Adsense/Adsense";
+import { ShareList } from "@/components/features/social/ShareList/ShareList";
 import {
   ArticleHeader,
   ArticleBody,
@@ -10,13 +10,14 @@ import {
   Article,
 } from "@/components/layouts/Article/Article";
 import { ButtonLink } from "@/components/ui/Button/Button";
-import ds from "@/components/ui/PostList/PostItem/PostItem.module.css";
-import { Share } from "@/components/ui/Share/Share";
+import { Container } from "@/components/ui/Container/Container";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
 import type { DetailProps } from "./type";
+
+import ds from "@/components/ui/PostList/PostItem/PostItem.module.css";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -64,7 +65,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
 
             <section>
               <h2>Share</h2>
-              <Share title={post.title} path={path} />
+              <ShareList title={post.title} path={path} />
             </section>
 
             <ButtonLink link={ROUTE.top} label="トップに戻る" />

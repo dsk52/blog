@@ -1,21 +1,26 @@
-import getConfig from 'next/config';
+import getConfig from "next/config";
 
-import { Adsense } from "@/components/Adsense/Adsense";
-import { Container } from "@/components/Container/Container";
+import { Adsense } from "@/components/apps/Adsense/Adsense";
+import { PostList } from "@/components/features/post/PostList/PostList";
+import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
-import { PostList } from "@/components/ui/PostList/PostList";
 
 import type { ListPageProps } from "./type";
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
 const {
   NEXT_PUBLIC_ADS_ARTICLE_TOP_SLOT,
   NEXT_PUBLIC_ADSENSE_CLIENT,
-  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
-} = publicRuntimeConfig
+  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT,
+} = publicRuntimeConfig;
 
-export const ListPage = ({ posts, maxPage, pageNum, basePath }: ListPageProps) => (
+export const ListPage = ({
+  posts,
+  maxPage,
+  pageNum,
+  basePath,
+}: ListPageProps) => (
   <>
     <Container>
       <Adsense
@@ -30,11 +35,7 @@ export const ListPage = ({ posts, maxPage, pageNum, basePath }: ListPageProps) =
 
     <footer>
       <Container>
-        <Pager
-          basePath={basePath}
-          maxPage={maxPage}
-          pageNum={pageNum}
-        />
+        <Pager basePath={basePath} maxPage={maxPage} pageNum={pageNum} />
 
         <Adsense
           client={NEXT_PUBLIC_ADSENSE_CLIENT}
@@ -43,4 +44,4 @@ export const ListPage = ({ posts, maxPage, pageNum, basePath }: ListPageProps) =
       </Container>
     </footer>
   </>
-)
+);

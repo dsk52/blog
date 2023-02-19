@@ -1,20 +1,18 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { GlobalNav } from "@/components/ui/GlobalNav/GlobalNav";
-import { ROUTE } from '@/constants/route';
+import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 
-import style from './Header.module.css'
+import { GlobalNav } from "./GlobalNav/GlobalNav";
+import style from "./Header.module.css";
 
-const Header = () => (
+export const Header = () => (
   <header className={style.header}>
     <div className={style.headerInner}>
       <div className={style.headerContent}>
         <div>
           <h1 className={style.siteTitle}>
-            <Link href={ROUTE.top}>
-              {SITE.name}
-            </Link>
+            <Link href={ROUTE.top}>{SITE.name}</Link>
           </h1>
         </div>
 
@@ -22,6 +20,4 @@ const Header = () => (
       </div>
     </div>
   </header>
-)
-
-export default Header
+);
