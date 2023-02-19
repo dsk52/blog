@@ -1,7 +1,7 @@
 import getConfig from "next/config";
-import Link from "next/link";
 
 import { Adsense } from "@/components/apps/Adsense/Adsense";
+import ds from "@/components/features/post/PostList/PostItem/PostItem.module.css";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
 import {
   ArticleHeader,
@@ -9,15 +9,14 @@ import {
   ArticleFooter,
   Article,
 } from "@/components/layouts/Article/Article";
-import { ButtonLink } from "@/components/ui/Button/Button";
 import { Container } from "@/components/ui/Container/Container";
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
+import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
 import type { DetailProps } from "./type";
-
-import ds from "@/components/ui/PostList/PostItem/PostItem.module.css";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,7 +34,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
       {draftKey && (
         <div>
           現在プレビューモードで閲覧中です。
-          <Link href={`/api/exitPreview`}>プレビューを解除</Link>
+          <AnchorLink href={`/api/exitPreview`}>プレビューを解除</AnchorLink>
         </div>
       )}
 

@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { ROUTE } from "@/constants/route";
 
 import s from "./Tag.module.css";
@@ -12,8 +11,8 @@ export const Tag = ({ name, slug, doLink = false }: TagItem) => {
   }
 
   return (
-    <Link href={ROUTE.postTagList(slug, 1)} className={s.tagLink}>
+    <AnchorLink href={ROUTE.postTagList(slug, 1)} className={s.tagLink}>
       <>#{name}</>
-    </Link>
+    </AnchorLink>
   );
 };

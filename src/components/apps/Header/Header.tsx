@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 
@@ -12,7 +11,7 @@ export const Header = () => (
       <div className={style.headerContent}>
         <div>
           <h1 className={style.siteTitle}>
-            <Link href={ROUTE.top}>{SITE.name}</Link>
+            <AnchorLink href={ROUTE.top}>{SITE.name}</AnchorLink>
           </h1>
         </div>
 

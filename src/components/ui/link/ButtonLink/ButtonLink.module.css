@@ -1,4 +1,4 @@
-.buttonLink a {
+.buttonLink {
   display: inline-block;
   border: 4px solid #252525;
   box-sizing: border-box;
@@ -6,10 +6,7 @@
   transition: 0.4s ease-out 0s;
 }
 
-.buttonLink a:hover {
+.buttonLink:hover {
   background-color: #252525;
-}
-
-.buttonLink a:hover {
   color: #dedede;
 }
