@@ -1,5 +1,5 @@
 import { PostListPage } from "@/components/page/PostList/PostList";
-import { calcOffset, calcMaxPage } from "@/components/ui/Pager/Pager";
+import { calcOffset, calcMaxPage } from "@/components/ui/Pager/util";
 import { postPerPage, getAllPost } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 

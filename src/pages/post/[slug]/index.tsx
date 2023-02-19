@@ -96,5 +96,5 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
   if (draftKey.draftKey) {
     return { props: { post, ...draftKey } }; // 下書きデータはキャッシュさせない
   }
-  return { props: { post }, revalidate: isProduction ? 60 : 10 };
+  return { props: { post }, revalidate: isProduction ? 60 * 30 : 10 };
 };

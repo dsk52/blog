@@ -1,12 +1,12 @@
-import { ButtonLink } from "@/components/ui/Button/Button"
+import { ButtonLink } from "@/components/ui/Button/Button";
 
-import s from './Pager.module.css'
+import s from "./Pager.module.css";
 
-import type { PagerProps } from "./type"
+import type { PagerProps } from "./type";
 
 export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
-  const prevPageNum = pageNum - 1
-  const nextPageNum = pageNum + 1
+  const prevPageNum = pageNum - 1;
+  const nextPageNum = pageNum + 1;
 
   /**
    * microCMSのoffsetとしては0スタートだけど、
@@ -21,7 +21,9 @@ export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
           link={`${basePath}/${prevPageNum}`}
           data-testid="prev"
         />
-      ) : <div></div>}
+      ) : (
+        <div></div>
+      )}
 
       {pageNum !== maxPage ? (
         <ButtonLink
@@ -29,32 +31,9 @@ export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
           link={`${basePath}/${nextPageNum}`}
           data-testid="next"
         />
-      ) : <div></div>}
+      ) : (
+        <div></div>
+      )}
     </nav>
-  )
-}
-
-/**
- *
- * @param currnetPageNum 現在のページ番号
- * @param postPerPage 1ページ辺りの表示件数
- * @returns
- */
-export function calcOffset(currnetPageNum: number, postPerPage: number): number {
-  if (currnetPageNum <= 1) {
-    return 0
-  }
-
-  return postPerPage * (currnetPageNum - 1);
-}
-
-/**
- * 最大ページ数を返す
- *
- * @param totalCount
- * @param postPerPage
- * @returns
- */
-export function calcMaxPage(totalCount: number, postPerPage: number): number {
-  return Math.ceil(totalCount / postPerPage)
-}
+  );
+};
