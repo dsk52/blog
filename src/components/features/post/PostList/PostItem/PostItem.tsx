@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
@@ -14,7 +13,7 @@ export const PostItem = ({ post }: Props) => {
   return (
     <article>
       <div className={s.title}>
-        <Link href={ROUTE.postDetail(post.slug)}>{post.title}</Link>
+        <AnchorLink href={ROUTE.postDetail(post.slug)}>{post.title}</AnchorLink>
       </div>
       <div className={s.meta}>
         <time className={s.date} dateTime={post.publishedAt}>

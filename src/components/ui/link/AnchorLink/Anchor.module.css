@@ -1,0 +1,7 @@
+.anchor {
+  transition: opacity 0.4s ease-out 0s;
+}
+
+.anchor:hover {
+  opacity: 0.7;
+}

@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/Button/Button";
+import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
 
 import s from "./Pager.module.css";
 

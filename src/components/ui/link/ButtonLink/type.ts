@@ -1,4 +1,4 @@
-export type LinkProps = {
+export type Props = {
   label: string;
   link: string;
 };
