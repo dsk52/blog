@@ -1,5 +1,5 @@
 import { IndexPage } from "@/components/page/Index/Index";
-import { calcMaxPage } from "@/components/ui/Pager/Pager";
+import { calcMaxPage } from "@/components/ui/Pager/util";
 import { getAllPost, postPerPage } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 

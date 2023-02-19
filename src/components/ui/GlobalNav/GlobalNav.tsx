@@ -1,13 +1,14 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { ROUTE } from '@/constants/route';
-
-import s from './style.module.css'
-
+import { NAV_ITEM } from "./const";
+import s from "./style.module.css";
 
 export const GlobalNav = () => (
   <nav className={s.GlobalNav}>
-    <Link href={ROUTE.about}>About</Link>
-    <Link href={ROUTE.tagList}>タグ一覧</Link>
+    {NAV_ITEM.map((item) => (
+      <Link href={item.href} key={item.href}>
+        {item.label}
+      </Link>
+    ))}
   </nav>
-)
+);

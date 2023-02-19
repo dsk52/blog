@@ -3,36 +3,38 @@ import Link from "next/link";
 
 import { Adsense } from "@/components/Adsense/Adsense";
 import { Container } from "@/components/Container/Container";
-import { ArticleHeader, ArticleBody, ArticleFooter, Article } from "@/components/layouts/Article/Article";
+import {
+  ArticleHeader,
+  ArticleBody,
+  ArticleFooter,
+  Article,
+} from "@/components/layouts/Article/Article";
 import { ButtonLink } from "@/components/ui/Button/Button";
+import ds from "@/components/ui/PostList/PostItem/PostItem.module.css";
 import { Share } from "@/components/ui/Share/Share";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
-import ds from '../../ui/PostItem/PostItem.module.css'
-
 import type { DetailProps } from "./type";
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
 const {
   NEXT_PUBLIC_ADSENSE_CLIENT,
   NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT,
-  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT
-} = publicRuntimeConfig
+  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT,
+} = publicRuntimeConfig;
 
 export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
-  const pubDate = datetimeToDate(post.publishedAt)
+  const pubDate = datetimeToDate(post.publishedAt);
 
   return (
     <>
       {draftKey && (
         <div>
           現在プレビューモードで閲覧中です。
-          <Link href={`/api/exitPreview`}>
-            プレビューを解除
-          </Link>
+          <Link href={`/api/exitPreview`}>プレビューを解除</Link>
         </div>
       )}
 
@@ -41,10 +43,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
           <ArticleHeader>
             <h1>{post.title}</h1>
             <div className={ds.meta}>
-              <time
-                className={ds.date}
-                dateTime={post.publishedAt}
-              >
+              <time className={ds.date} dateTime={post.publishedAt}>
                 {pubDate}
               </time>
             </div>
@@ -78,5 +77,5 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
         </Container>
       </Article>
     </>
-  )
-}
+  );
+};

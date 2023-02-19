@@ -1,5 +1,5 @@
 import { TagListPage } from "@/components/page/TagList/TagList";
-import { calcOffset, calcMaxPage } from "@/components/ui/Pager/Pager";
+import { calcOffset, calcMaxPage } from "@/components/ui/Pager/util";
 import { getTagBySlug, postPerPage, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
