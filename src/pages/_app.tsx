@@ -6,9 +6,9 @@ import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import React from "react";
 
-import { GoogleAnalytics } from "@/components/GoogleAnalytics/GoogleAnalytivs";
 import { SITE } from "@/constants/site";
-import usePageview from "@/hooks/usePageView";
+import { useInitTagManager } from "@/hooks/useInitTagManager";
+import { GTM_ID } from "@/libs/gtm";
 
 import type { AppProps } from "next/app";
 
@@ -23,11 +23,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     height: 279,
   };
 
-  usePageview();
+  useInitTagManager({ gtmId: GTM_ID });
 
   return (
     <>
-      <GoogleAnalytics />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#404344" />
