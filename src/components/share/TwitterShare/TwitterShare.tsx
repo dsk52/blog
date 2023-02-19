@@ -1,26 +1,29 @@
-import Link from "next/link"
-import { useCallback } from "react"
+import Link from "next/link";
+import { useMemo } from "react";
+
+import { TwitterIcon } from "@/components/icons/Twitter/Twitter";
+
+import { BASE_SHARE_URL } from "./const";
 
 import type { TwitterShareProps, TwitterQueryParams } from "./type";
 
-const BASE_SHARE_URL = 'https://twitter.com/intent/tweet';
+export const TwitterShare = ({
+  url,
+  title,
+}: TwitterShareProps): JSX.Element => {
+  const shareUrl = useMemo(() => {
+    const params: TwitterQueryParams = {
+      text: title,
+      url,
+    };
+    const queryString = new URLSearchParams(params).toString();
 
-export const TwitterShare = ({ url, title, children }: TwitterShareProps): JSX.Element => {
-  const buildShareURL = useCallback(
-    (url: string, title: string): string => {
-      const params: TwitterQueryParams = {
-        text: title,
-        url
-      }
-
-      const queryString = new URLSearchParams(params).toString()
-      return `${BASE_SHARE_URL}?${queryString}`
-    }
-    , [])
+    return `${BASE_SHARE_URL}?${queryString}`;
+  }, [title, url]);
 
   return (
-    <Link href={buildShareURL(url, title)} rel="canonical" target='_blank'>
-      {children}
+    <Link href={shareUrl} rel="canonical" target="_blank">
+      <TwitterIcon size="24px" />
     </Link>
-  )
-}
+  );
+};
