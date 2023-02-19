@@ -6,17 +6,3 @@
   margin: 0;
   gap: 1.4em;
 }
-
-.tag {
-  line-height: 1;
-  cursor: default;
-}
-
-.tagLink {
-  line-height: 1;
-  text-decoration: underline;
-}
-
-.tagLink:hover {
-  text-decoration: none;
-}
