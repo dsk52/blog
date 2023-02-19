@@ -6,19 +6,21 @@ import { DefaultSeo } from "next-seo";
 
 import { SITE } from "@/constants/site";
 import { useInitTagManager } from "@/hooks/useInitTagManager";
+import { useTransition } from "@/hooks/useTransition";
 import { GTM_ID } from "@/libs/gtm";
 
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useInitTagManager({ gtmId: GTM_ID });
+  useTransition();
+
   const title = `${SITE.name} | ${SITE.description}`;
   const image = {
     url: `${SITE.url}${SITE.ogp.imageUrl}`,
     width: 450,
     height: 279,
   };
-
-  useInitTagManager({ gtmId: GTM_ID });
 
   return (
     <>
