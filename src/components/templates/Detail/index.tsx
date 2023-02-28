@@ -1,5 +1,3 @@
-import getConfig from "next/config";
-
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import ds from "@/components/features/post/PostList/PostItem/PostItem.module.css";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
@@ -10,34 +8,19 @@ import {
   Article,
 } from "@/components/layouts/Article/Article";
 import { Container } from "@/components/ui/Container/Container";
-import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
 import { TagList } from "@/components/ui/TagList/TagList";
+import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
 import type { DetailProps } from "./type";
 
-const { publicRuntimeConfig } = getConfig();
-
-const {
-  NEXT_PUBLIC_ADSENSE_CLIENT,
-  NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT,
-  NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT,
-} = publicRuntimeConfig;
-
-export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
+export const DetailPage = ({ post, path }: DetailProps) => {
   const pubDate = datetimeToDate(post.publishedAt);
 
   return (
     <>
-      {draftKey && (
-        <div>
-          現在プレビューモードで閲覧中です。
-          <AnchorLink href={`/api/exitPreview`}>プレビューを解除</AnchorLink>
-        </div>
-      )}
-
       <Article>
         <Container>
           <ArticleHeader>
@@ -50,10 +33,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
           </ArticleHeader>
 
           <ArticleBody>
-            <Adsense
-              client={NEXT_PUBLIC_ADSENSE_CLIENT}
-              slot={NEXT_PUBLIC_ADS_ARTICLE_IN_SLOT}
-            />
+            <Adsense client={AdsenseClient} {...AdsenseUnits.articleIn} />
             <div dangerouslySetInnerHTML={{ __html: post.body }} />
           </ArticleBody>
 
@@ -69,10 +49,7 @@ export const DetailPage = ({ post, path, draftKey }: DetailProps) => {
 
             <ButtonLink link={ROUTE.top} label="トップに戻る" />
 
-            <Adsense
-              client={NEXT_PUBLIC_ADSENSE_CLIENT}
-              slot={NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT}
-            />
+            <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
           </ArticleFooter>
         </Container>
       </Article>

@@ -11,7 +11,7 @@ export const Adsense = ({
   format = "auto",
   layout = "",
   layoutKey = "",
-  responsive = "false",
+  responsive = false,
 }: GoogleAdsenseProps) => {
   const { asPath } = useRouter();
 
