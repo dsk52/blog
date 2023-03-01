@@ -8,7 +8,7 @@ export type AdsenseOption = {
   responsive?: boolean;
 };
 
-export const AdsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "";
+export const AdsenseClient = "ca-pub-5766460361259641";
 
 export const AdsenseUnits: Record<AdsenseTypes, AdsenseOption> = {
   articleTop: {
