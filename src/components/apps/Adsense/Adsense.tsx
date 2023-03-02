@@ -28,10 +28,6 @@ export const Adsense = ({
     }
   }, [asPath]);
 
-  if (typeof window === "undefined") {
-    return null;
-  }
-
   return (
     <div key={asPath}>
       <ins
@@ -43,7 +39,7 @@ export const Adsense = ({
         data-ad-layout-key={layoutKey}
         data-ad-format={format}
         data-full-width-responsive={responsive}
-      />
+      ></ins>
     </div>
   );
 };
