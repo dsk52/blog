@@ -12,7 +12,7 @@ export const ListPage = ({
   pageNum,
   basePath,
 }: ListPageProps) => (
-  <>
+  <div>
     <Container>
       <Adsense client={AdsenseClient} {...AdsenseUnits.articleTop} />
     </Container>
@@ -28,5 +28,5 @@ export const ListPage = ({
         <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
       </Container>
     </footer>
-  </>
+  </div>
 );
