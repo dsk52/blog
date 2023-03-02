@@ -25,9 +25,7 @@ export const ListPage = ({
       <Container>
         <Pager basePath={basePath} maxPage={maxPage} pageNum={pageNum} />
 
-        <aside>
-          {/* <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} /> */}
-        </aside>
+        <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
       </Container>
     </footer>
   </div>
