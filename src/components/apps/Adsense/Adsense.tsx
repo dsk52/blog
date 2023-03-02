@@ -29,8 +29,7 @@ export const Adsense = ({
   }, [asPath]);
 
   return (
-    <aside key={asPath}>
-      <p>[Ads.]</p>
+    <div key={asPath}>
       <ins
         className={`${className} adsbygoogle`}
         style={style}
@@ -41,6 +40,6 @@ export const Adsense = ({
         data-ad-format={format}
         data-full-width-responsive={responsive}
       />
-    </aside>
+    </div>
   );
 };
