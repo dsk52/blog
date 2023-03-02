@@ -28,6 +28,10 @@ export const Adsense = ({
     }
   }, [asPath]);
 
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   return (
     <div key={asPath}>
       <ins
