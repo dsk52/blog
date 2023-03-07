@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "usehooks-ts";
-
-import { useClient } from "@/hooks/useClient";
 
 import type { GoogleAdsenseProps } from "./type";
 
@@ -16,33 +15,31 @@ export const Adsense = ({
   responsive = false,
 }: GoogleAdsenseProps) => {
   const { asPath } = useRouter();
-  const { isClient } = useClient();
+  const didLogRef = useRef(false);
 
   useIsomorphicLayoutEffect(() => {
+    if (didLogRef.current) return;
+
     try {
-      if (typeof window !== "undefined" && client) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (error) {
-      // Pass
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      didLogRef.current = true;
+    } catch (err) {
+      console.error(err);
     }
   }, [asPath]);
 
-  if (!isClient || !client) {
-    return null;
-  }
-
   return (
-    <ins
-      key={asPath}
-      className={`${className} adsbygoogle`}
-      style={style}
-      data-ad-client={client}
-      data-ad-slot={slot}
-      data-ad-layout={layout}
-      data-ad-layout-key={layoutKey}
-      data-ad-format={format}
-      data-full-width-responsive={responsive}
-    ></ins>
+    <div key={asPath}>
+      <ins
+        className={`${className} adsbygoogle`}
+        style={style}
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-layout={layout}
+        data-ad-layout-key={layoutKey}
+        data-ad-format={format}
+        data-full-width-responsive={responsive}
+      ></ins>
+    </div>
   );
 };
