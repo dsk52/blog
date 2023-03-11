@@ -57,4 +57,8 @@ export class PostMapper {
       };
     });
   }
+
+  public static relatedPosts(posts: ApiPost[]): IPostItem[] {
+    return this.list(posts);
+  }
 }

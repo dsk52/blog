@@ -1,11 +1,10 @@
 .ShareList {
   list-style-type: none;
   padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.ShareListItem + .ShareListItem {
-  margin-left: 0.6em;
+  column-gap: 1em;
 }
