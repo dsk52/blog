@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 import { TwitterIcon } from "@/components/icons/Twitter/Twitter";
+import { SITE } from "@/constants/site";
 
 import { BASE_SHARE_URL } from "./const";
 
@@ -13,7 +14,7 @@ export const TwitterShare = ({
 }: TwitterShareProps): JSX.Element => {
   const shareUrl = useMemo(() => {
     const params: TwitterQueryParams = {
-      text: title,
+      text: `${title} | ${SITE.name}`,
       url,
     };
     const queryString = new URLSearchParams(params).toString();

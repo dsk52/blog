@@ -1,0 +1,16 @@
+.tagList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #ededed;
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+.returnTopButton {
+  text-align: center;
+}
+
+.relatedPost {
+  margin-top: 4em;
+}

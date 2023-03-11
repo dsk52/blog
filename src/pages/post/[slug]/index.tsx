@@ -2,12 +2,13 @@ import MarkdownIt from "markdown-it";
 
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
-import { getByContentId, getBySlug, getPostSlugs } from "@/libs/microcms";
+import { getByContentId, getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
 import type { Params } from "@/components/page/PostDetail/type";
 import type { PostProps } from "@/components/templates/Detail/type";
+import type { IPostItem } from "@/types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 const Page: NextPage<PostProps> = (props) => PostDetailPage(props);
@@ -15,43 +16,8 @@ const Page: NextPage<PostProps> = (props) => PostDetailPage(props);
 export default Page;
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const postPerPage = isProduction ? 100 : 10;
-
-  let pageNum = 1;
-  const paths: any[] = [];
-  const res = await getPostSlugs(postPerPage, pageNum);
-
-  let maxPage = 0;
-  if (res.totalCount) {
-    maxPage = Math.ceil(res.totalCount / postPerPage);
-  }
-
-  if (!res.contents.length) {
-    return {
-      paths: [{ params: { slug: "" } }],
-      fallback: "blocking",
-    };
-  }
-
-  res.contents.forEach(({ slug }) => {
-    paths.push({ params: { slug } });
-  });
-
-  // 全ページ分取得して結合する
-  if (isProduction) {
-    while (pageNum <= maxPage) {
-      const res = await getPostSlugs(postPerPage, paths.length + 1);
-      res.contents.forEach(({ slug }) => {
-        paths.push({ params: { slug } });
-      });
-
-      ++pageNum;
-      // TODO sleep入れたほうがいいかも
-    }
-  }
-
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 };
@@ -84,6 +50,13 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     };
   }
 
+  const tagId = res.contents.at(0)?.tags.at(0)?.id;
+  let relatedPosts: IPostItem[] = [];
+  if (tagId && !draftKey.draftKey) {
+    const relatedPostDatas = await getByTagId(tagId, 6);
+    relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
+  }
+
   const post = await PostMapper.detail(res.contents[0]);
 
   const md: MarkdownIt = new MarkdownIt({
@@ -94,7 +67,10 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
   post.body = md.render(post.body);
 
   if (draftKey.draftKey) {
-    return { props: { post, ...draftKey } }; // 下書きデータはキャッシュさせない
+    return { props: { post, relatedPosts: [], ...draftKey } }; // 下書きデータはキャッシュさせない
   }
-  return { props: { post }, revalidate: isProduction ? 60 * 30 : 10 };
+  return {
+    props: { post, relatedPosts },
+    revalidate: isProduction ? 60 * 30 : 10,
+  };
 };

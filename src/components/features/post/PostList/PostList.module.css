@@ -3,9 +3,6 @@
   padding-left: 0;
 }
 
-.postListItem {
-}
-
 .postListItem + .postListItem {
-  margin-top: 3.6em;
+  margin-top: 2em;
 }
