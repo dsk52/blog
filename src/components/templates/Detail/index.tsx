@@ -53,6 +53,7 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
             <aside className={detailStyle.relatedPost}>
               <Container>
                 <h2>おすすめの記事</h2>
+                <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} />
                 <RelatedPosts posts={relatedPosts} />
               </Container>
             </aside>

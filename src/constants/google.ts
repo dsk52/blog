@@ -1,4 +1,8 @@
-type AdsenseTypes = "articleTop" | "articleIn" | "articleBottom";
+type AdsenseTypes =
+  | "articleTop"
+  | "articleIn"
+  | "articleBottom"
+  | "relatedPost";
 
 export type AdsenseOption = {
   format: "auto" | "fluid" | "rectangle";
@@ -25,5 +29,10 @@ export const AdsenseUnits: Record<AdsenseTypes, AdsenseOption> = {
     slot: "1904168614",
     format: "auto",
     responsive: true,
+  },
+  relatedPost: {
+    slot: "3720838686",
+    layoutKey: "-hg-3+1f-3d+2z",
+    format: "fluid",
   },
 };
