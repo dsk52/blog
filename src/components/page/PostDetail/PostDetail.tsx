@@ -6,13 +6,18 @@ import { Seo } from "./Seo/Seo";
 
 import type { PostProps } from "@/components/templates/Detail/type";
 
-export const PostDetailPage = ({ post, draftKey }: PostProps) => {
+export const PostDetailPage = ({ post, relatedPosts, draftKey }: PostProps) => {
   const pagePath = ROUTE.postDetail(post.slug);
 
   return (
     <Base>
       <Seo title={post.title} slug={post.slug} publishedAt={post.publishedAt} />
-      <DetailPage post={post} path={pagePath} draftKey={draftKey} />
+      <DetailPage
+        post={post}
+        path={pagePath}
+        relatedPosts={relatedPosts}
+        draftKey={draftKey}
+      />
     </Base>
   );
 };

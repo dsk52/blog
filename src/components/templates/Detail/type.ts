@@ -1,4 +1,4 @@
-import type { IPost } from "../../../types/domain/Post";
+import type { IPost, IPostItem } from "../../../types/domain/Post";
 
 export type DetailProps = {
   path: string;
@@ -6,5 +6,6 @@ export type DetailProps = {
 
 export type PostProps = {
   post: IPost;
+  relatedPosts: IPostItem[];
   draftKey?: string;
 };

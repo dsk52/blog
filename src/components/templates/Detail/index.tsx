@@ -1,5 +1,6 @@
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import ds from "@/components/features/post/PostList/PostItem/PostItem.module.css";
+import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
 import {
   ArticleHeader,
@@ -14,9 +15,11 @@ import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
+import detailStyle from "./style.module.css";
+
 import type { DetailProps } from "./type";
 
-export const DetailPage = ({ post, path }: DetailProps) => {
+export const DetailPage = ({ post, relatedPosts, path }: DetailProps) => {
   const pubDate = datetimeToDate(post.publishedAt);
 
   return (
@@ -38,18 +41,25 @@ export const DetailPage = ({ post, path }: DetailProps) => {
           </ArticleBody>
 
           <ArticleFooter>
-            <aside>
+            <aside className={detailStyle.tagList}>
               <TagList tags={post.tags} doLink />
             </aside>
 
             <section>
-              <h2>Share</h2>
+              <h2 className={detailStyle.shareTitle}>Share</h2>
               <ShareList title={post.title} path={path} />
             </section>
 
-            <ButtonLink link={ROUTE.top} label="トップに戻る" />
+            <section className={detailStyle.returnTopButton}>
+              <ButtonLink link={ROUTE.top} label="トップに戻る" />
+            </section>
 
-            <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
+            <aside className={detailStyle.relatedPost}>
+              <Container>
+                <h2>おすすめの記事</h2>
+                <RelatedPosts posts={relatedPosts} />
+              </Container>
+            </aside>
           </ArticleFooter>
         </Container>
       </Article>
