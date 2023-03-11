@@ -19,7 +19,7 @@ import detailStyle from "./style.module.css";
 
 import type { DetailProps } from "./type";
 
-export const DetailPage = ({ post, relatedPosts, path }: DetailProps) => {
+export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
   const pubDate = datetimeToDate(post.publishedAt);
 
   return (
@@ -43,12 +43,8 @@ export const DetailPage = ({ post, relatedPosts, path }: DetailProps) => {
           <ArticleFooter>
             <aside className={detailStyle.tagList}>
               <TagList tags={post.tags} doLink />
+              <ShareList title={post.title} />
             </aside>
-
-            <section>
-              <h2 className={detailStyle.shareTitle}>Share</h2>
-              <ShareList title={post.title} path={path} />
-            </section>
 
             <section className={detailStyle.returnTopButton}>
               <ButtonLink link={ROUTE.top} label="トップに戻る" />

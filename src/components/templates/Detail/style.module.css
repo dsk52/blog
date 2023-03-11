@@ -2,12 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ededed;
+  border-top: 2px solid #ededed;
   box-sizing: border-box;
   padding: 1em;
 }
 
-.shareTitle,
 .returnTopButton {
   text-align: center;
 }
