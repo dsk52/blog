@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { useRef } from "react";
-import { useIsomorphicLayoutEffect } from "usehooks-ts";
+import { useEffect } from "react";
 
 import type { GoogleAdsenseProps } from "./type";
 
@@ -15,14 +14,12 @@ export const Adsense = ({
   responsive = false,
 }: GoogleAdsenseProps) => {
   const { asPath } = useRouter();
-  const didLogRef = useRef(false);
 
-  useIsomorphicLayoutEffect(() => {
-    if (didLogRef.current) return;
-
+  useEffect(() => {
     try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      didLogRef.current = true;
+      if (typeof window === "object") {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch (err) {
       console.error(err);
     }
