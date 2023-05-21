@@ -7,16 +7,24 @@
 /** 記事詳細のスタイル */
 .articleBody * {
   line-height: 1.6;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 .articleBody * + * {
-  margin-top: 1.6em;
+  margin-top: 1.4em;
 }
 
 .articleBody h2,
 .articleBody h3 {
-  margin-top: 4em;
+  margin-top: 3em;
+}
+
+.articleBody h2 {
+  font-size: 1.4rem;
+}
+
+.articleBody h3 {
+  font-size: 1.2rem;
 }
 
 .articleBody h4,
@@ -25,7 +33,7 @@
 }
 
 .articleBody p {
-  line-height: 2;
+  line-height: 1.8;
 }
 
 .articleBody a {
