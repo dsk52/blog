@@ -29,7 +29,7 @@ export const isDraft = (arg: any): arg is Draft => {
 export const postPerPage = 12;
 
 export async function getAllPost(
-  limit = 0,
+  limit = postPerPage,
   offset = 0
 ): Promise<microCmsResponse<ApiPost>> {
   let params = {
@@ -37,13 +37,28 @@ export async function getAllPost(
     queries: {
       fields: "title,slug,tags,publishedAt",
       orders: "-publishedAt",
-      limit: postPerPage,
-      offset: offset,
+      limit,
+      offset,
     },
   };
-  if (limit != 0) {
-    params.queries["limit"] = limit;
-  }
+
+  return await microcms.get(params);
+}
+
+export async function getFeedItems(
+  limit = 0
+): Promise<
+  microCmsResponse<Pick<ApiPost, "title" | "body" | "slug" | "createdAt">>
+> {
+  let params = {
+    endpoint: ENDPOINTS.POST,
+    queries: {
+      fields: "title,slug,body,createdAt",
+      orders: "-publishedAt",
+      limit,
+      offset: 0,
+    },
+  };
 
   return await microcms.get(params);
 }

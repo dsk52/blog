@@ -11,6 +11,8 @@ export const ROUTE = {
     `/post/tags/${tagName}/${pageNum}`,
 
   tagList: "/post/tags",
+
+  feed: "/api/feed",
 };
 
 export const EXTERNAL_PAGE = {
