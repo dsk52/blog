@@ -22,17 +22,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
 
-      - uses: actions/cache@v3
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-nodejs-${{ hashFiles('**/package-lock.json') }}
-
-      - name: install node_modules
-        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+      - name: cache node_modules
+        uses: ./.github/actions/cache-node-modules
 
   lint_n_test:
     needs: [setup]
@@ -43,13 +34,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
 
-      - uses: actions/cache@v3
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-nodejs-${{ hashFiles('**/package-lock.json') }}
+      - name: cache node_modules
+        uses: ./.github/actions/cache-node-modules
 
       - name: Lint
         run: npm run lint
@@ -66,13 +52,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
 
-      - uses: actions/cache@v3
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-nodejs-${{ hashFiles('**/package-lock.json') }}
+      - name: cache node_modules
+        uses: ./.github/actions/cache-node-modules
 
       - name: type-check
         run: npm run type-check
