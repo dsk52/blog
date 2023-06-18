@@ -9,10 +9,8 @@ import {
   Article,
 } from "@/components/layouts/Article/Article";
 import { Container } from "@/components/ui/Container/Container";
-import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
-import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
 import detailStyle from "./style.module.css";
@@ -36,7 +34,7 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
           </ArticleHeader>
 
           <ArticleBody>
-            <Adsense client={AdsenseClient} {...AdsenseUnits.articleIn} />
+            {/* <Adsense client={AdsenseClient} {...AdsenseUnits.articleIn} /> */}
             <div dangerouslySetInnerHTML={{ __html: post.body }} />
           </ArticleBody>
 
@@ -46,16 +44,10 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
               <ShareList title={post.title} />
             </aside>
 
-            <section className={detailStyle.returnTopButton}>
-              <ButtonLink link={ROUTE.top} label="トップに戻る" />
-            </section>
-
             <aside className={detailStyle.relatedPost}>
-              <Container>
-                <h2>おすすめの記事</h2>
-                <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} />
-                <RelatedPosts posts={relatedPosts} />
-              </Container>
+              <h2>おすすめの記事</h2>
+              <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} />
+              <RelatedPosts posts={relatedPosts} />
             </aside>
           </ArticleFooter>
         </Container>
