@@ -11,6 +11,7 @@
 .meta {
   display: flex;
   flex-wrap: wrap;
+  column-gap: 1em;
   justify-content: flex-start;
   margin-top: 0.4em;
 }
