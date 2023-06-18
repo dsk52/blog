@@ -1,8 +1,7 @@
 .postList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3em;
   list-style-type: none;
   padding-left: 0;
-}
-
-.postListItem + .postListItem {
-  margin-top: 2em;
 }
