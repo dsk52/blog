@@ -1,5 +1,5 @@
 name: "cache node modules"
-description: "cache node modules of toB"
+description: "cache node modules"
 runs:
   using: "composite"
   steps:
@@ -9,7 +9,7 @@ runs:
         cache-name: cache-node-modules
       with:
         path: "**/node_modules"
-        key: ${{ runner.os }}-nodejs-b-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-nodejs-${{ hashFiles('**/package-lock.json') }}
 
     - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       name: install node_modules
