@@ -17,16 +17,18 @@
   },
   "packageRules": [
     {
-      "packageRules": [
-        {
-          "matchSourceUrlPrefixes": [
-            "https://github.com/kulshekhar/ts-jest"
-          ],
-          "matchUpdateTypes": [
-            "major"
-          ],
-          "groupName": "jest monorepo"
-        }
+      "groupName": "jest monorepo",
+      "matchSourceUrlPrefixes": [
+        "https://github.com/kulshekhar/ts-jest"
+      ],
+      "matchPackageNames": [
+        "@types/jest"
+      ],
+      "matchUpdateTypes": [
+        "digest",
+        "patch",
+        "minor",
+        "major"
       ]
     }
   ]
