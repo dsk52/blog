@@ -1,6 +1,8 @@
+import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { PostList } from "@/components/features/post/PostList/PostList";
 import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
+import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 
 import s from "./style.module.css";
 
@@ -13,9 +15,9 @@ export const ListPage = ({
   basePath,
 }: ListPageProps) => (
   <div>
-    {/* <Container>
+    <Container>
       <Adsense client={AdsenseClient} {...AdsenseUnits.articleTop} />
-    </Container> */}
+    </Container>
 
     <section className={s.postList}>
       <Container>
@@ -27,9 +29,9 @@ export const ListPage = ({
       <Container>
         <Pager basePath={basePath} maxPage={maxPage} pageNum={pageNum} />
 
-        {/* <div className={s.postListFooterAds}>
+        <div className={s.postListFooterAds}>
           <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
-        </div> */}
+        </div>
       </Container>
     </footer>
   </div>
