@@ -1,3 +1,4 @@
+import { Adsense } from "@/components/apps/Adsense/Adsense";
 import ds from "@/components/features/post/PostList/PostItem/PostItem.module.css";
 import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
@@ -9,6 +10,7 @@ import {
 } from "@/components/layouts/Article/Article";
 import { Container } from "@/components/ui/Container/Container";
 import { TagList } from "@/components/ui/TagList/TagList";
+import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { datetimeToDate } from "@/utilities/Date";
 
 import detailStyle from "./style.module.css";
@@ -44,7 +46,7 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
 
             <aside className={detailStyle.relatedPost}>
               <h2>おすすめの記事</h2>
-              {/* <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} /> */}
+              <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} />
               <RelatedPosts posts={relatedPosts} />
             </aside>
           </ArticleFooter>
