@@ -31,7 +31,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
-    "@types/gtag.js": "0.0.12",
+    "@types/gtag.js": "0.0.13",
     "@types/markdown-it": "13.0.0",
     "@types/node": "18.17.4",
     "@types/nprogress": "^0.2.0",
