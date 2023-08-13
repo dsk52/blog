@@ -7,7 +7,7 @@ module.exports = {
   generateRobotsTxt: true,
   sitemapSize: 5000,
   outDir: "./public",
-  exclude: [`/${DYNAMIC_SITEMAP_PATH}`],
+  generateIndexSitemap: false, // NOTE: 動的生成するため、デフォルトのサイトマップ生成を止める
   robotsTxtOptions: {
     additionalSitemaps: [`${SITE_DOMAIN}/${DYNAMIC_SITEMAP_PATH}`],
   },
