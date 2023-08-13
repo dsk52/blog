@@ -14,6 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const sitemapPaths = Array.from(Array(totalPage)).map((_, pageCount) => {
     const paths: ISitemapField = {
       loc: `${SITE.url}${ROUTE.postList(pageCount + 1)}`,
+      changefreq: "weekly",
       priority: 0.5,
     };
     return paths;
