@@ -1,6 +1,6 @@
 import { TagListPage } from "@/components/page/TagList/TagList";
 import { calcOffset, calcMaxPage } from "@/components/ui/Pager/util";
-import { getTagBySlug, postPerPage, getByTagId } from "@/libs/microcms";
+import { getTagBySlug, POST_PER_PAGE, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
 import type { TagListPageProp } from "@/components/page/TagList/type";
@@ -36,12 +36,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const Tag = Tags.contents[0];
 
   // Post Check
-  const offset = calcOffset(pageNum, postPerPage);
+  const offset = calcOffset(pageNum, POST_PER_PAGE);
 
-  const response = await getByTagId(Tag.id, postPerPage, offset);
+  const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
   const posts = PostMapper.list(response.contents);
 
-  const maxPage = calcMaxPage(response.totalCount, postPerPage);
+  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
 
   return {
     props: {
