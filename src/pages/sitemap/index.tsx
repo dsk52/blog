@@ -9,11 +9,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const sitemapBaseUrl = `${SITE.url}${ROUTE.sitemap}`;
 
   return getServerSideSitemapIndexLegacy(ctx, [
+    `${sitemapBaseUrl}/common`,
     `${sitemapBaseUrl}/post`,
     `${sitemapBaseUrl}/post/detail`,
     `${sitemapBaseUrl}/post/tags`,
   ]);
 };
 
-// Default export to prevent next.js errors
 export default function SitemapIndex() {}
