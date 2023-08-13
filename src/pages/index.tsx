@@ -1,6 +1,6 @@
 import { IndexPage } from "@/components/page/Index/Index";
 import { calcMaxPage } from "@/components/ui/Pager/util";
-import { getAllPost, postPerPage } from "@/libs/microcms";
+import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
 import type { ListPageProp } from "@/components/page/type";
@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (_) => {
   const posts = PostMapper.list(response.contents);
 
   const pageNum = 1; // トップなので、1ページ目を確定
-  const maxPage = calcMaxPage(response.totalCount, postPerPage);
+  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
 
   return {
     props: {
