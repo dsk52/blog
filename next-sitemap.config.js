@@ -1,14 +1,24 @@
 const SITE_DOMAIN = process.env.SITE_URL || "https://blog.daisukekonishi.com";
-const DYNAMIC_SITEMAP_PATH = "server-sitemap-index.xml";
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: SITE_DOMAIN,
   generateRobotsTxt: true,
   sitemapSize: 5000,
-  outDir: "./public",
-  generateIndexSitemap: false, // NOTE: 動的生成するため、デフォルトのサイトマップ生成を止める
+  outDir: "./out",
+  exclude: ["/sitemap.xml"],
+  generateIndexSitemap: false,
   robotsTxtOptions: {
-    additionalSitemaps: [`${SITE_DOMAIN}/${DYNAMIC_SITEMAP_PATH}`],
+    additionalSitemaps: [`${SITE_DOMAIN}/sitemap`],
+
+    transformRobotsTxt: async (_, robotsTxt) => {
+      // sitemapは動的生成にしたのでデフォルト生成なものを記載しないように調整
+      const withoutDefaultSitemap = robotsTxt.replace(
+        `Sitemap: ${SITE_DOMAIN}/sitemap.xml`,
+        "",
+      );
+
+      return withoutDefaultSitemap;
+    },
   },
 };
