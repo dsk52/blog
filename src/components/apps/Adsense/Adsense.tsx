@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useIsClient } from "usehooks-ts";
 
 import type { GoogleAdsenseProps } from "./type";
 
@@ -12,15 +13,17 @@ export const Adsense = ({
   layoutKey = "",
   responsive = false,
 }: GoogleAdsenseProps) => {
+  const isClient = useIsClient();
+
   useEffect(() => {
     try {
-      if (typeof window === "object") {
+      if (isClient) {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  }, [isClient]);
 
   return (
     <ins
