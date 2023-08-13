@@ -10,7 +10,7 @@ const {
 module.exports = {
   reactStrictMode: true,
 
-  pageExtensions: ["jsx", "ts", "tsx"],
+  pageExtensions: ["ts", "tsx"],
 
   serverRuntimeConfig: {
     MICROCMS_API_KEY,

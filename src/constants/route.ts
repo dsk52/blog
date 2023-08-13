@@ -12,6 +12,7 @@ export const ROUTE = {
 
   tagList: "/post/tags",
 
+  sitemap: "/sitemap",
   feed: "/api/feed",
 };
 
