@@ -46,7 +46,11 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
 
             <aside className={detailStyle.relatedPost}>
               <h2>おすすめの記事</h2>
-              <Adsense client={AdsenseClient} {...AdsenseUnits.relatedPost} />
+              <Adsense
+                client={AdsenseClient}
+                {...AdsenseUnits.relatedPost}
+                wrapperStyles={{ minHeight: "100px" }}
+              />
               <RelatedPosts posts={relatedPosts} />
             </aside>
           </ArticleFooter>
