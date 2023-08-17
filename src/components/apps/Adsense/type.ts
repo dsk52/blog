@@ -6,4 +6,5 @@ export type GoogleAdsenseProps = {
   style?: CSSProperties;
   client: string;
   layout?: string;
+  wrapperStyles?: CSSProperties;
 } & AdsenseOption;

@@ -30,7 +30,11 @@ export const ListPage = ({
         <Pager basePath={basePath} maxPage={maxPage} pageNum={pageNum} />
 
         <div className={s.postListFooterAds}>
-          <Adsense client={AdsenseClient} {...AdsenseUnits.articleBottom} />
+          <Adsense
+            client={AdsenseClient}
+            {...AdsenseUnits.articleBottom}
+            wrapperStyles={{ minHeight: "350px" }}
+          />
         </div>
       </Container>
     </footer>
