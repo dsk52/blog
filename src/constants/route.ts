@@ -12,6 +12,7 @@ export const ROUTE = {
 
   tagList: "/post/tags",
 
+  ogImage: '/api/ogp',
   sitemap: "/sitemap",
   feed: "/api/feed",
 };
