@@ -9,8 +9,14 @@ export const Seo = ({ title: pageTitle, slug, publishedAt }: SeoProps) => {
   const title = `${pageTitle} | ${SITE.name}`;
   const description = SITE.description;
   const url = `${SITE.url}${ROUTE.postDetail(slug)}`;
+
+  const queryParams = {
+    title
+  }
+  const urlSearchParams = new URLSearchParams(queryParams)
+
   const image = {
-    url: `${SITE.url}${SITE.ogp.imageUrl}`,
+    url: `${SITE.url}${ROUTE.ogImage}?${urlSearchParams}`,
     width: 450,
     height: 279,
   };
