@@ -1,9 +1,10 @@
 import { ROUTE } from "@/constants/route"
 import { getByContentId } from "@/libs/microcms"
-import { NextApiRequest, NextApiResponse } from "next"
+
+import type { NextApiRequest, NextApiResponse } from "next"
 
 const preview = async (req: NextApiRequest, res: NextApiResponse) => {
-    const { draftKey, slug } = req.query    
+    const { draftKey, slug } = req.query;
     if (typeof draftKey !== 'string' || typeof slug !== 'string') {
         res.status(404).end()
         return
