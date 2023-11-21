@@ -2,7 +2,7 @@ import MarkdownIt from "markdown-it";
 
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
-import { getByContentId, getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
+import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
