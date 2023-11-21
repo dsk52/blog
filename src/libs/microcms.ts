@@ -2,7 +2,6 @@ import { createClient, MicroCMSQueries } from "microcms-js-sdk";
 
 import type { microCmsResponse } from "@/types/api/Microcms";
 import type { ApiPost, ApiTag } from "@/types/api/Post";
-import { queries } from "@testing-library/react";
 
 const microcms = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",

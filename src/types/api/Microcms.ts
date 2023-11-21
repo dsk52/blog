@@ -1,8 +1,7 @@
 import type {
   MicroCMSContentId,
   MicroCMSDate,
-  MicroCMSListResponse,
-  MicroCMSObjectContent,
+  MicroCMSListResponse
 } from "microcms-js-sdk";
 
 export interface ICommonSchema extends MicroCMSDate {
