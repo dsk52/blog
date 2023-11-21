@@ -2,7 +2,7 @@ import MarkdownIt from "markdown-it";
 
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
-import { getByContentId, getBySlug, getByTagId } from "@/libs/microcms";
+import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
@@ -37,27 +37,33 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     ? { draftKey: previewData.draftKey }
     : {};
 
-  let res;
+  let postResponse;
   if (draftKey && draftKey.draftKey) {
-    res = await getByContentId(slug, draftKey.draftKey);
+    const res = await getByContentIdAndDraftKey(slug, draftKey.draftKey);
+    if (!res) {
+      return {
+        notFound: true
+      }
+    }
+    postResponse = res;
   } else {
-    res = await getBySlug(slug);
+    const res = await getBySlug(slug);
+    if (!res.contents || !res.contents.length) {
+      return {
+        notFound: true,
+      };
+    }
+    postResponse = res.contents[0];
   }
-
-  if (!res.contents || !res.contents.length) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const tagId = res.contents.at(0)?.tags.at(0)?.id;
+  
+  const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
   if (tagId && !draftKey.draftKey) {
     const relatedPostDatas = await getByTagId(tagId, 6);
     relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
   }
-
-  const post = await PostMapper.detail(res.contents[0]);
+  
+  const post = await PostMapper.detail(postResponse);
 
   const md: MarkdownIt = new MarkdownIt({
     html: true,

@@ -1,5 +1,5 @@
 import { ROUTE } from "@/constants/route"
-import { getByContentId } from "@/libs/microcms"
+import { getByContentIdAndDraftKey } from "@/libs/microcms"
 
 import type { NextApiRequest, NextApiResponse } from "next"
 
@@ -10,12 +10,12 @@ const preview = async (req: NextApiRequest, res: NextApiResponse) => {
         return
     }
 
-    const data = await getByContentId(slug, draftKey);
+    const data = await getByContentIdAndDraftKey(slug, draftKey);
     if (!data) {
         return res.status(401).json({ message: 'Invalid slug' })
     }
 
-    const contestId = data.contents.at(0)?.id ?? '-1'
+    const contestId = data.id ?? '-1'
 
     res.setPreviewData({
         slug: contestId,

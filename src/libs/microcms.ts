@@ -93,6 +93,22 @@ export async function getByContentId(
   });
 }
 
+export async function getByContentIdAndDraftKey(
+  contentId: string,
+  draftKey?: string,
+): Promise<ApiPost> {
+  const queries: MicroCMSQueries = {};
+  if (draftKey && draftKey.length) {
+    queries.draftKey = draftKey;
+  }
+
+  return await microcms.get({
+    endpoint: ENDPOINTS.POST,
+    contentId,
+    queries,
+  });
+}
+
 export async function getBySlug(
   slug: string,
   draftKey?: string,
