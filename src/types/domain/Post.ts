@@ -1,3 +1,5 @@
+import { MicroCMSImage } from "microcms-js-sdk";
+
 export interface IPost {
   id: string;
   slug: string;
@@ -5,6 +7,7 @@ export interface IPost {
   body: string;
   category: ICategory;
   tags: ITag[];
+  thumbnail: MicroCMSImage | null;
   publishedAt: string;
   updatedAt: string;
 }

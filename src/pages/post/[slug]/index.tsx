@@ -77,6 +77,6 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
   }
   return {
     props: { post, relatedPosts },
-    revalidate: isProduction ? 60 * 30 : 10,
+    revalidate: isProduction ? 60 * 30 : undefined,
   };
 };

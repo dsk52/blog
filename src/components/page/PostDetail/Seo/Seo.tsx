@@ -5,7 +5,7 @@ import { SITE } from "@/constants/site";
 
 import type { SeoProps } from "./type";
 
-export const Seo = ({ title: pageTitle, slug, publishedAt }: SeoProps) => {
+export const Seo = ({ title: pageTitle, slug, publishedAt, thumbnail }: SeoProps) => {
   const title = `${pageTitle} | ${SITE.name}`;
   const description = SITE.description;
   const url = `${SITE.url}${ROUTE.postDetail(slug)}`;
@@ -15,7 +15,11 @@ export const Seo = ({ title: pageTitle, slug, publishedAt }: SeoProps) => {
   }
   const urlSearchParams = new URLSearchParams(queryParams)
 
-  const image = {
+  const image = thumbnail ? {
+    url: thumbnail.url,
+    with: thumbnail.width,
+    height: thumbnail.height
+  } : {
     url: `${SITE.url}${ROUTE.ogImage}?${urlSearchParams}`,
     width: 450,
     height: 279,
