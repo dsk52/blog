@@ -31,6 +31,7 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
                 {pubDate}
               </time>
             </div>
+            {post.thumbnail && (<img className={detailStyle.thumbnail} src={post.thumbnail.url} alt={`${post.title}のサムネイル`} />) }
           </ArticleHeader>
 
           <ArticleBody>
