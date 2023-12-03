@@ -38,8 +38,9 @@ export class PostMapper {
       title: post.title,
       body: post.body,
       slug: post.slug,
-      category: category,
-      tags: tags,
+      category,
+      tags,
+      thumbnail: post.thumbnail || null,
       updatedAt: post.updatedAt,
       publishedAt: post.publishedAt || "",
     };

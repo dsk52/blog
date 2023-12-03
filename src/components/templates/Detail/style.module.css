@@ -1,3 +1,8 @@
+.thumbnail {
+  width: 100%;
+  object-fit: scale-down;
+}
+
 .tagList {
   display: flex;
   justify-content: space-between;
