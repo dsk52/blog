@@ -33,7 +33,7 @@
     "@testing-library/react": "14.1.2",
     "@types/gtag.js": "0.0.18",
     "@types/markdown-it": "13.0.7",
-    "@types/node": "18.18.14",
+    "@types/node": "18.19.2",
     "@types/nprogress": "0.2.3",
     "@types/react": "18.2.42",
     "@types/react-gtm-module": "2.0.3",
