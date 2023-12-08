@@ -35,7 +35,7 @@
     "@types/markdown-it": "13.0.7",
     "@types/node": "18.18.14",
     "@types/nprogress": "0.2.3",
-    "@types/react": "18.2.39",
+    "@types/react": "18.2.42",
     "@types/react-gtm-module": "2.0.3",
     "@types/rss": "0.0.32",
     "eslint": "8.54.0",
