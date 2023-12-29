@@ -1,4 +1,5 @@
 import MarkdownIt from "markdown-it";
+import hljs from 'highlight.js'
 
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
@@ -69,6 +70,14 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     html: true,
     breaks: true,
     typographer: true,
+    highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value;
+      } catch (__) {}
+    }
+
+    return '';
   });
   post.body = md.render(post.body);
 
