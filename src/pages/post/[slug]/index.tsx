@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     }
 
     return '';
-  });
+  }});
   post.body = md.render(post.body);
 
   if (draftKey.draftKey) {
