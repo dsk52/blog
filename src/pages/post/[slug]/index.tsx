@@ -1,8 +1,11 @@
-import MarkdownIt from "markdown-it";
-
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
-import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
+import { md } from "@/libs/markdown-it";
+import {
+  getByContentIdAndDraftKey,
+  getBySlug,
+  getByTagId,
+} from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
@@ -42,8 +45,8 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     const res = await getByContentIdAndDraftKey(slug, draftKey.draftKey);
     if (!res) {
       return {
-        notFound: true
-      }
+        notFound: true,
+      };
     }
     postResponse = res;
   } else {
@@ -55,21 +58,15 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     }
     postResponse = res.contents[0];
   }
-  
+
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
   if (tagId && !draftKey.draftKey) {
     const relatedPostDatas = await getByTagId(tagId, 6);
     relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
   }
-  
-  const post = await PostMapper.detail(postResponse);
 
-  const md: MarkdownIt = new MarkdownIt({
-    html: true,
-    breaks: true,
-    typographer: true,
-  });
+  const post = await PostMapper.detail(postResponse);
   post.body = md.render(post.body);
 
   if (draftKey.draftKey) {
