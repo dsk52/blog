@@ -1,9 +1,10 @@
-import MarkdownIt from "markdown-it";
-import hljs from 'highlight.js'
-
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
-import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
+import {
+  getByContentIdAndDraftKey,
+  getBySlug,
+  getByTagId,
+} from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
@@ -11,6 +12,7 @@ import type { Params } from "@/components/page/PostDetail/type";
 import type { PostProps } from "@/components/templates/Detail/type";
 import type { IPostItem } from "@/types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { md } from "@/libs/markdown-it";
 
 const Page: NextPage<PostProps> = (props) => PostDetailPage(props);
 
@@ -43,8 +45,8 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     const res = await getByContentIdAndDraftKey(slug, draftKey.draftKey);
     if (!res) {
       return {
-        notFound: true
-      }
+        notFound: true,
+      };
     }
     postResponse = res;
   } else {
@@ -56,29 +58,15 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     }
     postResponse = res.contents[0];
   }
-  
+
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
   if (tagId && !draftKey.draftKey) {
     const relatedPostDatas = await getByTagId(tagId, 6);
     relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
   }
-  
+
   const post = await PostMapper.detail(postResponse);
-
-  const md: MarkdownIt = new MarkdownIt({
-    html: true,
-    breaks: true,
-    typographer: true,
-    highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (__) {}
-    }
-
-    return '';
-  }});
   post.body = md.render(post.body);
 
   if (draftKey.draftKey) {
