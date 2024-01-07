@@ -1,5 +1,6 @@
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { isDraft } from "@/components/page/PostDetail/util";
+import { md } from "@/libs/markdown-it";
 import {
   getByContentIdAndDraftKey,
   getBySlug,
@@ -12,7 +13,6 @@ import type { Params } from "@/components/page/PostDetail/type";
 import type { PostProps } from "@/components/templates/Detail/type";
 import type { IPostItem } from "@/types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { md } from "@/libs/markdown-it";
 
 const Page: NextPage<PostProps> = (props) => PostDetailPage(props);
 
