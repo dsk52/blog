@@ -1,5 +1,6 @@
 import "sanitize.css";
 import "../styles/globals.css";
+import "prismjs/themes/prism-tomorrow.min.css";
 
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";

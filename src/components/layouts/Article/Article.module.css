@@ -74,16 +74,6 @@
   border-radius: 5px;
 }
 
-.articleBody pre,
-.articleBody p code {
-  background-color: #383737;
-}
-
-.articleBody pre code,
-.articleBody p code {
-  color: #e2ebf6;
-}
-
 .articleBody p code {
   padding: 0.15em 0.2em;
   line-height: 1;
