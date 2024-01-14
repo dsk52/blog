@@ -1,13 +1,14 @@
+import { clsx } from "clsx";
+
+import { Container } from "@/components/ui/Container/Container";
 import { SITE } from "@/constants/site";
 
-import style from "./Footer.module.css";
-
 export const Footer = () => (
-  <footer className={style.footer}>
-    <div className={style.footerInner}>
-      <p className={style.copy}>
-        <small>© 2021 {SITE.name}</small>
+  <footer className={clsx("tw-box-border tw-pt-3 tw-pb-8")}>
+    <Container>
+      <p className={clsx("tw-text-center")}>
+        <small className={clsx("tw-text-sm")}>© 2021 {SITE.name}</small>
       </p>
-    </div>
+    </Container>
   </footer>
 );

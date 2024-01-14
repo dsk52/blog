@@ -9,8 +9,7 @@ import {
 import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
-import type { Params } from "@/components/page/PostDetail/type";
-import type { PostProps } from "@/components/templates/Detail/type";
+import type { Params, PostProps } from "@/components/page/PostDetail/type";
 import type { IPostItem } from "@/types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
