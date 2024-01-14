@@ -1,13 +1,17 @@
-import { PostItem } from "@/components/features/post/PostList/PostItem/PostItem";
+import { clsx } from "clsx";
 
-import s from "./style.module.css";
+import { PostItem } from "@/components/features/post/PostList/PostItem/PostItem";
 
 import type { RelatedPostsProps } from "@/components/features/post/RelatedPosts/type";
 
 export const RelatedPosts = ({ posts }: RelatedPostsProps) => (
-  <ul className={s.relatedPosts}>
+  <ul
+    className={clsx(
+      "tw-flex tw-flex-col tw-gap-y-8 tw-list-none tw-pl-0 tw-mt-7",
+    )}
+  >
     {posts.map((post) => (
-      <li key={post.slug} className={s.relatedPostItem}>
+      <li key={post.slug}>
         <PostItem post={post} />
       </li>
     ))}

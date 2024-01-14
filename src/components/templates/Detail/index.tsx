@@ -1,5 +1,4 @@
 import { Adsense } from "@/components/apps/Adsense/Adsense";
-import ds from "@/components/features/post/PostList/PostItem/PostItem.module.css";
 import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
 import {
@@ -26,12 +25,16 @@ export const DetailPage = ({ post, relatedPosts }: DetailProps) => {
         <Container>
           <ArticleHeader>
             <h1>{post.title}</h1>
-            <div className={ds.meta}>
-              <time className={ds.date} dateTime={post.publishedAt}>
-                {pubDate}
-              </time>
+            <div>
+              <time dateTime={post.publishedAt}>{pubDate}</time>
             </div>
-            {post.thumbnail && (<img className={detailStyle.thumbnail} src={post.thumbnail.url} alt={`${post.title}のサムネイル`} />) }
+            {post.thumbnail && (
+              <img
+                className={detailStyle.thumbnail}
+                src={post.thumbnail.url}
+                alt={`${post.title}のサムネイル`}
+              />
+            )}
           </ArticleHeader>
 
           <ArticleBody>
