@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   prefix: "tw-",
-  darkMode: false,
   content: ["./src/components/**/*.tsx"],
   theme: {
     extend: {
