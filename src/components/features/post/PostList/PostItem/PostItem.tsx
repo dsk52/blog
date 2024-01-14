@@ -1,9 +1,9 @@
+import { clsx } from "clsx";
+
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
-
-import s from "./PostItem.module.css";
 
 import type { Props } from "./type";
 
@@ -12,15 +12,20 @@ export const PostItem = ({ post }: Props) => {
 
   return (
     <article>
-      <div className={s.title}>
-        <AnchorLink href={ROUTE.postDetail(post.slug)}>{post.title}</AnchorLink>
-      </div>
-      <div className={s.meta}>
-        <time className={s.date} dateTime={post.publishedAt}>
-          {pubDate}
-        </time>
-        <TagList tags={post.tags} className={s.tagList} />
-      </div>
+      <AnchorLink
+        href={ROUTE.postDetail(post.slug)}
+        className={clsx("tw-text-2xl tw-font-semibold", "hover:tw-underline")}
+      >
+        {post.title}
+      </AnchorLink>
+      <aside
+        className={clsx(
+          "tw-flex tw-flex-wrap tw-justify-start tw-mt-1.5 tw-gap-x-3",
+        )}
+      >
+        <time dateTime={post.publishedAt}>{pubDate}</time>
+        <TagList tags={post.tags} className={clsx("tw-gap-x-2")} />
+      </aside>
     </article>
   );
 };

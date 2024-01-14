@@ -1,22 +1,32 @@
+import { clsx } from "clsx";
+
+import { Container } from "@/components/ui/Container/Container";
+import { Heading } from "@/components/ui/Heading/Heading";
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 
 import { GlobalNav } from "./GlobalNav/GlobalNav";
-import style from "./Header.module.css";
 
 export const Header = () => (
-  <header className={style.header}>
-    <div className={style.headerInner}>
-      <div className={style.headerContent}>
-        <div>
-          <h1 className={style.siteTitle}>
-            <AnchorLink href={ROUTE.top}>{SITE.name}</AnchorLink>
-          </h1>
-        </div>
+  <header className={clsx("tw-mt-4 tw-mb-5")}>
+    <Container>
+      <div
+        className={clsx(
+          "tw-flex tw-flex-wrap tw-items-center tw-justify-between",
+        )}
+      >
+        <Heading>
+          <AnchorLink
+            href={ROUTE.top}
+            className={clsx("tw-text-3xl tw-leading-none")}
+          >
+            {SITE.name}
+          </AnchorLink>
+        </Heading>
 
         <GlobalNav />
       </div>
-    </div>
+    </Container>
   </header>
 );
