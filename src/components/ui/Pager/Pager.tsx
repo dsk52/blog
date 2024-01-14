@@ -1,6 +1,6 @@
-import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
+import { clsx } from "clsx";
 
-import s from "./Pager.module.css";
+import { ButtonLink } from "@/components/ui/link/ButtonLink/ButtonLink";
 
 import type { PagerProps } from "./type";
 
@@ -14,7 +14,11 @@ export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
    */
 
   return (
-    <nav className={s.pagerWrapper}>
+    <nav
+      className={clsx(
+        "tw-w-full tw-flex tw-flex-wrap tw-justify-between tw-mt-16",
+      )}
+    >
       {prevPageNum > 0 ? (
         <ButtonLink
           label="前のページへ"

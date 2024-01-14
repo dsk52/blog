@@ -1,6 +1,5 @@
+import { clsx } from "clsx";
 import Link from "next/link";
-
-import s from "./Anchor.module.css";
 
 import type { Props } from "./type";
 
@@ -13,8 +12,9 @@ export const AnchorLink = ({
   return (
     <Link
       href={href ?? "#"}
-      className={`${s.anchor} ${className}`}
+      className={clsx("tw-transition-opacity hover:tw-opacity-70", className)}
       target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
       {children}
     </Link>

@@ -5,7 +5,7 @@ import {
 } from "@/components/layouts/Article/Article";
 import { Base } from "@/components/layouts/Base";
 import { Container } from "@/components/ui/Container/Container";
-import { MainTitle } from "@/components/ui/Title/Title";
+import { Heading } from "@/components/ui/Heading/Heading";
 import { EXTERNAL_PAGE } from "@/constants/route";
 
 import { Seo } from "./Seo/Seo";
@@ -18,12 +18,12 @@ export const AboutPage: NextPage = () => (
     <Article>
       <Container>
         <ArticleHeader>
-          <MainTitle>About</MainTitle>
+          <Heading>About</Heading>
         </ArticleHeader>
 
         <ArticleBody>
           <section>
-            <h2>サイトについて</h2>
+            <Heading as="h2">サイトについて</Heading>
             <p>
               仕事やプライベートで知った技術や、イベントで喋った話・行った話をブログとして残しています。
             </p>
@@ -33,7 +33,7 @@ export const AboutPage: NextPage = () => (
           </section>
 
           <section>
-            <h2>私について</h2>
+            <Heading as="h2">私について</Heading>
             <p>鹿児島生まれ京都育ち、今は大阪に住んでます。</p>
             <p>興味駆動でWeb周りのことをやってます。</p>
             <p>
@@ -47,7 +47,7 @@ export const AboutPage: NextPage = () => (
           </section>
 
           <section>
-            <h2>免責事項</h2>
+            <Heading as="h2">免責事項</Heading>
 
             <p>
               当サイトに掲載されている情報の正確さについて可能な限り努力をしていますが、その正確性や適切性に問題がある場合、告知無しに情報を変更・削除する事があります。
@@ -64,7 +64,7 @@ export const AboutPage: NextPage = () => (
           </section>
 
           <section>
-            <h2>お問い合わせ</h2>
+            <Heading as="h2">お問い合わせ</Heading>
             <p>
               お問い合わせはTwitter <a href={EXTERNAL_PAGE.TWITTER}>@skd_nw</a>
               までよろしくお願い致します。
