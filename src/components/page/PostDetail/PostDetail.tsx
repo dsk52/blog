@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
-import { Base } from "@/components/layouts/Base";
+import { CommonLayout } from "@/components/layouts/CommonLayout";
 import { Container } from "@/components/ui/Container/Container";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { TagList } from "@/components/ui/TagList/TagList";
@@ -18,7 +18,7 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
   const pubDate = datetimeToDate(post.publishedAt);
 
   return (
-    <Base>
+    <CommonLayout>
       <Seo
         title={post.title}
         slug={post.slug}
@@ -72,6 +72,6 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
           </div>
         </Container>
       </article>
-    </Base>
+    </CommonLayout>
   );
 };

@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { PostList } from "@/components/features/post/PostList/PostList";
-import { Base } from "@/components/layouts/Base";
+import { CommonLayout } from "@/components/layouts/CommonLayout";
 import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
@@ -19,7 +19,7 @@ export const TagListPage = ({
   pageNum,
 }: TagListPageProp) => {
   return (
-    <Base>
+    <CommonLayout>
       <Seo tag={tag} pageNum={pageNum} />
 
       <div className={clsx("tw-space-y-8")}>
@@ -49,6 +49,6 @@ export const TagListPage = ({
           </Container>
         </footer>
       </div>
-    </Base>
+    </CommonLayout>
   );
 };

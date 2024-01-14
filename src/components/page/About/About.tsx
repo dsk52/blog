@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 
-import { Base } from "@/components/layouts/Base";
+import { CommonLayout } from "@/components/layouts/CommonLayout";
 import { Container } from "@/components/ui/Container/Container";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { EXTERNAL_PAGE } from "@/constants/route";
@@ -10,7 +10,7 @@ import { Seo } from "./Seo/Seo";
 import type { NextPage } from "next";
 
 export const AboutPage: NextPage = () => (
-  <Base>
+  <CommonLayout>
     <Seo />
     <article>
       <Container>
@@ -79,5 +79,5 @@ export const AboutPage: NextPage = () => (
         </div>
       </Container>
     </article>
-  </Base>
+  </CommonLayout>
 );

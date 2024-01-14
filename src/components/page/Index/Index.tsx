@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { PostList } from "@/components/features/post/PostList/PostList";
-import { Base } from "@/components/layouts/Base";
+import { CommonLayout } from "@/components/layouts/CommonLayout";
 import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
@@ -13,15 +13,9 @@ import { Seo } from "./Seo/Seo";
 import type { ListPageProp } from "@/components/page/type";
 
 export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
-  <Base>
+  <CommonLayout>
     <Seo />
     <div className={clsx("tw-space-y-8")}>
-      <section>
-        <Container>
-          <Adsense client={AdsenseClient} {...AdsenseUnits.articleTop} />
-        </Container>
-      </section>
-
       <section>
         <Container>
           <PostList posts={posts} />
@@ -46,5 +40,5 @@ export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
         </Container>
       </footer>
     </div>
-  </Base>
+  </CommonLayout>
 );
