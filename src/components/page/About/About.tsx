@@ -16,9 +16,7 @@ export const AboutPage: NextPage = () => (
       <Container>
         <div className={clsx("tw-space-y-4")}>
           <header>
-            <Heading className={clsx("tw-text-4xl tw-leading-relaxed")}>
-              About
-            </Heading>
+            <Heading>About</Heading>
           </header>
 
           <div className={clsx("tw-prose tw-prose-slate tw-max-w-full")}>

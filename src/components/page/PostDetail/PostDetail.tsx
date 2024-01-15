@@ -31,9 +31,7 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
         <Container>
           <div className={clsx("tw-space-y-8")}>
             <header>
-              <Heading className={clsx("tw-text-4xl tw-leading-relaxed")}>
-                {post.title}
-              </Heading>
+              <Heading>{post.title}</Heading>
               <time dateTime={post.publishedAt}>{pubDate}</time>
               {post.thumbnail && (
                 <img
