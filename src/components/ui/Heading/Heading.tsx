@@ -1,5 +1,7 @@
 import { clsx } from "clsx";
 
+import { headingClasses } from "./util";
+
 import type { HeadingProps } from "./type";
 
 export const Heading = ({
@@ -7,13 +9,7 @@ export const Heading = ({
   className = "",
   children,
 }: HeadingProps) => (
-  <Tag
-    className={clsx(
-      "tw-font-bold tw-text-lg",
-      Tag === "h1" && "tw-text-2xl",
-      className,
-    )}
-  >
+  <Tag className={clsx("tw-font-bold", headingClasses(Tag), className)}>
     {children}
   </Tag>
 );
