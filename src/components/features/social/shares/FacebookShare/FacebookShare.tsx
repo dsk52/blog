@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { useMemo } from "react";
 
 import { FacebookIcon } from "@/components/icons/Facebook/Facebook";
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 
 import { BASE_SHARE_URL } from "./const";
 
@@ -18,8 +18,8 @@ export const FacebookShare = ({ url }: FacebookShareProps): JSX.Element => {
   }, [url]);
 
   return (
-    <Link href={shareUrl} rel="canonical" target="_blank">
-      <FacebookIcon size="24px" />
-    </Link>
+    <AnchorLink href={shareUrl} target="_blank">
+      <FacebookIcon size="46px" />
+    </AnchorLink>
   );
 };

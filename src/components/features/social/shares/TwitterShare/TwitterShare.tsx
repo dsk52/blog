@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { useMemo } from "react";
 
 import { TwitterIcon } from "@/components/icons/Twitter/Twitter";
+import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { SITE } from "@/constants/site";
 
 import { BASE_SHARE_URL } from "./const";
@@ -23,8 +23,8 @@ export const TwitterShare = ({
   }, [title, url]);
 
   return (
-    <Link href={shareUrl} rel="canonical" target="_blank">
-      <TwitterIcon size="24px" />
-    </Link>
+    <AnchorLink href={shareUrl} target="_blank">
+      <TwitterIcon size="36px" fill="black" />
+    </AnchorLink>
   );
 };
