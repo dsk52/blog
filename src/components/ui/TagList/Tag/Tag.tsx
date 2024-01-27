@@ -6,9 +6,16 @@ import { ROUTE } from "@/constants/route";
 import type { TagProps } from "./type";
 
 export const Tag = ({ name, slug, doLink = false }: TagProps) => {
+  const label = `#${name}`;
+
   if (!doLink) {
     return (
-      <span className={clsx("tw-leading tw-cursor-default")}>#{name}</span>
+      <span
+        className={clsx("tw-leading tw-cursor-default")}
+        data-testid="nonLinkTag" // NOTE: spanタグを上手く探すのが難しいのでtestIdをふっている
+      >
+        {label}
+      </span>
     );
   }
 
@@ -17,7 +24,7 @@ export const Tag = ({ name, slug, doLink = false }: TagProps) => {
       href={ROUTE.postTagList(slug, 1)}
       className={clsx("tw-leading tw-underline", "hover:tw-no-underline")}
     >
-      <>#{name}</>
+      {label}
     </AnchorLink>
   );
 };
