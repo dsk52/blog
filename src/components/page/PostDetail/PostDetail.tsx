@@ -54,11 +54,15 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
                 )}
               >
                 <TagList tags={post.tags} doLink />
+              </aside>
+
+              <aside className="tw-flex tw-flex-col tw-items-center tw-gap-y-3 tw-mt-7">
+                <Heading as="h2">Share</Heading>
                 <ShareList title={post.title} />
               </aside>
 
-              <aside className={clsx("tw-mt-10")}>
-                <h2>おすすめの記事</h2>
+              <aside className={clsx("tw-mt-16")}>
+                <Heading as="h2">おすすめの記事</Heading>
                 <Adsense
                   client={AdsenseClient}
                   {...AdsenseUnits.relatedPost}

@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 
 import { PostItem } from "@/components/features/post/PostList/PostItem/PostItem";
 
-import type { RelatedPostsProps } from "@/components/features/post/RelatedPosts/type";
+import type { RelatedPostsProps } from "./type";
 
 export const RelatedPosts = ({ posts }: RelatedPostsProps) => (
   <ul
