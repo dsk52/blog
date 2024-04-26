@@ -15,7 +15,7 @@
     "lint:fix": "./node_modules/.bin/eslint ./src/**/*.{ts,tsx} && prettier --write ./src/**/*.{ts,tsx}"
   },
   "dependencies": {
-    "clsx": "2.1.0",
+    "clsx": "2.1.1",
     "markdown-it": "14.1.0",
     "markdown-it-prism": "^2.3.0",
     "microcms-js-sdk": "3.1.0",
