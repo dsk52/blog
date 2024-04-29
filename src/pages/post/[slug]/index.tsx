@@ -10,6 +10,7 @@ import { PostMapper } from "@/models/mapper/PostMapper";
 import { isProduction } from "@/utilities/env";
 
 import type { Params, PostProps } from "@/components/page/PostDetail/type";
+import type { ApiPost } from "@/types/api/Post";
 import type { IPostItem } from "@/types/domain/Post";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
@@ -39,7 +40,7 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
     ? { draftKey: previewData.draftKey }
     : {};
 
-  let postResponse;
+  let postResponse: ApiPost | undefined;
   if (draftKey && draftKey.draftKey) {
     const res = await getByContentIdAndDraftKey(slug, draftKey.draftKey);
     if (!res) {
@@ -61,8 +62,14 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
   if (tagId && !draftKey.draftKey) {
-    const relatedPostDatas = await getByTagId(tagId, 6);
-    relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
+    const displayCount = 6;
+    const relatedPostDatas = await getByTagId(tagId, displayCount + 1); // HACK: 後続処理で除外する可能性があるため多めに取る
+    // NOTE: 表示中の記事は関連記事に含めない
+    const filteredRelatedPosts = relatedPostDatas.contents
+      .filter((p) => p.id !== postResponse?.id)
+      .slice(0, displayCount);
+
+    relatedPosts = PostMapper.relatedPosts(filteredRelatedPosts);
   }
 
   const post = await PostMapper.detail(postResponse);
