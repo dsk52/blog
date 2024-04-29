@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
@@ -32,7 +32,12 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
           <div className={clsx("tw-space-y-8")}>
             <header>
               <Heading>{post.title}</Heading>
-              <time dateTime={post.publishedAt}>{pubDate}</time>
+              <time
+                className={clsx("tw-block tw-mt-2")}
+                dateTime={post.publishedAt}
+              >
+                {pubDate}
+              </time>
               {post.thumbnail && (
                 <img
                   className={clsx("tw-w-full tw-object-scale-down tw-mt-10")}
@@ -43,14 +48,19 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
             </header>
 
             <div
-              className={clsx("tw-prose tw-prose-slate tw-max-w-full")}
+              className={clsx(
+                "tw-prose tw-prose-slate",
+                // custom tailwindcss-typography
+                "hover:prose-a:tw-no-underline hover:prose-a:tw-opacity-70",
+                "tw-max-w-full",
+              )}
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
 
             <footer>
               <aside
                 className={clsx(
-                  "tw-flex tw-justify-between tw-items-center tw-p-4 tw-border-t-[1px] tw-border-t-white",
+                  "tw-flex tw-justify-between tw-items-center tw-py-5 tw-border-t-[1px] tw-border-t-white",
                 )}
               >
                 <TagList tags={post.tags} doLink />
