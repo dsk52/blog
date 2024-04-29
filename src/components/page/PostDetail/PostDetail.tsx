@@ -71,15 +71,17 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
                 <ShareList title={post.title} />
               </aside>
 
-              <aside className={clsx("tw-mt-16")}>
-                <Heading as="h2">おすすめの記事</Heading>
-                <Adsense
-                  client={AdsenseClient}
-                  {...AdsenseUnits.relatedPost}
-                  wrapperStyles={{ minHeight: "100px" }}
-                />
-                <RelatedPosts posts={relatedPosts} />
-              </aside>
+              {relatedPosts.length > 0 && (
+                <aside className={clsx("tw-mt-16")}>
+                  <Heading as="h2">おすすめの記事</Heading>
+                  <Adsense
+                    client={AdsenseClient}
+                    {...AdsenseUnits.relatedPost}
+                    wrapperStyles={{ minHeight: "100px" }}
+                  />
+                  <RelatedPosts posts={relatedPosts} />
+                </aside>
+              )}
             </footer>
           </div>
         </Container>

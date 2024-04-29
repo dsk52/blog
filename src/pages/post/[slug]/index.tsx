@@ -61,8 +61,14 @@ export const getStaticProps: GetStaticProps<PostProps, Params> = async ({
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
   if (tagId && !draftKey.draftKey) {
-    const relatedPostDatas = await getByTagId(tagId, 6);
-    relatedPosts = PostMapper.relatedPosts(relatedPostDatas.contents);
+    const displayCount = 6;
+    const relatedPostDatas = await getByTagId(tagId, displayCount + 1); // HACK: 後続処理で除外する可能性があるため多めに取る
+    // NOTE: 表示中の記事は関連記事に含めない
+    const filteredRelatedPosts = relatedPostDatas.contents
+      .filter((p) => p.id !== postResponse.id)
+      .slice(0, displayCount);
+
+    relatedPosts = PostMapper.relatedPosts(filteredRelatedPosts);
   }
 
   const post = await PostMapper.detail(postResponse);
