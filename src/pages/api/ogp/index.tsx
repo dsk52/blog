@@ -1,14 +1,14 @@
 import { ImageResponse } from "next/og";
 
-import { SITE } from "@/constants/site";
+import { SITE } from "../../../constants/site";
 
-import type { NextRequest} from 'next/server'
+import type { NextRequest } from "next/server";
 
 export const config = {
   runtime: "edge",
 };
 
-export default function handler(req: NextRequest) {  
+export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
 
@@ -17,7 +17,8 @@ export default function handler(req: NextRequest) {
       ? searchParams.get("title")?.slice(0, 100)
       : SITE.name;
 
-      return new ImageResponse((
+    return new ImageResponse(
+      (
         <div
           style={{
             backgroundColor: "#fff",
@@ -30,7 +31,7 @@ export default function handler(req: NextRequest) {
             justifyContent: "center",
             flexDirection: "column",
             flexWrap: "nowrap",
-            border: '10px solid #4a4a4a' 
+            border: "10px solid #4a4a4a",
           }}
         >
           <div
@@ -62,10 +63,15 @@ export default function handler(req: NextRequest) {
             {SITE.name}
           </div>
         </div>
-      ), {
+      ),
+      {
         width: 1200,
-        height: 630
-      })
+        height: 630,
+        headers: {
+          xRobotsTag: "noindex",
+        },
+      },
+    );
   } catch (error) {
     // @ts-ignore
     console.error(error.message);
