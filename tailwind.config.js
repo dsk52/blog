@@ -11,6 +11,9 @@ module.exports = {
         white: {
           DEFAULT: "#dedede",
         },
+        primary: {
+          DEFAULT: "#1585b4",
+        },
       },
       transitionDuration: {
         400: "400ms",
