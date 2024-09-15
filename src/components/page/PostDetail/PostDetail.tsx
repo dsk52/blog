@@ -51,7 +51,8 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
               className={clsx(
                 "tw-prose tw-prose-slate",
                 // custom tailwindcss-typography
-                "hover:prose-a:tw-no-underline hover:prose-a:tw-opacity-70",
+                "prose-a:tw-transition-colors",
+                "hover:prose-a:tw-no-underline hover:prose-a:tw-text-primary hover:prose-a:tw-opacity-70",
                 "tw-max-w-full",
               )}
               dangerouslySetInnerHTML={{ __html: post.body }}

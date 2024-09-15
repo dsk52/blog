@@ -19,7 +19,7 @@ export const Header = () => (
         <Heading>
           <AnchorLink
             href={ROUTE.top}
-            className={clsx("tw-text-3xl tw-leading-none")}
+            className={clsx("tw-text-3xl tw-text-primary tw-leading-none")}
           >
             {SITE.name}
           </AnchorLink>

@@ -12,7 +12,10 @@ export const AnchorLink = ({
   return (
     <Link
       href={href ?? "#"}
-      className={clsx("tw-transition-opacity hover:tw-opacity-70", className)}
+      className={clsx(
+        "tw-transition-colors tw-duration-200 tw-delay-0 hover:tw-text-primary",
+        className,
+      )}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >

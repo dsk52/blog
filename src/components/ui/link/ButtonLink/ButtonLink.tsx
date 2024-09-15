@@ -9,8 +9,8 @@ export const ButtonLink = ({ link, label }: Props) => (
     href={link}
     className={clsx(
       "tw-inline-block tw-py-[0.4em] tw-px-[0.6em] tw-border tw-border-black",
-      "tw-transition tw-duration-400 tw-delay-0",
-      "hover:tw-bg-black hover:tw-text-white hover:tw-opacity-70",
+      "tw-transition-colors tw-duration-200 tw-delay-0",
+      "hover:tw-bg-primary hover:tw-border-primary hover:tw-text-white hover:tw-opacity-70",
     )}
   >
     {label}
