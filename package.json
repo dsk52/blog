@@ -39,7 +39,7 @@
     "@types/markdown-it": "14.1.2",
     "@types/node": "20.16.10",
     "@types/nprogress": "0.2.3",
-    "@types/react": "18.3.10",
+    "@types/react": "18.3.11",
     "@types/react-gtm-module": "2.0.3",
     "@types/rss": "0.0.32",
     "autoprefixer": "10.4.20",
