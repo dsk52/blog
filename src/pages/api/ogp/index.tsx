@@ -1,8 +1,7 @@
 import { ImageResponse } from "next/og";
+import type { NextRequest } from "next/server";
 
 import { SITE } from "../../../constants/site";
-
-import type { NextRequest } from "next/server";
 
 export const config = {
   runtime: "edge",

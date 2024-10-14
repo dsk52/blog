@@ -3,14 +3,13 @@ import { clsx } from "clsx";
 import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { PostList } from "@/components/features/post/PostList/PostList";
 import { CommonLayout } from "@/components/layouts/CommonLayout";
+import type { ListPageProp } from "@/components/page/type";
 import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 
 import { Seo } from "./Seo/Seo";
-
-import type { ListPageProp } from "@/components/page/type";
 
 export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
   <CommonLayout>

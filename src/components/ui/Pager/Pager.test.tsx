@@ -1,4 +1,4 @@
-import { render, cleanup } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 
 import { Pager } from "./Pager";
 import { calcMaxPage, calcOffset } from "./util";
@@ -39,7 +39,7 @@ afterEach(cleanup);
 describe("ページャーの表示", () => {
   it("1/1の時、表示されないこと", async () => {
     const { queryByTestId } = render(
-      <Pager basePath="" pageNum={1} maxPage={1} />
+      <Pager basePath="" pageNum={1} maxPage={1} />,
     );
 
     expect(queryByTestId("prev")).toBeFalsy();
@@ -48,7 +48,7 @@ describe("ページャーの表示", () => {
 
   it("2/2の時、前のページへが表示される", async () => {
     const { findByTestId, queryByTestId } = render(
-      <Pager basePath="" pageNum={2} maxPage={2} />
+      <Pager basePath="" pageNum={2} maxPage={2} />,
     );
 
     expect(findByTestId("prev")).toBeTruthy();
@@ -57,7 +57,7 @@ describe("ページャーの表示", () => {
 
   it("1/2の時、次のページへが表示される", async () => {
     const { findByTestId, queryByTestId } = render(
-      <Pager basePath="" pageNum={1} maxPage={2} />
+      <Pager basePath="" pageNum={1} maxPage={2} />,
     );
 
     expect(findByTestId("next")).toBeTruthy();

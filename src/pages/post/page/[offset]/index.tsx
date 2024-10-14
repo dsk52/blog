@@ -1,10 +1,10 @@
-import { PostListPage } from "@/components/page/PostList/PostList";
-import { calcOffset, calcMaxPage } from "@/components/ui/Pager/util";
-import { POST_PER_PAGE, getAllPost } from "@/libs/microcms";
-import { PostMapper } from "@/models/mapper/PostMapper";
-
-import type { ListPageProp } from "@/components/page/type";
 import type { GetServerSideProps, NextPage } from "next";
+
+import { PostListPage } from "@/components/page/PostList/PostList";
+import type { ListPageProp } from "@/components/page/type";
+import { calcMaxPage, calcOffset } from "@/components/ui/Pager/util";
+import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
+import { PostMapper } from "@/models/mapper/PostMapper";
 
 const Page: NextPage<ListPageProp> = (props) => PostListPage(props);
 

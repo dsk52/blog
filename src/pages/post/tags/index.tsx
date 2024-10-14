@@ -1,9 +1,9 @@
-import { TagIndexPage } from "@/components/page/TagIndex/TagIndex";
-import { getTags } from "@/libs/microcms";
+import type { GetStaticProps, NextPage } from "next";
 
+import { TagIndexPage } from "@/components/page/TagIndex/TagIndex";
 import type { TagsPageProp } from "@/components/page/TagIndex/type";
 import type { TagListItem } from "@/libs/microcms";
-import type { GetStaticProps, NextPage } from "next";
+import { getTags } from "@/libs/microcms";
 
 const Page: NextPage<TagsPageProp> = (props) => TagIndexPage(props);
 

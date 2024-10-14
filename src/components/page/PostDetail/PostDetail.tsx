@@ -11,7 +11,6 @@ import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { datetimeToDate } from "@/utilities/Date";
 
 import { Seo } from "./Seo/Seo";
-
 import type { PostProps } from "./type";
 
 export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {

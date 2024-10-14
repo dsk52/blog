@@ -1,10 +1,10 @@
+import type { GetServerSideProps, NextPage } from "next";
+
 import { IndexPage } from "@/components/page/Index/Index";
+import type { ListPageProp } from "@/components/page/type";
 import { calcMaxPage } from "@/components/ui/Pager/util";
 import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
-
-import type { ListPageProp } from "@/components/page/type";
-import type { GetServerSideProps, NextPage } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (_) => {
   const response = await getAllPost();
