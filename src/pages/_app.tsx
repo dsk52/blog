@@ -2,6 +2,7 @@ import "sanitize.css";
 import "../styles/globals.css";
 import "prismjs/themes/prism-tomorrow.min.css";
 
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 
@@ -9,8 +10,6 @@ import { SITE } from "@/constants/site";
 import { useInitTagManager } from "@/hooks/useInitTagManager";
 import { useTransition } from "@/hooks/useTransition";
 import { GTM_ID } from "@/libs/gtm";
-
-import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useInitTagManager({ gtmId: GTM_ID });

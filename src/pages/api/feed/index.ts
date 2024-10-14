@@ -1,14 +1,13 @@
+import type { NextApiRequest, NextApiResponse } from "next";
 import RSS from "rss";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getFeedItems } from "@/libs/microcms";
 
-import type { NextApiRequest, NextApiResponse } from "next";
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   if (req.method && req.method.toLocaleLowerCase() !== "get") {
     return res.status(405).json({ message: "" });

@@ -1,8 +1,7 @@
 import { clsx } from "clsx";
 
-import { headingClasses } from "./util";
-
 import type { HeadingProps } from "./type";
+import { headingClasses } from "./util";
 
 export const Heading = ({
   as: Tag = "h1",

@@ -4,8 +4,7 @@ import { FacebookIcon } from "@/components/icons/Facebook/Facebook";
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 
 import { BASE_SHARE_URL } from "./const";
-
-import type { FacebookShareProps, FacebookQueryParams } from "./type";
+import type { FacebookQueryParams, FacebookShareProps } from "./type";
 
 export const FacebookShare = ({ url }: FacebookShareProps): JSX.Element => {
   const shareUrl = useMemo(() => {

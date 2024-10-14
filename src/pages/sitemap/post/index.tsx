@@ -1,11 +1,10 @@
+import type { GetServerSideProps } from "next/types";
+import type { ISitemapField } from "next-sitemap";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
-import { POST_PER_PAGE, getAllPost } from "@/libs/microcms";
-
-import type { GetServerSideProps } from "next/types";
-import type { ISitemapField } from "next-sitemap";
+import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const posts = await getAllPost();

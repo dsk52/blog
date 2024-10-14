@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import type { NextPage } from "next";
 
 import { CommonLayout } from "@/components/layouts/CommonLayout";
 import { Container } from "@/components/ui/Container/Container";
@@ -6,8 +7,6 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { EXTERNAL_PAGE } from "@/constants/route";
 
 import { Seo } from "./Seo/Seo";
-
-import type { NextPage } from "next";
 
 export const AboutPage: NextPage = () => (
   <CommonLayout>

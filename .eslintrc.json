@@ -1,6 +1,6 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["import", "unused-imports"],
+  "plugins": ["simple-import-sort"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -12,66 +12,12 @@
   "rules": {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-     "@next/next/no-img-element": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "import/prefer-default-export": "off",
-    "import/consistent-type-specifier-style": "error",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "varsIgnorePattern": "^_",
-        "args": "after-used",
-        "argsIgnorePattern": "^_"
-      }
-    ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling"],
-          "object",
-          "type",
-          "index"
-        ],
-        "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
-        "pathGroups": [
-          {
-            "pattern": "./src/libs/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "./src/components/layouts/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "./src/components/templates/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "./src/components/ui/**",
-            "group": "internal",
-            "position": "before"
-          }
-        ]
-      }
-    ]
+    "@next/next/no-img-element": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   }
 }
