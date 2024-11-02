@@ -18,9 +18,6 @@
   "packageRules": [
     {
       "groupName": "jest monorepo",
-      "matchSourceUrlPrefixes": [
-        "https://github.com/kulshekhar/ts-jest"
-      ],
       "matchPackageNames": [
         "@types/jest"
       ],
@@ -29,6 +26,9 @@
         "patch",
         "minor",
         "major"
+      ],
+      "matchSourceUrls": [
+        "https://github.com/kulshekhar/ts-jest{/,}**"
       ]
     }
   ]
