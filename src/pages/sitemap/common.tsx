@@ -1,8 +1,7 @@
+import type { GetServerSideProps } from "next/types";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 
 import { SITE } from "@/constants/site";
-
-import type { GetServerSideProps } from "next/types";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const lastmod = new Date().toISOString();

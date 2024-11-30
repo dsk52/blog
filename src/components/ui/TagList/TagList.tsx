@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
 
 import { Tag } from "./Tag/Tag";
-
 import type { TagListProps } from "./type";
 
 export const TagList = ({ tags, className, doLink = false }: TagListProps) => (

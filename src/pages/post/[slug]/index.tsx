@@ -1,4 +1,7 @@
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
+import type { Params, PostProps } from "@/components/page/PostDetail/type";
 import { isDraft } from "@/components/page/PostDetail/util";
 import { md } from "@/libs/markdown-it";
 import {
@@ -7,12 +10,9 @@ import {
   getByTagId,
 } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
-import { isProduction } from "@/utilities/env";
-
-import type { Params, PostProps } from "@/components/page/PostDetail/type";
 import type { ApiPost } from "@/types/api/Post";
 import type { IPostItem } from "@/types/domain/Post";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { isProduction } from "@/utilities/env";
 
 const Page: NextPage<PostProps> = (props) => PostDetailPage(props);
 

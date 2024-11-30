@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 
-import { PostItem } from "./PostItem/PostItem";
-
-import type { Props } from "./type";
 import type { IPostItem } from "@/types/domain/Post";
+
+import { PostItem } from "./PostItem/PostItem";
+import type { Props } from "./type";
 
 export const PostList = ({ posts }: Props) => (
   <ul className={clsx("tw-flex tw-flex-col tw-gap-y-10 tw-pl-0")}>

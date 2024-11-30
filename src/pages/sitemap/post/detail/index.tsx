@@ -1,11 +1,10 @@
+import type { GetServerSideProps } from "next/types";
+import type { ISitemapField } from "next-sitemap";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getAllSlugs } from "@/libs/microcms";
-
-import type { GetServerSideProps } from "next/types";
-import type { ISitemapField } from "next-sitemap";
 
 const POST_PER_PAGE = 1000;
 

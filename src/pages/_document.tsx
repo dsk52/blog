@@ -1,12 +1,6 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript
-} from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-type Props = {
-}
+type Props = {};
 
 class MyDocument extends Document<Props> {
   render() {
@@ -18,8 +12,8 @@ class MyDocument extends Document<Props> {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;

@@ -1,8 +1,8 @@
+import "nprogress/nprogress.css";
+
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import { useEffect } from "react";
-
-import "nprogress/nprogress.css";
 
 export const useTransition = () => {
   const router = useRouter();

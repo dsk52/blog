@@ -1,5 +1,6 @@
-import type { AdsenseOption } from "@/constants/google";
 import type { CSSProperties } from "react";
+
+import type { AdsenseOption } from "@/constants/google";
 
 export type GoogleAdsenseProps = {
   className?: string;

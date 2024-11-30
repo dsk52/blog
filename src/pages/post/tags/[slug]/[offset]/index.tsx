@@ -1,10 +1,10 @@
-import { TagListPage } from "@/components/page/TagList/TagList";
-import { calcOffset, calcMaxPage } from "@/components/ui/Pager/util";
-import { getTagBySlug, POST_PER_PAGE, getByTagId } from "@/libs/microcms";
-import { PostMapper } from "@/models/mapper/PostMapper";
-
-import type { TagListPageProp } from "@/components/page/TagList/type";
 import type { GetServerSideProps, NextPage } from "next";
+
+import { TagListPage } from "@/components/page/TagList/TagList";
+import type { TagListPageProp } from "@/components/page/TagList/type";
+import { calcMaxPage, calcOffset } from "@/components/ui/Pager/util";
+import { getByTagId, getTagBySlug, POST_PER_PAGE } from "@/libs/microcms";
+import { PostMapper } from "@/models/mapper/PostMapper";
 
 const Page: NextPage<TagListPageProp> = (props) => TagListPage(props);
 

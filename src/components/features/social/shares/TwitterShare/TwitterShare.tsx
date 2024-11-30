@@ -5,8 +5,7 @@ import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { SITE } from "@/constants/site";
 
 import { BASE_SHARE_URL } from "./const";
-
-import type { TwitterShareProps, TwitterQueryParams } from "./type";
+import type { TwitterQueryParams, TwitterShareProps } from "./type";
 
 export const TwitterShare = ({
   url,

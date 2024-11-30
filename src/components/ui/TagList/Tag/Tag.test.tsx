@@ -3,7 +3,6 @@ import { render } from "@testing-library/react";
 import { ROUTE } from "@/constants/route";
 
 import { Tag } from "./Tag";
-
 import type { TagProps } from "./type";
 
 describe("Tagのレンダリングテスト", () => {
