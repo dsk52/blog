@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build --no-lint",
-    "export": "npm run build && next export && npm run postbuild",
+    "export": "pnpm run build && next export && pnpm run postbuild",
     "postbuild": "next-sitemap",
     "type-check": "tsc --noEmit",
     "start": "next start",
