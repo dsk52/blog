@@ -11,31 +11,26 @@ env:
   MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: volta-cli/action@v4
-
-      - name: cache node_modules
-        uses: ./.github/actions/cache-node-modules
-
   lint_n_test:
-    needs: [setup]
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v4
-      - uses: volta-cli/action@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      - name: cache node_modules
-        uses: ./.github/actions/cache-node-modules
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          # node-version: ${{ matrix.node-version }}
+          node-version-file: "package.json"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
         run: npm run lint
@@ -44,16 +39,26 @@ jobs:
         run: npm run test
 
   type-check:
-    needs: [setup]
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v4
-      - uses: volta-cli/action@v4
 
-      - name: cache node_modules
-        uses: ./.github/actions/cache-node-modules
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          # node-version: ${{ matrix.node-version }}
+          node-version-file: "package.json"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: type-check
         run: npm run type-check
