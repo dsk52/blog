@@ -52,7 +52,7 @@
     "jest-environment-jsdom": "29.7.0",
     "postcss": "^8.4.33",
     "prettier": "3.4.1",
-    "tailwindcss": "3.4.15",
+    "tailwindcss": "3.4.16",
     "typescript": "5.7.2"
   },
   "volta": {
