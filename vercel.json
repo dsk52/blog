@@ -5,6 +5,21 @@
       "source": "/post",
       "destination": "/",
       "statusCode": 301
+    },
+    {
+      "source": "/post/em-before-after",
+      "destination": "https://dsk52.hatenablog.jp/entry/2023/12/09/115249",
+      "statusCode": 301
+    },
+    {
+      "source": "/post/em-reflections-1-year",
+      "destination": "https://dsk52.hatenablog.jp/entry/2024/12/01/115604",
+      "statusCode": 301
+    },
+    {
+      "source": "/post/engineering-manager-first-year-books",
+      "destination": "https://dsk52.hatenablog.jp/entry/2024/12/06/090000",
+      "statusCode": 301
     }
   ]
 }
