@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
-    "build": "next build --no-lint",
+    "build": "next build",
     "export": "pnpm run build && next export && pnpm run postbuild",
     "postbuild": "next-sitemap",
     "type-check": "tsc --noEmit",

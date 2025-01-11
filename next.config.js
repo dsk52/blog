@@ -12,6 +12,10 @@ module.exports = {
 
   pageExtensions: ["ts", "tsx"],
 
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   serverRuntimeConfig: {
     MICROCMS_API_KEY,
     MICROCMS_SERVICE_DOMAIN,
