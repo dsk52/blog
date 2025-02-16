@@ -30,13 +30,13 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Test
-        run: npm run test
+        run: pnpm test
 
   type-check:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: type-check
-        run: npm run type-check
+        run: pnpm type-check
