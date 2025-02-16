@@ -1,5 +1,6 @@
+"use client";
 import { clsx } from "clsx";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 import { FacebookShare } from "@/components/features/social/shares/FacebookShare/FacebookShare";
 import { HatenaShare } from "@/components/features/social/shares/HatenaShare/HatenaShare";
@@ -9,8 +10,8 @@ import { SITE } from "@/constants/site";
 import type { Props } from "./type";
 
 export const ShareList = ({ title }: Props) => {
-  const { asPath } = useRouter();
-  const url = `${SITE.url}${asPath}`;
+  const pathname = usePathname();
+  const url = `${SITE.url}${pathname}`;
 
   return (
     <ul

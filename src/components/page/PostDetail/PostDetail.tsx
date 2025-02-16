@@ -10,7 +10,6 @@ import { TagList } from "@/components/ui/TagList/TagList";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { datetimeToDate } from "@/utilities/Date";
 
-import { Seo } from "./Seo/Seo";
 import type { PostProps } from "./type";
 
 export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
@@ -18,14 +17,6 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
 
   return (
     <CommonLayout>
-      <Seo
-        title={post.title}
-        slug={post.slug}
-        publishedAt={post.publishedAt}
-        thumbnail={post.thumbnail}
-      />
-      {/* <DetailPage post={post} relatedPosts={relatedPosts} draftKey={draftKey} /> */}
-
       <article>
         <Container>
           <div className={clsx("tw:space-y-8")}>
