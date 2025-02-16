@@ -9,8 +9,6 @@ import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 
-import { Seo } from "./Seo/Seo";
-
 export const TagListPage = ({
   tag,
   posts,
@@ -19,8 +17,6 @@ export const TagListPage = ({
 }: TagListPageProp) => {
   return (
     <CommonLayout>
-      <Seo tag={tag} pageNum={pageNum} />
-
       <div className={clsx("tw:space-y-8")}>
         <Container>
           <Adsense client={AdsenseClient} {...AdsenseUnits.articleTop} />
