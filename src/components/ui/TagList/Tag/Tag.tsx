@@ -11,7 +11,7 @@ export const Tag = ({ name, slug, doLink = false }: TagProps) => {
   if (!doLink) {
     return (
       <span
-        className={clsx("tw-leading tw-cursor-default")}
+        className={clsx("tw:leading tw:cursor-default")}
         data-testid="nonLinkTag" // NOTE: spanタグを上手く探すのが難しいのでtestIdをふっている
       >
         {label}
@@ -22,7 +22,7 @@ export const Tag = ({ name, slug, doLink = false }: TagProps) => {
   return (
     <AnchorLink
       href={ROUTE.postTagList(slug, 1)}
-      className={clsx("tw-leading tw-underline", "hover:tw-no-underline")}
+      className={clsx("tw:leading tw:underline", "tw:hover:no-underline")}
     >
       {label}
     </AnchorLink>

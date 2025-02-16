@@ -21,7 +21,7 @@ export const TagListPage = ({
     <CommonLayout>
       <Seo tag={tag} pageNum={pageNum} />
 
-      <div className={clsx("tw-space-y-8")}>
+      <div className={clsx("tw:space-y-8")}>
         <Container>
           <Adsense client={AdsenseClient} {...AdsenseUnits.articleTop} />
         </Container>

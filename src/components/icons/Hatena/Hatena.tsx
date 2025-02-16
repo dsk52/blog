@@ -8,6 +8,6 @@ export const HatenaIcon = ({ size = "20px" }: BaseIconProps) => (
     alt="このエントリーをはてなブックマークに追加"
     width={size}
     height={size}
-    className={clsx("tw-border-none")}
+    className={clsx("tw:border-none")}
   />
 );

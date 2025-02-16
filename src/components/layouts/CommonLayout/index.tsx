@@ -9,7 +9,7 @@ export const CommonLayout = ({ head, children }: Props): JSX.Element => (
   <>
     {head}
     <Header />
-    <main className={clsx("tw-mt-24")}>{children}</main>
+    <main className={clsx("tw:mt-24")}>{children}</main>
     <Footer />
   </>
 );

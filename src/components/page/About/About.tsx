@@ -13,12 +13,12 @@ export const AboutPage: NextPage = () => (
     <Seo />
     <article>
       <Container>
-        <div className={clsx("tw-space-y-4")}>
+        <div className={clsx("tw:space-y-4")}>
           <header>
             <Heading>About</Heading>
           </header>
 
-          <div className={clsx("tw-prose tw-prose-slate tw-max-w-full")}>
+          <div className={clsx("tw:prose tw:prose-slate tw:max-w-full")}>
             <section>
               <Heading as="h2">サイトについて</Heading>
               <p>

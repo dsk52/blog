@@ -15,7 +15,7 @@ export const ShareList = ({ title }: Props) => {
   return (
     <ul
       className={clsx(
-        "tw-flex tw-justify-center tw-items-center tw-gap-x-4 md:tw-gap-x-7",
+        "tw:flex tw:justify-center tw:items-center tw:gap-x-4 tw:md:gap-x-7",
       )}
     >
       <li>

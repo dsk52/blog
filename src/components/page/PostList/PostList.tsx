@@ -16,7 +16,7 @@ export const PostListPage = ({ posts, maxPage, pageNum }: ListPageProp) => {
     <CommonLayout>
       <Seo pageNum={pageNum} />
 
-      <div className={clsx("tw-space-y-8")}>
+      <div className={clsx("tw:space-y-8")}>
         <section>
           <Container>
             <PostList posts={posts} />
