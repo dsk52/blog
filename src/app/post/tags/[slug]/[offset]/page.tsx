@@ -15,6 +15,8 @@ type PageParams = {
   }
 }
 
+export const dynamic = 'force-dynamic'
+
 const fetchData = cache(async ({ params }: PageParams) => {
   const { slug, offset: offsetParam } = params;
 
