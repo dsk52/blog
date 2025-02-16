@@ -2,13 +2,11 @@ import type { Metadata } from "next"
 import { type ReactNode } from "react"
 
 import { SITE } from "@/constants/site";
-import { useInitTagManager } from "@/hooks/useInitTagManager";
-import { useTransition } from "@/hooks/useTransition";
-import { GTM_ID } from "@/libs/gtm";
+import { AppProvider } from "@/provider/AppProvider";
 
 const title = `${SITE.name} | ${SITE.description}`;
 
-
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title,
@@ -39,13 +37,12 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
-  useInitTagManager({ gtmId: GTM_ID });
-  useTransition();
-
   return (
     <html lang="ja">
       <body>
-        {children}
+        <AppProvider>
+          {children}
+        </AppProvider>
       </body>
     </html>
   )

@@ -6,11 +6,8 @@ import { Container } from "@/components/ui/Container/Container";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { EXTERNAL_PAGE } from "@/constants/route";
 
-import { Seo } from "./Seo/Seo";
-
 export const AboutPage: NextPage = () => (
   <CommonLayout>
-    <Seo />
     <article>
       <Container>
         <div className={clsx("tw:space-y-4")}>
@@ -66,10 +63,6 @@ export const AboutPage: NextPage = () => (
                 お問い合わせはTwitter{" "}
                 <a href={EXTERNAL_PAGE.TWITTER}>@skd_nw</a>
                 までよろしくお願い致します。
-                <br />
-                <small>
-                  ※名前がコロコロ変わりますが、アイコンは青いペンギンです。
-                </small>
               </p>
             </section>
           </div>
