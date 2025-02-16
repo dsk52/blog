@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { type ReactNode } from "react"
 
 import { SITE } from "@/constants/site";
@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   verification: {
     google: 'ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A'
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#fbf5ec',
 }
 
 export default function RootLayout({

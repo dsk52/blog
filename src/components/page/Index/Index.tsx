@@ -9,11 +9,8 @@ import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 
-import { Seo } from "./Seo/Seo";
-
 export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
   <CommonLayout>
-    <Seo />
     <div className={clsx("tw:space-y-8")}>
       <section>
         <Container>
