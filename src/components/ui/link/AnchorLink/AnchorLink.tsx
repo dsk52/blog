@@ -13,7 +13,7 @@ export const AnchorLink = ({
     <Link
       href={href ?? "#"}
       className={clsx(
-        "tw-transition-colors tw-duration-200 tw-delay-0 hover:tw-text-primary",
+        "tw:transition-colors tw:duration-200 tw:delay-0 tw:hover:text-primary",
         className,
       )}
       target={target}

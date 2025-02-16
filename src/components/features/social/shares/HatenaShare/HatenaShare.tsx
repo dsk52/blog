@@ -9,7 +9,7 @@ export const HatenaShare = () => {
       <a
         href="https://b.hatena.ne.jp/entry/"
         className={clsx(
-          "tw-transition-opacity hover:tw-opacity-70",
+          "tw:transition-opacity tw:hover:opacity-70",
           "hatena-bookmark-button",
         )}
         data-hatena-bookmark-layout="touch"

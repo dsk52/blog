@@ -14,7 +14,7 @@ import { Seo } from "./Seo/Seo";
 export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
   <CommonLayout>
     <Seo />
-    <div className={clsx("tw-space-y-8")}>
+    <div className={clsx("tw:space-y-8")}>
       <section>
         <Container>
           <PostList posts={posts} />
@@ -23,7 +23,7 @@ export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
 
       <footer>
         <Container>
-          <div className={clsx("tw-space-y-4")}>
+          <div className={clsx("tw:space-y-4")}>
             <Pager
               basePath={ROUTE.postListBase}
               maxPage={maxPage}
