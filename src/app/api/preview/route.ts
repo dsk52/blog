@@ -1,27 +1,30 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 import { ROUTE } from "@/constants/route";
 import { getByContentIdAndDraftKey } from "@/libs/microcms";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const { draftKey, slug } = req.query;
-  if (typeof draftKey !== "string" || typeof slug !== "string") {
-    res.status(400).end();
-    return;
+export async function GET(request: NextRequest) {
+  const nextUrl = request.nextUrl;
+  const draftKey = nextUrl.searchParams.get('draftKey');
+  const slug = nextUrl.searchParams.get('slug');
+  if (!draftKey || !slug) {
+    return NextResponse.json({ error: 'Missing parameters' }, { status: 400 });
   }
+
 
   const data = await getByContentIdAndDraftKey(slug, draftKey);
   if (!data) {
-    return res.status(400).json({ message: "Invalid slug" });
+    return NextResponse.json({ message: "Invalid slug" }, { status: 400 });
   }
 
   const contestId = data.id ?? "-1";
 
-  res.setPreviewData({
+  const response = NextResponse.redirect(`${ROUTE.postDetail(contestId)}`, 307);
+  response.cookies.set('__previewData', JSON.stringify({
     slug: contestId,
-    draftKey: req.query.draftKey,
-  });
-  res.writeHead(307, { Location: `${ROUTE.postDetail(contestId)}` });
-  res.end("Preview mode enabled");
+    draftKey: draftKey,
+  }));
+
+  return response;
 };
 

@@ -1,4 +1,4 @@
-import type { NextApiRequest } from "next";
+import type { NextRequest } from "next/server";
 import RSS from "rss";
 
 import { ROUTE } from "@/constants/route";
@@ -10,7 +10,7 @@ const REVALIDATE_SECONDS = 3600; // 1時間キャッシュする
 export const revalidate = REVALIDATE_SECONDS
 
 export async function GET(
-  req: NextApiRequest
+  req: NextRequest
 ) {
   const xml = await generateFeedXml();
 
