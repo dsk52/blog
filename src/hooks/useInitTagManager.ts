@@ -1,3 +1,4 @@
+"use client"
 import TagManager from "react-gtm-module";
 import { useIsomorphicLayoutEffect } from "usehooks-ts";
 
