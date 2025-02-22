@@ -1,20 +1,23 @@
+import type { NextApiRequest, ServerRuntime } from "next";
 import { ImageResponse } from "next/og";
-import type { NextRequest } from "next/server";
 
 import { SITE } from "../../../constants/site";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime: ServerRuntime = 'edge';
 
-export default function handler(req: NextRequest) {
+export function GET(req: NextApiRequest) {
   try {
-    const { searchParams } = new URL(req.url);
+    if (!req.url) {
+      throw new Error("No URL");
+    }
 
+    const { searchParams } = new URL(req.url);
     const hasTitle = searchParams.has("title");
-    const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100)
-      : SITE.name;
+    if (!hasTitle) {
+      throw new Error("No title");
+    }
+
+    const title = searchParams.get("title")!.slice(0, 100)
 
     return new ImageResponse(
       (
