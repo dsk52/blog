@@ -14,17 +14,17 @@ export const PostItem = ({ post }: Props) => {
     <article>
       <AnchorLink
         href={ROUTE.postDetail(post.slug)}
-        className={clsx("tw-text-2xl tw-font-semibold", "hover:tw-underline")}
+        className={clsx("tw:text-2xl tw:font-semibold", "tw:hover:underline")}
       >
         {post.title}
       </AnchorLink>
       <aside
         className={clsx(
-          "tw-flex tw-flex-wrap tw-justify-start tw-mt-1.5 tw-gap-x-3",
+          "tw:flex tw:flex-wrap tw:justify-start tw:mt-1.5 tw:gap-x-3",
         )}
       >
         <time dateTime={post.publishedAt}>{pubDate}</time>
-        <TagList tags={post.tags} className={clsx("tw-gap-x-2")} />
+        <TagList tags={post.tags} className={clsx("tw:gap-x-2")} />
       </aside>
     </article>
   );

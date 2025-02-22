@@ -9,14 +9,10 @@ import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 
-import { Seo } from "./Seo/Seo";
-
 export const PostListPage = ({ posts, maxPage, pageNum }: ListPageProp) => {
   return (
     <CommonLayout>
-      <Seo pageNum={pageNum} />
-
-      <div className={clsx("tw-space-y-8")}>
+      <div className={clsx("tw:space-y-8")}>
         <section>
           <Container>
             <PostList posts={posts} />

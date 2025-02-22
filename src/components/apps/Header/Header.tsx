@@ -9,17 +9,17 @@ import { SITE } from "@/constants/site";
 import { GlobalNav } from "./GlobalNav/GlobalNav";
 
 export const Header = () => (
-  <header className={clsx("tw-mt-4 tw-mb-5")}>
+  <header className={clsx("tw:mt-4 tw:mb-5")}>
     <Container>
       <div
         className={clsx(
-          "tw-flex tw-flex-wrap tw-items-center tw-justify-between",
+          "tw:flex tw:flex-wrap tw:items-center tw:justify-between",
         )}
       >
         <Heading>
           <AnchorLink
             href={ROUTE.top}
-            className={clsx("tw-text-3xl tw-text-primary tw-leading-none")}
+            className={clsx("tw:text-3xl tw:text-primary tw:leading-none")}
           >
             {SITE.name}
           </AnchorLink>

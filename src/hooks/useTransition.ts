@@ -1,3 +1,4 @@
+"use client"
 import "nprogress/nprogress.css";
 
 import { useRouter } from "next/router";

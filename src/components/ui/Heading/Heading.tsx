@@ -8,7 +8,7 @@ export const Heading = ({
   className = "",
   children,
 }: HeadingProps) => (
-  <Tag className={clsx("tw-font-bold", headingClasses(Tag), className)}>
+  <Tag className={clsx("tw:font-bold", headingClasses(Tag), className)}>
     {children}
   </Tag>
 );

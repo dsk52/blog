@@ -10,7 +10,6 @@ import { TagList } from "@/components/ui/TagList/TagList";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { datetimeToDate } from "@/utilities/Date";
 
-import { Seo } from "./Seo/Seo";
 import type { PostProps } from "./type";
 
 export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
@@ -18,28 +17,20 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
 
   return (
     <CommonLayout>
-      <Seo
-        title={post.title}
-        slug={post.slug}
-        publishedAt={post.publishedAt}
-        thumbnail={post.thumbnail}
-      />
-      {/* <DetailPage post={post} relatedPosts={relatedPosts} draftKey={draftKey} /> */}
-
       <article>
         <Container>
-          <div className={clsx("tw-space-y-8")}>
+          <div className={clsx("tw:space-y-8")}>
             <header>
               <Heading>{post.title}</Heading>
               <time
-                className={clsx("tw-block tw-mt-2")}
+                className={clsx("tw:block tw:mt-2")}
                 dateTime={post.publishedAt}
               >
                 {pubDate}
               </time>
               {post.thumbnail && (
                 <img
-                  className={clsx("tw-w-full tw-object-scale-down tw-mt-10")}
+                  className={clsx("tw:w-full tw:object-scale-down tw:mt-10")}
                   src={post.thumbnail.url}
                   alt={`${post.title}のサムネイル`}
                 />
@@ -48,11 +39,11 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
 
             <div
               className={clsx(
-                "tw-prose tw-prose-slate",
+                "tw:prose tw:prose-slate",
                 // custom tailwindcss-typography
-                "prose-a:tw-transition-colors",
-                "hover:prose-a:tw-no-underline hover:prose-a:tw-text-primary hover:prose-a:tw-opacity-70",
-                "tw-max-w-full",
+                "tw:prose-a:transition-colors",
+                "tw:prose-a:hover:no-underline tw:prose-a:hover:text-primary tw:prose-a:hover:opacity-70",
+                "tw:max-w-full",
               )}
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
@@ -60,19 +51,19 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
             <footer>
               <aside
                 className={clsx(
-                  "tw-flex tw-justify-between tw-items-center tw-py-5 tw-border-t-[1px] tw-border-t-white",
+                  "tw:flex tw:justify-between tw:items-center tw:py-5 tw:border-t-[1px] tw:border-t-white",
                 )}
               >
                 <TagList tags={post.tags} doLink />
               </aside>
 
-              <aside className="tw-flex tw-flex-col tw-items-center tw-gap-y-3 tw-mt-7">
+              <aside className="tw:flex tw:flex-col tw:items-center tw:gap-y-3 tw:mt-7">
                 <Heading as="h2">Share</Heading>
                 <ShareList title={post.title} />
               </aside>
 
               {relatedPosts.length > 0 && (
-                <aside className={clsx("tw-mt-16")}>
+                <aside className={clsx("tw:mt-16")}>
                   <Heading as="h2">おすすめの記事</Heading>
                   <Adsense
                     client={AdsenseClient}
