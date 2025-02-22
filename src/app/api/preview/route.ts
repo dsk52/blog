@@ -3,16 +3,16 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { ROUTE } from "@/constants/route";
 import { getByContentIdAndDraftKey } from "@/libs/microcms";
 
-const preview = async (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const { draftKey, slug } = req.query;
   if (typeof draftKey !== "string" || typeof slug !== "string") {
-    res.status(404).end();
+    res.status(400).end();
     return;
   }
 
   const data = await getByContentIdAndDraftKey(slug, draftKey);
   if (!data) {
-    return res.status(401).json({ message: "Invalid slug" });
+    return res.status(400).json({ message: "Invalid slug" });
   }
 
   const contestId = data.id ?? "-1";
@@ -25,4 +25,3 @@ const preview = async (req: NextApiRequest, res: NextApiResponse) => {
   res.end("Preview mode enabled");
 };
 
-export default preview;
