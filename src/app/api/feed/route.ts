@@ -1,23 +1,25 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest } from "next";
 import RSS from "rss";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getFeedItems } from "@/libs/microcms";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
+const REVALIDATE_SECONDS = 3600; // 1時間キャッシュする
+
+export const revalidate = REVALIDATE_SECONDS
+
+export async function GET(
+  req: NextApiRequest
 ) {
-  if (req.method && req.method.toLocaleLowerCase() !== "get") {
-    return res.status(405).json({ message: "" });
-  }
   const xml = await generateFeedXml();
 
-  res.statusCode = 200;
-  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate"); // 1時間キャッシュする
-  res.setHeader("Content-Type", "text/xml");
-  return res.end(xml);
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "text/xml",
+      "Cache-Control": `s-maxage=${REVALIDATE_SECONDS}, stale-while-revalidate`,
+    },
+  })
 }
 
 async function generateFeedXml() {
