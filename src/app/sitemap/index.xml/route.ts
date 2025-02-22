@@ -1,13 +1,12 @@
-import type { GetServerSideProps } from "next/types";
-import { getServerSideSitemapIndexLegacy } from "next-sitemap";
+import { getServerSideSitemapIndex } from "next-sitemap";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export async function GET(request: Request) {
   const sitemapBaseUrl = `${SITE.url}${ROUTE.sitemap}`;
 
-  return getServerSideSitemapIndexLegacy(ctx, [
+  return getServerSideSitemapIndex([
     `${sitemapBaseUrl}/common`,
     `${sitemapBaseUrl}/post`,
     `${sitemapBaseUrl}/post/detail`,
@@ -15,4 +14,3 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   ]);
 };
 
-export default function SitemapIndex() {}
