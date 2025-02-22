@@ -1,12 +1,11 @@
-import type { GetServerSideProps } from "next/types";
-import { getServerSideSitemapLegacy } from "next-sitemap";
+import { getServerSideSitemap } from "next-sitemap";
 
 import { SITE } from "@/constants/site";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export async function GET(_request: Request) {
   const lastmod = new Date().toISOString();
 
-  return getServerSideSitemapLegacy(ctx, [
+  return getServerSideSitemap([
     {
       loc: `${SITE.url}`,
       lastmod,
@@ -27,5 +26,3 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   ]);
 };
-
-export default function SitemapIndex() {}

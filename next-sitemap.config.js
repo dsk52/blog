@@ -7,7 +7,7 @@ module.exports = {
   sitemapSize: 5000,
   outDir: "./out",
   exclude: ["/sitemap.xml"],
-  generateIndexSitemap: false,
+  generateIndexSitemap: true,
   robotsTxtOptions: {
     additionalSitemaps: [`${SITE_DOMAIN}/sitemap`],
 

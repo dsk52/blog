@@ -1,15 +1,15 @@
-import type { GetServerSideProps } from "next/types";
 import type { ISitemapField } from "next-sitemap";
-import { getServerSideSitemapLegacy } from "next-sitemap";
+import { getServerSideSitemap } from "next-sitemap";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export async function GET(_request: Request) {
   const posts = await getAllPost();
 
   const totalPage = Math.ceil(posts.totalCount / POST_PER_PAGE);
+
   const sitemapPaths = Array.from(Array(totalPage)).map((_, pageCount) => {
     const paths: ISitemapField = {
       loc: `${SITE.url}${ROUTE.postList(pageCount + 1)}`,
@@ -19,7 +19,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return paths;
   });
 
-  return getServerSideSitemapLegacy(ctx, sitemapPaths);
+  return getServerSideSitemap(sitemapPaths);
 };
-
-export default function SitemapPost() {}

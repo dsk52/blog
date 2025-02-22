@@ -1,12 +1,11 @@
-import type { GetServerSideProps } from "next/types";
 import type { ISitemapField } from "next-sitemap";
-import { getServerSideSitemapLegacy } from "next-sitemap";
+import { getServerSideSitemap } from "next-sitemap";
 
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getTags } from "@/libs/microcms";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export async function GET(_request: Request) {
   const tags = await getTags();
 
   const sitemapPaths = tags.contents.map((tag) => {
@@ -18,7 +17,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return paths;
   });
 
-  return getServerSideSitemapLegacy(ctx, sitemapPaths);
+  return getServerSideSitemap(sitemapPaths);
 };
-
-export default function SitemapTags() {}
