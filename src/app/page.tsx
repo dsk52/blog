@@ -32,10 +32,10 @@ const posts = PostMapper.list(response.contents);
 const pageNum = 1; // トップなので、1ページ目を確定
 const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
 
-const Page: NextPage<ListPageProp> = (props) => IndexPage({
-  posts,
-  maxPage,
-  pageNum,
-});
-
-export default Page;
+export default function Page() {
+  return IndexPage({
+    posts,
+    maxPage,
+    pageNum,
+  })
+};
