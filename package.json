@@ -31,7 +31,7 @@
     "usehooks-ts": "3.1.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.0.13",
+    "@tailwindcss/postcss": "4.0.14",
     "@tailwindcss/typography": "0.5.16",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
@@ -51,7 +51,7 @@
     "jest-environment-jsdom": "29.7.0",
     "postcss": "^8.4.33",
     "prettier": "3.5.3",
-    "tailwindcss": "4.0.13",
+    "tailwindcss": "4.0.14",
     "typescript": "5.7.3"
   },
   "volta": {
