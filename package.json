@@ -38,7 +38,7 @@
     "@types/gtag.js": "0.0.20",
     "@types/jest": "^29.5.12",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "22.13.13",
+    "@types/node": "22.13.14",
     "@types/nprogress": "0.2.3",
     "@types/react": "18.3.20",
     "@types/react-gtm-module": "2.0.4",
