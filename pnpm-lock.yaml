@@ -15,8 +15,8 @@ importers:
         specifier: 14.1.0
         version: 14.1.0
       markdown-it-prism:
-        specifier: 2.3.1
-        version: 2.3.1
+        specifier: 3.0.0
+        version: 3.0.0
       microcms-js-sdk:
         specifier: 3.2.0
         version: 3.2.0
@@ -2129,9 +2129,9 @@ packages:
   makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
 
-  markdown-it-prism@2.3.1:
-    resolution: {integrity: sha512-oZl9fGKBeSd94GhqpCrA2MO2uAWxKVe0swyX/nBqly+/6d870zae9raMgxJg+OEjhyuOrxTn8p1vMP8RkawzHw==}
-    engines: {node: '>=6.0.0'}
+  markdown-it-prism@3.0.0:
+    resolution: {integrity: sha512-M0LQsbVzjbzufV95nYdtbs99Sm/8f7zLnqFblb5yQZtFTGLM+y6hxMZ8BdujY3FFqVvTbnZ52/uoicQUqZUYbg==}
+    engines: {node: '>=20.0.0'}
 
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
@@ -5448,7 +5448,7 @@ snapshots:
     dependencies:
       tmpl: 1.0.5
 
-  markdown-it-prism@2.3.1:
+  markdown-it-prism@3.0.0:
     dependencies:
       prismjs: 1.30.0
 
