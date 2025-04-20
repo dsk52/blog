@@ -1,20 +1,17 @@
-import type { ServerRuntime } from "next";
 import { ImageResponse } from "next/og";
 import { type NextRequest, NextResponse } from "next/server";
 
-import { SITE } from "../../../constants/site";
-
-export const runtime: ServerRuntime = 'edge';
+import { SITE } from "@/constants/site";
 
 export function GET(req: NextRequest) {
-  const { searchParams } = req.nextUrl
+  const { searchParams } = req.nextUrl;
   const hasTitle = searchParams.has("title");
   if (!hasTitle) {
     return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
   }
 
   try {
-    const title = searchParams.get("title")!.slice(0, 100)
+    const title = searchParams.get("title")!.slice(0, 100);
 
     return new ImageResponse(
       (
