@@ -1,6 +1,6 @@
-import { TwitterIconProps } from "@/components/icons/Twitter/type";
-
 import type { JSX } from "react";
+
+import { TwitterIconProps } from "@/components/icons/Twitter/type";
 
 export const TwitterIcon = ({
   size,

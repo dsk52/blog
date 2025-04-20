@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode, JSX } from "react";
+import type { ElementType, JSX, ReactNode } from "react";
 
 export type HeadingProps = {
   as?: ElementType<headingTagTypes>;

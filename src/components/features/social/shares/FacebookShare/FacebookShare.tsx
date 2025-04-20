@@ -1,4 +1,4 @@
-import { useMemo, type JSX } from "react";
+import { type JSX, useMemo } from "react";
 
 import { FacebookIcon } from "@/components/icons/Facebook/Facebook";
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
