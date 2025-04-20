@@ -84,7 +84,8 @@ const fetchData = cache(
     }
   });
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
+  const params = await props.params;
   const { slug } = params;
   if (!slug) return {};
 
@@ -126,7 +127,8 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { post, relatedPosts } = await fetchData(params.slug);
   if (!post) {
     return null;

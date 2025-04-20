@@ -5,21 +5,17 @@ import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getFeedItems } from "@/libs/microcms";
 
-const REVALIDATE_SECONDS = 3600; // 1時間キャッシュする
+export const revalidate = 3600; // 1時間キャッシュする
 
-export const revalidate = REVALIDATE_SECONDS
-
-export async function GET(
-  req: NextRequest
-) {
+export async function GET(req: NextRequest) {
   const xml = await generateFeedXml();
 
   return new Response(xml, {
     headers: {
       "Content-Type": "text/xml",
-      "Cache-Control": `s-maxage=${REVALIDATE_SECONDS}, stale-while-revalidate`,
+      "Cache-Control": `s-maxage=3600, stale-while-revalidate`,
     },
-  })
+  });
 }
 
 async function generateFeedXml() {

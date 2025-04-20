@@ -4,7 +4,9 @@
     "github>dsk52/renovate-config",
     "github>dsk52/renovate-config:groupLinters",
     "github>dsk52/renovate-config:groupType",
-    "github>dsk52/renovate-config:groupReact"
+    "github>dsk52/renovate-config:groupReact",
+    ":pinDevDependencies",
+    "packages:vite"
   ],
   "schedule": [
     "every weekend"
@@ -17,18 +19,13 @@
   },
   "packageRules": [
     {
-      "groupName": "jest monorepo",
-      "matchPackageNames": [
-        "@types/jest"
+      "groupName": "testing-library packages",
+      "matchPackagePatterns": [
+        "^@testing-library/"
       ],
       "matchUpdateTypes": [
-        "digest",
-        "patch",
         "minor",
-        "major"
-      ],
-      "matchSourceUrls": [
-        "https://github.com/kulshekhar/ts-jest{/,}**"
+        "patch"
       ]
     }
   ]

@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import type { JSX } from "react";
 
 import { Footer } from "@/components/apps/Footer/Footer";
 import { Header } from "@/components/apps/Header/Header";
