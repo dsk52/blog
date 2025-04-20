@@ -1,3 +1,5 @@
+import { NextConfig } from "next";
+
 const {
   MICROCMS_API_KEY,
   MICROCMS_SERVICE_DOMAIN,
@@ -6,8 +8,7 @@ const {
   NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT,
 } = process.env;
 
-/** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   pageExtensions: ["ts", "tsx"],
@@ -26,3 +27,5 @@ module.exports = {
     NEXT_PUBLIC_ADS_ARTICLE_BOTTOM_SLOT,
   },
 };
+
+export default nextConfig;
