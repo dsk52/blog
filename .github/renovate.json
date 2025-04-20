@@ -20,12 +20,12 @@
   "packageRules": [
     {
       "groupName": "testing-library packages",
-      "matchPackagePatterns": [
-        "^@testing-library/"
-      ],
       "matchUpdateTypes": [
         "minor",
         "patch"
+      ],
+      "matchPackageNames": [
+        "/^@testing-library//"
       ]
     }
   ]
