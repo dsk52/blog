@@ -9,59 +9,60 @@ import { getByTagId, getTagBySlug, POST_PER_PAGE } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
 type PageParams = {
-  params: {
-    slug: string,
-    offset: string
-  }
-}
+  params: Promise<{
+    slug: string;
+    offset: string;
+  }>;
+};
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
-const fetchData = cache(async ({ params }: PageParams) => {
-  const { slug, offset: offsetParam } = params;
+const fetchData = cache(
+  async ({ slug, offset: offsetParam }: Awaited<PageParams["params"]>) => {
+    const pageNum = parseInt(offsetParam, 10);
+    // Tag check
+    const Tags = await getTagBySlug(slug);
+    if (Tags.contents.length === 0) {
+      return {
+        tag: undefined,
+        posts: [],
+        maxPage: 0,
+        pageNum: 0,
+      };
+    }
+    const Tag = Tags.contents[0];
 
-  const pageNum = parseInt(offsetParam, 10);
-  // Tag check
-  const Tags = await getTagBySlug(slug);
-  if (Tags.contents.length === 0) {
+    // Post Check
+    const offset = calcOffset(pageNum, POST_PER_PAGE);
+
+    const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
+    const posts = PostMapper.list(response.contents);
+
+    const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
+
     return {
-      tag: undefined,
-      posts: [],
-      maxPage: 0,
-      pageNum: 0,
+      tag: Tag,
+      posts,
+      maxPage,
+      pageNum,
     };
-  }
-  const Tag = Tags.contents[0];
-
-  // Post Check
-  const offset = calcOffset(pageNum, POST_PER_PAGE);
-
-  const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
-  const posts = PostMapper.list(response.contents);
-
-  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
-
-  return {
-    tag: Tag,
-    posts,
-    maxPage,
-    pageNum,
-  };
-});
+  },
+);
 
 export const dynamicParams = true;
 
-export const generateMetadata = async ({ params }: PageParams) => {
+export const generateMetadata = async (props: PageParams) => {
+  const params = await props.params;
   const { slug: slugParam } = params;
   const res = await fetchData({
-    params: {
-      slug: slugParam,
-      offset: "0"
-    }
+    slug: slugParam,
+    offset: "0",
   });
-  if (!res.tag) { return {}; }
+  if (!res.tag) {
+    return {};
+  }
 
-  const { name, slug } = res.tag
+  const { name, slug } = res.tag;
 
   const title = `${name}タグの記事一覧 | ${SITE.name}`;
   const description = `${name}タグに関連する記事の一覧です`;
@@ -79,27 +80,24 @@ export const generateMetadata = async ({ params }: PageParams) => {
       canonical: url,
     },
   };
-}
+};
 
 export default async function Page(props: PageParams) {
-  const { params: { slug, offset } } = props
+  const { slug, offset } = await props.params;
   if (!slug) {
     return {
       notFound: true,
-    }
+    };
   }
 
   const params = await fetchData({
-    ...props,
-    params: {
-      ...props.params,
-      offset: offset ? offset : "0",
-    }
+    slug,
+    offset: offset ? offset : "0",
   });
   if (!params.tag) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return TagListPage(params);
