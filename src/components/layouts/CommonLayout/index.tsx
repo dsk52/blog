@@ -5,6 +5,8 @@ import { Header } from "@/components/apps/Header/Header";
 
 import type { Props } from "./type";
 
+import type { JSX } from "react";
+
 export const CommonLayout = ({ head, children }: Props): JSX.Element => (
   <>
     {head}

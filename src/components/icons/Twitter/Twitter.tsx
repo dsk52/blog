@@ -1,5 +1,7 @@
 import { TwitterIconProps } from "@/components/icons/Twitter/type";
 
+import type { JSX } from "react";
+
 export const TwitterIcon = ({
   size,
   fill = "white",
