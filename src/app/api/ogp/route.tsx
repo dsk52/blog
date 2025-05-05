@@ -13,7 +13,7 @@ export function GET(req: NextRequest) {
   try {
     const title = searchParams.get("title")!.slice(0, 100);
 
-    return new ImageResponse(
+    const Response = new ImageResponse(
       (
         <div
           style={{
@@ -63,11 +63,15 @@ export function GET(req: NextRequest) {
       {
         width: 1200,
         height: 630,
-        headers: {
-          xRobotsTag: "noindex",
-        },
       },
     );
+    Response.headers.set(
+      "Cache-Control",
+      "public, max-age=31536000, immutable",
+    );
+    Response.headers.set("X-Robots-Tag", "noindex");
+
+    return Response;
   } catch (error) {
     // @ts-ignore
     console.error(error.message);
