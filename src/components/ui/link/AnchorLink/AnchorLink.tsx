@@ -17,7 +17,7 @@ export const AnchorLink = ({
         className,
       )}
       target={target}
-      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      rel={target === "_blank" ? "noopener" : undefined}
     >
       {children}
     </Link>
