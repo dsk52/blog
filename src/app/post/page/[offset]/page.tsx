@@ -7,7 +7,7 @@ import { SITE } from "@/constants/site";
 import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
-const title = `記事一覧 | ${SITE.name}`;
+const title = "記事一覧";
 const description = "今までに書いた記事の一覧ページです";
 
 export const metadata: Metadata = {
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: `${SITE.url}/${ROUTE.postList(1)}`,
-  }
-}
+  },
+};
 
 const fetchData = async (pageOffset: string) => {
   const pageNum = parseInt(pageOffset, 10);
@@ -42,9 +42,9 @@ const fetchData = async (pageOffset: string) => {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ offset: string }>
+  params: Promise<{ offset: string }>;
 }) {
-  const offset = (await params).offset
+  const offset = (await params).offset;
 
   const props = await fetchData(offset);
 

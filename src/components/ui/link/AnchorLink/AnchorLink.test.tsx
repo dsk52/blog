@@ -36,6 +36,6 @@ describe("AnchorLinkのレンダリングテスト", () => {
     const element = screen.getByRole("link");
 
     expect(element.getAttribute("target")).toBe("_blank");
-    expect(element.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(element.getAttribute("rel")).toBe("noopener");
   });
 });

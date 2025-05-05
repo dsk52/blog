@@ -6,11 +6,11 @@ import { SITE } from "@/constants/site";
 import type { TagListItem } from "@/libs/microcms";
 import { getTags } from "@/libs/microcms";
 
-const title = `タグ一覧 | ${SITE.name}`;
+const title = "タグ一覧";
 const description = "記事に関連するタグの一覧ページです";
 const url = `${SITE.url}${ROUTE.top}`;
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title,
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: url,
-  }
-}
+  },
+};
 
 const fetchData = async () => {
   const tagResponse = await getTags();
@@ -31,7 +31,7 @@ const fetchData = async () => {
 
   return {
     tags,
-  }
+  };
 };
 
 export default async function Page() {

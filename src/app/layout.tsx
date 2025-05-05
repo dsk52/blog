@@ -1,26 +1,28 @@
-import type { Metadata, Viewport } from "next"
-import { type ReactNode } from "react"
+import "@/styles/globals.css";
+
+import type { Metadata, Viewport } from "next";
+import { type ReactNode } from "react";
 
 import { SITE } from "@/constants/site";
 import { AppProvider } from "@/provider/AppProvider";
 
-const title = `${SITE.name} | ${SITE.description}`;
-
-import "@/styles/globals.css";
-
 export const metadata: Metadata = {
-  title,
+  title: {
+    default: SITE.name,
+    template: `%s | ${SITE.name}`,
+  },
   openGraph: {
-    title,
     locale: "ja-JP",
     type: "website",
     url: SITE.url,
     siteName: SITE.name,
-    images: [{
-      url: `${SITE.url}${SITE.ogp.imageUrl}`,
-      width: 450,
-      height: 279,
-    }],
+    images: [
+      {
+        url: `${SITE.url}${SITE.ogp.imageUrl}`,
+        width: 450,
+        height: 279,
+      },
+    ],
   },
   twitter: {
     site: "@skd_nw",
@@ -28,26 +30,20 @@ export const metadata: Metadata = {
     card: "summary",
   },
   verification: {
-    google: 'ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A'
+    google: "ZleDkg20Lnn9txQhSeRginHpbqqiJX9ISbx3f8gqF-A",
   },
-}
+};
 
 export const viewport: Viewport = {
-  themeColor: '#fbf5ec',
-}
+  themeColor: "#fbf5ec",
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body>
-        <AppProvider>
-          {children}
-        </AppProvider>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
-  )
+  );
 }
