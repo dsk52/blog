@@ -13,7 +13,8 @@ export async function GET(req: NextRequest) {
   return new Response(xml, {
     headers: {
       "Content-Type": "text/xml",
-      "Cache-Control": `s-maxage=3600, stale-while-revalidate`,
+      "Cache-Control": "s-maxage=3600, stale-while-revalidate",
+      "X-Robots-Tag": "noindex",
     },
   });
 }
