@@ -64,7 +64,7 @@ export const generateMetadata = async (props: PageParams) => {
 
   const { name, slug } = res.tag;
 
-  const title = `${name}タグの記事一覧 | ${SITE.name}`;
+  const title = `${name}タグの記事一覧`;
   const description = `${name}タグに関連する記事の一覧です`;
   const url = `${SITE.url}${ROUTE.postTagList(slug, 1)}`;
 

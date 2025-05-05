@@ -8,10 +8,10 @@ import { SITE } from "@/constants/site";
 import { getAllPost, POST_PER_PAGE } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-const title = `${SITE.name} | ${SITE.description}`;
-const description = SITE.description;
+const title = SITE.name;
+const description = "PengNoteのAboutページです";
 const url = `${SITE.url}${ROUTE.top}`;
 export const metadata: Metadata = {
   title,
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: url
-  }
-}
+    canonical: url,
+  },
+};
 
 const response = await getAllPost();
 const posts = PostMapper.list(response.contents);
@@ -37,5 +37,5 @@ export default function Page() {
     posts,
     maxPage,
     pageNum,
-  })
-};
+  });
+}
