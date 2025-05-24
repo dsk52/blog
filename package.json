@@ -44,7 +44,7 @@
     "@types/react-gtm-module": "2.0.4",
     "@types/rss": "0.0.32",
     "@vitejs/plugin-react": "4.4.1",
-    "eslint": "9.26.0",
+    "eslint": "9.27.0",
     "eslint-config-next": "15.3.2",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-simple-import-sort": "12.1.1",
