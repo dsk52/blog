@@ -43,7 +43,7 @@
     "@types/react": "19.1.6",
     "@types/react-gtm-module": "2.0.4",
     "@types/rss": "0.0.32",
-    "@vitejs/plugin-react": "4.5.0",
+    "@vitejs/plugin-react": "4.5.1",
     "eslint": "9.27.0",
     "eslint-config-next": "15.3.2",
     "eslint-config-prettier": "10.1.5",
