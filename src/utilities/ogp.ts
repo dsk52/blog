@@ -1,5 +1,4 @@
 import ogs from "open-graph-scraper";
-import { title } from "process";
 
 export interface OGPData {
   url: string;
