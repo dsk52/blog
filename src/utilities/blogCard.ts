@@ -26,12 +26,7 @@ export function replaceBlogCardUrls(
   blogCardUrls: BlogCardUrl[],
   replacer: (url: string) => string,
 ): string {
-  let result = html;
-  
-  for (const { url, fullMatch } of blogCardUrls) {
-    const replacement = replacer(url);
-    result = result.replace(fullMatch, replacement);
-  }
-  
-  return result;
+  return blogCardUrls.reduce((result, { url, fullMatch }) => 
+    result.replace(fullMatch, replacer(url)), html
+  );
 }
