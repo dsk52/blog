@@ -10,7 +10,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `pnpm start` - 本番サーバー起動
 - `pnpm type-check` - TypeScriptの型チェック
 - `pnpm test` または `pnpm test:run` - Vitestでテスト実行
-- `pnpm test:watch` - Jestでテスト監視（レガシー）
 - `pnpm lint` - ESLintでコード検証
 - `pnpm lint:fix` - ESLintとPrettierでコード修正
 

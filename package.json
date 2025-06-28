@@ -12,7 +12,6 @@
     "start": "next start",
     "test": "pnpm run test:run",
     "test:run": "vitest --run",
-    "test:watch": "jest --watch",
     "lint": "next lint",
     "lint:fix": "./node_modules/.bin/eslint ./src/**/*.{ts,tsx} && prettier --write ./src/**/*.{ts,tsx}"
   },
