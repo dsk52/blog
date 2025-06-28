@@ -9,6 +9,9 @@ import { getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import type { ApiPost, ApiTag } from "@/types/api/Post";
 import type { IPostItem } from "@/types/domain/Post";
+import { extractBlogCardUrls, replaceBlogCardUrls } from "@/utilities/blogCard";
+import { generateBlogCardHTML } from "@/utilities/blogCardHtml";
+import { fetchMultipleOGP } from "@/utilities/ogp";
 
 export const dynamicParams = true;
 
@@ -77,6 +80,25 @@ const fetchData = cache(async (slug: string) => {
 
   const post = await PostMapper.detail(postResponse);
   post.body = md.render(post.body);
+
+  // ブログカード処理: URLを抽出してOGP情報を取得し、ブログカードに置換
+  const blogCardUrls = extractBlogCardUrls(post.body);
+  if (blogCardUrls.length > 0) {
+    try {
+      const urls = blogCardUrls.map((item) => item.url);
+      const ogpDataList = await fetchMultipleOGP(urls);
+
+      post.body = replaceBlogCardUrls(post.body, blogCardUrls, (url) => {
+        const ogpData = ogpDataList.find((data) => data.url === url);
+        return ogpData
+          ? generateBlogCardHTML(ogpData)
+          : `<a href="${url}" target="_blank" rel="noopener">aaa${url}</a>`;
+      });
+    } catch (error) {
+      console.warn("ブログカード処理でエラーが発生しました:", error);
+      // エラー時は元のHTMLをそのまま使用
+    }
+  }
 
   return {
     post,
