@@ -8,22 +8,13 @@ export interface BlogCardUrl {
  * aタグでhref属性とリンクテキストが同じURLの場合のみ対象とする
  */
 export function extractBlogCardUrls(html: string): BlogCardUrl[] {
-  const blogCardUrls: BlogCardUrl[] = [];
-  
   // aタグでhref属性とテキストが同じURLパターンをマッチ
   const linkRegex = /<a\s+href=["']?(https?:\/\/[^"'\s>]+)["']?[^>]*>\s*\1\s*<\/a>/gi;
   
-  let match;
-  while ((match = linkRegex.exec(html)) !== null) {
-    const [fullMatch, url] = match;
-    
-    blogCardUrls.push({
-      url,
-      fullMatch,
-    });
-  }
-  
-  return blogCardUrls;
+  return Array.from(html.matchAll(linkRegex), ([fullMatch, url]) => ({
+    url,
+    fullMatch,
+  }));
 }
 
 /**
