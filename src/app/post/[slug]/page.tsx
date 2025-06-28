@@ -92,7 +92,7 @@ const fetchData = cache(async (slug: string) => {
         const ogpData = ogpDataList.find((data) => data.url === url);
         return ogpData
           ? generateBlogCardHTML(ogpData)
-          : `<a href="${url}" target="_blank" rel="noopener">aaa${url}</a>`;
+          : `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
       });
     } catch (error) {
       console.warn("ブログカード処理でエラーが発生しました:", error);
