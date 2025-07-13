@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { type ReactNode, useTransition } from "react";
 
 import { useInitTagManager } from "@/hooks/useInitTagManager";
@@ -8,7 +8,5 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useInitTagManager({ gtmId: GTM_ID });
   useTransition();
 
-  return (
-    <>{children}</>
-  )
+  return <>{children}</>;
 }

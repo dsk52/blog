@@ -7,12 +7,11 @@ export const ROUTE = {
   postDetail: (slug: string) => `/post/${encodeURIComponent(slug)}`,
 
   postTagListBy: (tagName: string) => `/post/tags/${tagName}`,
-  postTagList: (tagName: string, pageNum: number) =>
-    `/post/tags/${tagName}/${pageNum}`,
+  postTagList: (tagName: string, pageNum: number) => `/post/tags/${tagName}/${pageNum}`,
 
   tagList: "/post/tags",
 
-  ogImage: '/api/ogp',
+  ogImage: "/api/ogp",
   sitemap: "/sitemap",
   feed: "/api/feed",
 };

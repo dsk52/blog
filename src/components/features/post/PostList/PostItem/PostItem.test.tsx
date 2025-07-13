@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { IPostItem } from "@/types/domain/Post";
+import type { IPostItem } from "@/types/domain/Post";
 
 import { PostItem } from "./PostItem";
 

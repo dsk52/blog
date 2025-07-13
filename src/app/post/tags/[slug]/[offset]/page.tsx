@@ -17,37 +17,35 @@ type PageParams = {
 
 export const dynamic = "force-dynamic";
 
-const fetchData = cache(
-  async ({ slug, offset: offsetParam }: Awaited<PageParams["params"]>) => {
-    const pageNum = parseInt(offsetParam, 10);
-    // Tag check
-    const Tags = await getTagBySlug(slug);
-    if (Tags.contents.length === 0) {
-      return {
-        tag: undefined,
-        posts: [],
-        maxPage: 0,
-        pageNum: 0,
-      };
-    }
-    const Tag = Tags.contents[0];
-
-    // Post Check
-    const offset = calcOffset(pageNum, POST_PER_PAGE);
-
-    const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
-    const posts = PostMapper.list(response.contents);
-
-    const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
-
+const fetchData = cache(async ({ slug, offset: offsetParam }: Awaited<PageParams["params"]>) => {
+  const pageNum = parseInt(offsetParam, 10);
+  // Tag check
+  const Tags = await getTagBySlug(slug);
+  if (Tags.contents.length === 0) {
     return {
-      tag: Tag,
-      posts,
-      maxPage,
-      pageNum,
+      tag: undefined,
+      posts: [],
+      maxPage: 0,
+      pageNum: 0,
     };
-  },
-);
+  }
+  const Tag = Tags.contents[0];
+
+  // Post Check
+  const offset = calcOffset(pageNum, POST_PER_PAGE);
+
+  const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
+  const posts = PostMapper.list(response.contents);
+
+  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
+
+  return {
+    tag: Tag,
+    posts,
+    maxPage,
+    pageNum,
+  };
+});
 
 export const dynamicParams = true;
 

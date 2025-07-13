@@ -25,4 +25,4 @@ export async function GET(_request: Request) {
       priority: 0.6,
     },
   ]);
-};
+}

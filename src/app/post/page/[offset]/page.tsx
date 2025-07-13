@@ -39,11 +39,7 @@ const fetchData = async (pageOffset: string) => {
   };
 };
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ offset: string }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ offset: string }> }) {
   const offset = (await params).offset;
 
   const props = await fetchData(offset);

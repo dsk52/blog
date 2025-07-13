@@ -4,10 +4,7 @@
  * @param postPerPage 1ページ辺りの表示件数
  * @returns
  */
-export function calcOffset(
-  currnetPageNum: number,
-  postPerPage: number
-): number {
+export function calcOffset(currnetPageNum: number, postPerPage: number): number {
   if (currnetPageNum <= 1) {
     return 0;
   }

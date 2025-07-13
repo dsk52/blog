@@ -21,9 +21,7 @@ export const AboutPage: NextPage = () => (
               <p>
                 仕事やプライベートで知った技術や、イベントで喋った話・行った話をブログとして残しています。
               </p>
-              <p>
-                ペンギンが好きな事と何か残す時にノートに書き出す事が多かったのでこの名前。
-              </p>
+              <p>ペンギンが好きな事と何か残す時にノートに書き出す事が多かったのでこの名前。</p>
             </section>
 
             <section>
@@ -60,8 +58,7 @@ export const AboutPage: NextPage = () => (
             <section>
               <Heading as="h2">お問い合わせ</Heading>
               <p>
-                お問い合わせはTwitter{" "}
-                <a href={EXTERNAL_PAGE.TWITTER}>@skd_nw</a>
+                お問い合わせはTwitter <a href={EXTERNAL_PAGE.TWITTER}>@skd_nw</a>
                 までよろしくお願い致します。
               </p>
             </section>

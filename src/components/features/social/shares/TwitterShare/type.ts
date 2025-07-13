@@ -7,5 +7,5 @@ export type TwitterQueryParams = {
 
 export type TwitterShareProps = {
   title: string;
-  hashtags?: String[];
+  hashtags?: string[];
 } & ShareLink;

@@ -65,7 +65,8 @@ describe("extractBlogCardUrls", () => {
   });
 
   it("aタグに追加属性がある場合も正しく処理する", () => {
-    const html = '<p><a href="https://example.com" target="_blank" rel="noopener">https://example.com</a></p>';
+    const html =
+      '<p><a href="https://example.com" target="_blank" rel="noopener">https://example.com</a></p>';
     const result = extractBlogCardUrls(html);
 
     expect(result).toHaveLength(1);

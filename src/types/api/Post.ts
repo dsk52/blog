@@ -1,4 +1,4 @@
-import { MicroCMSImage } from "microcms-js-sdk";
+import type { MicroCMSImage } from "microcms-js-sdk";
 
 import type { ICommonSchema } from "./Microcms";
 
@@ -8,7 +8,7 @@ export interface ApiPost extends ICommonSchema {
   body: string;
   category: ApiCategory;
   tags: ApiTag[];
-  thumbnail?: MicroCMSImage
+  thumbnail?: MicroCMSImage;
 }
 
 export interface ApiCategory extends ICommonSchema {

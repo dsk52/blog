@@ -1,4 +1,4 @@
-import { createClient, MicroCMSQueries } from "microcms-js-sdk";
+import { createClient, type MicroCMSQueries } from "microcms-js-sdk";
 
 import type { microCmsResponse } from "@/types/api/Microcms";
 import type { ApiPost, ApiTag } from "@/types/api/Post";
@@ -30,7 +30,7 @@ export const POST_PER_PAGE = 12;
 
 export async function getAllPost(
   limit = POST_PER_PAGE,
-  offset = 0,
+  offset = 0
 ): Promise<microCmsResponse<ApiPost>> {
   const params = {
     endpoint: ENDPOINTS.POST,
@@ -47,7 +47,7 @@ export async function getAllPost(
 
 export async function getAllSlugs(
   limit = POST_PER_PAGE,
-  offset = 0,
+  offset = 0
   // FIXME: contents内を削った状態にしたい
 ): Promise<microCmsResponse<{ slug: string }>> {
   const params = {
@@ -63,10 +63,8 @@ export async function getAllSlugs(
 }
 
 export async function getFeedItems(
-  limit = 0,
-): Promise<
-  microCmsResponse<Pick<ApiPost, "title" | "body" | "slug" | "createdAt">>
-> {
+  limit = 0
+): Promise<microCmsResponse<Pick<ApiPost, "title" | "body" | "slug" | "createdAt">>> {
   const params = {
     endpoint: ENDPOINTS.POST,
     queries: {
@@ -82,7 +80,7 @@ export async function getFeedItems(
 
 export async function getByContentId(
   contentId: string,
-  draftKey: string,
+  draftKey: string
 ): Promise<microCmsResponse<ApiPost>> {
   return await microcms.get({
     endpoint: ENDPOINTS.POST,
@@ -95,7 +93,7 @@ export async function getByContentId(
 
 export async function getByContentIdAndDraftKey(
   contentId: string,
-  draftKey?: string,
+  draftKey?: string
 ): Promise<ApiPost> {
   const queries: MicroCMSQueries = {};
   if (draftKey && draftKey.length) {
@@ -111,7 +109,7 @@ export async function getByContentIdAndDraftKey(
 
 export async function getBySlug(
   slug: string,
-  draftKey?: string,
+  draftKey?: string
 ): Promise<microCmsResponse<ApiPost>> {
   const queries: MicroCMSQueries = {
     filters: `slug[equals]${slug}`,
@@ -129,7 +127,7 @@ export async function getBySlug(
 export async function getByTagId(
   tagId: string,
   limit = POST_PER_PAGE,
-  offset = 0,
+  offset = 0
 ): Promise<microCmsResponse<ApiPost>> {
   return await microcms.get({
     endpoint: ENDPOINTS.POST,
@@ -144,10 +142,7 @@ export async function getByTagId(
 
 export type TagListItem = Pick<ApiTag, "id" | "slug" | "name">;
 
-export async function getTags(
-  limit = 100,
-  offset = 0,
-): Promise<microCmsResponse<TagListItem>> {
+export async function getTags(limit = 100, offset = 0): Promise<microCmsResponse<TagListItem>> {
   return await microcms.get({
     endpoint: ENDPOINTS.TAG,
     queries: {
@@ -159,9 +154,7 @@ export async function getTags(
   });
 }
 
-export async function getTagBySlug(
-  slug: string,
-): Promise<microCmsResponse<ApiTag>> {
+export async function getTagBySlug(slug: string): Promise<microCmsResponse<ApiTag>> {
   return await microcms.get({
     endpoint: ENDPOINTS.TAG,
     queries: { filters: `slug[equals]${slug}` },

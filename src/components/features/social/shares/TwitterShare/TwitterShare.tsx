@@ -7,10 +7,7 @@ import { SITE } from "@/constants/site";
 import { BASE_SHARE_URL } from "./const";
 import type { TwitterQueryParams, TwitterShareProps } from "./type";
 
-export const TwitterShare = ({
-  url,
-  title,
-}: TwitterShareProps): JSX.Element => {
+export const TwitterShare = ({ url, title }: TwitterShareProps): JSX.Element => {
   const shareUrl = useMemo(() => {
     const params: TwitterQueryParams = {
       text: `${title} | ${SITE.name}`,

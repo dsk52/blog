@@ -9,12 +9,7 @@ import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 
-export const TagListPage = ({
-  tag,
-  posts,
-  maxPage,
-  pageNum,
-}: TagListPageProp) => {
+export const TagListPage = ({ tag, posts, maxPage, pageNum }: TagListPageProp) => {
   return (
     <CommonLayout>
       <div className={clsx("tw:space-y-8")}>
@@ -30,11 +25,7 @@ export const TagListPage = ({
 
         <footer>
           <Container>
-            <Pager
-              basePath={ROUTE.postTagListBy(tag.slug)}
-              maxPage={maxPage}
-              pageNum={pageNum}
-            />
+            <Pager basePath={ROUTE.postTagListBy(tag.slug)} maxPage={maxPage} pageNum={pageNum} />
 
             <Adsense
               client={AdsenseClient}

@@ -16,9 +16,7 @@ describe("Tagのレンダリングテスト", () => {
 
     const element = res.getByRole("link");
     expect(element).toBeTruthy();
-    expect(element.getAttribute("href")).toBe(
-      ROUTE.postTagList(commonProps.slug, 1),
-    );
+    expect(element.getAttribute("href")).toBe(ROUTE.postTagList(commonProps.slug, 1));
   });
 
   it("非リンクなタグとしてレンダリングできる", async () => {

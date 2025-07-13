@@ -21,11 +21,7 @@ export const PostListPage = ({ posts, maxPage, pageNum }: ListPageProp) => {
 
         <footer>
           <Container>
-            <Pager
-              basePath={ROUTE.postListBase}
-              maxPage={maxPage}
-              pageNum={pageNum}
-            />
+            <Pager basePath={ROUTE.postListBase} maxPage={maxPage} pageNum={pageNum} />
 
             <Adsense
               client={AdsenseClient}

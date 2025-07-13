@@ -10,7 +10,7 @@ export interface BlogCardUrl {
 export function extractBlogCardUrls(html: string): BlogCardUrl[] {
   // aタグでhref属性とテキストが同じURLパターンをマッチ
   const linkRegex = /<a\s+href=["']?(https?:\/\/[^"'\s>]+)["']?[^>]*>\s*\1\s*<\/a>/gi;
-  
+
   return Array.from(html.matchAll(linkRegex), ([fullMatch, url]) => ({
     url,
     fullMatch,
@@ -24,9 +24,10 @@ export function extractBlogCardUrls(html: string): BlogCardUrl[] {
 export function replaceBlogCardUrls(
   html: string,
   blogCardUrls: BlogCardUrl[],
-  replacer: (url: string) => string,
+  replacer: (url: string) => string
 ): string {
-  return blogCardUrls.reduce((result, { url, fullMatch }) => 
-    result.replace(fullMatch, replacer(url)), html
+  return blogCardUrls.reduce(
+    (result, { url, fullMatch }) => result.replace(fullMatch, replacer(url)),
+    html
   );
 }

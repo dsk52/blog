@@ -3,11 +3,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { clearOGPCache, fetchMultipleOGP, fetchOGP } from "./ogp";
 
 // open-graph-scraperをモック
-vi.mock('open-graph-scraper', () => ({
+vi.mock("open-graph-scraper", () => ({
   default: vi.fn(),
 }));
 
-const mockOgs = vi.mocked((await import('open-graph-scraper')).default);
+const mockOgs = vi.mocked((await import("open-graph-scraper")).default);
 
 describe("fetchOGP", () => {
   beforeEach(() => {
@@ -25,13 +25,13 @@ describe("fetchOGP", () => {
         ogDescription: "テスト説明",
         ogImage: [{ url: "https://example.com/image.jpg" }],
         ogSiteName: "テストサイト",
-      }
+      },
     } satisfies { error: false; html: string; response: object; result: object };
-    
+
     mockOgs.mockResolvedValue(mockResult);
-    
+
     const result = await fetchOGP("https://example.com");
-    
+
     expect(result).toEqual({
       url: "https://example.com",
       title: "テストタイトル",
@@ -51,13 +51,13 @@ describe("fetchOGP", () => {
         twitterTitle: "Twitterタイトル",
         twitterDescription: "Twitter説明",
         twitterImage: [{ url: "https://example.com/twitter.jpg" }],
-      }
+      },
     } satisfies { error: false; html: string; response: object; result: object };
-    
+
     mockOgs.mockResolvedValue(mockResult);
-    
+
     const result = await fetchOGP("https://example.com");
-    
+
     expect(result.title).toBe("Twitterタイトル");
     expect(result.description).toBe("Twitter説明");
     expect(result.image).toBe("https://example.com/twitter.jpg");
@@ -65,9 +65,9 @@ describe("fetchOGP", () => {
 
   it("エラー時はフォールバックデータを返す", async () => {
     mockOgs.mockRejectedValue(new Error("Network error"));
-    
+
     const result = await fetchOGP("https://example.com");
-    
+
     expect(result).toEqual({
       url: "https://example.com",
       title: "https://example.com",
@@ -77,10 +77,10 @@ describe("fetchOGP", () => {
 
   it("タイムアウト時はフォールバックデータを返す", async () => {
     // 長時間かかるPromiseをモック
-    mockOgs.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 5000)));
-    
+    mockOgs.mockImplementation(() => new Promise((resolve) => setTimeout(resolve, 5000)));
+
     const result = await fetchOGP("https://example.com", { timeout: 100 });
-    
+
     expect(result.fallback).toBe(true);
     expect(result.url).toBe("https://example.com");
   });
@@ -92,19 +92,19 @@ describe("fetchOGP", () => {
       response: {},
       result: {
         ogTitle: "キャッシュテスト",
-      }
+      },
     } satisfies { error: false; html: string; response: object; result: object };
-    
+
     mockOgs.mockResolvedValue(mockResult);
-    
+
     // 1回目の呼び出し
     const result1 = await fetchOGP("https://example.com");
     expect(mockOgs).toHaveBeenCalledTimes(1);
-    
+
     // 2回目の呼び出し（キャッシュから取得）
     const result2 = await fetchOGP("https://example.com");
     expect(mockOgs).toHaveBeenCalledTimes(1); // 増えていない
-    
+
     expect(result1).toEqual(result2);
   });
 
@@ -113,13 +113,13 @@ describe("fetchOGP", () => {
       error: false,
       html: "",
       response: {},
-      result: {} // 空のresult
+      result: {}, // 空のresult
     } satisfies { error: false; html: string; response: object; result: object };
-    
+
     mockOgs.mockResolvedValue(mockResult);
-    
+
     const result = await fetchOGP("https://example.com");
-    
+
     expect(result.title).toBe("https://example.com");
     expect(result.fallback).toBe(false);
   });
@@ -136,24 +136,19 @@ describe("fetchMultipleOGP", () => {
       error: false,
       html: "",
       response: {},
-      result: { ogTitle: "サイト1" }
+      result: { ogTitle: "サイト1" },
     } satisfies { error: false; html: string; response: object; result: object };
     const mockResult2 = {
       error: false,
       html: "",
       response: {},
-      result: { ogTitle: "サイト2" }
+      result: { ogTitle: "サイト2" },
     } satisfies { error: false; html: string; response: object; result: object };
-    
-    mockOgs
-      .mockResolvedValueOnce(mockResult1)
-      .mockResolvedValueOnce(mockResult2);
-    
-    const results = await fetchMultipleOGP([
-      "https://site1.com",
-      "https://site2.com"
-    ]);
-    
+
+    mockOgs.mockResolvedValueOnce(mockResult1).mockResolvedValueOnce(mockResult2);
+
+    const results = await fetchMultipleOGP(["https://site1.com", "https://site2.com"]);
+
     expect(results).toHaveLength(2);
     expect(results[0].title).toBe("サイト1");
     expect(results[1].title).toBe("サイト2");
@@ -165,18 +160,13 @@ describe("fetchMultipleOGP", () => {
       error: false,
       html: "",
       response: {},
-      result: { ogTitle: "成功サイト" }
+      result: { ogTitle: "成功サイト" },
     } satisfies { error: false; html: string; response: object; result: object };
-    
-    mockOgs
-      .mockResolvedValueOnce(mockResult)
-      .mockRejectedValueOnce(new Error("失敗"));
-    
-    const results = await fetchMultipleOGP([
-      "https://success.com",
-      "https://fail.com"
-    ]);
-    
+
+    mockOgs.mockResolvedValueOnce(mockResult).mockRejectedValueOnce(new Error("失敗"));
+
+    const results = await fetchMultipleOGP(["https://success.com", "https://fail.com"]);
+
     expect(results).toHaveLength(2);
     expect(results[0].title).toBe("成功サイト");
     expect(results[0].fallback).toBe(false);

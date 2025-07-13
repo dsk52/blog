@@ -1,11 +1,8 @@
 import type { JSX } from "react";
 
-import { TwitterIconProps } from "@/components/icons/Twitter/type";
+import type { TwitterIconProps } from "@/components/icons/Twitter/type";
 
-export const TwitterIcon = ({
-  size,
-  fill = "white",
-}: TwitterIconProps): JSX.Element => {
+export const TwitterIcon = ({ size, fill = "white" }: TwitterIconProps): JSX.Element => {
   return (
     <svg
       width={size}
