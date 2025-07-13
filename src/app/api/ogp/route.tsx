@@ -11,7 +11,7 @@ export function GET(req: NextRequest) {
   }
 
   try {
-    const title = searchParams.get("title")!.slice(0, 100);
+    const title = searchParams.get("title")?.slice(0, 100);
 
     const Response = new ImageResponse(
       <div

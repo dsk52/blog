@@ -7,7 +7,7 @@ import { getFeedItems } from "@/libs/microcms";
 
 export const revalidate = 3600; // 1時間キャッシュする
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   const xml = await generateFeedXml();
 
   return new Response(xml, {

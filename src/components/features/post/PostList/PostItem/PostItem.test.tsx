@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 import type { IPostItem } from "@/types/domain/Post";
 
@@ -26,7 +26,7 @@ vi.mock("@/components/ui/TagList/TagList", () => ({
 }));
 
 vi.mock("@/utilities/Date", () => ({
-  datetimeToDate: (date: string) => "2023-01-01",
+  datetimeToDate: (_date: string) => "2023-01-01",
 }));
 
 describe("PostItem", () => {

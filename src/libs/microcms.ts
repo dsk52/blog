@@ -96,7 +96,7 @@ export async function getByContentIdAndDraftKey(
   draftKey?: string
 ): Promise<ApiPost> {
   const queries: MicroCMSQueries = {};
-  if (draftKey && draftKey.length) {
+  if (draftKey?.length) {
     queries.draftKey = draftKey;
   }
 
@@ -114,7 +114,7 @@ export async function getBySlug(
   const queries: MicroCMSQueries = {
     filters: `slug[equals]${slug}`,
   };
-  if (draftKey && draftKey.length) {
+  if (draftKey?.length) {
     queries.draftKey = draftKey;
   }
 

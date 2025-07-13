@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { cache } from "react";
 
 import { TagListPage } from "@/components/page/TagList/TagList";
