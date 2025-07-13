@@ -42,6 +42,7 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
                 "tw:prose-a:hover:no-underline tw:prose-a:hover:text-primary tw:prose-a:hover:opacity-70",
                 "tw:max-w-full"
               )}
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: ブログ記事のHTML表示で必要
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
 
