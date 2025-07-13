@@ -12,6 +12,9 @@
       },
       "suspicious": {
         "noArrayIndexKey": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
       }
     }
   },
