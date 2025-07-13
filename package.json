@@ -13,8 +13,8 @@
     "start": "next start",
     "test": "pnpm run test:run",
     "test:run": "vitest --run",
-    "lint": "biome lint ./src",
-    "lint:fix": "biome check --write ./src"
+    "check": "biome check ./src",
+    "check:fix": "biome check --write ./src"
   },
   "dependencies": {
     "clsx": "2.1.1",
