@@ -8,10 +8,7 @@ export const HatenaShare = () => {
     <div>
       <a
         href="https://b.hatena.ne.jp/entry/"
-        className={clsx(
-          "tw:transition-opacity tw:hover:opacity-70",
-          "hatena-bookmark-button",
-        )}
+        className={clsx("tw:transition-opacity tw:hover:opacity-70", "hatena-bookmark-button")}
         data-hatena-bookmark-layout="touch"
       >
         <HatenaIcon size="36" />

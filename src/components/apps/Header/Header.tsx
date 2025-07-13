@@ -11,11 +11,7 @@ import { GlobalNav } from "./GlobalNav/GlobalNav";
 export const Header = () => (
   <header className={clsx("tw:mt-4 tw:mb-5")}>
     <Container>
-      <div
-        className={clsx(
-          "tw:flex tw:flex-wrap tw:items-center tw:justify-between",
-        )}
-      >
+      <div className={clsx("tw:flex tw:flex-wrap tw:items-center tw:justify-between")}>
         <Heading>
           <AnchorLink
             href={ROUTE.top}

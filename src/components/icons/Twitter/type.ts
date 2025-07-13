@@ -1,4 +1,4 @@
-import { BaseIconProps } from "@/components/icons/type";
+import type { BaseIconProps } from "@/components/icons/type";
 
 export type TwitterIconProps = BaseIconProps & {
   fill?: "black" | "white";

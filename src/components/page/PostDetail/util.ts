@@ -5,10 +5,7 @@
  * @param excerptNuNum 抜き出す文字数
  * @returns
  */
-export const createExcerptFromBody = (
-  body: string,
-  excerptNuNum: number
-): string => {
+export const createExcerptFromBody = (body: string, excerptNuNum: number): string => {
   return body
     .replace(/\r?\n/g, "")
     .replace(/<("[^"]*"|'[^']*'|[^'">]|\r?\n)*>/g, "")

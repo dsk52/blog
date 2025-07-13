@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { SITE } from "@/constants/site";
 import { AppProvider } from "@/provider/AppProvider";

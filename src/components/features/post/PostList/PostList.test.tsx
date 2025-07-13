@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
-import { IPostItem } from "@/types/domain/Post";
+import type { IPostItem } from "@/types/domain/Post";
 
 import { PostList } from "./PostList";
 

@@ -1,8 +1,4 @@
-type AdsenseTypes =
-  | "articleTop"
-  | "articleIn"
-  | "articleBottom"
-  | "relatedPost";
+type AdsenseTypes = "articleTop" | "articleIn" | "articleBottom" | "relatedPost";
 
 export type AdsenseOption = {
   format: "auto" | "fluid" | "rectangle";

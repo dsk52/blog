@@ -7,6 +7,8 @@ export const FacebookIcon = ({ size = "30px" }: BaseIconProps) => (
     width={size}
     height={size}
     fillRule="nonzero"
+    role="img"
+    aria-label="Facebook"
   >
     <g
       fill="#1877f2"

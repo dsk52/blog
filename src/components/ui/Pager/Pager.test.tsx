@@ -38,27 +38,21 @@ afterEach(cleanup);
 
 describe("ページャーの表示", () => {
   it("1/1の時、表示されないこと", async () => {
-    const { queryByTestId } = render(
-      <Pager basePath="" pageNum={1} maxPage={1} />,
-    );
+    const { queryByTestId } = render(<Pager basePath="" pageNum={1} maxPage={1} />);
 
     expect(queryByTestId("prev")).toBeFalsy();
     expect(queryByTestId("next")).toBeFalsy();
   });
 
   it("2/2の時、前のページへが表示される", async () => {
-    const { findByTestId, queryByTestId } = render(
-      <Pager basePath="" pageNum={2} maxPage={2} />,
-    );
+    const { findByTestId, queryByTestId } = render(<Pager basePath="" pageNum={2} maxPage={2} />);
 
     expect(findByTestId("prev")).toBeTruthy();
     expect(queryByTestId("next")).toBeFalsy();
   });
 
   it("1/2の時、次のページへが表示される", async () => {
-    const { findByTestId, queryByTestId } = render(
-      <Pager basePath="" pageNum={1} maxPage={2} />,
-    );
+    const { findByTestId, queryByTestId } = render(<Pager basePath="" pageNum={1} maxPage={2} />);
 
     expect(findByTestId("next")).toBeTruthy();
     expect(queryByTestId("prev")).toBeFalsy();

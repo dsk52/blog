@@ -30,8 +30,8 @@ export class PostMapper {
   }
 
   public static detail(post: ApiPost): IPost {
-    const category = this.category(post?.category);
-    const tags = this.tags(post?.tags);
+    const category = PostMapper.category(post?.category);
+    const tags = PostMapper.tags(post?.tags);
 
     return {
       id: post.id,
@@ -48,7 +48,7 @@ export class PostMapper {
 
   public static list(posts: ApiPost[]): IPostItem[] {
     return posts.map((post: ApiPost) => {
-      const tags = this.tags(post?.tags);
+      const tags = PostMapper.tags(post?.tags);
 
       return {
         title: post.title,
@@ -60,6 +60,6 @@ export class PostMapper {
   }
 
   public static relatedPosts(posts: ApiPost[]): IPostItem[] {
-    return this.list(posts);
+    return PostMapper.list(posts);
   }
 }
