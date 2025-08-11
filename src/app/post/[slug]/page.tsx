@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { cache } from "react";
-
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { md } from "@/libs/markdown-it";
-import { getBySlug, getByTagId } from "@/libs/microcms";
+import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import type { ApiPost, ApiTag } from "@/types/api/Post";
 import type { IPostItem } from "@/types/domain/Post";
+import type { PageProps } from "@/types/page";
 import { extractBlogCardUrls, replaceBlogCardUrls } from "@/utilities/blogCard";
 import { generateBlogCardHTML } from "@/utilities/blogCardHtml";
 import { fetchMultipleOGP } from "@/utilities/ogp";
@@ -34,44 +34,35 @@ async function fetchRelatedPosts(tagId: ApiTag["id"], currentPostId: ApiPost["id
   return PostMapper.relatedPosts(filteredRelatedPosts);
 }
 
-const fetchData = cache(async (slug: string) => {
-  // const slug = await params?.slug;
-  // if (!slug) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
-
-  // const draftKey = isDraft(previewData)
-  //   ? { draftKey: previewData.draftKey }
-  //   : {};
-
+const fetchData = cache(async (slug: string, draftKey?: string | null) => {
   let postResponse: ApiPost | undefined;
-  // if (draftKey && draftKey.draftKey) {
-  //   const res = await getByContentIdAndDraftKey(slug, draftKey.draftKey);
-  //   if (!res) {
-  //     return {
-  //       notFound: true,
-  //     };
-  //   }
-  //   postResponse = res;
-  // } else {
-  const res = await getBySlug(slug);
-  if (!res.contents || !res.contents.length) {
-    return {
-      post: undefined,
-      relatedPosts: [] as IPostItem[],
-    };
+
+  // プレビューモードの場合（draftKeyがある場合）
+  if (draftKey) {
+    const res = await getByContentIdAndDraftKey(slug, draftKey);
+    if (!res) {
+      return {
+        post: undefined,
+        relatedPosts: [] as IPostItem[],
+      };
+    }
+    postResponse = res;
+  } else {
+    // 通常モードの場合
+    const res = await getBySlug(slug);
+    if (!res.contents || !res.contents.length) {
+      return {
+        post: undefined,
+        relatedPosts: [] as IPostItem[],
+      };
+    }
+    postResponse = res.contents[0];
   }
-  postResponse = res.contents[0];
-  // }
 
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
-  if (
-    tagId
-    // && !draftKey.draftKey
-  ) {
+  // プレビューモードでは関連記事を取得しない
+  if (tagId && !draftKey) {
     relatedPosts = await fetchRelatedPosts(tagId, postResponse.id); // TODO: 処理を別実行できるようにする
   }
 
@@ -103,14 +94,14 @@ const fetchData = cache(async (slug: string) => {
   };
 });
 
-export const generateMetadata = async (props: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> => {
+export const generateMetadata = async (props: PageProps<{ slug: string }>): Promise<Metadata> => {
   const params = await props.params;
+  const searchParams = await props.searchParams;
   const { slug } = params;
   if (!slug) return {};
 
-  const { post } = await fetchData(slug);
+  const draftKey = searchParams?.draftKey as string | undefined;
+  const { post } = await fetchData(slug, draftKey);
   if (!post) return {};
 
   const { title: postTitle, thumbnail, publishedAt } = post;
@@ -150,9 +141,11 @@ export const generateMetadata = async (props: {
   };
 };
 
-export default async function Page(props: { params: Promise<{ slug: string }> }) {
+export default async function Page(props: PageProps<{ slug: string }>) {
   const params = await props.params;
-  const { post, relatedPosts } = await fetchData(params.slug);
+  const searchParams = await props.searchParams;
+  const draftKey = searchParams?.draftKey as string | undefined;
+  const { post, relatedPosts } = await fetchData(params.slug, draftKey);
   if (!post) {
     return null;
   }
