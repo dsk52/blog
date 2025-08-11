@@ -17,10 +17,7 @@ const CACHE_TTL = 1000 * 60 * 60; // 1時間
  * URLからOGP情報を取得する
  * タイムアウト・エラーハンドリング・キャッシュ機能付き
  */
-export async function fetchOGP(
-  url: string,
-  options: { timeout?: number } = {},
-): Promise<OGPData> {
+export async function fetchOGP(url: string, options: { timeout?: number } = {}): Promise<OGPData> {
   const { timeout = 3000 } = options;
 
   // キャッシュチェック

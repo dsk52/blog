@@ -1,4 +1,4 @@
-import { MicroCMSImage } from "microcms-js-sdk";
+import type { MicroCMSImage } from "microcms-js-sdk";
 
 export interface IPost {
   id: string;

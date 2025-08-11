@@ -1,7 +1,6 @@
-import type { Metadata, NextPage } from "next";
+import type { Metadata } from "next";
 
 import { IndexPage } from "@/components/page/Index/Index";
-import type { ListPageProp } from "@/components/page/type";
 import { calcMaxPage } from "@/components/ui/Pager/util";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";

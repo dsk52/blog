@@ -14,11 +14,7 @@ export const ShareList = ({ title }: Props) => {
   const url = `${SITE.url}${pathname}`;
 
   return (
-    <ul
-      className={clsx(
-        "tw:flex tw:justify-center tw:items-center tw:gap-x-4 tw:md:gap-x-7",
-      )}
-    >
+    <ul className={clsx("tw:flex tw:justify-center tw:items-center tw:gap-x-4 tw:md:gap-x-7")}>
       <li>
         <TwitterShare title={title} url={url} />
       </li>

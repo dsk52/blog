@@ -18,11 +18,7 @@ export const PostItem = ({ post }: Props) => {
       >
         {post.title}
       </AnchorLink>
-      <aside
-        className={clsx(
-          "tw:flex tw:flex-wrap tw:justify-start tw:mt-1.5 tw:gap-x-3",
-        )}
-      >
+      <aside className={clsx("tw:flex tw:flex-wrap tw:justify-start tw:mt-1.5 tw:gap-x-3")}>
         <time dateTime={post.publishedAt}>{pubDate}</time>
         <TagList tags={post.tags} className={clsx("tw:gap-x-2")} />
       </aside>

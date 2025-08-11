@@ -7,7 +7,7 @@ export const TagList = ({ tags, className, doLink = false }: TagListProps) => (
   <ul
     className={clsx(
       "tw:flex tw:flex-wrap tw:list-none tw:align-middle tw:pl-0 tw:gap-x-4 tw:gap-y-5",
-      className,
+      className
     )}
   >
     {tags.map((tag) => (

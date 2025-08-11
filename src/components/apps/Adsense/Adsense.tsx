@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect } from "react";
 import { useIsClient } from "usehooks-ts";
 
@@ -20,6 +20,7 @@ export const Adsense = ({
   useEffect(() => {
     try {
       if (isClient) {
+        // biome-ignore lint/suspicious/noAssignInExpressions: Google AdSense API requires this assignment pattern
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
     } catch (err) {

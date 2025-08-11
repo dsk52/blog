@@ -14,27 +14,15 @@ export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
    */
 
   return (
-    <nav
-      className={clsx(
-        "tw:w-full tw:flex tw:flex-wrap tw:justify-between tw:mt-16",
-      )}
-    >
+    <nav className={clsx("tw:w-full tw:flex tw:flex-wrap tw:justify-between tw:mt-16")}>
       {prevPageNum > 0 ? (
-        <ButtonLink
-          label="前のページへ"
-          link={`${basePath}/${prevPageNum}`}
-          data-testid="prev"
-        />
+        <ButtonLink label="前のページへ" link={`${basePath}/${prevPageNum}`} data-testid="prev" />
       ) : (
         <div></div>
       )}
 
       {pageNum !== maxPage ? (
-        <ButtonLink
-          label="次のページへ"
-          link={`${basePath}/${nextPageNum}`}
-          data-testid="next"
-        />
+        <ButtonLink label="次のページへ" link={`${basePath}/${nextPageNum}`} data-testid="next" />
       ) : (
         <div></div>
       )}

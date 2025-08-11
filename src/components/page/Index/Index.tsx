@@ -21,11 +21,7 @@ export const IndexPage = ({ posts, maxPage, pageNum }: ListPageProp) => (
       <footer>
         <Container>
           <div className={clsx("tw:space-y-4")}>
-            <Pager
-              basePath={ROUTE.postListBase}
-              maxPage={maxPage}
-              pageNum={pageNum}
-            />
+            <Pager basePath={ROUTE.postListBase} maxPage={maxPage} pageNum={pageNum} />
 
             <Adsense
               client={AdsenseClient}

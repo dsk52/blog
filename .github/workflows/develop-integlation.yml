@@ -11,54 +11,35 @@ env:
   MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
 
 jobs:
-  lint_n_test:
+  devCheck:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
-      - name: Use Node.js
+      - name: Get Node version from mise
+        id: node-version
+        run: echo "version=$(grep -oP 'node\s*=\s*"\K[^"]+' .mise.toml || echo '22')" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # node-version: ${{ matrix.node-version }}
-          node-version-file: "package.json"
-          cache: "pnpm"
+          node-version: ${{ steps.node-version.outputs.version }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm check
+
+      - name: type-check
+        run: pnpm type-check
 
       - name: Test
         run: pnpm test:run
 
-  type-check:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          # node-version: ${{ matrix.node-version }}
-          node-version-file: "package.json"
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: type-check
-        run: pnpm type-check

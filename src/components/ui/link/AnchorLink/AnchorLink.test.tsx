@@ -30,7 +30,7 @@ describe("AnchorLinkのレンダリングテスト", () => {
     render(
       <AnchorLink href={link} target="_blank">
         リンク
-      </AnchorLink>,
+      </AnchorLink>
     );
 
     const element = screen.getByRole("link");

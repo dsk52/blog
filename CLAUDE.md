@@ -10,8 +10,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `pnpm start` - 本番サーバー起動
 - `pnpm type-check` - TypeScriptの型チェック
 - `pnpm test` または `pnpm test:run` - Vitestでテスト実行
-- `pnpm lint` - ESLintでコード検証
-- `pnpm lint:fix` - ESLintとPrettierでコード修正
+- `pnpm check` - Biomeでコード検証
+- `pnpm check:fix` - Biomeでコード修正
 
 ### その他
 - `pnpm export` - ビルド→エクスポート→サイトマップ生成の一連実行
@@ -59,7 +59,7 @@ src/
 ## コーディング規約
 
 ### 命名とスタイル
-- TypeScript必須、ESLint/Prettier設定準拠
+- TypeScript必須、Biome設定準拠
 - 関数・変数名はキャメルケース
 - コンポーネントはPascalCase
 - ファイル名は対応するコンポーネント名と一致
@@ -71,5 +71,5 @@ src/
 ### 必須作業
 開発完了後は以下を実行してエラーがないことを確認：
 1. `pnpm type-check`
-2. `pnpm lint`
+2. `pnpm check`
 3. `pnpm test`

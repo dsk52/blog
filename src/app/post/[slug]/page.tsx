@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { cache } from "react";
 
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
@@ -22,10 +22,7 @@ export async function generateStaticParams() {
 }
 
 // 関連記事のデータ取得
-async function fetchRelatedPosts(
-  tagId: ApiTag["id"],
-  currentPostId: ApiPost["id"],
-) {
+async function fetchRelatedPosts(tagId: ApiTag["id"], currentPostId: ApiPost["id"]) {
   const DISPLAY_COUNT = 6;
 
   const relatedPostDatas = await getByTagId(tagId, DISPLAY_COUNT + 1); // HACK: 後続処理で除外する可能性があるため多めに取る
@@ -153,9 +150,7 @@ export const generateMetadata = async (props: {
   };
 };
 
-export default async function Page(props: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
   const { post, relatedPosts } = await fetchData(params.slug);
   if (!post) {
