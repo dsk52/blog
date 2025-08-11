@@ -29,21 +29,8 @@ export async function GET(request: NextRequest) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${nextUrl.protocol}//${requestHost}`;
   const redirectUrl = new URL(ROUTE.postDetail(contestId), baseUrl);
 
-  const response = NextResponse.redirect(redirectUrl, 307);
-  response.cookies.set(
-    "__previewData",
-    JSON.stringify({
-      slug: contestId,
-      draftKey: draftKey,
-    }),
-    {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 60 * 60, // 1時間
-      path: "/",
-    }
-  );
+  // draftKeyをURLパラメータとして追加
+  redirectUrl.searchParams.set("draftKey", draftKey);
 
-  return response;
+  return NextResponse.redirect(redirectUrl, 307);
 }
