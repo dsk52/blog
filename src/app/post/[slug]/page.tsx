@@ -15,6 +15,9 @@ import { fetchMultipleOGP } from "@/utilities/ogp";
 
 export const dynamicParams = true;
 
+// searchParamsを使用するため動的レンダリングを有効化
+export const dynamic = "force-dynamic";
+
 export const revalidate = 1800; // 1800秒 = 30分
 
 export async function generateStaticParams() {
