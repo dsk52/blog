@@ -107,7 +107,7 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
   const { post } = await fetchData(slug, draftKey);
   if (!post) return {};
 
-  const { title: postTitle, thumbnail, publishedAt, body } = post;
+  const { title: postTitle, thumbnail, publishedAt, updatedAt, body } = post;
 
   const title = postTitle;
   // 記事の本文からdescriptionを生成（HTMLタグを除去し、最初の160文字を使用）
@@ -145,6 +145,7 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
       images: [image],
       type: "article",
       publishedTime: publishedAt,
+      modifiedTime: updatedAt,
     },
   };
 };
