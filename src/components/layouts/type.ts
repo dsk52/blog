@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type Props = {
-  children: ReactNode;
+export interface Props {
   head?: ReactNode;
-};
+  children: ReactNode;
+}
