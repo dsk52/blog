@@ -34,7 +34,7 @@ function generateArticleJsonLd(post: IPost, slug: string): WithContext<Article> 
     author: {
       "@type": "Person",
       name: SITE.author.name,
-      url: SITE.url,
+      url: SITE.author.url,
     },
     publisher: {
       "@type": "Organization",
