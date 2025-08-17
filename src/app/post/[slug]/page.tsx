@@ -107,16 +107,22 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
   const { post } = await fetchData(slug, draftKey);
   if (!post) return {};
 
-  const { title: postTitle, thumbnail, publishedAt } = post;
+  const { title: postTitle, thumbnail, publishedAt, updatedAt, body } = post;
 
   const title = postTitle;
-  const description = SITE.description;
+  // 記事の本文からdescriptionを生成（HTMLタグを除去し、最初の160文字を使用）
+  const description =
+    body
+      .replace(/<[^>]*>/g, "") // HTMLタグを除去
+      .replace(/\s+/g, " ") // 連続する空白を一つにまとめる
+      .trim()
+      .slice(0, 160) + (body.replace(/<[^>]*>/g, "").length > 160 ? "..." : "");
   const url = `${SITE.url}${ROUTE.postDetail(slug)}`;
 
   const image = thumbnail
     ? {
         url: thumbnail.url,
-        with: thumbnail.width,
+        width: thumbnail.width,
         height: thumbnail.height,
       }
     : {
@@ -140,6 +146,7 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
       images: [image],
       type: "article",
       publishedTime: publishedAt,
+      modifiedTime: updatedAt,
     },
   };
 };
