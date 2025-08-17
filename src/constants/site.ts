@@ -4,6 +4,7 @@ export const SITE = {
   url: "https://blog.daisukekonishi.com",
   author: {
     name: "Daisuke KONISHI",
+    url: "https://daisukekonishi.com",
   },
   ogp: {
     imageUrl: "/images/ogp.png",
