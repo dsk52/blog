@@ -121,7 +121,7 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
   const image = thumbnail
     ? {
         url: thumbnail.url,
-        with: thumbnail.width,
+        width: thumbnail.width,
         height: thumbnail.height,
       }
     : {
