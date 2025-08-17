@@ -15,20 +15,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - name: Get Node version from mise
-        id: node-version
-        run: echo "version=$(grep -oP 'node\s*=\s*"\K[^"]+' .mise.toml || echo '22')" >> $GITHUB_OUTPUT
+      - name: Install mise
+        uses: jdx/mise-action@v2
+        with:
+          experimental: true
+          install: false
+
+      - name: Setup Go with mise version
+        run: |
+          NODE_VERSION=$(mise list node --json | jq -r '.[0].version')
+          echo "NODE_VERSION=$NODE_VERSION" >> $GITHUB_ENV
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ steps.node-version.outputs.version }}
+          node-version: ${{ env.GO_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
