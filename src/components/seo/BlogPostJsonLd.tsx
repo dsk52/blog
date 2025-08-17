@@ -1,12 +1,21 @@
-import type { Article, WithContext } from "schema-dts";
+import type { BlogPosting, WithContext } from "schema-dts";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import type { IPost } from "@/types/domain/Post";
 
 /**
- * 記事のJSON-LD構造化データを生成する
+ * 読了時間を推定する（日本語400文字/分ベース）
  */
-function generateArticleJsonLd(post: IPost, slug: string): WithContext<Article> {
+function estimateReadingTime(text: string): string {
+  const cleanText = text.replace(/<[^>]*>/g, "").trim();
+  const minutes = Math.ceil(cleanText.length / 400);
+  return `PT${minutes}M`; // ISO 8601形式（例: PT5M = 5分）
+}
+
+/**
+ * ブログ記事のJSON-LD構造化データを生成する
+ */
+function generateBlogPostJsonLd(post: IPost, slug: string): WithContext<BlogPosting> {
   // 記事の本文からdescriptionを生成（HTMLタグを除去し、最初の160文字を使用）
   const description =
     post.body
@@ -25,7 +34,7 @@ function generateArticleJsonLd(post: IPost, slug: string): WithContext<Article> 
 
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description,
     image: imageUrl,
@@ -46,19 +55,23 @@ function generateArticleJsonLd(post: IPost, slug: string): WithContext<Article> 
       "@id": articleUrl,
     },
     url: articleUrl,
+    wordCount: post.body.replace(/<[^>]*>/g, "").length,
+    keywords: post.tags.map((tag) => tag.name),
+    articleSection: post.category.name,
+    timeRequired: estimateReadingTime(post.body),
   };
 }
 
-interface ArticleJsonLdProps {
+interface BlogPostJsonLdProps {
   post: IPost;
   slug: string;
 }
 
 /**
- * 記事のJSON-LD構造化データを出力するコンポーネント
+ * ブログ記事のJSON-LD構造化データを出力するコンポーネント
  */
-export function ArticleJsonLd({ post, slug }: ArticleJsonLdProps) {
-  const jsonLd = generateArticleJsonLd(post, slug);
+export function BlogPostJsonLd({ post, slug }: BlogPostJsonLdProps) {
+  const jsonLd = generateBlogPostJsonLd(post, slug);
 
   return (
     <script
