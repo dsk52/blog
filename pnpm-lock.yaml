@@ -50,6 +50,9 @@ importers:
       sanitize.css:
         specifier: 13.0.0
         version: 13.0.0
+      schema-dts:
+        specifier: ^1.1.5
+        version: 1.1.5
       usehooks-ts:
         specifier: 3.1.1
         version: 3.1.1(react@19.1.1)
@@ -1703,6 +1706,9 @@ packages:
 
   scheduler@0.26.0:
     resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
+
+  schema-dts@1.1.5:
+    resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -3484,6 +3490,8 @@ snapshots:
     optional: true
 
   scheduler@0.26.0: {}
+
+  schema-dts@1.1.5: {}
 
   semver@6.3.1: {}
 

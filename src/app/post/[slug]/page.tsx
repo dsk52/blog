@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import { PostDetailPage } from "@/components/page/PostDetail/PostDetail";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { md } from "@/libs/markdown-it";
@@ -159,5 +160,11 @@ export default async function Page(props: PageProps<{ slug: string }>) {
   if (!post) {
     return null;
   }
-  return PostDetailPage({ post, relatedPosts });
+
+  return (
+    <>
+      <ArticleJsonLd post={post} slug={params.slug} />
+      <PostDetailPage post={post} relatedPosts={relatedPosts} />
+    </>
+  );
 }
