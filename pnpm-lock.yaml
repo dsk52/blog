@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@types/react': 19.1.10
+  '@types/react': 19.1.12
 
 importers:
 
@@ -71,7 +71,7 @@ importers:
         version: 6.7.0
       '@testing-library/react':
         specifier: 16.3.0
-        version: 16.3.0(@testing-library/dom@10.0.0)(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 16.3.0(@testing-library/dom@10.0.0)(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/gtag.js':
         specifier: 0.0.20
         version: 0.0.20
@@ -85,8 +85,8 @@ importers:
         specifier: 0.2.3
         version: 0.2.3
       '@types/react':
-        specifier: 19.1.10
-        version: 19.1.10
+        specifier: 19.1.12
+        version: 19.1.12
       '@types/react-gtm-module':
         specifier: 2.0.4
         version: 2.0.4
@@ -853,7 +853,7 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       '@testing-library/dom': ^10.0.0
-      '@types/react': 19.1.10
+      '@types/react': 19.1.12
       '@types/react-dom': ^18.0.0 || ^19.0.0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -912,8 +912,8 @@ packages:
   '@types/react-gtm-module@2.0.4':
     resolution: {integrity: sha512-5wPMWsUE5AI6O0B0K1/zbs0rFHBKu+7NWXQwDXhqvA12ooLD6W1AYiWZqR4UiOd7ixZDV1H5Ys301zEsqyIfNg==}
 
-  '@types/react@19.1.10':
-    resolution: {integrity: sha512-EhBeSYX0Y6ye8pNebpKrwFJq7BoQ8J5SO6NlvNwwHjSj6adXJViPQrKlsyPw7hLBLvckEMO1yxeGdR82YBBlDg==}
+  '@types/react@19.1.12':
+    resolution: {integrity: sha512-cMoR+FoAf/Jyq6+Df2/Z41jISvGZZ2eTlnsaJRptmZ76Caldwy1odD4xTr/gNV9VLj0AWgg/nmkevIyUfIIq5w==}
 
   '@types/rss@0.0.32':
     resolution: {integrity: sha512-2oKNqKyUY4RSdvl5eZR1n2Q9yvw3XTe3mQHsFPn9alaNBxfPnbXBtGP8R0SV8pK1PrVnLul0zx7izbm5/gF5Qw==}
@@ -2584,14 +2584,14 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.0.0)(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.0.0)(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.26.9
       '@testing-library/dom': 10.0.0
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
-      '@types/react': 19.1.10
+      '@types/react': 19.1.12
 
   '@tootallnate/once@2.0.0':
     optional: true
@@ -2646,7 +2646,7 @@ snapshots:
 
   '@types/react-gtm-module@2.0.4': {}
 
-  '@types/react@19.1.10':
+  '@types/react@19.1.12':
     dependencies:
       csstype: 3.0.11
 
