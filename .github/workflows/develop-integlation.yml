@@ -33,7 +33,7 @@ jobs:
           echo "NODE_VERSION=$NODE_VERSION" >> $GITHUB_ENV
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.GO_VERSION }}
           cache: 'pnpm'
