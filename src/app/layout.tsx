@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import { WebSiteJsonLd } from "@/components/seo/WebSiteJsonLd";
 import { SITE } from "@/constants/site";
 import { AppProvider } from "@/provider/AppProvider";
 
@@ -41,6 +43,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        <WebSiteJsonLd />
+        <OrganizationJsonLd />
+      </head>
       <body>
         <AppProvider>{children}</AppProvider>
       </body>
