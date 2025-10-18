@@ -1,7 +1,7 @@
-import type { BreadcrumbList, WithContext } from "schema-dts";
 import { clsx } from "clsx";
-import { SITE } from "@/constants/site";
+import type { BreadcrumbList, WithContext } from "schema-dts";
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
+import { SITE } from "@/constants/site";
 import type { BreadcrumbItem, BreadcrumbProps } from "./type";
 
 /**
@@ -47,7 +47,9 @@ export const Breadcrumb = ({ items, className, includeJsonLd = true }: Breadcrum
                   </AnchorLink>
                 ) : (
                   <span
-                    className={clsx(isLast ? "tw:text-gray-900 tw:font-medium" : "tw:text-gray-600")}
+                    className={clsx(
+                      isLast ? "tw:text-gray-900 tw:font-medium" : "tw:text-gray-600"
+                    )}
                     aria-current={isLast ? "page" : undefined}
                   >
                     {item.label}
