@@ -19,19 +19,19 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
 
   return (
     <CommonLayout>
-      <article>
-        <Container>
-          <div className={clsx("tw:space-y-8")}>
+      <Container>
+        <div className={clsx("tw:space-y-8")}>
+          <article>
             <header>
               <Heading>{post.title}</Heading>
-              <aside className={clsx("tw:flex tw:justify-between tw:items-center")}>
+              <div className={clsx("tw:flex tw:justify-between tw:items-center")}>
                 <time className={clsx("tw:block")} dateTime={post.publishedAt}>
                   {pubDate}
                 </time>
                 <div className="tw:flex-1 tw:justify-items-end">
                   <TagList tags={post.tags} doLink />
                 </div>
-              </aside>
+              </div>
               {post.thumbnail && (
                 <img
                   className={clsx("tw:w-full tw:object-scale-down tw:mt-10")}
@@ -52,37 +52,37 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
               // biome-ignore lint/security/noDangerouslySetInnerHtml: ブログ記事のHTML表示で必要
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
+          </article>
 
-            <footer className="tw:border-t-[1px] tw:border-t-white tw:py-5">
-              <Breadcrumb
-                items={[
-                  { label: "ホーム", href: ROUTE.top },
-                  { label: "記事一覧", href: ROUTE.postList(1) },
-                  { label: post.title },
-                ]}
-                className="tw:mb-6"
-              />
+          <footer className="tw:border-t-[1px] tw:border-t-white tw:py-5">
+            <Breadcrumb
+              items={[
+                { label: "ホーム", href: ROUTE.top },
+                { label: "記事一覧", href: ROUTE.postList(1) },
+                { label: post.title },
+              ]}
+              className="tw:mb-6"
+            />
 
-              <aside className="tw:flex tw:flex-col tw:items-center tw:gap-y-3 tw:mt-7">
-                <Heading as="h2">Share</Heading>
-                <ShareList title={post.title} />
+            <aside className="tw:flex tw:flex-col tw:items-center tw:gap-y-3 tw:mt-7">
+              <Heading as="h2">Share</Heading>
+              <ShareList title={post.title} />
+            </aside>
+
+            {relatedPosts.length > 0 && (
+              <aside className={clsx("tw:mt-16")}>
+                <Heading as="h2">おすすめの記事</Heading>
+                <Adsense
+                  client={AdsenseClient}
+                  {...AdsenseUnits.relatedPost}
+                  wrapperStyles={{ minHeight: "100px" }}
+                />
+                <RelatedPosts posts={relatedPosts} />
               </aside>
-
-              {relatedPosts.length > 0 && (
-                <aside className={clsx("tw:mt-16")}>
-                  <Heading as="h2">おすすめの記事</Heading>
-                  <Adsense
-                    client={AdsenseClient}
-                    {...AdsenseUnits.relatedPost}
-                    wrapperStyles={{ minHeight: "100px" }}
-                  />
-                  <RelatedPosts posts={relatedPosts} />
-                </aside>
-              )}
-            </footer>
-          </div>
-        </Container>
-      </article>
+            )}
+          </footer>
+        </div>
+      </Container>
     </CommonLayout>
   );
 };
