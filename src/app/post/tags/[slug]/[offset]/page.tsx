@@ -1,5 +1,5 @@
-import { cache } from "react";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 
 import { TagListPage } from "@/components/page/TagList/TagList";
 import { calcMaxPage, calcOffset } from "@/components/ui/Pager/util";
