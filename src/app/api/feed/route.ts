@@ -21,7 +21,7 @@ export async function GET(_req: NextRequest) {
 
 async function generateFeedXml() {
   const feed = new RSS({
-    title: SITE.url,
+    title: SITE.name,
     description: SITE.description,
     site_url: SITE.url,
     feed_url: `${SITE.url}${ROUTE.feed}`,
