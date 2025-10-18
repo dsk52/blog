@@ -5,6 +5,20 @@ import { SITE } from "@/constants/site";
 import { WebSiteJsonLd } from "./WebSiteJsonLd";
 
 describe("WebSiteJsonLd", () => {
+  it("有効なJSONとしてパースできる", () => {
+    const { container } = render(<WebSiteJsonLd />);
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    expect(script).not.toBeNull();
+
+    if (!script?.textContent) {
+      throw new Error("script.textContentがnullです");
+    }
+
+    // JSON.parseがエラーを投げないことを確認
+    expect(() => JSON.parse(script.textContent as string)).not.toThrow();
+  });
+
   it("正しいJSON-LD構造化データを出力する", () => {
     const { container } = render(<WebSiteJsonLd />);
 
@@ -33,20 +47,6 @@ describe("WebSiteJsonLd", () => {
       "@type": "Organization",
       name: SITE.name,
     });
-  });
-
-  it("有効なJSONとしてパースできる", () => {
-    const { container } = render(<WebSiteJsonLd />);
-
-    const script = container.querySelector('script[type="application/ld+json"]');
-    expect(script).not.toBeNull();
-
-    if (!script?.textContent) {
-      throw new Error("script.textContentがnullです");
-    }
-
-    // JSON.parseがエラーを投げないことを確認
-    expect(() => JSON.parse(script.textContent as string)).not.toThrow();
   });
 
   it("必須フィールドがすべて含まれている", () => {

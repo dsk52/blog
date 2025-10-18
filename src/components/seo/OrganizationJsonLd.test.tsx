@@ -4,6 +4,20 @@ import { SITE } from "@/constants/site";
 import { OrganizationJsonLd } from "./OrganizationJsonLd";
 
 describe("OrganizationJsonLd", () => {
+  it("有効なJSONとしてパースできる", () => {
+    const { container } = render(<OrganizationJsonLd />);
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    expect(script).not.toBeNull();
+
+    if (!script?.textContent) {
+      throw new Error("script.textContentがnullです");
+    }
+
+    // JSON.parseがエラーを投げないことを確認
+    expect(() => JSON.parse(script.textContent as string)).not.toThrow();
+  });
+
   it("正しいJSON-LD構造化データを出力する", () => {
     const { container } = render(<OrganizationJsonLd />);
 
@@ -25,20 +39,6 @@ describe("OrganizationJsonLd", () => {
     expect(jsonLd.url).toBe(SITE.url);
     expect(jsonLd.logo).toBe(`${SITE.url}${SITE.ogp.imageUrl}`);
     expect(jsonLd.sameAs).toEqual(["https://twitter.com/skd_nw"]);
-  });
-
-  it("有効なJSONとしてパースできる", () => {
-    const { container } = render(<OrganizationJsonLd />);
-
-    const script = container.querySelector('script[type="application/ld+json"]');
-    expect(script).not.toBeNull();
-
-    if (!script?.textContent) {
-      throw new Error("script.textContentがnullです");
-    }
-
-    // JSON.parseがエラーを投げないことを確認
-    expect(() => JSON.parse(script.textContent as string)).not.toThrow();
   });
 
   it("必須フィールドがすべて含まれている", () => {
