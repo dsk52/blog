@@ -1,12 +1,11 @@
 import { render } from "@testing-library/react";
-import type { WebSite, WithContext } from "schema-dts";
 import { describe, expect, it } from "vitest";
 import { SITE } from "@/constants/site";
-import { WebSiteJsonLd } from "./WebSiteJsonLd";
+import { OrganizationJsonLd } from "./OrganizationJsonLd";
 
-describe("WebSiteJsonLd", () => {
+describe("OrganizationJsonLd", () => {
   it("有効なJSONとしてパースできる", () => {
-    const { container } = render(<WebSiteJsonLd />);
+    const { container } = render(<OrganizationJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
@@ -20,7 +19,7 @@ describe("WebSiteJsonLd", () => {
   });
 
   it("正しいJSON-LD構造化データを出力する", () => {
-    const { container } = render(<WebSiteJsonLd />);
+    const { container } = render(<OrganizationJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
@@ -29,58 +28,66 @@ describe("WebSiteJsonLd", () => {
       throw new Error("script.textContentがnullです");
     }
 
-    const jsonLd = JSON.parse(script.textContent) as WithContext<WebSite>;
+    const jsonLd = JSON.parse(script.textContent);
 
     // @contextと@typeの検証
     expect(jsonLd["@context"]).toBe("https://schema.org");
-    expect(jsonLd["@type"]).toBe("WebSite");
+    expect(jsonLd["@type"]).toBe("Organization");
 
     // 基本プロパティの検証
     expect(jsonLd.name).toBe(SITE.name);
-    expect(jsonLd.description).toBe(SITE.description);
     expect(jsonLd.url).toBe(SITE.url);
-    expect(jsonLd.inLanguage).toBe("ja-JP");
-
-    // publisherの検証
-    expect(jsonLd.publisher).toBeDefined();
-    expect(jsonLd.publisher).toEqual({
-      "@type": "Organization",
-      name: SITE.name,
-    });
+    expect(jsonLd.logo).toBe(`${SITE.url}${SITE.ogp.imageUrl}`);
+    expect(jsonLd.sameAs).toEqual(["https://twitter.com/skd_nw"]);
   });
 
   it("必須フィールドがすべて含まれている", () => {
-    const { container } = render(<WebSiteJsonLd />);
+    const { container } = render(<OrganizationJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) {
       throw new Error("script.textContentがnullです");
     }
 
-    const jsonLd = JSON.parse(script.textContent) as WithContext<WebSite>;
+    const jsonLd = JSON.parse(script.textContent);
 
-    // Schema.org WebSiteの必須フィールド
+    // Schema.org Organizationの必須フィールド
     expect(jsonLd.name).toBeDefined();
-    expect(jsonLd.url).toBeDefined();
 
     // SEO最適化のための重要フィールド
-    expect(jsonLd.description).toBeDefined();
-    expect(jsonLd.publisher).toBeDefined();
+    expect(jsonLd.url).toBeDefined();
+    expect(jsonLd.logo).toBeDefined();
+    expect(jsonLd.sameAs).toBeDefined();
   });
 
   it("SITE定数の値が正しく反映されている", () => {
-    const { container } = render(<WebSiteJsonLd />);
+    const { container } = render(<OrganizationJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) {
       throw new Error("script.textContentがnullです");
     }
 
-    const jsonLd = JSON.parse(script.textContent) as WithContext<WebSite>;
+    const jsonLd = JSON.parse(script.textContent);
 
     // SITE定数からの値が正しく設定されていることを確認
     expect(jsonLd.name).toBe("PengNote");
-    expect(jsonLd.description).toBe("勉強した事や行った場所の感想を書くブログ");
     expect(jsonLd.url).toBe("https://blog.daisukekonishi.com");
+    expect(jsonLd.logo).toBe("https://blog.daisukekonishi.com/images/ogp.png");
+  });
+
+  it("SNSアカウント情報が含まれている", () => {
+    const { container } = render(<OrganizationJsonLd />);
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    if (!script?.textContent) {
+      throw new Error("script.textContentがnullです");
+    }
+
+    const jsonLd = JSON.parse(script.textContent);
+
+    // sameAsフィールドにTwitterアカウントが含まれていることを確認
+    expect(jsonLd.sameAs).toBeInstanceOf(Array);
+    expect(jsonLd.sameAs).toContain("https://twitter.com/skd_nw");
   });
 });
