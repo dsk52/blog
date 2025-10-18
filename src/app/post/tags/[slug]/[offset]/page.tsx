@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { cache } from "react";
 
 import { TagListPage } from "@/components/page/TagList/TagList";
@@ -82,9 +83,7 @@ export const generateMetadata = async (props: PageParams) => {
 export default async function Page(props: PageParams) {
   const { slug, offset } = await props.params;
   if (!slug) {
-    return {
-      notFound: true,
-    };
+    notFound();
   }
 
   const params = await fetchData({
@@ -92,9 +91,7 @@ export default async function Page(props: PageParams) {
     offset: offset ? offset : "0",
   });
   if (!params.tag) {
-    return {
-      notFound: true,
-    };
+    notFound();
   }
 
   return TagListPage(params);

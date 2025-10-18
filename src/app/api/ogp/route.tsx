@@ -68,7 +68,7 @@ export function GET(req: NextRequest) {
 
     return Response;
   } catch (error) {
-    // @ts-ignore
+    // @ts-expect-error
     console.error(error.message);
     return new Response(`Failed to generate the image`, {
       status: 500,
