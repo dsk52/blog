@@ -8,4 +8,5 @@ export type BreadcrumbItem = {
 export type BreadcrumbProps = {
   items: BreadcrumbItem[];
   className?: ComponentProps<"nav">["className"];
+  includeJsonLd?: boolean;
 };
