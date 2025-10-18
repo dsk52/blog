@@ -31,9 +31,16 @@ async function generateFeedXml() {
   const posts = await getFeedItems(10);
 
   posts.contents.forEach((post) => {
+    // HTMLタグを除去してプレーンテキストに変換
+    const cleanDescription = post.body
+      .replace(/<[^>]*>/g, "") // HTMLタグを除去
+      .replace(/\s+/g, " ") // 連続する空白を一つにまとめる
+      .trim()
+      .slice(0, 200);
+
     feed.item({
       title: post.title,
-      description: post.body.slice(0, 200),
+      description: cleanDescription,
       date: new Date(post.createdAt ?? ""),
       url: `${SITE.url}${ROUTE.postDetail(post.slug)}`,
     });
