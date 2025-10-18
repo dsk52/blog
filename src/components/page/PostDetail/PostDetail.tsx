@@ -4,10 +4,12 @@ import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { RelatedPosts } from "@/components/features/post/RelatedPosts/RelatedPosts";
 import { ShareList } from "@/components/features/social/ShareList/ShareList";
 import { CommonLayout } from "@/components/layouts/CommonLayout";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container/Container";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
+import { ROUTE } from "@/constants/route";
 import { datetimeToDate } from "@/utilities/Date";
 
 import type { PostProps } from "./type";
@@ -22,9 +24,14 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
           <div className={clsx("tw:space-y-8")}>
             <header>
               <Heading>{post.title}</Heading>
-              <time className={clsx("tw:block tw:mt-2")} dateTime={post.publishedAt}>
-                {pubDate}
-              </time>
+              <aside className={clsx("tw:flex tw:justify-between tw:items-center")}>
+                <time className={clsx("tw:block")} dateTime={post.publishedAt}>
+                  {pubDate}
+                </time>
+                <div className="tw:flex-1 tw:justify-items-end">
+                  <TagList tags={post.tags} doLink />
+                </div>
+              </aside>
               {post.thumbnail && (
                 <img
                   className={clsx("tw:w-full tw:object-scale-down tw:mt-10")}
@@ -46,14 +53,15 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
 
-            <footer>
-              <aside
-                className={clsx(
-                  "tw:flex tw:justify-between tw:items-center tw:py-5 tw:border-t-[1px] tw:border-t-white"
-                )}
-              >
-                <TagList tags={post.tags} doLink />
-              </aside>
+            <footer className="tw:border-t-[1px] tw:border-t-white tw:py-5">
+              <Breadcrumb
+                items={[
+                  { label: "ホーム", href: ROUTE.top },
+                  { label: "記事一覧", href: ROUTE.postList(1) },
+                  { label: post.title },
+                ]}
+                className="tw:mb-6"
+              />
 
               <aside className="tw:flex tw:flex-col tw:items-center tw:gap-y-3 tw:mt-7">
                 <Heading as="h2">Share</Heading>
