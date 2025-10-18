@@ -2,9 +2,10 @@ import { clsx } from "clsx";
 import type { NextPage } from "next";
 
 import { CommonLayout } from "@/components/layouts/CommonLayout";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container/Container";
 import { Heading } from "@/components/ui/Heading/Heading";
-import { EXTERNAL_PAGE } from "@/constants/route";
+import { EXTERNAL_PAGE, ROUTE } from "@/constants/route";
 
 export const AboutPage: NextPage = () => (
   <CommonLayout>
@@ -63,6 +64,11 @@ export const AboutPage: NextPage = () => (
               </p>
             </section>
           </div>
+
+          <Breadcrumb
+            items={[{ label: "ホーム", href: ROUTE.top }, { label: "About" }]}
+            className="tw:mt-6"
+          />
         </div>
       </Container>
     </article>

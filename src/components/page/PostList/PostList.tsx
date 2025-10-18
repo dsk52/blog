@@ -4,6 +4,7 @@ import { Adsense } from "@/components/apps/Adsense/Adsense";
 import { PostList } from "@/components/features/post/PostList/PostList";
 import { CommonLayout } from "@/components/layouts/CommonLayout";
 import type { ListPageProp } from "@/components/page/type";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container/Container";
 import { Pager } from "@/components/ui/Pager/Pager";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
@@ -16,12 +17,17 @@ export const PostListPage = ({ posts, maxPage, pageNum }: ListPageProp) => {
         <section>
           <Container>
             <PostList posts={posts} />
+
+            <Pager basePath={ROUTE.postListBase} maxPage={maxPage} pageNum={pageNum} />
           </Container>
         </section>
 
         <footer>
           <Container>
-            <Pager basePath={ROUTE.postListBase} maxPage={maxPage} pageNum={pageNum} />
+            <Breadcrumb
+              items={[{ label: "ホーム", href: ROUTE.top }, { label: "記事一覧" }]}
+              className="tw:my-6"
+            />
 
             <Adsense
               client={AdsenseClient}
