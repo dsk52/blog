@@ -34,7 +34,7 @@
     "usehooks-ts": "3.1.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.2.7",
     "@tailwindcss/postcss": "4.1.15",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/jest-dom": "6.9.1",
