@@ -52,7 +52,7 @@
     "tailwindcss": "4.1.17",
     "typescript": "5.8.3",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "4.0.10"
+    "vitest": "4.0.12"
   },
   "pnpm": {
     "overrides": {
