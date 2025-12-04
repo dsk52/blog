@@ -25,10 +25,10 @@ importers:
         version: 3.2.0
       next:
         specifier: 15.5.7
-        version: 15.5.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 15.5.7(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       next-sitemap:
         specifier: 4.2.3
-        version: 4.2.3(next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
+        version: 4.2.3(next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       nprogress:
         specifier: 0.2.0
         version: 0.2.0
@@ -36,11 +36,11 @@ importers:
         specifier: ^6.10.0
         version: 6.10.0
       react:
-        specifier: 19.2.0
-        version: 19.2.0
+        specifier: 19.2.1
+        version: 19.2.1
       react-dom:
-        specifier: 19.2.0
-        version: 19.2.0(react@19.2.0)
+        specifier: 19.2.1
+        version: 19.2.1(react@19.2.1)
       react-gtm-module:
         specifier: 2.0.11
         version: 2.0.11
@@ -55,7 +55,7 @@ importers:
         version: 1.1.5
       usehooks-ts:
         specifier: 3.1.1
-        version: 3.1.1(react@19.2.0)
+        version: 3.1.1(react@19.2.1)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.8
@@ -71,7 +71,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: 16.3.0
-        version: 16.3.0(@testing-library/dom@10.0.0)(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 16.3.0(@testing-library/dom@10.0.0)(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@types/gtag.js':
         specifier: 0.0.20
         version: 0.0.20
@@ -1587,10 +1587,10 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-dom@19.2.0:
-    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
+  react-dom@19.2.1:
+    resolution: {integrity: sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==}
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.1
 
   react-gtm-module@2.0.11:
     resolution: {integrity: sha512-8gyj4TTxeP7eEyc2QKawEuQoAZdjKvMY4pgWfycGmqGByhs17fR+zEBs0JUDq4US/l+vbTl+6zvUIx27iDo/Vw==}
@@ -1602,8 +1602,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+  react@19.2.1:
+    resolution: {integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==}
     engines: {node: '>=0.10.0'}
 
   redent@3.0.0:
@@ -2493,12 +2493,12 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.0.0)(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.0.0)(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@babel/runtime': 7.26.9
       '@testing-library/dom': 10.0.0
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     optionalDependencies:
       '@types/react': 19.2.7
 
@@ -3161,23 +3161,23 @@ snapshots:
 
   nanoid@3.3.11: {}
 
-  next-sitemap@4.2.3(next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
+  next-sitemap@4.2.3(next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.6
       fast-glob: 3.3.2
       minimist: 1.2.8
-      next: 15.5.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.5.7(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
 
-  next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  next@15.5.7(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       '@next/env': 15.5.7
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001715
       postcss: 8.4.31
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.5.7
       '@next/swc-darwin-x64': 15.5.7
@@ -3284,9 +3284,9 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-dom@19.2.0(react@19.2.0):
+  react-dom@19.2.1(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
       scheduler: 0.27.0
 
   react-gtm-module@2.0.11: {}
@@ -3295,7 +3295,7 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react@19.2.0: {}
+  react@19.2.1: {}
 
   redent@3.0.0:
     dependencies:
@@ -3414,10 +3414,10 @@ snapshots:
     dependencies:
       min-indent: 1.0.1
 
-  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.0):
+  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.1):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.0
+      react: 19.2.1
     optionalDependencies:
       '@babel/core': 7.28.5
 
@@ -3496,10 +3496,10 @@ snapshots:
       requires-port: 1.0.0
     optional: true
 
-  usehooks-ts@3.1.1(react@19.2.0):
+  usehooks-ts@3.1.1(react@19.2.1):
     dependencies:
       lodash.debounce: 4.0.8
-      react: 19.2.0
+      react: 19.2.1
 
   util-deprecate@1.0.2: {}
 
