@@ -46,7 +46,7 @@
     "@types/react": "19.2.7",
     "@types/react-gtm-module": "2.0.4",
     "@types/rss": "0.0.32",
-    "@vitejs/plugin-react": "5.1.1",
+    "@vitejs/plugin-react": "5.1.2",
     "happy-dom": "20.0.11",
     "postcss": "8.5.6",
     "tailwindcss": "4.1.17",
