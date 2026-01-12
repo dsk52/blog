@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { SITE } from "@/constants/site";
-import { OrganizationJsonLd } from "./OrganizationJsonLd";
+import { PersonJsonLd } from "./PersonJsonLd";
 
-describe("OrganizationJsonLd", () => {
+describe("PersonJsonLd", () => {
   it("有効なJSONとしてパースできる", () => {
-    const { container } = render(<OrganizationJsonLd />);
+    const { container } = render(<PersonJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
@@ -19,7 +19,7 @@ describe("OrganizationJsonLd", () => {
   });
 
   it("正しいJSON-LD構造化データを出力する", () => {
-    const { container } = render(<OrganizationJsonLd />);
+    const { container } = render(<PersonJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
@@ -32,17 +32,17 @@ describe("OrganizationJsonLd", () => {
 
     // @contextと@typeの検証
     expect(jsonLd["@context"]).toBe("https://schema.org");
-    expect(jsonLd["@type"]).toBe("Organization");
+    expect(jsonLd["@type"]).toBe("Person");
 
     // 基本プロパティの検証
-    expect(jsonLd.name).toBe(SITE.name);
-    expect(jsonLd.url).toBe(SITE.url);
-    expect(jsonLd.logo).toBe(`${SITE.url}${SITE.ogp.imageUrl}`);
+    expect(jsonLd.name).toBe(SITE.author.name);
+    expect(jsonLd.url).toBe(SITE.author.url);
+    expect(jsonLd.image).toBe(`${SITE.url}${SITE.ogp.imageUrl}`);
     expect(jsonLd.sameAs).toEqual(["https://twitter.com/skd_nw"]);
   });
 
   it("必須フィールドがすべて含まれている", () => {
-    const { container } = render(<OrganizationJsonLd />);
+    const { container } = render(<PersonJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) {
@@ -51,17 +51,17 @@ describe("OrganizationJsonLd", () => {
 
     const jsonLd = JSON.parse(script.textContent);
 
-    // Schema.org Organizationの必須フィールド
+    // Schema.org Personの必須フィールド
     expect(jsonLd.name).toBeDefined();
 
     // SEO最適化のための重要フィールド
     expect(jsonLd.url).toBeDefined();
-    expect(jsonLd.logo).toBeDefined();
+    expect(jsonLd.image).toBeDefined();
     expect(jsonLd.sameAs).toBeDefined();
   });
 
   it("SITE定数の値が正しく反映されている", () => {
-    const { container } = render(<OrganizationJsonLd />);
+    const { container } = render(<PersonJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) {
@@ -71,13 +71,13 @@ describe("OrganizationJsonLd", () => {
     const jsonLd = JSON.parse(script.textContent);
 
     // SITE定数からの値が正しく設定されていることを確認
-    expect(jsonLd.name).toBe("PengNote");
-    expect(jsonLd.url).toBe("https://blog.daisukekonishi.com");
-    expect(jsonLd.logo).toBe("https://blog.daisukekonishi.com/images/ogp.png");
+    expect(jsonLd.name).toBe("Daisuke KONISHI");
+    expect(jsonLd.url).toBe("https://daisukekonishi.com");
+    expect(jsonLd.image).toBe("https://blog.daisukekonishi.com/images/ogp.png");
   });
 
   it("SNSアカウント情報が含まれている", () => {
-    const { container } = render(<OrganizationJsonLd />);
+    const { container } = render(<PersonJsonLd />);
 
     const script = container.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) {

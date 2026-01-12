@@ -54,8 +54,6 @@ export async function fetchOGP(url: string, options: { timeout?: number } = {}):
 
     return ogpData;
   } catch (error) {
-    console.warn(`Failed to fetch OGP for ${url}:`, error);
-
     // フォールバックデータ
     const fallbackData: OGPData = {
       url,
