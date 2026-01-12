@@ -8,6 +8,7 @@ function generateWebSiteJsonLd(): WithContext<WebSite> {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": SITE.url,
     name: SITE.name,
     description: SITE.description,
     url: SITE.url,

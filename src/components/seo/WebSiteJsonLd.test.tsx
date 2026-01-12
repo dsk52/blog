@@ -34,6 +34,7 @@ describe("WebSiteJsonLd", () => {
     // @contextと@typeの検証
     expect(jsonLd["@context"]).toBe("https://schema.org");
     expect(jsonLd["@type"]).toBe("WebSite");
+    expect(jsonLd["@id"]).toBe(SITE.url);
 
     // 基本プロパティの検証
     expect(jsonLd.name).toBe(SITE.name);

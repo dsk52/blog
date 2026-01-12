@@ -40,6 +40,11 @@ function generateBlogPostJsonLd(post: IPost, slug: string): WithContext<BlogPost
     image: imageUrl,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
+    inLanguage: "ja-JP",
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": SITE.url,
+    },
     author: {
       "@id": SITE.author.id,
     },
