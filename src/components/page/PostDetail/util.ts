@@ -12,5 +12,6 @@ export const createExcerptFromBody = (body: string, excerptNuNum: number): strin
     .slice(0, excerptNuNum - 1);
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: <any>
 export const isDraft = (item: any): item is { draftKey: string } =>
   !!(item?.draftKey && typeof item.draftKey === "string");
