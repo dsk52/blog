@@ -44,8 +44,7 @@ describe("WebSiteJsonLd", () => {
     // publisherの検証
     expect(jsonLd.publisher).toBeDefined();
     expect(jsonLd.publisher).toEqual({
-      "@type": "Organization",
-      name: SITE.name,
+      "@id": SITE.author.id,
     });
   });
 

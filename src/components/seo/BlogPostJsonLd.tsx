@@ -41,14 +41,10 @@ function generateBlogPostJsonLd(post: IPost, slug: string): WithContext<BlogPost
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     author: {
-      "@type": "Person",
-      name: SITE.author.name,
-      url: SITE.author.url,
+      "@id": SITE.author.id,
     },
     publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      url: SITE.url,
+      "@id": SITE.author.id,
     },
     mainEntityOfPage: {
       "@type": "WebPage",

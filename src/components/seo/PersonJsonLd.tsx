@@ -8,6 +8,7 @@ function generatePersonJsonLd(): WithContext<Person> {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": SITE.author.id,
     name: SITE.author.name,
     url: SITE.author.url,
     image: `${SITE.url}${SITE.ogp.imageUrl}`,

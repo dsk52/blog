@@ -13,8 +13,7 @@ function generateWebSiteJsonLd(): WithContext<WebSite> {
     url: SITE.url,
     inLanguage: "ja-JP",
     publisher: {
-      "@type": "Organization",
-      name: SITE.name,
+      "@id": SITE.author.id,
     },
   };
 }

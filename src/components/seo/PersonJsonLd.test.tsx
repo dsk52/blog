@@ -33,6 +33,7 @@ describe("PersonJsonLd", () => {
     // @contextと@typeの検証
     expect(jsonLd["@context"]).toBe("https://schema.org");
     expect(jsonLd["@type"]).toBe("Person");
+    expect(jsonLd["@id"]).toBe(SITE.author.id);
 
     // 基本プロパティの検証
     expect(jsonLd.name).toBe(SITE.author.name);
