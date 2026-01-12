@@ -39,7 +39,7 @@ function generateBlogPostJsonLd(post: IPost, slug: string): WithContext<BlogPost
     description,
     image: imageUrl,
     datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
+    dateModified: post.updatedAt || post.publishedAt,
     inLanguage: "ja-JP",
     isPartOf: {
       "@type": "WebSite",
