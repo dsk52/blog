@@ -39,16 +39,17 @@ function generateBlogPostJsonLd(post: IPost, slug: string): WithContext<BlogPost
     description,
     image: imageUrl,
     datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    inLanguage: "ja-JP",
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": SITE.url,
+    },
     author: {
-      "@type": "Person",
-      name: SITE.author.name,
-      url: SITE.author.url,
+      "@id": SITE.author.id,
     },
     publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      url: SITE.url,
+      "@id": SITE.author.id,
     },
     mainEntityOfPage: {
       "@type": "WebPage",

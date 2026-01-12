@@ -12,12 +12,13 @@ const ENDPOINTS = {
   POST: "post",
   TAG: "tags",
 };
-type ENDPOINTS = (typeof ENDPOINTS)[keyof typeof ENDPOINTS];
+// type ENDPOINTS = (typeof ENDPOINTS)[keyof typeof ENDPOINTS];
 
 export type Draft = {
   draftKey: string;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: <any>
 export const isDraft = (arg: any): arg is Draft => {
   if (!arg?.draftKey) {
     return false;
