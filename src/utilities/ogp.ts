@@ -53,7 +53,7 @@ export async function fetchOGP(url: string, options: { timeout?: number } = {}):
     ogpCache.set(url, { data: ogpData, timestamp: Date.now() });
 
     return ogpData;
-  } catch (error) {
+  } catch (_) {
     // フォールバックデータ
     const fallbackData: OGPData = {
       url,

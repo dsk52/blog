@@ -6,6 +6,7 @@ import { PostItem } from "./PostItem";
 
 // Mock dependencies
 vi.mock("@/components/ui/link/AnchorLink/AnchorLink", () => ({
+  // biome-ignore lint/suspicious/noExplicitAny: <any>
   AnchorLink: ({ children, href, className }: any) => (
     <a href={href} className={className} data-testid="anchor-link">
       {children}
