@@ -6,7 +6,7 @@ import { AnchorLink } from "./AnchorLink";
 
 describe("AnchorLinkのレンダリングテスト", () => {
   it("#なリンクがレンダリングできる", async () => {
-    render(<AnchorLink>リンク</AnchorLink>);
+    render(<AnchorLink href="#">リンク</AnchorLink>);
 
     const element = screen.getByRole("link");
 
