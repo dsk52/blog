@@ -7,11 +7,10 @@
 作業はすべて pnpm を使用します。
 1. `pnpm dev` / `pnpm dev:turbopack`: ローカル開発サーバー起動
 2. `pnpm build`: 本番ビルド（Next.js）
-3. `pnpm export`: 静的エクスポート + sitemap 生成
-4. `pnpm check`: Biome の lint/format チェック（`src/` 対象）
-5. `pnpm check:fix`: Biome の自動修正
-6. `pnpm type-check`: 型チェックのみ（noEmit）
-7. `pnpm test`: Vitest 実行
+3. `pnpm check`: Biome の lint/format チェック（`src/` 対象）
+4. `pnpm check:fix`: Biome の自動修正
+5. `pnpm type-check`: 型チェックのみ（noEmit）
+6. `pnpm test`: Vitest 実行
 
 ## コーディングスタイルと命名規約
 TypeScript と Biome を前提に、既存パターンを優先します。

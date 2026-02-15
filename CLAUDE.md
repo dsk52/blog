@@ -13,10 +13,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `pnpm check` - Biomeでコード検証
 - `pnpm check:fix` - Biomeでコード修正
 
-### その他
-- `pnpm export` - ビルド→エクスポート→サイトマップ生成の一連実行
-- `pnpm postbuild` - next-sitemapでサイトマップ生成
-
 ## プロジェクト構成
 
 ### アーキテクチャ
