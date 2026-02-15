@@ -50,7 +50,7 @@ export async function getAllSlugs(
   limit = POST_PER_PAGE,
   offset = 0
   // FIXME: contents内を削った状態にしたい
-): Promise<microCmsResponse<{ slug: string }>> {
+): Promise<microCmsResponse<{ slug: string; updatedAt: string }>> {
   const params = {
     endpoint: ENDPOINTS.POST,
     queries: {
