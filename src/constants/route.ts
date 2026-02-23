@@ -5,6 +5,7 @@ export const ROUTE = {
   postListBase: "/post/page",
   postList: (pageNum: number) => `/post/page/${pageNum}`,
   postDetail: (slug: string) => `/post/${encodeURIComponent(slug)}`,
+  postPreview: (contentId: string) => `/post/preview/${encodeURIComponent(contentId)}`,
 
   postTagListBy: (tagName: string) => `/post/tags/${tagName}`,
   postTagList: (tagName: string, pageNum: number) => `/post/tags/${tagName}/${pageNum}`,

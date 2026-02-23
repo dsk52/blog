@@ -10,8 +10,9 @@ import { PostMapper } from "@/models/mapper/PostMapper";
 export const dynamic = "force-dynamic";
 
 const title = SITE.name;
-const description = "PengNoteのAboutページです";
+const description = SITE.description;
 const url = `${SITE.url}${ROUTE.top}`;
+
 export const metadata: Metadata = {
   title,
   description,
@@ -25,16 +26,20 @@ export const metadata: Metadata = {
   },
 };
 
-const response = await getAllPost();
-const posts = PostMapper.list(response.contents);
+const fetchData = async () => {
+  const response = await getAllPost();
+  const posts = PostMapper.list(response.contents);
+  const pageNum = 1; // トップなので、1ページ目を確定
+  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
 
-const pageNum = 1; // トップなので、1ページ目を確定
-const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
-
-export default function Page() {
-  return IndexPage({
+  return {
     posts,
     maxPage,
     pageNum,
-  });
+  };
+};
+
+export default async function Page() {
+  const props = await fetchData();
+  return IndexPage(props);
 }

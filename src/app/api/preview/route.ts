@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const contestId = data.id ?? "-1";
+  const contentId = data.id ?? "-1";
 
   // ホワイトリスト方式でリダイレクト先を制限
   const allowedHosts = process.env.ALLOWED_PREVIEW_HOSTS?.split(",") || ["localhost:3000"];
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${nextUrl.protocol}//${requestHost}`;
-  const redirectUrl = new URL(ROUTE.postDetail(contestId), baseUrl);
+  const redirectUrl = new URL(ROUTE.postPreview(contentId), baseUrl);
 
   // draftKeyをURLパラメータとして追加
   redirectUrl.searchParams.set("draftKey", draftKey);

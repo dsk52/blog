@@ -8,7 +8,7 @@ import { getTags } from "@/libs/microcms";
 
 const title = "タグ一覧";
 const description = "記事に関連するタグの一覧ページです";
-const url = `${SITE.url}${ROUTE.top}`;
+const url = `${SITE.url}${ROUTE.tagList}`;
 
 export const dynamic = "force-dynamic";
 
