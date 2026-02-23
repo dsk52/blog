@@ -7,8 +7,6 @@
     "dev": "next dev",
     "dev:turbopack": "next dev --turbopack",
     "build": "next build",
-    "export": "pnpm run build && next export && pnpm run postbuild",
-    "postbuild": "next-sitemap",
     "type-check": "tsc --noEmit",
     "start": "next start",
     "test": "pnpm run test:run",
@@ -18,15 +16,14 @@
   },
   "dependencies": {
     "clsx": "2.1.1",
-    "markdown-it": "14.1.0",
+    "markdown-it": "14.1.1",
     "markdown-it-prism": "3.0.1",
     "microcms-js-sdk": "3.2.0",
-    "next": "15.5.9",
-    "next-sitemap": "4.2.3",
+    "next": "15.5.12",
     "nprogress": "0.2.0",
     "open-graph-scraper": "^6.10.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-gtm-module": "2.0.11",
     "rss": "1.2.2",
     "sanitize.css": "13.0.0",
@@ -34,29 +31,29 @@
     "usehooks-ts": "3.1.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
-    "@tailwindcss/postcss": "4.1.18",
+    "@biomejs/biome": "2.4.2",
+    "@tailwindcss/postcss": "4.2.0",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@types/gtag.js": "0.0.20",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "22.19.7",
+    "@types/node": "22.19.11",
     "@types/nprogress": "0.2.3",
-    "@types/react": "19.2.9",
+    "@types/react": "19.2.14",
     "@types/react-gtm-module": "2.0.4",
     "@types/rss": "0.0.32",
-    "@vitejs/plugin-react": "5.1.2",
-    "happy-dom": "20.3.4",
+    "@vitejs/plugin-react": "5.1.4",
+    "happy-dom": "20.6.3",
     "postcss": "8.5.6",
-    "tailwindcss": "4.1.18",
+    "tailwindcss": "4.2.0",
     "typescript": "5.9.3",
-    "vite-tsconfig-paths": "6.0.4",
-    "vitest": "4.0.17"
+    "vite-tsconfig-paths": "6.1.1",
+    "vitest": "4.0.18"
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "19.2.9"
+      "@types/react": "19.2.14"
     }
   }
 }
