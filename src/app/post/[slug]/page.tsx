@@ -5,7 +5,7 @@ import { BlogPostJsonLd } from "@/components/seo/BlogPostJsonLd";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { md } from "@/libs/markdown-it";
-import { getByContentIdAndDraftKey, getBySlug, getByTagId } from "@/libs/microcms";
+import { getBySlug, getByTagId } from "@/libs/microcms";
 import { PostMapper } from "@/models/mapper/PostMapper";
 import type { ApiPost, ApiTag } from "@/types/api/Post";
 import type { IPostItem } from "@/types/domain/Post";
@@ -15,11 +15,7 @@ import { generateBlogCardHTML } from "@/utilities/blogCardHtml";
 import { fetchMultipleOGP } from "@/utilities/ogp";
 
 export const dynamicParams = true;
-
-// searchParamsを使用するため動的レンダリングを有効化
-export const dynamic = "force-dynamic";
-
-export const revalidate = 1800; // 1800秒 = 30分
+export const revalidate = 3600; // 3600秒 = 1時間
 
 export async function generateStaticParams() {
   return [];
@@ -38,35 +34,19 @@ async function fetchRelatedPosts(tagId: ApiTag["id"], currentPostId: ApiPost["id
   return PostMapper.relatedPosts(filteredRelatedPosts);
 }
 
-const fetchData = cache(async (slug: string, draftKey?: string | null) => {
-  let postResponse: ApiPost | undefined;
-
-  // プレビューモードの場合（draftKeyがある場合）
-  if (draftKey) {
-    const res = await getByContentIdAndDraftKey(slug, draftKey);
-    if (!res) {
-      return {
-        post: undefined,
-        relatedPosts: [] as IPostItem[],
-      };
-    }
-    postResponse = res;
-  } else {
-    // 通常モードの場合
-    const res = await getBySlug(slug);
-    if (!res.contents || !res.contents.length) {
-      return {
-        post: undefined,
-        relatedPosts: [] as IPostItem[],
-      };
-    }
-    postResponse = res.contents[0];
+const fetchData = cache(async (slug: string) => {
+  const res = await getBySlug(slug);
+  if (!res.contents || !res.contents.length) {
+    return {
+      post: undefined,
+      relatedPosts: [] as IPostItem[],
+    };
   }
+  const postResponse = res.contents[0];
 
   const tagId = postResponse.tags.at(0)?.id;
   let relatedPosts: IPostItem[] = [];
-  // プレビューモードでは関連記事を取得しない
-  if (tagId && !draftKey) {
+  if (tagId) {
     relatedPosts = await fetchRelatedPosts(tagId, postResponse.id); // TODO: 処理を別実行できるようにする
   }
 
@@ -100,12 +80,10 @@ const fetchData = cache(async (slug: string, draftKey?: string | null) => {
 
 export const generateMetadata = async (props: PageProps<{ slug: string }>): Promise<Metadata> => {
   const params = await props.params;
-  const searchParams = await props.searchParams;
   const { slug } = params;
   if (!slug) return {};
 
-  const draftKey = searchParams?.draftKey as string | undefined;
-  const { post } = await fetchData(slug, draftKey);
+  const { post } = await fetchData(slug);
   if (!post) return {};
 
   const { title: postTitle, thumbnail, publishedAt, updatedAt, body } = post;
@@ -154,9 +132,7 @@ export const generateMetadata = async (props: PageProps<{ slug: string }>): Prom
 
 export default async function Page(props: PageProps<{ slug: string }>) {
   const params = await props.params;
-  const searchParams = await props.searchParams;
-  const draftKey = searchParams?.draftKey as string | undefined;
-  const { post, relatedPosts } = await fetchData(params.slug, draftKey);
+  const { post, relatedPosts } = await fetchData(params.slug);
   if (!post) {
     return null;
   }
