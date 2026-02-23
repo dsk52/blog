@@ -9,17 +9,18 @@ import { PostMapper } from "@/models/mapper/PostMapper";
 
 const title = "記事一覧";
 const description = "今までに書いた記事の一覧ページです";
+const url = `${SITE.url}${ROUTE.postList(1)}`;
 
 export const metadata: Metadata = {
   title,
   description,
   openGraph: {
     title,
-    url: `${SITE.url}/${ROUTE.postList(1)}`,
+    url,
     type: "website",
   },
   alternates: {
-    canonical: `${SITE.url}/${ROUTE.postList(1)}`,
+    canonical: url,
   },
 };
 

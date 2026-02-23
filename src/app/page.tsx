@@ -10,7 +10,7 @@ import { PostMapper } from "@/models/mapper/PostMapper";
 export const dynamic = "force-dynamic";
 
 const title = SITE.name;
-const description = "PengNoteのAboutページです";
+const description = SITE.description;
 const url = `${SITE.url}${ROUTE.top}`;
 export const metadata: Metadata = {
   title,
