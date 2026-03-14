@@ -3,18 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "next build",
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "dev:turbopack": "next dev --turbopack",
-    "build": "next build",
     "type-check": "tsc --noEmit",
     "start": "next start",
     "test": "pnpm run test:run",
     "test:run": "vitest --run",
     "check": "biome check ./src",
-    "check:fix": "biome check --write ./src"
+    "check:fix": "biome check --write ./src",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "clsx": "2.1.1",
     "markdown-it": "14.1.1",
     "markdown-it-prism": "3.0.1",
@@ -31,25 +36,26 @@
     "usehooks-ts": "3.1.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.2",
-    "@tailwindcss/postcss": "4.2.0",
+    "@biomejs/biome": "2.4.6",
+    "@tailwindcss/postcss": "4.2.1",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@types/gtag.js": "0.0.20",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "22.19.11",
+    "@types/node": "22.19.15",
     "@types/nprogress": "0.2.3",
     "@types/react": "19.2.14",
     "@types/react-gtm-module": "2.0.4",
     "@types/rss": "0.0.32",
     "@vitejs/plugin-react": "5.1.4",
-    "happy-dom": "20.6.3",
-    "postcss": "8.5.6",
-    "tailwindcss": "4.2.0",
+    "happy-dom": "20.8.3",
+    "postcss": "8.5.8",
+    "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "6.1.1",
-    "vitest": "4.0.18"
+    "vitest": "4.0.18",
+    "wrangler": "^4.73.0"
   },
   "pnpm": {
     "overrides": {
