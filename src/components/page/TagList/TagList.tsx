@@ -32,7 +32,7 @@ export const TagListPage = ({ tag, posts, maxPage, pageNum }: TagListPageProp) =
               items={[
                 { label: "ホーム", href: ROUTE.top },
                 { label: "タグ一覧", href: ROUTE.tagList },
-                { label: `${tag.name}タグの記事一覧` },
+                { label: `${tag.name}タグの記事一覧`, href: ROUTE.postTagList(tag.slug, pageNum) },
               ]}
               className="tw:mb-6"
             />

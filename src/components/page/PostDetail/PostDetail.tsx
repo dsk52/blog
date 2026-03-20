@@ -59,7 +59,7 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
               items={[
                 { label: "ホーム", href: ROUTE.top },
                 { label: "記事一覧", href: ROUTE.postList(1) },
-                { label: post.title },
+                { label: post.title, href: ROUTE.postDetail(post.slug) },
               ]}
               className="tw:mb-6"
             />

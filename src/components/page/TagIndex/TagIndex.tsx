@@ -11,7 +11,10 @@ export const TagIndexPage = ({ tags }: TagsPageProp) => (
     <Container>
       <TagList tags={tags} doLink />
       <Breadcrumb
-        items={[{ label: "ホーム", href: ROUTE.top }, { label: "タグ一覧" }]}
+        items={[
+          { label: "ホーム", href: ROUTE.top },
+          { label: "タグ一覧", href: ROUTE.tagList },
+        ]}
         className="tw:mt-6"
       />
     </Container>
