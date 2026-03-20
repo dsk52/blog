@@ -3,11 +3,18 @@ import { render, screen } from "@testing-library/react";
 import { Breadcrumb } from "./Breadcrumb";
 import type { BreadcrumbItem } from "./type";
 
+const getJsonLd = (container: HTMLElement) => {
+  const script = container.querySelector('script[type="application/ld+json"]');
+  expect(script).toBeTruthy();
+
+  return JSON.parse(script?.textContent ?? "");
+};
+
 describe("Breadcrumbのレンダリングテスト", () => {
   it("単一アイテムのパンくずリストが正しくレンダリングされる", () => {
     const items: BreadcrumbItem[] = [{ label: "ホーム" }];
 
-    render(<Breadcrumb items={items} />);
+    const { container } = render(<Breadcrumb items={items} />);
 
     const nav = screen.getByRole("navigation", { name: "パンくずリスト" });
     expect(nav).toBeTruthy();
@@ -15,6 +22,15 @@ describe("Breadcrumbのレンダリングテスト", () => {
     const homeText = screen.getByText("ホーム");
     expect(homeText).toBeTruthy();
     expect(homeText.tagName).toBe("SPAN");
+
+    const jsonLd = getJsonLd(container);
+    expect(jsonLd.itemListElement).toHaveLength(1);
+    expect(jsonLd.itemListElement[0]).toMatchObject({
+      "@type": "ListItem",
+      position: 1,
+      name: "ホーム",
+    });
+    expect(jsonLd.itemListElement[0]).not.toHaveProperty("item");
   });
 
   it("複数アイテムのパンくずリストが正しくレンダリングされる", () => {
@@ -24,7 +40,7 @@ describe("Breadcrumbのレンダリングテスト", () => {
       { label: "記事タイトル" },
     ];
 
-    render(<Breadcrumb items={items} />);
+    const { container } = render(<Breadcrumb items={items} />);
 
     const homeLink = screen.getByRole("link", { name: "ホーム" });
     expect(homeLink).toBeTruthy();
@@ -37,6 +53,15 @@ describe("Breadcrumbのレンダリングテスト", () => {
     const currentPage = screen.getByText("記事タイトル");
     expect(currentPage).toBeTruthy();
     expect(currentPage.tagName).toBe("SPAN");
+
+    const jsonLd = getJsonLd(container);
+    expect(jsonLd.itemListElement).toHaveLength(3);
+    expect(jsonLd.itemListElement[2]).toMatchObject({
+      "@type": "ListItem",
+      position: 3,
+      name: "記事タイトル",
+    });
+    expect(jsonLd.itemListElement[2]).not.toHaveProperty("item");
   });
 
   it("区切り文字が正しく表示される", () => {
@@ -55,10 +80,7 @@ describe("Breadcrumbのレンダリングテスト", () => {
   });
 
   it("最後のアイテムはリンクにならない", () => {
-    const items: BreadcrumbItem[] = [
-      { label: "ホーム", href: "/" },
-      { label: "現在のページ", href: "/current" },
-    ];
+    const items: BreadcrumbItem[] = [{ label: "ホーム", href: "/" }, { label: "現在のページ" }];
 
     render(<Breadcrumb items={items} />);
 

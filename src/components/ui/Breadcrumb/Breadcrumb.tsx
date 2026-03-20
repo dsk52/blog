@@ -11,14 +11,20 @@ function generateBreadcrumbListJsonLd(items: BreadcrumbItem[]): WithContext<Brea
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items
-      .filter((item) => item.href) // hrefがある項目のみ（最後の現在ページは除外）
-      .map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: item.label,
-        item: item.href?.startsWith("http") ? item.href : `${SITE.url}${item.href}`,
-      })),
+    itemListElement: items.map((item, index) =>
+      index === items.length - 1
+        ? {
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.label,
+          }
+        : {
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.label,
+            item: `${SITE.url}${item.href}`,
+          }
+    ),
   };
 }
 
@@ -46,12 +52,7 @@ export const Breadcrumb = ({ items, className, includeJsonLd = true }: Breadcrum
                     {item.label}
                   </AnchorLink>
                 ) : (
-                  <span
-                    className={clsx(
-                      isLast ? "tw:text-gray-900 tw:font-medium" : "tw:text-gray-600"
-                    )}
-                    aria-current={isLast ? "page" : undefined}
-                  >
+                  <span className={clsx("tw:text-gray-900 tw:font-medium")} aria-current="page">
                     {item.label}
                   </span>
                 )}
