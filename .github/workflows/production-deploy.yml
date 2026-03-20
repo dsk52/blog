@@ -2,15 +2,13 @@ name: production deploy
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     branches:
       - master
-    types: [closed]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
 
     steps:
       - uses: actions/checkout@v6
