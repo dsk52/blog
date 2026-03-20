@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
 
-import { SITE } from "@/constants/site";
-
 import { Breadcrumb } from "./Breadcrumb";
 import type { BreadcrumbItem } from "./type";
 
@@ -14,7 +12,7 @@ const getJsonLd = (container: HTMLElement) => {
 
 describe("Breadcrumbのレンダリングテスト", () => {
   it("単一アイテムのパンくずリストが正しくレンダリングされる", () => {
-    const items: BreadcrumbItem[] = [{ label: "ホーム", href: "/" }];
+    const items: BreadcrumbItem[] = [{ label: "ホーム" }];
 
     const { container } = render(<Breadcrumb items={items} />);
 
@@ -31,15 +29,15 @@ describe("Breadcrumbのレンダリングテスト", () => {
       "@type": "ListItem",
       position: 1,
       name: "ホーム",
-      item: `${SITE.url}/`,
     });
+    expect(jsonLd.itemListElement[0]).not.toHaveProperty("item");
   });
 
   it("複数アイテムのパンくずリストが正しくレンダリングされる", () => {
     const items: BreadcrumbItem[] = [
       { label: "ホーム", href: "/" },
       { label: "ブログ", href: "/blog" },
-      { label: "記事タイトル", href: "/blog/article" },
+      { label: "記事タイトル" },
     ];
 
     const { container } = render(<Breadcrumb items={items} />);
@@ -62,15 +60,15 @@ describe("Breadcrumbのレンダリングテスト", () => {
       "@type": "ListItem",
       position: 3,
       name: "記事タイトル",
-      item: `${SITE.url}/blog/article`,
     });
+    expect(jsonLd.itemListElement[2]).not.toHaveProperty("item");
   });
 
   it("区切り文字が正しく表示される", () => {
     const items: BreadcrumbItem[] = [
       { label: "ホーム", href: "/" },
       { label: "ブログ", href: "/blog" },
-      { label: "記事タイトル", href: "/blog/article" },
+      { label: "記事タイトル" },
     ];
 
     const { container } = render(<Breadcrumb items={items} />);
@@ -82,10 +80,7 @@ describe("Breadcrumbのレンダリングテスト", () => {
   });
 
   it("最後のアイテムはリンクにならない", () => {
-    const items: BreadcrumbItem[] = [
-      { label: "ホーム", href: "/" },
-      { label: "現在のページ", href: "/current" },
-    ];
+    const items: BreadcrumbItem[] = [{ label: "ホーム", href: "/" }, { label: "現在のページ" }];
 
     render(<Breadcrumb items={items} />);
 
@@ -98,7 +93,7 @@ describe("Breadcrumbのレンダリングテスト", () => {
   });
 
   it("カスタムclassNameが適用される", () => {
-    const items: BreadcrumbItem[] = [{ label: "テスト", href: "/test" }];
+    const items: BreadcrumbItem[] = [{ label: "テスト" }];
     const customClass = "custom-breadcrumb";
 
     const { container } = render(<Breadcrumb items={items} className={customClass} />);

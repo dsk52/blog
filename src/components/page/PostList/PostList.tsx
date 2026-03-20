@@ -25,10 +25,7 @@ export const PostListPage = ({ posts, maxPage, pageNum }: ListPageProp) => {
         <footer>
           <Container>
             <Breadcrumb
-              items={[
-                { label: "ホーム", href: ROUTE.top },
-                { label: "記事一覧", href: ROUTE.postList(pageNum) },
-              ]}
+              items={[{ label: "ホーム", href: ROUTE.top }, { label: "記事一覧" }]}
               className="tw:my-6"
             />
 

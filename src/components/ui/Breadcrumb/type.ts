@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 
 export type BreadcrumbItem = {
   label: string;
-  href: NonNullable<ComponentProps<"a">["href"]>;
+  href?: ComponentProps<"a">["href"];
 };
 
 export type BreadcrumbProps = {

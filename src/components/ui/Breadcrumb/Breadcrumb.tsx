@@ -11,12 +11,20 @@ function generateBreadcrumbListJsonLd(items: BreadcrumbItem[]): WithContext<Brea
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.label,
-      item: `${SITE.url}${item.href}`,
-    })),
+    itemListElement: items.map((item, index) =>
+      index === items.length - 1
+        ? {
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.label,
+          }
+        : {
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.label,
+            item: `${SITE.url}${item.href}`,
+          }
+    ),
   };
 }
 
@@ -38,8 +46,8 @@ export const Breadcrumb = ({ items, className, includeJsonLd = true }: Breadcrum
             const isLast = index === items.length - 1;
 
             return (
-              <li key={item.href} className="tw:flex tw:items-center tw:gap-2">
-                {!isLast ? (
+              <li key={item.href ?? item.label} className="tw:flex tw:items-center tw:gap-2">
+                {item.href && !isLast ? (
                   <AnchorLink href={item.href} className="tw:text-gray-600 hover:tw:text-primary">
                     {item.label}
                   </AnchorLink>

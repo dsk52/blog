@@ -66,10 +66,7 @@ export const AboutPage: NextPage = () => (
           </div>
 
           <Breadcrumb
-            items={[
-              { label: "ホーム", href: ROUTE.top },
-              { label: "About", href: ROUTE.about },
-            ]}
+            items={[{ label: "ホーム", href: ROUTE.top }, { label: "About" }]}
             className="tw:mt-6"
           />
         </div>
