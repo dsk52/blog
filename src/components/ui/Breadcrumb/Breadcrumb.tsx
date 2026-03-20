@@ -11,14 +11,12 @@ function generateBreadcrumbListJsonLd(items: BreadcrumbItem[]): WithContext<Brea
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items
-      .filter((item) => item.href) // hrefがある項目のみ（最後の現在ページは除外）
-      .map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: item.label,
-        item: item.href?.startsWith("http") ? item.href : `${SITE.url}${item.href}`,
-      })),
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      item: `${SITE.url}${item.href}`,
+    })),
   };
 }
 
@@ -40,18 +38,13 @@ export const Breadcrumb = ({ items, className, includeJsonLd = true }: Breadcrum
             const isLast = index === items.length - 1;
 
             return (
-              <li key={item.href ?? item.label} className="tw:flex tw:items-center tw:gap-2">
-                {item.href && !isLast ? (
+              <li key={item.href} className="tw:flex tw:items-center tw:gap-2">
+                {!isLast ? (
                   <AnchorLink href={item.href} className="tw:text-gray-600 hover:tw:text-primary">
                     {item.label}
                   </AnchorLink>
                 ) : (
-                  <span
-                    className={clsx(
-                      isLast ? "tw:text-gray-900 tw:font-medium" : "tw:text-gray-600"
-                    )}
-                    aria-current={isLast ? "page" : undefined}
-                  >
+                  <span className={clsx("tw:text-gray-900 tw:font-medium")} aria-current="page">
                     {item.label}
                   </span>
                 )}

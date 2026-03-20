@@ -1,13 +1,22 @@
 import { render, screen } from "@testing-library/react";
 
+import { SITE } from "@/constants/site";
+
 import { Breadcrumb } from "./Breadcrumb";
 import type { BreadcrumbItem } from "./type";
 
+const getJsonLd = (container: HTMLElement) => {
+  const script = container.querySelector('script[type="application/ld+json"]');
+  expect(script).toBeTruthy();
+
+  return JSON.parse(script?.textContent ?? "");
+};
+
 describe("Breadcrumbのレンダリングテスト", () => {
   it("単一アイテムのパンくずリストが正しくレンダリングされる", () => {
-    const items: BreadcrumbItem[] = [{ label: "ホーム" }];
+    const items: BreadcrumbItem[] = [{ label: "ホーム", href: "/" }];
 
-    render(<Breadcrumb items={items} />);
+    const { container } = render(<Breadcrumb items={items} />);
 
     const nav = screen.getByRole("navigation", { name: "パンくずリスト" });
     expect(nav).toBeTruthy();
@@ -15,16 +24,25 @@ describe("Breadcrumbのレンダリングテスト", () => {
     const homeText = screen.getByText("ホーム");
     expect(homeText).toBeTruthy();
     expect(homeText.tagName).toBe("SPAN");
+
+    const jsonLd = getJsonLd(container);
+    expect(jsonLd.itemListElement).toHaveLength(1);
+    expect(jsonLd.itemListElement[0]).toMatchObject({
+      "@type": "ListItem",
+      position: 1,
+      name: "ホーム",
+      item: `${SITE.url}/`,
+    });
   });
 
   it("複数アイテムのパンくずリストが正しくレンダリングされる", () => {
     const items: BreadcrumbItem[] = [
       { label: "ホーム", href: "/" },
       { label: "ブログ", href: "/blog" },
-      { label: "記事タイトル" },
+      { label: "記事タイトル", href: "/blog/article" },
     ];
 
-    render(<Breadcrumb items={items} />);
+    const { container } = render(<Breadcrumb items={items} />);
 
     const homeLink = screen.getByRole("link", { name: "ホーム" });
     expect(homeLink).toBeTruthy();
@@ -37,13 +55,22 @@ describe("Breadcrumbのレンダリングテスト", () => {
     const currentPage = screen.getByText("記事タイトル");
     expect(currentPage).toBeTruthy();
     expect(currentPage.tagName).toBe("SPAN");
+
+    const jsonLd = getJsonLd(container);
+    expect(jsonLd.itemListElement).toHaveLength(3);
+    expect(jsonLd.itemListElement[2]).toMatchObject({
+      "@type": "ListItem",
+      position: 3,
+      name: "記事タイトル",
+      item: `${SITE.url}/blog/article`,
+    });
   });
 
   it("区切り文字が正しく表示される", () => {
     const items: BreadcrumbItem[] = [
       { label: "ホーム", href: "/" },
       { label: "ブログ", href: "/blog" },
-      { label: "記事タイトル" },
+      { label: "記事タイトル", href: "/blog/article" },
     ];
 
     const { container } = render(<Breadcrumb items={items} />);
@@ -71,7 +98,7 @@ describe("Breadcrumbのレンダリングテスト", () => {
   });
 
   it("カスタムclassNameが適用される", () => {
-    const items: BreadcrumbItem[] = [{ label: "テスト" }];
+    const items: BreadcrumbItem[] = [{ label: "テスト", href: "/test" }];
     const customClass = "custom-breadcrumb";
 
     const { container } = render(<Breadcrumb items={items} className={customClass} />);
