@@ -10,32 +10,35 @@ env:
   MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
   MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
 
+permissions:
+  contents: read
+
 jobs:
   devCheck:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5
         with:
           version: 10
 
       - name: Install mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         with:
           experimental: true
           install: false
 
-      - name: Setup Go with mise version
+      - name: Setup Node.js version from mise
         run: |
           NODE_VERSION=$(mise list node --json | jq -r '.[0].version')
           echo "NODE_VERSION=$NODE_VERSION" >> $GITHUB_ENV
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
-          node-version: ${{ env.GO_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -49,4 +52,3 @@ jobs:
 
       - name: Test
         run: pnpm test:run
-
