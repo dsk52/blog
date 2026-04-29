@@ -10,12 +10,13 @@ env:
   MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
   MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   devCheck:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
