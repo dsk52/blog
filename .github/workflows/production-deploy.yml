@@ -20,7 +20,7 @@ jobs:
           ref: master
 
       - name: deploy
-        uses: amondnet/vercel-action@4b810e26f7bb2a331c698af186f890cbf20d5f72 # v42.2.0
+        uses: amondnet/vercel-action@4b001a441d80e00aeed3680a3719d1d8b95998c5 # v42.2.1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
