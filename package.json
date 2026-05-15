@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.6",
-    "@tailwindcss/postcss": "4.2.4",
+    "@tailwindcss/postcss": "4.3.0",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
@@ -46,7 +46,7 @@
     "@vitejs/plugin-react": "5.2.0",
     "happy-dom": "20.9.0",
     "postcss": "8.5.14",
-    "tailwindcss": "4.2.4",
+    "tailwindcss": "4.3.0",
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.1.6"
