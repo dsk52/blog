@@ -1,30 +1,60 @@
 "use client";
 import "nprogress/nprogress.css";
 
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 
 export const useTransition = () => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleStart = () => {
+    if (pathname !== null) {
+      NProgress.done();
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const shouldTrackNavigation = (anchor: HTMLAnchorElement) => {
+      if (anchor.target && anchor.target !== "_self") {
+        return false;
+      }
+
+      const currentUrl = new URL(window.location.href);
+      const nextUrl = new URL(anchor.href);
+
+      return currentUrl.origin === nextUrl.origin && currentUrl.href !== nextUrl.href;
+    };
+
+    const handleClick = (event: MouseEvent) => {
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const anchor = (event.target as Element | null)?.closest("a[href]");
+      if (!(anchor instanceof HTMLAnchorElement) || !shouldTrackNavigation(anchor)) {
+        return;
+      }
+
       NProgress.start();
     };
 
-    const handleStop = () => {
+    const handlePageShow = () => {
       NProgress.done();
     };
 
-    router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleStop);
-    router.events.on("routeChangeError", handleStop);
+    document.addEventListener("click", handleClick);
+    window.addEventListener("pageshow", handlePageShow);
 
     return () => {
-      router.events.off("routeChangeStart", handleStart);
-      router.events.off("routeChangeComplete", handleStop);
-      router.events.off("routeChangeError", handleStop);
+      document.removeEventListener("click", handleClick);
+      window.removeEventListener("pageshow", handlePageShow);
     };
-  }, [router]);
+  }, []);
 };
