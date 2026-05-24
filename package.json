@@ -46,7 +46,7 @@
     "@types/rss": "0.0.32",
     "@vitejs/plugin-react": "5.2.0",
     "happy-dom": "20.9.0",
-    "postcss": "8.5.14",
+    "postcss": "8.5.15",
     "tailwindcss": "4.3.0",
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "6.1.1",
