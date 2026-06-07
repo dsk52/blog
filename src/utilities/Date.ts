@@ -1,5 +1,6 @@
-export function datetimeToDate(date: string): string {
-  const d = new Date(date);
-
-  return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
-}
+export const yyyyMMddFormatter = new Intl.DateTimeFormat("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  timeZone: "Asia/Tokyo",
+});

@@ -3,12 +3,12 @@ import { clsx } from "clsx";
 import { AnchorLink } from "@/components/ui/link/AnchorLink/AnchorLink";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { ROUTE } from "@/constants/route";
-import { datetimeToDate } from "@/utilities/Date";
+import { yyyyMMddFormatter } from "@/utilities/Date";
 
 import type { Props } from "./type";
 
 export const PostItem = ({ post }: Props) => {
-  const pubDate = datetimeToDate(post.publishedAt);
+  const pubDate = yyyyMMddFormatter.format(new Date(post.publishedAt));
 
   return (
     <article>

@@ -27,7 +27,9 @@ vi.mock("@/components/ui/TagList/TagList", () => ({
 }));
 
 vi.mock("@/utilities/Date", () => ({
-  datetimeToDate: (_date: string) => "2023-01-01",
+  yyyyMMddFormatter: {
+    format: () => "2023/01/01",
+  },
 }));
 
 describe("PostItem", () => {
@@ -54,7 +56,7 @@ describe("PostItem", () => {
 
   it("フォーマットされた公開日が表示されること", () => {
     const { getByText } = render(<PostItem post={mockPost} />);
-    expect(getByText("2023-01-01")).toBeInTheDocument();
+    expect(getByText("2023/01/01")).toBeInTheDocument();
   });
 
   it("投稿のスラッグを含む正しいリンクが含まれること", () => {
