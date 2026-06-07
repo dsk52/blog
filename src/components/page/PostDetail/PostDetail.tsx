@@ -10,12 +10,12 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { TagList } from "@/components/ui/TagList/TagList";
 import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
-import { datetimeToDate } from "@/utilities/Date";
+import { yyyyMMddFormatter } from "@/utilities/Date";
 
 import type { PostProps } from "./type";
 
 export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
-  const pubDate = datetimeToDate(post.publishedAt);
+  const pubDate = yyyyMMddFormatter.format(new Date(post.publishedAt));
 
   return (
     <CommonLayout>
