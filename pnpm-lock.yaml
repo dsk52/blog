@@ -94,8 +94,8 @@ importers:
         specifier: 5.2.0
         version: 5.2.0(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))
       happy-dom:
-        specifier: 20.10.2
-        version: 20.10.2
+        specifier: 20.10.5
+        version: 20.10.5
       postcss:
         specifier: 8.5.15
         version: 8.5.15
@@ -110,7 +110,7 @@ importers:
         version: 6.1.1(typescript@5.9.3)(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))
       vitest:
         specifier: 4.1.9
-        version: 4.1.9(@types/node@24.13.2)(happy-dom@20.10.2)(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))
+        version: 4.1.9(@types/node@24.13.2)(happy-dom@20.10.5)(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))
 
 packages:
 
@@ -918,9 +918,6 @@ packages:
   '@types/mdurl@2.0.0':
     resolution: {integrity: sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==}
 
-  '@types/node@24.13.1':
-    resolution: {integrity: sha512-RSpUJGmvsJ1ZeBehQZFhIdpsz+bIpES0nIQXko4Ybq+N+kX6XvOq3Jo+iJ82FWLdblFq85AsMikd3m35jgezYg==}
-
   '@types/node@24.13.2':
     resolution: {integrity: sha512-fRa09kZTgu8o71KFcDjUFuc7F+dEbZYZmkI0mg5YBTRs0yMKjYHsq/c0urDKeDb+D5qVgXOdFcuu+DZPKOITwA==}
 
@@ -1177,8 +1174,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  happy-dom@20.10.2:
-    resolution: {integrity: sha512-5p9Sxis3eowDJKqx90QCsgbNA02XXqJ59NOHvD4V6cxp+rP4d/xOyVx7uY3hS8hiUbY1VeiFH8lbJ81AyuDVLQ==}
+  happy-dom@20.10.5:
+    resolution: {integrity: sha512-0aA6BQoMnpcRE/c1E8ZyF2jXnET7MJskereWOXher4CJuYjrI5esN0Az/1NPMD4KeWUbampBGw2MGqabMPFIbg==}
     engines: {node: '>=20.0.0'}
 
   has-flag@4.0.0:
@@ -2303,10 +2300,6 @@ snapshots:
 
   '@types/mdurl@2.0.0': {}
 
-  '@types/node@24.13.1':
-    dependencies:
-      undici-types: 7.18.2
-
   '@types/node@24.13.2':
     dependencies:
       undici-types: 7.18.2
@@ -2329,7 +2322,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.13.1
+      '@types/node': 24.13.2
 
   '@vitejs/plugin-react@5.2.0(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))':
     dependencies:
@@ -2415,7 +2408,7 @@ snapshots:
 
   buffer-image-size@0.6.4:
     dependencies:
-      '@types/node': 24.13.1
+      '@types/node': 24.13.2
 
   caniuse-lite@1.0.30001715: {}
 
@@ -2578,9 +2571,9 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  happy-dom@20.10.2:
+  happy-dom@20.10.5:
     dependencies:
-      '@types/node': 24.13.1
+      '@types/node': 24.13.2
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.1
       buffer-image-size: 0.6.4
@@ -2995,7 +2988,7 @@ snapshots:
       jiti: 2.7.0
       lightningcss: 1.32.0
 
-  vitest@4.1.9(@types/node@24.13.2)(happy-dom@20.10.2)(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0)):
+  vitest@4.1.9(@types/node@24.13.2)(happy-dom@20.10.5)(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0)):
     dependencies:
       '@vitest/expect': 4.1.9
       '@vitest/mocker': 4.1.9(vite@6.3.2(@types/node@24.13.2)(jiti@2.7.0)(lightningcss@1.32.0))
@@ -3019,7 +3012,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.2
-      happy-dom: 20.10.2
+      happy-dom: 20.10.5
     transitivePeerDependencies:
       - msw
 
