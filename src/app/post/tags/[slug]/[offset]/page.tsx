@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 
 import { TagListPage } from "@/components/page/TagList/TagList";
-import { calcMaxPage, calcOffset } from "@/components/ui/Pager/util";
+import { calcMaxPage, calcOffset, parsePageNum } from "@/components/ui/Pager/util";
 import { ROUTE } from "@/constants/route";
 import { SITE } from "@/constants/site";
 import { getByTagId, getTagBySlug, POST_PER_PAGE } from "@/libs/microcms";
@@ -18,7 +18,16 @@ type PageParams = {
 export const dynamic = "force-dynamic";
 
 const fetchData = cache(async ({ slug, offset: offsetParam }: Awaited<PageParams["params"]>) => {
-  const pageNum = parseInt(offsetParam, 10);
+  const pageNum = parsePageNum(offsetParam);
+  if (!pageNum) {
+    return {
+      tag: undefined,
+      posts: [],
+      maxPage: 0,
+      pageNum: 0,
+    };
+  }
+
   // Tag check
   const Tags = await getTagBySlug(slug);
   if (Tags.contents.length === 0) {
@@ -38,6 +47,14 @@ const fetchData = cache(async ({ slug, offset: offsetParam }: Awaited<PageParams
   const posts = PostMapper.list(response.contents);
 
   const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
+  if (pageNum > maxPage) {
+    return {
+      tag: undefined,
+      posts: [],
+      maxPage,
+      pageNum,
+    };
+  }
 
   return {
     tag: Tag,
@@ -54,7 +71,7 @@ export const generateMetadata = async (props: PageParams) => {
   const { slug: slugParam } = params;
   const res = await fetchData({
     slug: slugParam,
-    offset: "0",
+    offset: "1",
   });
   if (!res.tag) {
     return {};

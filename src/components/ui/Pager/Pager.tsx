@@ -21,7 +21,7 @@ export const Pager = ({ basePath, pageNum, maxPage }: PagerProps) => {
         <div></div>
       )}
 
-      {pageNum !== maxPage ? (
+      {pageNum < maxPage ? (
         <ButtonLink label="次のページへ" link={`${basePath}/${nextPageNum}`} data-testid="next" />
       ) : (
         <div></div>

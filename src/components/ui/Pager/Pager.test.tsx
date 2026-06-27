@@ -1,7 +1,7 @@
 import { cleanup, render } from "@testing-library/react";
 
 import { Pager } from "./Pager";
-import { calcMaxPage, calcOffset } from "./util";
+import { calcMaxPage, calcOffset, parsePageNum } from "./util";
 
 const POST_PER_PAGE = 12;
 
@@ -34,6 +34,24 @@ describe("MaxPageのテスト", () => {
   });
 });
 
+describe("ページ番号パースのテスト", () => {
+  it("1以上の整数をページ番号として返す", () => {
+    expect(parsePageNum("1")).toBe(1);
+    expect(parsePageNum("2")).toBe(2);
+  });
+
+  it("1未満のページ番号は不正値にする", () => {
+    expect(parsePageNum("0")).toBeUndefined();
+    expect(parsePageNum("-1")).toBeUndefined();
+  });
+
+  it("整数ではないページ番号は不正値にする", () => {
+    expect(parsePageNum("abc")).toBeUndefined();
+    expect(parsePageNum("1abc")).toBeUndefined();
+    expect(parsePageNum("1.5")).toBeUndefined();
+  });
+});
+
 afterEach(cleanup);
 
 describe("ページャーの表示", () => {
@@ -56,5 +74,11 @@ describe("ページャーの表示", () => {
 
     expect(findByTestId("next")).toBeTruthy();
     expect(queryByTestId("prev")).toBeFalsy();
+  });
+
+  it("最大ページを超えている時、次のページへが表示されない", () => {
+    const { queryByTestId } = render(<Pager basePath="" pageNum={3} maxPage={2} />);
+
+    expect(queryByTestId("next")).toBeFalsy();
   });
 });
