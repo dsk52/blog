@@ -41,12 +41,8 @@ const fetchData = cache(async ({ slug, offset: offsetParam }: Awaited<PageParams
   const Tag = Tags.contents[0];
 
   // Post Check
-  const offset = calcOffset(pageNum, POST_PER_PAGE);
-
-  const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
-  const posts = PostMapper.list(response.contents);
-
-  const maxPage = calcMaxPage(response.totalCount, POST_PER_PAGE);
+  const tagPostsSummary = await getByTagId(Tag.id, 1, 0);
+  const maxPage = Math.max(calcMaxPage(tagPostsSummary.totalCount, POST_PER_PAGE), 1);
   if (pageNum > maxPage) {
     return {
       tag: undefined,
@@ -55,6 +51,10 @@ const fetchData = cache(async ({ slug, offset: offsetParam }: Awaited<PageParams
       pageNum,
     };
   }
+
+  const offset = calcOffset(pageNum, POST_PER_PAGE);
+  const response = await getByTagId(Tag.id, POST_PER_PAGE, offset);
+  const posts = PostMapper.list(response.contents);
 
   return {
     tag: Tag,

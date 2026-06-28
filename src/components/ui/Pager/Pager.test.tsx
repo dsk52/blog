@@ -65,30 +65,30 @@ describe("ページ番号パースのテスト", () => {
 afterEach(cleanup);
 
 describe("ページャーの表示", () => {
-  it("1/1の時、表示されないこと", async () => {
-    const { queryByTestId } = render(<Pager basePath="" pageNum={1} maxPage={1} />);
+  it("1/1の時、表示されないこと", () => {
+    const { queryByRole } = render(<Pager basePath="" pageNum={1} maxPage={1} />);
 
-    expect(queryByTestId("prev")).toBeFalsy();
-    expect(queryByTestId("next")).toBeFalsy();
+    expect(queryByRole("link", { name: "前のページへ" })).toBeFalsy();
+    expect(queryByRole("link", { name: "次のページへ" })).toBeFalsy();
   });
 
-  it("2/2の時、前のページへが表示される", async () => {
-    const { findByTestId, queryByTestId } = render(<Pager basePath="" pageNum={2} maxPage={2} />);
+  it("2/2の時、前のページへが表示される", () => {
+    const { getByRole, queryByRole } = render(<Pager basePath="" pageNum={2} maxPage={2} />);
 
-    expect(findByTestId("prev")).toBeTruthy();
-    expect(queryByTestId("next")).toBeFalsy();
+    expect(getByRole("link", { name: "前のページへ" })).toBeTruthy();
+    expect(queryByRole("link", { name: "次のページへ" })).toBeFalsy();
   });
 
-  it("1/2の時、次のページへが表示される", async () => {
-    const { findByTestId, queryByTestId } = render(<Pager basePath="" pageNum={1} maxPage={2} />);
+  it("1/2の時、次のページへが表示される", () => {
+    const { getByRole, queryByRole } = render(<Pager basePath="" pageNum={1} maxPage={2} />);
 
-    expect(findByTestId("next")).toBeTruthy();
-    expect(queryByTestId("prev")).toBeFalsy();
+    expect(getByRole("link", { name: "次のページへ" })).toBeTruthy();
+    expect(queryByRole("link", { name: "前のページへ" })).toBeFalsy();
   });
 
   it("最大ページを超えている時、次のページへが表示されない", () => {
-    const { queryByTestId } = render(<Pager basePath="" pageNum={3} maxPage={2} />);
+    const { queryByRole } = render(<Pager basePath="" pageNum={3} maxPage={2} />);
 
-    expect(queryByTestId("next")).toBeFalsy();
+    expect(queryByRole("link", { name: "次のページへ" })).toBeFalsy();
   });
 });
