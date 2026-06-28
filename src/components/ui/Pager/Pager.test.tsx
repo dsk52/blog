@@ -60,6 +60,10 @@ describe("ページ番号パースのテスト", () => {
   it("安全に扱えない整数は不正値にする", () => {
     expect(parsePageNum("9007199254740993")).toBeUndefined();
   });
+
+  it("offsetを安全に扱えないページ番号は不正値にする", () => {
+    expect(parsePageNum("9007199254740991", POST_PER_PAGE)).toBeUndefined();
+  });
 });
 
 afterEach(cleanup);
