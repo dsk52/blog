@@ -24,9 +24,13 @@ export function calcMaxPage(totalCount: number, postPerPage: number): number {
 }
 
 export function parsePageNum(pageNumParam: string): number | undefined {
+  if (!/^[1-9]\d*$/.test(pageNumParam)) {
+    return undefined;
+  }
+
   const pageNum = Number(pageNumParam);
 
-  if (!Number.isInteger(pageNum) || pageNum < 1) {
+  if (!Number.isSafeInteger(pageNum)) {
     return undefined;
   }
 

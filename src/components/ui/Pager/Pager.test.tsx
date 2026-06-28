@@ -50,6 +50,16 @@ describe("ページ番号パースのテスト", () => {
     expect(parsePageNum("1abc")).toBeUndefined();
     expect(parsePageNum("1.5")).toBeUndefined();
   });
+
+  it("十進整数表現ではないページ番号は不正値にする", () => {
+    expect(parsePageNum("1e2")).toBeUndefined();
+    expect(parsePageNum(" 1")).toBeUndefined();
+    expect(parsePageNum("01")).toBeUndefined();
+  });
+
+  it("安全に扱えない整数は不正値にする", () => {
+    expect(parsePageNum("9007199254740993")).toBeUndefined();
+  });
 });
 
 afterEach(cleanup);
