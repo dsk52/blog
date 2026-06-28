@@ -22,3 +22,21 @@ export function calcOffset(currnetPageNum: number, postPerPage: number): number 
 export function calcMaxPage(totalCount: number, postPerPage: number): number {
   return Math.ceil(totalCount / postPerPage);
 }
+
+export function parsePageNum(pageNumParam: string, postPerPage?: number): number | undefined {
+  if (!/^[1-9]\d*$/.test(pageNumParam)) {
+    return undefined;
+  }
+
+  const pageNum = Number(pageNumParam);
+
+  if (!Number.isSafeInteger(pageNum)) {
+    return undefined;
+  }
+
+  if (postPerPage && !Number.isSafeInteger(calcOffset(pageNum, postPerPage))) {
+    return undefined;
+  }
+
+  return pageNum;
+}
