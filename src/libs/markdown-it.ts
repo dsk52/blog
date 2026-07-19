@@ -11,6 +11,7 @@ const md: MarkdownIt = new MarkdownIt({
   linkify: true,
   langPrefix: "language-",
 });
+
 // md.use(prism, {
 //   highlightInlineCode: true,
 //   defaultLanguage: "bash",
