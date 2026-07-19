@@ -36,7 +36,7 @@ async function fetchRelatedPosts(tagId: ApiTag["id"], currentPostId: ApiPost["id
 
 const fetchData = cache(async (slug: string) => {
   const res = await getBySlug(slug);
-  if (!res.contents || !res.contents.length) {
+  if (!res.contents?.length) {
     return {
       post: undefined,
       relatedPosts: [] as IPostItem[],
