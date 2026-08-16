@@ -12,6 +12,7 @@ import { AdsenseClient, AdsenseUnits } from "@/constants/google";
 import { ROUTE } from "@/constants/route";
 import { yyyyMMddFormatter } from "@/utilities/Date";
 
+import { PostBody } from "./PostBody";
 import type { PostProps } from "./type";
 
 export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
@@ -47,22 +48,7 @@ export const PostDetailPage = ({ post, relatedPosts }: PostProps) => {
               className="tw:mx-auto tw:mt-10 tw:w-full tw:max-w-[48rem]"
               data-testid="post-body-wrap"
             >
-              <div
-                className={clsx(
-                  "tw:prose tw:prose-slate tw:max-w-none",
-                  // custom tailwindcss-typography
-                  "tw:prose-p:my-[1.4em] tw:prose-p:leading-[1.9]",
-                  "tw:prose-ul:my-6 tw:prose-ol:my-6 tw:prose-li:my-1",
-                  "tw:prose-h2:mt-16 tw:prose-h2:mb-6",
-                  "tw:prose-h3:mt-10 tw:prose-h3:mb-4",
-                  "tw:prose-pre:my-8 tw:prose-pre:px-5 tw:prose-pre:py-4 tw:prose-pre:leading-7",
-                  "tw:prose-a:transition-colors",
-                  "tw:prose-a:hover:no-underline tw:prose-a:hover:text-primary tw:prose-a:hover:opacity-70"
-                )}
-                data-testid="post-body"
-                // biome-ignore lint/security/noDangerouslySetInnerHtml: ブログ記事のHTML表示で必要
-                dangerouslySetInnerHTML={{ __html: post.body }}
-              />
+              <PostBody body={post.body} />
             </div>
           </article>
 

@@ -1,8 +1,5 @@
 import MarkdownIt from "markdown-it";
-
-// import prism from "markdown-it-prism";
-
-// Memo: prism.jsのテーマは_app.jsで読んでいる
+import prism from "markdown-it-prism";
 
 const md: MarkdownIt = new MarkdownIt({
   html: true,
@@ -11,9 +8,10 @@ const md: MarkdownIt = new MarkdownIt({
   linkify: true,
   langPrefix: "language-",
 });
-// md.use(prism, {
-//   highlightInlineCode: true,
-//   defaultLanguage: "bash",
-// });
+
+md.use(prism, {
+  highlightInlineCode: true,
+  defaultLanguage: "bash",
+});
 
 export { md };
