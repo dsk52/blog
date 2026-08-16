@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "prismjs/themes/prism-tomorrow.min.css";
 
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
