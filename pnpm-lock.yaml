@@ -15,8 +15,8 @@ importers:
         specifier: 14.3.0
         version: 14.3.0
       markdown-it-prism:
-        specifier: 3.0.1
-        version: 3.0.1(markdown-it@14.3.0)
+        specifier: 4.0.0
+        version: 4.0.0(markdown-it@14.3.0)
       microcms-js-sdk:
         specifier: 3.4.0
         version: 3.4.0
@@ -1359,11 +1359,15 @@ packages:
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
-  markdown-it-prism@3.0.1:
-    resolution: {integrity: sha512-JVnVGW8Gjw1TUtArXApnb/paeWye9TZW0kWzV2iqIUp1bxw+Rjh0WGg/BschKxn6fd1lCfv4FebSPMlcviGYSQ==}
+  markdown-it-prism@4.0.0:
+    resolution: {integrity: sha512-SOtRJl9K18w40IQNlQIy6F3zjde1SxkPPRCUMU6wx9hgGgztqRR1JUKWfoI4Ixm11ZLmXhPjBBjsCUAPqSeb9A==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       markdown-it: '>=7.0.1 <15.0.0'
+      markdown-it-attrs: '>=5.0.0'
+    peerDependenciesMeta:
+      markdown-it-attrs:
+        optional: true
 
   markdown-it@14.3.0:
     resolution: {integrity: sha512-RCEsPjR+sr0x+AuYp601tKTkgFG4YEPLCzHST3cQ/fhlJkqAkz1L2/Qbp1j9qw5SBwQHFBoW8+hoN5xssOF0Tw==}
@@ -2770,7 +2774,7 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  markdown-it-prism@3.0.1(markdown-it@14.3.0):
+  markdown-it-prism@4.0.0(markdown-it@14.3.0):
     dependencies:
       markdown-it: 14.3.0
       prismjs: 1.30.0
