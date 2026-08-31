@@ -12,11 +12,11 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       markdown-it:
-        specifier: 14.3.0
-        version: 14.3.0
+        specifier: 14.3.1
+        version: 14.3.1
       markdown-it-prism:
         specifier: 4.0.0
-        version: 4.0.0(markdown-it@14.3.0)
+        version: 4.0.0(markdown-it@14.3.1)
       microcms-js-sdk:
         specifier: 3.4.0
         version: 3.4.0
@@ -1215,8 +1215,8 @@ packages:
       markdown-it-attrs:
         optional: true
 
-  markdown-it@14.3.0:
-    resolution: {integrity: sha512-RCEsPjR+sr0x+AuYp601tKTkgFG4YEPLCzHST3cQ/fhlJkqAkz1L2/Qbp1j9qw5SBwQHFBoW8+hoN5xssOF0Tw==}
+  markdown-it@14.3.1:
+    resolution: {integrity: sha512-4Ej49aYTDFIQ+uBkfX8GBvJGccoARxxPep+7aWTs55ozbjQJpW9M26Fe53vnGgvLeVzva/amzjQQaQu9w0vMhA==}
     hasBin: true
 
   mdurl@2.0.0:
@@ -2511,12 +2511,12 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  markdown-it-prism@4.0.0(markdown-it@14.3.0):
+  markdown-it-prism@4.0.0(markdown-it@14.3.1):
     dependencies:
-      markdown-it: 14.3.0
+      markdown-it: 14.3.1
       prismjs: 1.30.0
 
-  markdown-it@14.3.0:
+  markdown-it@14.3.1:
     dependencies:
       argparse: 2.0.1
       entities: 4.5.0
