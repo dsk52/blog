@@ -65,7 +65,7 @@ importers:
         version: 0.5.20(tailwindcss@4.3.3)
       '@testing-library/jest-dom':
         specifier: 7.0.1
-        version: 7.0.1(@testing-library/dom@10.0.0)(vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)))
+        version: 7.0.1(@testing-library/dom@10.0.0)(vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.1)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)))
       '@testing-library/react':
         specifier: 16.3.3
         version: 16.3.3(@testing-library/dom@10.0.0)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -97,8 +97,8 @@ importers:
         specifier: 6.1.1
         version: 6.1.1(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       happy-dom:
-        specifier: 20.12.0
-        version: 20.12.0
+        specifier: 20.12.1
+        version: 20.12.1
       postcss:
         specifier: 8.5.26
         version: 8.5.26
@@ -113,7 +113,7 @@ importers:
         version: 6.1.1(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@types/node@24.13.3)(happy-dom@20.12.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
+        version: 4.1.11(@types/node@24.13.3)(happy-dom@20.12.1)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
 
 packages:
 
@@ -1001,8 +1001,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  happy-dom@20.12.0:
-    resolution: {integrity: sha512-7uMYJu2SEwwL8vVcKp0C0lnt6d2LSGGe+T+oY79PiCJNNSgFpbxW8n5KuzpDQvrU4mt+fYiK1+Jy7Z2v39YR6g==}
+  happy-dom@20.12.1:
+    resolution: {integrity: sha512-6+Gaa3xVS+OwQy3fAZGMqFO3sffpTrL/gW3bkOGzN50YN5zWPp6gUyQXITJ1n0xBGeZrJMQ9scBW7Q9aWjUAJw==}
     engines: {node: '>=20.0.0'}
 
   has-flag@4.0.0:
@@ -2069,7 +2069,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/jest-dom@7.0.1(@testing-library/dom@10.0.0)(vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)))':
+  '@testing-library/jest-dom@7.0.1(@testing-library/dom@10.0.0)(vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.1)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)))':
     dependencies:
       '@adobe/css-tools': 4.4.0
       '@testing-library/dom': 10.0.0
@@ -2079,7 +2079,7 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
     optionalDependencies:
-      vitest: 4.1.11(@types/node@24.13.3)(happy-dom@20.12.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
+      vitest: 4.1.11(@types/node@24.13.3)(happy-dom@20.12.1)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
 
   '@testing-library/react@16.3.3(@testing-library/dom@10.0.0)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
@@ -2354,7 +2354,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  happy-dom@20.12.0:
+  happy-dom@20.12.1:
     dependencies:
       '@types/node': 24.13.3
       '@types/whatwg-mimetype': 3.0.2
@@ -2819,7 +2819,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.7.0
 
-  vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)):
+  vitest@4.1.11(@types/node@24.13.3)(happy-dom@20.12.1)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)):
     dependencies:
       '@vitest/expect': 4.1.11
       '@vitest/mocker': 4.1.11(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
@@ -2843,7 +2843,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.3
-      happy-dom: 20.12.0
+      happy-dom: 20.12.1
     transitivePeerDependencies:
       - msw
 
