@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "clsx": "2.1.1",
-    "markdown-it": "14.3.2",
+    "markdown-it": "15.0.2",
     "markdown-it-prism": "4.0.0",
     "microcms-js-sdk": "3.5.1",
     "next": "16.4.0",
@@ -38,7 +38,6 @@
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
     "@types/gtag.js": "0.0.20",
-    "@types/markdown-it": "14.2.0",
     "@types/node": "24.19.1",
     "@types/nprogress": "0.2.3",
     "@types/react": "19.3.0",
