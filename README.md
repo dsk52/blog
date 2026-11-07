@@ -28,9 +28,11 @@ src/
 
 ## セットアップ
 
-```bash
-# 依存関係インストール
-pnpm install
+Node.jsのバージョンは `.mise.toml`、pnpmのバージョンは `package.json` の `packageManager` で管理します。miseは `packageManager` を参照してpnpmを選択します。
+
+```fish
+mise install
+mise exec -- pnpm install --frozen-lockfile
 
 # 環境変数設定
 cp .env.example .env.local
@@ -66,6 +68,10 @@ pnpm export
 ## デプロイメント
 
 GitHub Actionsによる自動デプロイメントをVercelで実行
+
+VercelのProject Settingsで、Preview・Productionの環境変数に `ENABLE_EXPERIMENTAL_COREPACK=1` を設定してください。Install CommandのOverrideは無効にし、`package.json` の `packageManager` に指定したpnpmを使用します。
+
+pnpmの更新は `packageManager` を変更し、ロックファイルを同期します。GitHub Actionsもこの指定を参照するため、CIやVercelにバージョンを重複して指定する必要はありません。
 
 ## トラブルシューティング
 
