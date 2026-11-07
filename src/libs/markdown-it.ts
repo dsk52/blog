@@ -1,7 +1,7 @@
 import MarkdownIt from "markdown-it";
 import prism from "markdown-it-prism";
 
-const md: MarkdownIt = new MarkdownIt({
+const md = new MarkdownIt({
   html: true,
   breaks: true,
   typographer: true,
@@ -12,6 +12,8 @@ const md: MarkdownIt = new MarkdownIt({
 md.use(prism, {
   highlightInlineCode: true,
   defaultLanguage: "bash",
+  plugins: [],
+  init: () => {},
 });
 
 export { md };
