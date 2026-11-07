@@ -1,1 +1,8 @@
 enablePrePostScripts: true
+
+# Renovate の共通プリセットに合わせ、公開から3日間は採用しない。
+minimumReleaseAge: 4320
+strictDepBuilds: true
+allowBuilds: {}
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
